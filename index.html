@@ -58,9 +58,28 @@ header.top{position:sticky;top:0;z-index:50;background:rgba(5,10,28,.97);border-
 .btn-line-dark{background:transparent;color:var(--ink);border-color:rgba(205,178,126,.55)}
 .btn-line-dark:hover{border-color:var(--gold);color:var(--gold)}
 .btn-sm{padding:9px 20px;min-height:42px;font-size:14px}
-nav.main{display:flex;gap:2px;flex-wrap:wrap;padding:2px 0 12px}
+nav.main{display:flex;gap:2px;flex-wrap:wrap;padding:2px 0 12px;align-items:center}
 nav.main a{color:var(--on-navy-soft);text-decoration:none;padding:7px 13px;font-size:14px;letter-spacing:.1em;min-height:36px;display:inline-flex;align-items:center}
 nav.main a:hover{color:#fff}
+nav.main a.active{color:var(--gold-bright);box-shadow:inset 0 -2px 0 var(--gold)}
+.nav-toggle{display:none;background:transparent;border:1px solid rgba(205,178,126,.45);color:var(--gold-bright);padding:7px 16px;cursor:pointer;font-size:14px;letter-spacing:.18em;min-height:38px;margin:2px 0 10px;align-items:center;gap:8px}
+.nav-more{position:relative;display:inline-flex}
+.nav-more-btn{background:transparent;border:0;color:var(--on-navy-soft);padding:7px 13px;font-size:14px;letter-spacing:.18em;min-height:36px;display:inline-flex;align-items:center;gap:6px;cursor:pointer}
+.nav-more-btn:hover{color:#fff}
+.nav-more.has-active .nav-more-btn{color:var(--gold-bright);box-shadow:inset 0 -2px 0 var(--gold)}
+.nav-drop{display:none;position:absolute;top:calc(100% + 6px);left:0;min-width:168px;background:rgba(5,10,28,.99);border:1px solid rgba(205,178,126,.4);padding:8px;z-index:60;box-shadow:0 16px 36px rgba(0,0,0,.45)}
+.nav-more.open .nav-drop{display:block}
+.nav-drop a{display:flex;width:100%;padding:9px 12px;white-space:nowrap}
+.nav-drop a:hover{background:rgba(255,255,255,.06)}
+@media(min-width:821px){.nav-flat{display:none!important}}
+@media(max-width:820px){
+  .nav-toggle{display:inline-flex}
+  .nav-more{display:none!important}
+  nav.main{display:none;flex-direction:column;align-items:stretch;flex-wrap:nowrap;padding:0 0 14px;gap:0}
+  nav.main.open{display:flex}
+  nav.main a{display:flex;width:100%;padding:11px 10px;border-top:1px solid rgba(255,255,255,.07);min-height:44px}
+  nav.main a.active{box-shadow:inset 3px 0 0 var(--gold)}
+}
 
 /* hero */
 .hero{background:transparent;color:var(--on-navy);padding:104px 0 96px;position:relative;overflow:hidden}
@@ -328,12 +347,26 @@ p{letter-spacing:.02em}
       </div>
       <a class="btn btn-gold btn-sm" href="tel:+16468096388">(646) 809-6388</a>
     </div>
-    <nav class="main" aria-label="主导航">
-      <a href="#coverage" data-i18n="nav4">服务范围</a>
-      <a href="#stages" data-i18n="nav1">三阶段</a>
-      <a href="#library" data-i18n="nav2">单品库</a>
-      <a href="#cases" data-i18n="nav6">案例</a>
-      <a href="#contact" data-i18n="nav5">联系我们</a>
+    <button class="nav-toggle" id="navToggle" type="button" aria-expanded="false" aria-controls="mainNav"><span data-i18n="navMenu">菜单</span><span aria-hidden="true">▾</span></button>
+    <nav class="main" id="mainNav" aria-label="主导航">
+      <a href="#coverage" data-navlink="coverage" data-i18n="nav4">服务范围</a>
+      <a href="#stages" data-navlink="stages" data-i18n="nav1">三阶段</a>
+      <a href="#library" data-navlink="library" data-i18n="nav2">单品库</a>
+      <a href="#cases" data-navlink="cases" data-i18n="nav6">案例</a>
+      <a class="nav-flat" href="#reviews" data-navlink="reviews" data-i18n="nav7">评价</a>
+      <a class="nav-flat" href="#team" data-navlink="team" data-i18n="nav8">团队</a>
+      <a class="nav-flat" href="#observation" data-navlink="observation" data-i18n="nav9">观察</a>
+      <a class="nav-flat" href="#gmap" data-navlink="gmap" data-i18n="nav10">谷歌地图</a>
+      <div class="nav-more" id="navMore">
+        <button class="nav-more-btn" id="navMoreBtn" type="button" aria-haspopup="true" aria-expanded="false"><span data-i18n="navMore">更多</span><span aria-hidden="true">▾</span></button>
+        <div class="nav-drop" role="menu" aria-label="更多导航">
+          <a href="#reviews" data-navlink="reviews" data-i18n="nav7">评价</a>
+          <a href="#team" data-navlink="team" data-i18n="nav8">团队</a>
+          <a href="#observation" data-navlink="observation" data-i18n="nav9">观察</a>
+          <a href="#gmap" data-navlink="gmap" data-i18n="nav10">谷歌地图</a>
+        </div>
+      </div>
+      <a href="#contact" data-navlink="contact" data-i18n="nav5">联系我们</a>
     </nav>
   </div>
 </header>
@@ -341,7 +374,7 @@ p{letter-spacing:.02em}
 <!-- HERO -->
 <section class="hero" id="top">
   <div class="wrap">
-    <p class="brandline">星辉，因每一家小店而亮。<br>把无数小餐饮实体店，像星光一样聚在一起，聚成一片星辉。</p>
+    <p class="brandline">星辉，因每一家小店而组成。<br>把无数小餐饮实体店，像星光一样聚在一起，聚成一片星辉。</p>
     <h1 data-i18n="heroH1">纽约华人餐饮与实体店的品牌增长伙伴</h1>
     <p class="en-line">The brand and growth agency for Asian restaurants and local businesses in New York</p>
     <p class="one" data-i18n="heroOne">餐饮全案服务，按开业、增长、破圈三个阶段推进。</p>
@@ -892,7 +925,7 @@ p{letter-spacing:.02em}
 <footer>
   <div class="wrap">
     <div class="fb">
-      <span class="brandline">星辉，因每一家小店而亮。</span>
+      <span class="brandline">星辉，因每一家小店而组成。</span>
       <b>星辉传媒 NEW STARLIGHT MEDIA</b>
       <span data-i18n="footPos">纽约华人餐饮与实体店的品牌增长伙伴</span>
       <span>36-26 Main St, Ste 2x, Flushing, NY 11354</span>
@@ -942,7 +975,7 @@ p{letter-spacing:.02em}
 (function(){
 "use strict";
 var EN = {
-nav1:"Three Stages", nav2:"Library", nav3:"Bundles & Monthly", nav4:"Service Area", nav5:"Contact", nav6:"Cases",
+nav1:"Three Stages", nav2:"Library", nav3:"Bundles & Monthly", nav4:"Service Area", nav5:"Contact", nav6:"Cases", nav7:"Reviews", nav8:"Team", nav9:"Observation", nav10:"Google Maps", navMore:"More", navMenu:"Menu",
 heroH1:"The brand and growth agency for Asian restaurants and local businesses in New York",
 heroOne:"Full-service for restaurants and local stores, in three stages: Launch, Grow, Break Through.",
 ctaCall:"Call (646) 809-6388", ctaForm:"Leave Your Number · Get a Quote",
@@ -992,6 +1025,46 @@ function setLang(en){
 }
 document.getElementById("langZh").addEventListener("click", function(){ setLang(false); });
 document.getElementById("langEn").addEventListener("click", function(){ setLang(true); });
+
+/* structured nav: mobile toggle, More dropdown, scroll-spy */
+var mainNav = document.getElementById("mainNav");
+var navToggle = document.getElementById("navToggle");
+navToggle.addEventListener("click", function(){
+  var open = mainNav.classList.toggle("open");
+  navToggle.setAttribute("aria-expanded", open ? "true" : "false");
+});
+var navMore = document.getElementById("navMore");
+var navMoreBtn = document.getElementById("navMoreBtn");
+navMoreBtn.addEventListener("click", function(e){
+  e.stopPropagation();
+  var open = navMore.classList.toggle("open");
+  navMoreBtn.setAttribute("aria-expanded", open ? "true" : "false");
+});
+document.addEventListener("click", function(e){
+  if (!navMore.contains(e.target)){ navMore.classList.remove("open"); navMoreBtn.setAttribute("aria-expanded","false"); }
+});
+mainNav.querySelectorAll("a[href^='#']").forEach(function(a){
+  a.addEventListener("click", function(){
+    navMore.classList.remove("open"); navMoreBtn.setAttribute("aria-expanded","false");
+    if (window.innerWidth <= 820){ mainNav.classList.remove("open"); navToggle.setAttribute("aria-expanded","false"); }
+  });
+});
+var navIds = ["coverage","stages","library","cases","reviews","team","observation","gmap","contact"];
+function setActiveNav(id){
+  mainNav.querySelectorAll("[data-navlink]").forEach(function(a){
+    a.classList.toggle("active", a.getAttribute("data-navlink") === id);
+  });
+  var inMore = ["reviews","team","observation","gmap"].indexOf(id) !== -1;
+  navMore.classList.toggle("has-active", inMore);
+}
+if ("IntersectionObserver" in window){
+  var spy = new IntersectionObserver(function(entries){
+    entries.forEach(function(en){ if (en.isIntersecting) setActiveNav(en.target.id); });
+  }, { rootMargin: "-40% 0px -55% 0px", threshold: 0 });
+  navIds.forEach(function(id){ var s = document.getElementById(id); if (s) spy.observe(s); });
+} else {
+  setActiveNav("coverage");
+}
 
 var sel = document.getElementById("fSvc");
 function pick(v){
@@ -1043,7 +1116,7 @@ function answer(q){
   if (/(报价|价格|多少钱|收费|quote|price)/.test(s)) return "每家店的阶段和需求不同，价格一律咨询获取报价，不乱标价。拨打 (646) 809-6388，或在页面留资表单留下姓名和电话，我们回电给您报价。";
   if (/(谷歌|google|地图|评分|口碑)/.test(s)) return "Google 商家档案和评分口碑在增长阶段，含谷歌地图优化：建好档案、管好评分，让客人先搜到您、再选您。可单点，也可先单品试再升套餐。";
   if (/(地址|在哪|电话|联系|address|phone)/.test(s)) return "电话：(646) 809-6388，可直接拨打。地址：36-26 Main St, Ste 2x, Flushing, NY 11354。官网：www.newstarlightmedia.com。";
-  if (/(做什么|定位|介绍|是谁|公司|about)/.test(s)) return "星辉，因每一家小店而亮。星辉传媒是纽约华人餐饮与实体店的品牌增长伙伴（The brand and growth agency for Asian restaurants and local businesses in New York），餐饮全案服务按开业、增长、破圈三个阶段推进。";
+  if (/(做什么|定位|介绍|是谁|公司|about)/.test(s)) return "星辉，因每一家小店而组成。星辉传媒是纽约华人餐饮与实体店的品牌增长伙伴（The brand and growth agency for Asian restaurants and local businesses in New York），餐饮全案服务按开业、增长、破圈三个阶段推进。";
   if (/(访谈|采访|观察|协会|interview)/.test(s)) return "媒体访谈、新闻公关、协会活动和纽约华人餐饮观察合作都在破圈阶段，套餐按项目定制；单品库里还有访谈公关包（人物访谈＋媒体采访＋专题访谈＋现场访谈）和「活动与执行」整组可按项目组合。";
   return "收到。可以问我「三个阶段分别做什么」「套餐和单品怎么选」「单品库有哪些」「包月是什么」「价格」「服务范围」「电话地址」，或直接拨打 (646) 809-6388 人工咨询。";
 }
