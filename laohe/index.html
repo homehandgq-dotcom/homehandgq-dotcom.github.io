@@ -1,0 +1,486 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="color-scheme" content="light">
+<link rel="icon" href="data:,">
+<title>老何20年系统化营销提案</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Noto+Serif+SC:wght@700;900&family=Noto+Sans+SC:wght@400;500;700;900&display=swap" rel="stylesheet">
+<style>
+:root{
+--bg:#f6fbf7; --paper:#ffffff; --ink:#12251b; --muted:#5a6f62; --line:#dcebe0;
+--green:#0f6b3e; --green2:#0a4d2c; --green3:#e6f3ea; --green4:#cfe8d6; --gold:#c9a86a;
+--radius:20px;
+}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{margin:0;background:var(--bg);color:var(--ink);font-family:"Noto Sans SC",system-ui,-apple-system,Segoe UI,Roboto,sans-serif;line-height:1.7}
+a{color:inherit}
+.topbar{position:sticky;top:0;z-index:20;background:rgba(255,255,255,.92);backdrop-filter:blur(10px);border-bottom:1px solid var(--line)}
+.topbar-inner{max-width:1120px;margin:0 auto;padding:10px 18px;display:flex;align-items:center;justify-content:space-between;gap:16px}
+.brand{font-weight:900;letter-spacing:.02em;font-size:14px}
+.brand span{color:var(--green)}
+.nav{display:flex;gap:4px;flex-wrap:wrap;justify-content:flex-end}
+.nav a{text-decoration:none;font-size:13px;font-weight:700;padding:9px 12px;min-height:36px;display:inline-flex;align-items:center;border-radius:999px;color:#335243}
+.nav a:hover{background:var(--green3)}
+.wrap{max-width:1120px;margin:0 auto;padding:0 18px 64px}
+/* hero */
+.hero{margin:22px 0 18px;background:var(--paper);border:1px solid var(--line);border-radius:28px;overflow:hidden;display:grid;grid-template-columns:1.25fr.75fr}
+.hero-left{padding:42px 42px 36px}
+.kicker{display:inline-flex;align-items:center;gap:8px;background:var(--green3);color:var(--green2);font-weight:900;font-size:12px;letter-spacing:.14em;padding:7px 12px;border-radius:999px;text-transform:uppercase}
+.hero h1{font-family:"Noto Serif SC",serif;font-size:52px;line-height:1.05;margin:18px 0 14px;letter-spacing:-.02em}
+.hero h1 em{font-style:normal;color:var(--green)}
+.hero-sub{font-size:19px;line-height:1.6;color:#24382c;font-weight:700;max-width:560px}
+.hero-desc{color:var(--muted);margin-top:12px;max-width:560px;font-size:15px}
+.hero-meta{display:flex;gap:10px;flex-wrap:wrap;margin-top:22px}
+.pill{border:1px solid var(--line);background:#fbfdfb;border-radius:999px;padding:8px 13px;font-size:13px;font-weight:700}
+.pill b{color:var(--green)}
+.hero-right{background:var(--green2);color:#fff;padding:36px 30px;display:flex;flex-direction:column;justify-content:space-between;min-height:340px}
+.big20{font-family:"Noto Serif SC",serif;font-size:120px;line-height:.9;font-weight:900}
+.big20 small{font-size:28px;vertical-align:top}
+.hero-right p{opacity:.92;font-size:15px;line-height:1.7;margin:14px 0 0}
+.hero-quote{border-top:1px solid rgba(255,255,255,.25);padding-top:16px;margin-top:22px;font-weight:900;font-size:17px;line-height:1.5}
+/* sections */
+.section{margin-top:18px;background:var(--paper);border:1px solid var(--line);border-radius:24px;padding:30px 30px 28px}
+.section-head{display:flex;gap:16px;align-items:flex-start;margin-bottom:20px}
+.num{flex:0 0 auto;width:46px;height:46px;border-radius:14px;background:var(--green);color:#fff;display:grid;place-items:center;font-weight:900;font-size:15px}
+.section h2{font-family:"Noto Serif SC",serif;font-size:28px;line-height:1.2;margin:2px 0 6px}
+.section h2+p{color:var(--muted);margin:0;font-size:14.5px}
+.core-line{background:var(--green2);color:#fff;border-radius:18px;padding:26px 24px;text-align:center}
+.core-line.label{font-size:12px;letter-spacing:.18em;opacity:.8;font-weight:900}
+.core-line.line{font-family:"Noto Serif SC",serif;font-size:30px;font-weight:900;line-height:1.35;margin-top:8px}
+.core-note{text-align:center;color:var(--muted);font-size:14px;margin-top:12px}
+/* reasons */
+.grid{display:grid;grid-template-columns:1fr 1fr;gap:14px}
+.card{border:1px solid var(--line);border-radius:18px;padding:20px 20px 18px;background:#fcfefc}
+.card-top{display:flex;align-items:center;gap:12px;margin-bottom:8px}
+.card-no{width:36px;height:36px;border-radius:50%;background:var(--green3);color:var(--green2);display:grid;place-items:center;font-weight:900}
+.card h3{margin:0;font-size:17px}
+.card p{margin:6px 0 0;color:#35493c;font-size:14.5px;line-height:1.65}
+.proof{margin-top:12px;background:var(--green3);border-radius:12px;padding:10px 12px;font-size:13.5px}
+.proof b{color:var(--green2)}
+/* video */
+.video-grid{display:grid;grid-template-columns:1fr 340px;gap:18px}
+.script{border:1px solid var(--line);border-radius:18px;overflow:hidden}
+.script-row{display:grid;grid-template-columns:110px 1fr;border-bottom:1px solid var(--line)}
+.script-row:last-child{border-bottom:none}
+.script-row dt{padding:16px;background:#f2f8f3;font-weight:900;font-size:13px;color:var(--green2)}
+.script-row dd{margin:0;padding:16px;font-size:15px}
+.script-row dd i{color:var(--muted);font-style:normal;display:block;font-size:13px;margin-bottom:4px}
+.cover{background:var(--green2);color:#fff;border-radius:18px;padding:22px;display:flex;flex-direction:column;justify-content:space-between;min-height:280px}
+.cover.big{font-family:"Noto Serif SC",serif;font-size:42px;line-height:1.1;font-weight:900}
+.cover ul{margin:14px 0 0;padding-left:18px;font-size:14px;line-height:1.7;opacity:.95}
+.btn{appearance:none;border:0;background:var(--green);color:#fff;font-weight:900;padding:12px 16px;min-height:44px;border-radius:999px;cursor:pointer;width:100%;margin-top:14px;font-size:14px}
+.btn:active{transform:scale(.99)}
+.small{font-size:13px;color:var(--muted)}
+/* layers */
+.layers{display:grid;gap:12px}
+.layer{display:grid;grid-template-columns:52px 1fr;gap:14px;border:1px solid var(--line);border-radius:18px;padding:18px;background:#fcfefc}
+.layer-badge{width:44px;height:44px;border-radius:12px;background:var(--green);color:#fff;display:grid;place-items:center;font-weight:900}
+.layer h3{margin:2px 0 6px;font-size:17px}
+.layer p,.layer li{font-size:14.5px;color:#35493c}
+.layer ul{margin:6px 0 0;padding-left:18px}
+.cols{display:grid;grid-template-columns:1fr 1fr 1fr;gap:12px;margin-top:14px}
+.mini{border:1px solid var(--line);border-radius:16px;padding:16px;background:#fff}
+.mini h4{margin:0 0 6px;font-size:14px;color:var(--green2)}
+.mini p{margin:0;font-size:14px;color:#35493c}
+/* axis */
+.axis{margin-top:16px;border:1px dashed #9fc7ab;border-radius:18px;padding:18px;background:#f7fbf7}
+.axis-grid{display:grid;grid-template-columns:1fr auto 1fr;gap:14px;align-items:center;text-align:center}
+.axis-box{background:#fff;border:1px solid var(--line);border-radius:14px;padding:14px}
+.axis-box b{display:block;color:var(--green2)}
+.words{display:flex;gap:8px;flex-wrap:wrap;justify-content:center;margin-top:10px}
+.word{background:var(--green);color:#fff;padding:7px 13px;border-radius:999px;font-weight:900;font-size:13px}
+/* timeline 90d */
+.rounds{display:grid;grid-template-columns:1fr 1fr 1fr;gap:12px}
+.round{border-top:4px solid var(--green);background:#f7fbf7;border:1px solid var(--line);border-radius:16px;padding:18px}
+.round span{font-size:12px;font-weight:900;letter-spacing:.12em;color:var(--green)}
+.round h3{margin:6px 0 6px;font-size:17px}
+.round p{margin:0;font-size:14px;color:#35493c}
+.table-wrap{display:grid;gap:10px;margin-top:6px}
+.trow{display:grid;grid-template-columns:110px 1fr 150px;gap:12px;align-items:start;border:1px solid var(--line);border-radius:14px;padding:14px 16px;background:#fff}
+.trow b{color:var(--green2)}
+.trow.freq{font-weight:900;text-align:right;color:var(--green2);white-space:nowrap}
+.check{margin-top:16px;background:#fff8e8;border:1px solid #ead9a8;border-radius:16px;padding:18px 20px}
+.check h3{margin:0 0 6px;font-size:16px}
+.check p{margin:0;font-size:14.5px;color:#4a3f1f}
+/* topics */
+.topic-intro{display:grid;grid-template-columns:1fr 1fr 1fr;gap:12px;margin-bottom:16px}
+.topic-ratio{border:1px solid var(--line);border-radius:16px;padding:16px;background:#f7fbf7}
+.topic-ratio b{display:block;font-size:22px;color:var(--green);line-height:1.2}
+.topic-ratio span{font-size:13.5px;color:#35493c}
+.topic-grid{display:grid;grid-template-columns:1fr 1fr;gap:14px}
+.topic-cat{border:1px solid var(--line);border-radius:18px;padding:20px;background:#fcfefc}
+.topic-cat-head{display:flex;align-items:flex-start;gap:12px;margin-bottom:10px}
+.topic-cat-no{flex:0 0 auto;min-width:44px;height:36px;padding:0 8px;border-radius:999px;background:var(--green3);color:var(--green2);display:grid;place-items:center;font-weight:900;font-size:13px}
+.topic-cat h3{margin:0;font-size:16.5px;line-height:1.35}
+.topic-cat .cat-note{margin:4px 0 0;font-size:13px;color:var(--muted);line-height:1.55}
+.topic-list{list-style:none;margin:12px 0 0;padding:0;display:grid;gap:0}
+.topic-list li{display:flex;gap:10px;padding:9px 0;border-top:1px solid var(--line);font-size:14px;line-height:1.6;color:#24382c}
+.topic-list li:first-child{border-top:none;padding-top:2px}
+.tno{flex:0 0 auto;width:26px;height:26px;border-radius:50%;background:#fff;border:1px solid var(--green4);color:var(--green2);display:grid;place-items:center;font-size:12px;font-weight:900;margin-top:1px}
+/* benchmark account links */
+.acct-links{margin-top:12px;border-top:1px solid var(--line);padding-top:12px}
+.acct-label{font-size:12px;font-weight:900;letter-spacing:.08em;color:var(--green2);margin-bottom:7px}
+.acct-btns{display:flex;flex-wrap:wrap;gap:7px}
+.acct-btn{display:inline-flex;align-items:center;gap:5px;min-height:36px;padding:7px 12px;border-radius:999px;border:1px solid var(--green);background:#fff;color:var(--green2);font-size:13px;font-weight:800;text-decoration:none;line-height:1.2}
+.acct-btn:hover{background:var(--green);color:#fff}
+.acct-btn.main{background:var(--green);color:#fff}
+.acct-btn.main:hover{background:var(--green2)}
+.acct-directory{margin-top:14px;border:1px solid var(--line);border-radius:18px;overflow:hidden;background:#fff}
+.acct-directory-head{background:var(--green2);color:#fff;padding:14px 18px}
+.acct-directory-head b{font-size:15px}
+.acct-directory-head span{display:block;font-size:13px;opacity:.9;margin-top:2px}
+.acct-row{display:grid;grid-template-columns:170px 1fr;gap:12px;padding:13px 18px;border-top:1px solid var(--line);align-items:start}
+.acct-row:first-of-type{border-top:none}
+.acct-person{font-weight:900;font-size:14.5px;color:var(--ink)}
+.acct-person small{display:block;font-weight:700;color:var(--muted);font-size:12.5px;margin-top:1px}
+@media(max-width:820px){.acct-row{grid-template-columns:1fr}}
+.topic-exclude{margin-top:14px;border:1px dashed #c3a1a1;border-radius:16px;padding:16px 18px;background:#fdf7f7}
+.topic-exclude h4{margin:0 0 4px;font-size:14px;color:#7a2e2e}
+.topic-exclude p{margin:0;font-size:14px;color:#5c3a3a}
+footer{padding:22px 6px 0;color:var(--muted);font-size:13px;text-align:center}
+@media(max-width:820px){
+.hero{grid-template-columns:1fr}
+.hero-left{padding:28px 22px 24px}
+.hero h1{font-size:38px}
+.hero-right{min-height:auto;padding:26px 22px}
+.big20{font-size:84px}
+.section{padding:22px 18px}
+.grid,.video-grid,.cols,.rounds,.topic-grid,.topic-intro{grid-template-columns:1fr}
+.script-row{grid-template-columns:1fr}
+.script-row dt{padding-bottom:4px}
+.script-row dd{padding-top:6px}
+.axis-grid{grid-template-columns:1fr}
+.trow{grid-template-columns:1fr}
+.trow.freq{text-align:left}
+.nav{display:none}
+.core-line.line{font-size:24px}
+}
+</style>
+</head>
+<body>
+<header class="topbar">
+<div class="topbar-inner">
+<div class="brand">老何 · <span>法拉盛 20 年</span> &nbsp;系统化营销提案</div>
+<nav class="nav" aria-label="目录">
+<a href="#core">核心定位</a><a href="#reasons">六点理由</a><a href="#topics">选题库</a><a href="#pinned">置顶视频</a><a href="#rhythm">90 天节奏</a><a href="#system">系统打法</a><a href="#benchmarks">对标打法</a>
+</nav>
+</div>
+</header>
+
+<div class="wrap">
+<!-- HERO -->
+<section class="hero">
+<div class="hero-left">
+<span class="kicker">Proposal · 系统化营销提案 · 亲和力为主</span>
+<h1>法拉盛的事，<br>先问干了 <em>20 年</em><br>的老何</h1>
+<p class="hero-sub">亲和力打头，20 年托底。不拼低价，不拼嗓门，不走专家压人、也不走豪宅销售那套——就走「法拉盛村长」这条路：像街坊一样好说话、好接近、有事没事都能先问一句，信任是慢慢处出来的。</p>
+<p class="hero-desc">本提案仿汤汤商学「营销策略图 × 购买理由坐标系 × 企业故事 × 策略增长模型」四件套，为老何（地产 + 保险）定制：一条置顶视频定调，六点理由立柱，四层系统持续营造，并把全美做得好的地产博主能抄的打法一并放进来，全部改成法拉盛版。</p>
+<div class="hero-meta">
+<span class="pill">主调 <b>亲和力为主 · 村长人设</b></span>
+<span class="pill">主战场 <b>法拉盛 · 缅街 / 罗斯福大道 / Kissena</b></span>
+<span class="pill">业务 <b>租房 · 买房 · 租铺 · 保险</b></span>
+<span class="pill">人设 <b>亲和 · 温暖 · 负责 · 靠谱</b></span>
+</div>
+</div>
+<div class="hero-right">
+<div>
+<div class="big20">20<small> 年</small></div>
+<p>同一片街区，同一批房东和商户，看过涨、跌、疫情关店潮——这不是拿来压人的资历，是街坊敢把大事交给他、也敢随时开口问他的底气。</p>
+</div>
+<div class="hero-quote">「法拉盛租房、买房、租铺、保险，<br>拿不准，先问老何。<br><span style="font-size:14px;font-weight:700;opacity:.92">暂时不办，来问问也没关系。」</span></div>
+</div>
+</section>
+
+<!-- CORE -->
+<section class="section" id="core">
+<div class="section-head"><div class="num">01</div><div><h2>核心购买理由：亲和力打头，20 年托底</h2><p>所有内容只为这一句服务。亲和力是客户愿意开口的那道门，20 年是开口之后敢信他的底子——先让人不怕问，再让人信得过。</p></div></div>
+<div class="core-line"><div class="label">CORE REASON TO BUY</div><div class="line">法拉盛的事，先问在这一片干了 20 年的老何</div></div>
+<p class="core-note">说法亲和，证据过硬：封面上有、开头笑着念、结尾再念——不讲课、不压人，像跟街坊聊天一样，把同一句话在每一条内容里重复出现。专业藏在内容里，不摆在脸上。</p>
+</section>
+
+<!-- REASONS -->
+<section class="section" id="reasons">
+<div class="section-head"><div class="num">02</div><div><h2>六点选择理由 · 亲和力排第一</h2><p>亲和力是第 1 点，也是其余五点的总调子：再硬的干货也要用好接近的说法讲出来。每一点都必须有内容去证明，不能只喊口号。每条内容发布前先对号：它在证明哪一点？对不上就不发。</p></div></div>
+<div class="grid">
+<article class="card" style="border-color:var(--green);background:var(--green3)"><div class="card-top"><span class="card-no" style="background:var(--green);color:#fff">1</span><h3>人亲，像村长不像销售 ★ 主打</h3></div><p>在一片地方待久了，是熟人逻辑：先帮你看值不值，不合适敢说别买；暂时不办也没关系，先问问不欠人情。说话不端着、不催单，客户才敢把真问题说出来。</p><div class="proof"><b>证明内容 →</b> 每条视频先打招呼、再讲事；评论和私信都用视频认真回。消费者原话：「在法拉盛买房租房开店拿不准的时候，先问老何。」</div></article>
+<article class="card"><div class="card-top"><span class="card-no">2</span><h3>时间够长，不是新手</h3></div><p>20 年都在法拉盛这一片。哪栋楼什么行情、哪条街租金涨过几轮，他是亲眼看过来的——讲的时候不炫资历，只讲街坊用得上的变化。</p><div class="proof"><b>证明内容 →</b> 地标变迁：同一个地点，讲它 20 年变了什么。</div></article>
+<article class="card"><div class="card-top"><span class="card-no">3</span><h3>周期见过，知道坑在哪</h3></div><p>涨的时候、跌的时候、疫情铺子大批关门的时候，他都在场。房东被罚、租户退租、商铺转让的坑，他见人踩过——讲坑是为了帮人躲坑，语气是提醒，不是吓人。</p><div class="proof"><b>证明内容 →</b> 房东避坑系列：如暖气被罚那条（播放 8,806）一类真实案例复盘。</div></article>
+<article class="card"><div class="card-top"><span class="card-no">4</span><h3>本地熟，资源找得到</h3></div><p>在一片地方待 20 年，房东、商户、律师、装修、保险的人都熟。客户要的不只是一条信息，是有事能找到人对接。</p><div class="proof"><b>证明内容 →</b> 实拍房源与空铺：人到现场、门牌拍得到。</div></article>
+<article class="card"><div class="card-top"><span class="card-no">5</span><h3>地产 + 保险，双视角算风险</h3></div><p>这是他跟别的经纪最不一样的地方。别人只讲能不能买、能不能租；他多算一步：买完租完之后风险在哪、保险怎么配、真出事赔不赔——用大白话讲，不拿术语唬人。</p><div class="proof"><b>证明内容 →</b> 每条干货结尾多一句风险提醒，慢慢把标签立住。</div></article>
+<article class="card"><div class="card-top"><span class="card-no">6</span><h3>长期在场，跑不了也躲不了</h3></div><p>干 20 年的人，名声就是本钱。成交不是结束——续租、转租、房子出问题，回来还能找到他本人。</p><div class="proof"><b>证明内容 →</b> 老客户回访与续租故事：找得到人，心里踏实。</div></article>
+</div>
+<div class="axis">
+<div style="font-weight:900;color:var(--green2);font-size:13px;letter-spacing:.12em">购买理由坐标系</div>
+<div class="axis-grid" style="margin-top:12px">
+<div class="axis-box"><b>理性坐标</b><span style="font-size:14px">上面六点 · 可验证、可举证</span></div>
+<div style="font-size:22px;color:var(--green)">×</div>
+<div class="axis-box"><b>感性坐标 · 亲和打头</b><span style="font-size:14px">所有视频的语气都往这四个词靠，不喊口号、不硬卖、不讲课</span></div>
+</div>
+<div class="words"><span class="word">亲和</span><span class="word">温暖</span><span class="word">负责</span><span class="word">靠谱</span></div>
+<p style="text-align:center;font-size:13.5px;color:var(--muted);margin:10px 0 0">专业不写在脸上，藏在每条内容的准确和分寸里——先让人愿意亲近，再让人慢慢服气。</p>
+</div>
+</section>
+
+<!-- TOPICS -->
+<section class="section" id="topics">
+<div class="section-head"><div class="num">03</div><div><h2>选题库：老板适合的 82 条，十类全罗列</h2><p>按老何的底子筛的：法拉盛本地熟、干了 20 年、地产 + 保险双身份、人亲好说话。前九类是选题，第十类是互动形式——套在任何一类上用。每条结尾固定那句：拿不准，先问老何。</p></div></div>
+<div class="topic-intro" style="background:var(--green3);border:1px solid var(--green4);border-radius:18px;padding:14px">
+<div class="topic-ratio"><b>约 50%</b><span><strong>流量主力</strong> · 第一类房东避坑 + 第二类本地新规，学 Jeb Smith 本地新闻打法</span></div>
+<div class="topic-ratio"><b>约 30%</b><span><strong>证明在场</strong> · 第五类房源实拍 + 第六类老何探店，人到现场、门牌拍得到</span></div>
+<div class="topic-ratio"><b>约 20%</b><span><strong>立人设</strong> · 第七类 20 年故事 + 第十类评论区问答，把亲和力立住</span></div>
+</div>
+<p class="small" style="margin:0 0 14px">三大分工：政策避坑类负责流量，实拍带看类负责证明，故事亲和类负责让人选他。其余三类（买房算账、商铺开店、保险双视角、住在法拉盛）穿插在主力之间补齐专业面。</p>
+<div class="topic-grid">
+
+<article class="topic-cat">
+<div class="topic-cat-head"><span class="topic-cat-no">一</span><div><h3>房东避坑 · 主力栏目</h3><p class="cat-note">学 Jeb Smith 的本地新闻打法。暖气那条已经跑出来，原样复制成系列。</p></div></div>
+<ol class="topic-list">
+<li><span class="tno">1</span><span>暖气不达标被罚，房东注意——已跑出的爆款（播放 8,806），原样复制成系列</span></li>
+<li><span class="tno">2</span><span>租户不交租，房东第一步先做什么，别一上来就犯错</span></li>
+<li><span class="tno">3</span><span>驱逐流程为什么这么慢，法拉盛房东亲身踩过的坑</span></li>
+<li><span class="tno">4</span><span>房子租出去之前，房东必须查的 3 样东西</span></li>
+<li><span class="tno">5</span><span>二房东和分租，哪些情况房东会被连带罚</span></li>
+<li><span class="tno">6</span><span>租约里最容易漏的一句话，退租时全是纠纷</span></li>
+<li><span class="tno">7</span><span>房客把房子改成商用，房东要担什么风险</span></li>
+<li><span class="tno">8</span><span>维修拖了几天算违法，房东别等投诉来了才动</span></li>
+<li><span class="tno">9</span><span>押金退多少、几天退，法拉盛房东最常吵的就是这个</span></li>
+<li><span class="tno">10</span><span>房子空关期间水管冻裂，谁赔，保险怎么说</span></li>
+<li><span class="tno">11</span><span>房东卖房时租户还在住，流程和价格受什么影响</span></li>
+<li><span class="tno">12</span><span>新房东接手老租户，先核对哪几份文件</span></li>
+</ol>
+</article>
+
+<article class="topic-cat">
+<div class="topic-cat-head"><span class="topic-cat-no">二</span><div><h3>法拉盛新规和本地新闻</h3><p class="cat-note">必须挂地产角度，只讲跟房东、商户直接有关的那一条。</p></div></div>
+<ol class="topic-list">
+<li><span class="tno">13</span><span>罚单大赦开始了，房东和商户哪些罚单能减免</span></li>
+<li><span class="tno">14</span><span>铁门和招牌新规，法拉盛商户不改会怎样</span></li>
+<li><span class="tno">15</span><span>垃圾分类新政策，房东和餐馆老板各担哪一部分</span></li>
+<li><span class="tno">16</span><span>路边停车和交通改动，对缅街商铺生意的影响</span></li>
+<li><span class="tno">17</span><span>法拉盛新楼盘 Azure Tower 这一类，交付后周边租金会怎么动</span></li>
+<li><span class="tno">18</span><span>学区和学校新消息，JHS 227 这一带房子为什么有人抢</span></li>
+<li><span class="tno">19</span><span>法拉盛火灾之后，周边房东要自查的 3 个隐患</span></li>
+<li><span class="tno">20</span><span>降雪紧急状态，房东铲雪不及时的责任</span></li>
+<li><span class="tno">21</span><span>投票和市政新规里，跟房东商户直接有关的那一条</span></li>
+<li><span class="tno">22</span><span>法拉盛新开的大超市和地标店，对旁边铺面租金意味着什么</span></li>
+</ol>
+</article>
+
+<article class="topic-cat">
+<div class="topic-cat-head"><span class="topic-cat-no">三</span><div><h3>买房算账</h3><p class="cat-note">学 MK Group 的数据报告打法，用法拉盛真实盘子算，不讲空理论。</p></div></div>
+<ol class="topic-list">
+<li><span class="tno">23</span><span>法拉盛两家庭 159.9 万这种盘，账到底怎么算才不亏</span></li>
+<li><span class="tno">24</span><span>边住边赚钱的房子，自住一户租一户的真实算法</span></li>
+<li><span class="tno">25</span><span>买房首付之外，还藏着哪几笔钱新手不知道</span></li>
+<li><span class="tno">26</span><span>学区房贵出来的那部分，几年能回本</span></li>
+<li><span class="tno">27</span><span>法拉盛对比长岛，同样预算买到的完全不是一个东西</span></li>
+<li><span class="tno">28</span><span>老房子和新公寓，维护成本差多少</span></li>
+<li><span class="tno">29</span><span>买商住两用物业，贷款和税务跟纯住宅哪里不一样</span></li>
+<li><span class="tno">30</span><span>幼儿园、诊所这类特殊物业，能不能买、坑在哪</span></li>
+<li><span class="tno">31</span><span>利率动一次，月供差多少，用法拉盛真实盘子算</span></li>
+<li><span class="tno">32</span><span>季度法拉盛房价报告，老何自己出镜讲数字，一季度一期</span></li>
+</ol>
+</article>
+
+<article class="topic-cat">
+<div class="topic-cat-head"><span class="topic-cat-no">四</span><div><h3>商铺和开店</h3><p class="cat-note">学 Pozek 那种小而准的本地号，只做搜得到的开店真问题。</p></div></div>
+<ol class="topic-list">
+<li><span class="tno">33</span><span>法拉盛 9,000 尺旺铺这种盘，老何实拍带看加租金点评</span></li>
+<li><span class="tno">34</span><span>租仓库之前必须问的 3 件事——以前拍过，原样做成系列</span></li>
+<li><span class="tno">35</span><span>餐馆选址，缅街和罗斯福大道人流差在哪</span></li>
+<li><span class="tno">36</span><span>商铺租约里转租和续约条款，开店老板最容易被锁死的地方</span></li>
+<li><span class="tno">37</span><span>空铺实拍，每月固定拍法拉盛新空出来的铺，报位置报面积报适合业态</span></li>
+<li><span class="tno">38</span><span>新店开业探访——长岛鼎盛新店那条的打法，讲选址不讲热闹</span></li>
+<li><span class="tno">39</span><span>店面招牌和装修审批，华人老板最常卡的一步</span></li>
+<li><span class="tno">40</span><span>铺子转让时，设备、租约、酒牌分别怎么谈</span></li>
+</ol>
+</article>
+
+<article class="topic-cat">
+<div class="topic-cat-head"><span class="topic-cat-no">五</span><div><h3>房源实拍 · 现在最缺的</h3><p class="cat-note">每月至少 2 条。位置、价格、户型一次说清，老何说实话。</p></div></div>
+<ol class="topic-list">
+<li><span class="tno">41</span><span>Kissena 旁两家庭实拍——拍过，原样定成模板</span></li>
+<li><span class="tno">42</span><span>法拉盛一家庭和两家庭各拍一条，同周做对比</span></li>
+<li><span class="tno">43</span><span>带院子和车库的房子，华人买家最在意的几点现场指出来</span></li>
+<li><span class="tno">44</span><span>老房子翻新潜力实拍，哪里能改、哪里动不了</span></li>
+<li><span class="tno">45</span><span>刚上市 48 小时内的新盘，第一时间到现场</span></li>
+<li><span class="tno">46</span><span>降价房源实拍，降了多少、为什么降，老何说实话</span></li>
+<li><span class="tno">47</span><span>适合出租投资的小户型实拍，租金回报现场算</span></li>
+<li><span class="tno">48</span><span>成交复盘，刚卖掉的一套，为什么这个价能成交</span></li>
+</ol>
+</article>
+
+<article class="topic-cat">
+<div class="topic-cat-head"><span class="topic-cat-no">六</span><div><h3>老何探店 · 历史爆款在这</h3><p class="cat-note">49K 那条就是探店。每条结尾必须带地产钩子，不拍成纯热闹。</p></div></div>
+<ol class="topic-list">
+<li><span class="tno">49</span><span>新奇餐饮探店，比如人体寿司那类，结尾补一句这个位置租金大概什么水平</span></li>
+<li><span class="tno">50</span><span>老字号探店，怡东楼那类开多年的店，讲它为什么能活这么久</span></li>
+<li><span class="tno">51</span><span>自动炒菜机这类新设备店，讲新奇，落点是开店成本降了多少</span></li>
+<li><span class="tno">52</span><span>海鲜自助这类人气店，讲人流，落点是周边商铺值不值</span></li>
+<li><span class="tno">53</span><span>新开点心坊和烘焙店，讲产品，落点是选址选在哪条街</span></li>
+<li><span class="tno">54</span><span>关门店铺探因，不点名骂人，只讲选址和租金两个原因</span></li>
+<li><span class="tno">55</span><span>夜市和美食广场摊位，小老板入场成本是多少</span></li>
+<li><span class="tno">56</span><span>华人超市周年和促销现场，讲社区人流，不拍成纯热闹</span></li>
+</ol>
+</article>
+
+<article class="topic-cat">
+<div class="topic-cat-head"><span class="topic-cat-no">七</span><div><h3>20 年故事和亲和人设</h3><p class="cat-note">学 Glennda Baker 讲故事，这是把亲和力立住的栏目。</p></div></div>
+<ol class="topic-list">
+<li><span class="tno">57</span><span>我在法拉盛干了 20 年——就是置顶，自我介绍定版</span></li>
+<li><span class="tno">58</span><span>20 年前缅街什么样，拿老地标讲变迁</span></li>
+<li><span class="tno">59</span><span>我帮客户拦下过的一单，不合适我直接说别买</span></li>
+<li><span class="tno">60</span><span>翻车故事，我自己年轻时看走眼的一套房</span></li>
+<li><span class="tno">61</span><span>疫情那几年，法拉盛铺子关了一批，我陪房东熬过什么</span></li>
+<li><span class="tno">62</span><span>一个客户跟了我十几年，从租房到买房到开店</span></li>
+<li><span class="tno">63</span><span>街坊问答，暂时不买不租，来问问也没关系，我现场答</span></li>
+<li><span class="tno">64</span><span>村长日常，帮街坊看一份租约、指一次路，这种小事最显人亲</span></li>
+<li><span class="tno">65</span><span>20 年里法拉盛租金涨过几轮，我用一条街讲完</span></li>
+<li><span class="tno">66</span><span>我为什么不劝你追高价盘，长线客才敢这么说</span></li>
+</ol>
+</article>
+
+<article class="topic-cat">
+<div class="topic-cat-head"><span class="topic-cat-no">八</span><div><h3>地产 + 保险双视角 · 独有</h3><p class="cat-note">别人抄不走：别人只讲能不能买、能不能租，他多算一步风险。</p></div></div>
+<ol class="topic-list">
+<li><span class="tno">67</span><span>买房时保险没配对，出事才发现不赔的那几类</span></li>
+<li><span class="tno">68</span><span>商铺老板的保险清单，开业前必须齐的几样</span></li>
+<li><span class="tno">69</span><span>房东出租屋保险和自住房保险，区别在哪</span></li>
+<li><span class="tno">70</span><span>水灾火险在法拉盛老房子上，为什么差价这么大</span></li>
+<li><span class="tno">71</span><span>租户造成的损失，房东保险到底管不管</span></li>
+<li><span class="tno">72</span><span>买特殊物业比如幼儿园，保险和合规要多查哪几步</span></li>
+</ol>
+</article>
+
+<article class="topic-cat">
+<div class="topic-cat-head"><span class="topic-cat-no">九</span><div><h3>住在法拉盛</h3><p class="cat-note">学 Vidana 和 Lascsak 的「住在这一片」系列，讲真实生活距离。</p></div></div>
+<ol class="topic-list">
+<li><span class="tno">73</span><span>住在法拉盛的一天，吃穿行全在步行范围是什么体验</span></li>
+<li><span class="tno">74</span><span>法拉盛对比法拉盛周边小镇，安静和方便怎么选</span></li>
+<li><span class="tno">75</span><span>带孩子家庭住法拉盛，学校超市公园的真实距离</span></li>
+<li><span class="tno">76</span><span>老人住法拉盛，看病买菜中文服务为什么重要</span></li>
+<li><span class="tno">77</span><span>年轻人第一套房选法拉盛，通勤到曼哈顿的真实时间</span></li>
+<li><span class="tno">78</span><span>在法拉盛住了 20 年的人，为什么不搬走</span></li>
+</ol>
+</article>
+
+<article class="topic-cat" style="border-color:var(--green);background:var(--green3)">
+<div class="topic-cat-head"><span class="topic-cat-no" style="background:var(--green);color:#fff">十</span><div><h3>评论区问答 · 互动形式</h3><p class="cat-note">学 Tat Londono 用视频回复问题。这不是选题类，是形式，套在上面任何一类上。</p></div></div>
+<ol class="topic-list">
+<li><span class="tno">79</span><span>每周至少 1 条，直接用视频回评论区问得最多的那个问题</span></li>
+<li><span class="tno">80</span><span>私信里反复被问的——法拉盛现在能不能买、铺子租金多少，做成公开回复</span></li>
+<li><span class="tno">81</span><span>房东群里吵起来的话题，老何出镜给个说法</span></li>
+<li><span class="tno">82</span><span>一条视频讲不完的，拆成回复第二期，期数接上</span></li>
+</ol>
+</article>
+
+</div>
+<p class="small" style="margin-top:12px">用法：批量拍那天从库里直接点题，点中哪条就按哪条拍；每条发布前对一次号——它在证明六点理由里的哪一点，对不上不发。</p>
+</section>
+
+<!-- PINNED -->
+<section class="section" id="pinned">
+<div class="section-head"><div class="num">04</div><div><h2>置顶视频：一条钉死定位，先亲近再可信</h2><p>60–90 秒 · 老何本人出镜 · 三个机位分段拍，不要一镜到底。拍法就一条：笑着说、慢慢说，像在街口跟街坊打招呼聊天，不讲课、不压人、不催人办业务。拍完置顶，长期不换。</p></div></div>
+<div class="video-grid">
+<dl class="script" id="scriptText">
+<div class="script-row"><dt>开头 3 秒<br>缅街街口</dt><dd><i>先微笑打招呼，再报时间，像跟街坊打照面</i>大家好，我是老何。我在法拉盛干了 20 年了，这一片的房子、铺子和街坊，我基本都熟。</dd></div>
+<div class="script-row"><dt>第一段<br>罗斯福大道</dt><dd><i>边走边讲，像带朋友逛街，讲周期</i>20 年，这条街开过什么店、关过什么店、租金涨到多少又跌回来，我都赶上过，也陪不少街坊一起熬过。</dd></div>
+<div class="script-row"><dt>第二段<br>商铺 / 楼前</dt><dd><i>站在实景前，语气是提醒不是吓人，讲避坑</i>房东最容易踩的坑，暖气、罚单、租约、保险，我见人交过的学费，比我自己交的还多。我拍这些不是来讲课的，就是不想看你再交一遍。</dd></div>
+<div class="script-row"><dt>第三段<br>回到镜头前</dt><dd><i>语气放慢放软，讲态度，给人零压力</i>我不保证你买到最便宜的，我能保证的是，你把我当个熟人先问问就行，不合适，我会直接跟你说别买。</dd></div>
+<div class="script-row"><dt>结尾<br>固定句</dt><dd><i>以后每条视频都用这一句收尾，门一直开着</i><strong>法拉盛租房、买房、租铺、保险，拿不准，先问老何。就算暂时不办，来问问也没关系，私信我就行。</strong></dd></div>
+</dl>
+<aside class="cover">
+<div>
+<div style="font-size:12px;letter-spacing:.16em;opacity:.85;font-weight:900">封面 · 标题 · 钩子</div>
+<div class="big" style="margin-top:10px">法拉盛<br>20 年</div>
+<ul>
+<li><b>标题：</b>在法拉盛 20 年的老何，跟街坊说几句实在话</li>
+<li><b>置顶评论钩子：</b>私信打「20 年」，发你法拉盛房东避坑清单；有具体问题直接留言，我用视频回你</li>
+<li><b>发布平台：</b>TikTok 主发，小红书同步</li>
+<li><b>拍摄提醒：</b>固定一件深色外套出镜，脸占画面大半，语速放慢，全程带笑——先让人记住「这个人好说话」</li>
+</ul>
+</div>
+<button class="btn" id="copyBtn" type="button">复制置顶视频口播稿</button>
+</aside>
+</div>
+<p class="small" style="margin-top:12px">复制后可直接粘贴到提词器或备忘录，照着念即可。念的时候不用背专家腔，就按平时跟街坊说话的语气来——亲和力就是他的普通话。</p>
+</section>
+
+<!-- RHYTHM -->
+<section class="section" id="rhythm">
+<div class="section-head"><div class="num">05</div><div><h2>90 天三轮营造节奏</h2><p>不追求一条爆。每轮解决一个问题：先知道，再相信，最后选择——三轮的语气始终是亲和的，变的只是证据越来越足。</p></div></div>
+<div class="rounds">
+<div class="round"><span>第 1 轮 · 1–30 天</span><h3>让人知道，更让人敢问</h3><p>高频重复「法拉盛 20 年」：置顶视频 + 地标打卡 + Jeb 式本地新闻。目标是刷到 3 次以上能记住名字和年头，并且觉得「这个人好说话」。评论区开始用视频回复，先把亲和的印象立住。</p></div>
+<div class="round"><span>第 2 轮 · 31–60 天</span><h3>让人相信</h3><p>用证据说话：房东避坑系列、地标变迁、20 年时间线故事，穿插 Glennda 式批量故事和 Vidana「住在法拉盛」系列。目标是评论区出现「他真懂这一片，人也实在」。</p></div>
+<div class="round"><span>第 3 轮 · 61–90 天</span><h3>让人选择</h3><p>用成交感说话：房源实拍、客户原话、续租回访；Pozek 式搜索词库这时开始持续被搜到，Tat 式视频回复把老问题变成新咨询。私信钩子统一导向避坑清单，把围观变咨询。</p></div>
+</div>
+<div class="check">
+<h3>⚑ 拍摄前待确认（一句话的事）</h3>
+<p>「20 年」的口径需老何本人对齐真实经历再开拍：是<strong>做地产 20 年</strong>，还是<strong>来法拉盛 20 年、地产与保险各几年</strong>？台词按确认后的说法拍，避免说错。确认后即可按本页置顶稿直接拍摄。</p>
+</div>
+</section>
+
+<!-- SYSTEM -->
+<section class="section" id="system">
+<div class="section-head"><div class="num">06</div><div><h2>系统化营销：四层架构</h2><p>仿汤汤方法——策略图定任务量，坐标系定理由，故事给证据，增长模型管重复。</p></div></div>
+<div class="layers">
+<div class="layer"><div class="layer-badge">一</div><div><h3>营销策略图 · 定任务量</h3><p>先把量定死，再谈质量。所有动作都挂一个选择理由。</p>
+<div class="table-wrap">
+<div class="trow"><b>公域</b><span>TikTok 每周 3 条底线，小红书同步；每条必须挂六点理由之一，不发无关内容。评论区和私信的问题攒够一条，就学 Tat Londono 补拍 1 条视频回复，不占底线名额。</span><span class="freq">3 条 / 周起</span></div>
+<div class="trow"><b>私域</b><span>朋友圈每天 1 条，只发法拉盛实拍与新规解读；建房东群 + 开店群，每周各发 1 次干货。群里先帮忙、先答疑，不刷广告——亲和力在私域最见真章。</span><span class="freq">1 条 / 天</span></div>
+<div class="trow"><b>线下</b><span>每月拍 4 家新开店或空铺，与商户老板合影留素材；社区活动只去跟房东、商户有关的。</span><span class="freq">4 家 / 月</span></div>
+</div>
+</div></div>
+<div class="layer"><div class="layer-badge">二</div><div><h3>购买理由坐标系 · 定调性（亲和打头）</h3><p>理性六点负责「为什么选他」，感性四词负责「感觉他是什么样的人」，顺序是亲和 → 温暖 → 负责 → 靠谱。选题先过坐标系，再开拍；凡是让人觉得「在被教育、被推销」的稿子，直接改软再拍。</p></div></div>
+<div class="layer"><div class="layer-badge">三</div><div><h3>企业故事 · 只讲一条 20 年时间线</h3><p>这是六点理由的证据链，拆成 6–8 条短视频慢慢发：</p>
+<ul><li>哪一年来到法拉盛，第一单是怎么成的</li><li>最难的那一年是怎么熬过来的</li><li>疫情那几年，帮过哪些房东和商户</li><li>到今天，为什么还守在这一片</li></ul>
+</div></div>
+<div class="layer"><div class="layer-badge">四</div><div><h3>内容策略 · 不停营造（策略增长模型）</h3><p>横轴是<b>重复（时间）</b>，纵轴是<b>集中（关键战役）</b>。同一个理由换不同场景反复出现：发现 → 识别 → 再发现 → 再识别。重复三轮，理由就长在客户脑子里。</p></div></div>
+</div>
+<div class="cols">
+<div class="mini"><h4>产品策略</h4><p>调研（投资人思维 + 成交思维）→ 洞察消费者需求变化 → 确认稀缺性：20 年同街区在场，别人抄不走。</p></div>
+<div class="mini"><h4>品牌策略</h4><p>寻找购买理由 → 提炼六大理由 → 确定核心理由：亲和力是门面，「法拉盛 20 年」是进门之后让人信服的底子，两个一起打，不拆开。</p></div>
+<div class="mini"><h4>市场策略</h4><p>抢占生态位：先安内（法拉盛核心街区打透），再向周边扩散，形成包围。</p></div>
+</div>
+</section>
+
+<!-- BENCHMARKS -->
+<section class="section" id="benchmarks">
+<div class="section-head"><div class="num">07</div><div><h2>对标打法：做得好的地产，都在这样拍</h2><p>只放能抄的，不放学不了的。豪宅大片、明星经纪那一档只学定位、不学拍法；下面五套全部一人就能执行，并且都往亲和力上收——学他们的结构，不学他们的腔调。每张卡下面都放了本人账号直达链接，点开就能看他原号怎么拍；本节末尾还有一份账号速查表，六个人一处找齐。</p></div></div>
+<div class="grid">
+<article class="card"><div class="card-top"><span class="card-no">J</span><h3>Jeb Smith · 本地新闻打法</h3></div><p><b>他怎么做：</b>加州地方经纪，粉丝不大，单条播放却很稳。他拍的不是房子，是本地新闻——补贴、新店开业、道路工程、停车变化；前 5 秒先甩一句带数字的事实，拍实景，最后一句抛问题引评论。</p><div class="proof"><b>老何版学法 →</b> 这就是暖气被罚那条（播放 8,806）的同款打法，把它定为第一主力：法拉盛新店、空铺、修路、市政新规占公域五到六成。标题先给事实，不先自我介绍。</div><div class="acct-links"><div class="acct-label">本人账号 · 点开直达 ↓</div><div class="acct-btns"><a class="acct-btn main" href="https://www.tiktok.com/@mrjebsmith" target="_blank" rel="noopener">TikTok @mrjebsmith ↗</a><a class="acct-btn" href="https://www.instagram.com/jebsmith" target="_blank" rel="noopener">Instagram @jebsmith ↗</a><a class="acct-btn" href="https://www.jebsmith.net/" target="_blank" rel="noopener">官网 jebsmith.net ↗</a></div></div></article>
+<article class="card"><div class="card-top"><span class="card-no">G</span><h3>Glennda Baker · 批量拍 + 讲故事</h3></div><p><b>她怎么做：</b>亚特兰大经纪，平时把客户问过的问题随手记在手机里当选题库；每月集中半天，一口气拍 30–50 条。讲真实翻车故事的视频，播放明显高过纯讲干货的——故事让人亲近，干货只让人收藏。</p><div class="proof"><b>老何版学法 →</b> 每月固定半天批量拍 20–30 条，不靠每天现想题。故事优先：锅炉、退房、看房、涨租这些真事匿名讲，讲完再带一句避坑要点，正好合亲和力的路子。</div><div class="acct-links"><div class="acct-label">本人账号 · 点开直达 ↓</div><div class="acct-btns"><a class="acct-btn main" href="https://www.tiktok.com/@glenndabaker" target="_blank" rel="noopener">TikTok @glenndabaker ↗</a><a class="acct-btn" href="https://www.instagram.com/glenndabaker" target="_blank" rel="noopener">Instagram @glenndabaker ↗</a><a class="acct-btn" href="https://glennda.net/" target="_blank" rel="noopener">官网 glennda.net ↗</a></div></div></article>
+<article class="card"><div class="card-top"><span class="card-no">P</span><h3>Ken Pozek × Levi Lascsak · 小而准的本地搜索号</h3></div><p><b>他们怎么做：</b>不追全国大流量，只做「搜得到」的本地内容：住在某地怎么样、A 区对比 B 区、搬来之前要知道的事。Pozek 前 80 条视频才等来第一条线索，靠的是词库攒够了之后持续被搜到；一条内容再改成图文和私域消息反复用。</p><div class="proof"><b>老何版学法 →</b> 建一本「法拉盛搜索词库」：住在法拉盛怎么样、法拉盛对比长岛、缅街停车、125 学区这类问题一条一条拍透。前 90 天只考核发片量和本地私信，不看粉丝数。</div><div class="acct-links"><div class="acct-label">Ken Pozek 本人账号 ↓</div><div class="acct-btns"><a class="acct-btn main" href="https://www.youtube.com/@kenpozek" target="_blank" rel="noopener">YouTube @kenpozek ↗</a><a class="acct-btn" href="https://www.instagram.com/kenpozek/" target="_blank" rel="noopener">Instagram @kenpozek ↗</a><a class="acct-btn" href="https://www.pozek.com/" target="_blank" rel="noopener">官网 pozek.com ↗</a></div><div class="acct-label" style="margin-top:10px">Levi Lascsak 本人账号 ↓</div><div class="acct-btns"><a class="acct-btn main" href="https://www.youtube.com/@LIVINGINDALLAS" target="_blank" rel="noopener">YouTube @LIVINGINDALLAS ↗</a><a class="acct-btn" href="https://www.instagram.com/levilascsak" target="_blank" rel="noopener">Instagram @levilascsak ↗</a></div></div></article>
+<article class="card"><div class="card-top"><span class="card-no">V</span><h3>Javier Vidana · 「住在这一片」系列</h3></div><p><b>他怎么做：</b>凤凰城单干经纪，同时做大号和本地小号，最后发现真正来线索的是那个更小、更本地的号——内容全是「住在这里到底是什么感觉」：一条街、一个小区、生活成本、通勤和学区。</p><div class="proof"><b>老何版学法 →</b> 开一个固定系列就叫「住在法拉盛」：每周 1 条，讲透一条街或一个小区——吃什么、停哪儿、学区怎样、租金什么水平。语气像陪朋友实地看生活，不像卖房广告。</div><div class="acct-links"><div class="acct-label">本人账号 · 点开直达 ↓</div><div class="acct-btns"><a class="acct-btn main" href="https://www.youtube.com/@JavyVidana" target="_blank" rel="noopener">YouTube @JavyVidana ↗</a><a class="acct-btn" href="https://www.instagram.com/thejaviervidana/" target="_blank" rel="noopener">Instagram @thejaviervidana ↗</a><a class="acct-btn" href="https://javiervidana.com/" target="_blank" rel="noopener">官网 javiervidana.com ↗</a></div></div></article>
+<article class="card"><div class="card-top"><span class="card-no">T</span><h3>Tat Londono · 用视频回复评论区问题</h3></div><p><b>他怎么做：</b>最值得学的是手艺：把评论区当选题库，有人提问就直接拍一条视频回复，钩子一句、回答一事、结尾再留一个问题。一问一答之间，围观的人也跟着认识他、信任他。</p><div class="proof"><b>老何版学法 →</b> 每周至少 1 条视频回复、问题多就加拍：挑评论和私信里最真实的问题，点名感谢提问的人再回答。这是亲和力最直接的证据——不是嘴上说好亲近，是真的有问必答。他的受众是经纪人，只学形式，不学选题。</div><div class="acct-links"><div class="acct-label">本人账号 · 点开直达 ↓</div><div class="acct-btns"><a class="acct-btn main" href="https://www.tiktok.com/@tatlondono" target="_blank" rel="noopener">TikTok @tatlondono ↗</a><a class="acct-btn" href="https://www.instagram.com/tatlondono" target="_blank" rel="noopener">Instagram @tatlondono ↗</a><a class="acct-btn" href="https://www.facebook.com/TatLondono" target="_blank" rel="noopener">Facebook TatLondono ↗</a><a class="acct-btn" href="https://tatlondono.com/" target="_blank" rel="noopener">官网 tatlondono.com ↗</a></div></div></article>
+<article class="card" style="border-color:var(--green);background:var(--green3)"><div class="card-top"><span class="card-no" style="background:var(--green);color:#fff">合</span><h3>五套合起来 · 老何的一周排法</h3></div><p>不用五套分开跑，揉进同一周就行：本地新闻打底管流量，故事管亲近，搜索系列管长尾，视频回复管信任。</p><div class="proof"><b>一周模板 →</b> 周一 Jeb 式本地新闻 1 条 · 周三 Glennda 式真人故事 1 条 · 周五 Vidana「住在法拉盛」或 Pozek 式搜索题 1 条 · 评论攒够问题随时补 1 条 Tat 式视频回复。全部出自每月半天批量拍摄，临时新闻随到随拍。</div></article>
+</div>
+<div class="acct-directory" id="accounts">
+<div class="acct-directory-head"><b>📎 可模仿账号速查 · 全部直达链接</b><span>六个人、十四个入口，一处找齐。点任意按钮直接跳到本人账号，看原号、原视频怎么拍。链接为 2026 年 11 月核对的本人公开账号。</span></div>
+<div class="acct-row"><div class="acct-person">Jeb Smith<small>本地新闻打法 · 加州 Huntington Beach</small></div><div class="acct-btns"><a class="acct-btn main" href="https://www.tiktok.com/@mrjebsmith" target="_blank" rel="noopener">TikTok @mrjebsmith ↗</a><a class="acct-btn" href="https://www.instagram.com/jebsmith" target="_blank" rel="noopener">Instagram @jebsmith ↗</a><a class="acct-btn" href="https://www.jebsmith.net/" target="_blank" rel="noopener">官网 ↗</a></div></div>
+<div class="acct-row"><div class="acct-person">Glennda Baker<small>批量拍 + 讲故事 · 亚特兰大</small></div><div class="acct-btns"><a class="acct-btn main" href="https://www.tiktok.com/@glenndabaker" target="_blank" rel="noopener">TikTok @glenndabaker ↗</a><a class="acct-btn" href="https://www.instagram.com/glenndabaker" target="_blank" rel="noopener">Instagram @glenndabaker ↗</a><a class="acct-btn" href="https://glennda.net/" target="_blank" rel="noopener">官网 ↗</a></div></div>
+<div class="acct-row"><div class="acct-person">Ken Pozek<small>本地搜索号 · 奥兰多 The Orlando Real</small></div><div class="acct-btns"><a class="acct-btn main" href="https://www.youtube.com/@kenpozek" target="_blank" rel="noopener">YouTube @kenpozek ↗</a><a class="acct-btn" href="https://www.instagram.com/kenpozek/" target="_blank" rel="noopener">Instagram @kenpozek ↗</a><a class="acct-btn" href="https://www.pozek.com/" target="_blank" rel="noopener">官网 ↗</a></div></div>
+<div class="acct-row"><div class="acct-person">Levi Lascsak<small>本地搜索号 · 达拉斯 Living in Dallas</small></div><div class="acct-btns"><a class="acct-btn main" href="https://www.youtube.com/@LIVINGINDALLAS" target="_blank" rel="noopener">YouTube @LIVINGINDALLAS ↗</a><a class="acct-btn" href="https://www.instagram.com/levilascsak" target="_blank" rel="noopener">Instagram @levilascsak ↗</a></div></div>
+<div class="acct-row"><div class="acct-person">Javier Vidana<small>「住在这一片」· 凤凰城</small></div><div class="acct-btns"><a class="acct-btn main" href="https://www.youtube.com/@JavyVidana" target="_blank" rel="noopener">YouTube @JavyVidana ↗</a><a class="acct-btn" href="https://www.instagram.com/thejaviervidana/" target="_blank" rel="noopener">Instagram @thejaviervidana ↗</a><a class="acct-btn" href="https://javiervidana.com/" target="_blank" rel="noopener">官网 ↗</a></div></div>
+<div class="acct-row"><div class="acct-person">Tat Londono<small>视频回复评论区 · 蒙特利尔 / 纽约</small></div><div class="acct-btns"><a class="acct-btn main" href="https://www.tiktok.com/@tatlondono" target="_blank" rel="noopener">TikTok @tatlondono ↗</a><a class="acct-btn" href="https://www.instagram.com/tatlondono" target="_blank" rel="noopener">Instagram @tatlondono ↗</a><a class="acct-btn" href="https://www.facebook.com/TatLondono" target="_blank" rel="noopener">Facebook ↗</a><a class="acct-btn" href="https://tatlondono.com/" target="_blank" rel="noopener">官网 ↗</a></div></div>
+</div>
+<p class="small" style="margin-top:12px">口径说明：对标账号数据为 2026 年 11 月调研，部分成交与线索数字为账号本人自报、未经独立审计，本页只学打法，不拿这些数字对客户做承诺。Serhant、Heider 的豪宅制作不列入执行清单，原因只有一个：老何一人团队抄不了，也不符合亲和力这条主线。</p>
+</section>
+
+<footer>老何 · 亲和力为主 · 法拉盛 20 年 — 系统化营销提案 &nbsp;|&nbsp; 核心只有一句：拿不准，先问老何，来问问也没关系</footer>
+</div>
+<script>
+document.getElementById('copyBtn').addEventListener('click', function(){
+var text = "\n\n开头（缅街街口）：大家好，我是老何。我在法拉盛干了20年了，这一片的房子、铺子和街坊，我基本都熟。\n\n第一段（罗斯福大道）：20年，这条街开过什么店、关过什么店、租金涨到多少又跌回来，我都赶上过，也陪不少街坊一起熬过。\n\n第二段（商铺/楼前）：房东最容易踩的坑，暖气、罚单、租约、保险，我见人交过的学费，比我自己交的还多。我拍这些不是来讲课的，就是不想看你再交一遍。\n\n第三段（回到镜头前）：我不保证你买到最便宜的，我能保证的是，你把我当个熟人先问问就行，不合适，我会直接跟你说别买。\n\n结尾（固定句）：法拉盛租房、买房、租铺、保险，拿不准，先问老何。就算暂时不办，来问问也没关系，私信我就行。\n\n封面：法拉盛20年\n标题：在法拉盛20年的老何，跟街坊说几句实在话\n置顶评论：私信打「20年」，我把法拉盛房东避坑清单发你；有具体问题直接留言，我用视频回你。";
+var btn = this;
+function done(){ btn.textContent = '已复制 ✓ 可粘贴到提词器'; setTimeout(function(){ btn.textContent='复制置顶视频口播稿';}, 2200);}
+if (navigator.clipboard && navigator.clipboard.writeText) { navigator.clipboard.writeText(text).then(done).catch(function(){ fallback();});} else { fallback();}
+function fallback(){ var ta=document.createElement('textarea'); ta.value=text; document.body.appendChild(ta); ta.select(); try{document.execCommand('copy'); done();}catch(e){ btn.textContent='复制失败，请长按脚本复制';} document.body.removeChild(ta);}
+});
+</script>
+</body>
+</html>
