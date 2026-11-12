@@ -156,6 +156,7 @@ nav.main a.active{color:var(--gold-bright);box-shadow:inset 0 -2px 0 var(--gold)
 
 /* combos (inside library, lower half) */
 .combos-in{margin-top:76px}
+.monthly-grid{grid-template-columns:minmax(280px,560px)}
 .library .combo-grid{margin-top:28px}
 .combo-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:22px}
 @media(max-width:900px){.combo-grid{grid-template-columns:1fr 1fr}}
@@ -353,6 +354,7 @@ p{letter-spacing:.02em}
       <a href="#stages" data-navlink="stages" data-i18n="nav1">三阶段</a>
       <a href="#library" data-navlink="library" data-i18n="nav2">单品库</a>
       <a href="#cases" data-navlink="cases" data-i18n="nav6">案例</a>
+      <a class="nav-flat" href="#monthly" data-navlink="monthly" data-i18n="nav11">新媒体包月</a>
       <a class="nav-flat" href="#reviews" data-navlink="reviews" data-i18n="nav7">评价</a>
       <a class="nav-flat" href="#team" data-navlink="team" data-i18n="nav8">团队</a>
       <a class="nav-flat" href="#observation" data-navlink="observation" data-i18n="nav9">观察</a>
@@ -360,6 +362,7 @@ p{letter-spacing:.02em}
       <div class="nav-more" id="navMore">
         <button class="nav-more-btn" id="navMoreBtn" type="button" aria-haspopup="true" aria-expanded="false"><span data-i18n="navMore">更多</span><span aria-hidden="true">▾</span></button>
         <div class="nav-drop" role="menu" aria-label="更多导航">
+          <a href="#monthly" data-navlink="monthly" data-i18n="nav11">新媒体包月</a>
           <a href="#reviews" data-navlink="reviews" data-i18n="nav7">评价</a>
           <a href="#team" data-navlink="team" data-i18n="nav8">团队</a>
           <a href="#observation" data-navlink="observation" data-i18n="nav9">观察</a>
@@ -457,7 +460,7 @@ p{letter-spacing:.02em}
       </div>
       <ul class="singles">
         <li><b>拍摄</b><span>菜品、产品、门店与人物；宣传片可单点</span></li>
-        <li><b>印刷制作</b><span>菜单、卡片传单、海报横幅、招牌贴纸、3D制品</span></li>
+        <li><b>印刷制作</b><span>菜单、卡片传单、书本画册、杂志、海报、横幅、易拉宝</span></li>
         <li><b>社媒运营</b><span>账号有人管，内容持续发</span></li>
         <li><b>广告投放</b><span>线上线下，按预算组合</span></li>
         <li><b>Google 商家档案和评分口碑</b><span>含谷歌地图优化，先被搜到，再被选到</span></li>
@@ -533,7 +536,7 @@ p{letter-spacing:.02em}
     </div>
 
     <h3 class="lib-sub"><span data-i18n="libA">官网服务</span><span class="en">Core Services · 06 Categories</span></h3>
-    <p class="lib-note" data-i18n="libAn">六大类，二十五项。每项后的小标签是它所属的阶段。</p>
+    <p class="lib-note" data-i18n="libAn">六大类，二十九项。每项后的小标签是它所属的阶段。</p>
     <div class="lib-grid">
       <div class="lib-cat">
         <span class="idx">01 / 06</span>
@@ -541,9 +544,11 @@ p{letter-spacing:.02em}
         <ul>
           <li>菜单设计制作<span class="tag">开业 · 增长</span></li>
           <li>卡片传单<span class="tag">增长</span></li>
-          <li>海报横幅<span class="tag">增长</span></li>
-          <li>招牌贴纸<span class="tag">开业</span></li>
-          <li>3D 制品<span class="tag">增长</span></li>
+          <li>书本画册<span class="tag">增长</span></li>
+          <li>杂志<span class="tag">增长</span></li>
+          <li>海报<span class="tag">增长</span></li>
+          <li>横幅<span class="tag">增长</span></li>
+          <li>易拉宝<span class="tag">增长</span></li>
         </ul>
       </div>
       <div class="lib-cat">
@@ -554,6 +559,7 @@ p{letter-spacing:.02em}
           <li>人物拍摄<span class="tag">增长</span></li>
           <li>商业拍摄<span class="tag">增长</span></li>
           <li>菜品拍摄<span class="tag">增长</span></li>
+          <li>剪辑成片<span class="tag">增长</span></li>
         </ul>
       </div>
       <div class="lib-cat">
@@ -594,6 +600,7 @@ p{letter-spacing:.02em}
           <li>媒体采访<span class="tag">破圈</span></li>
           <li>专题访谈<span class="tag">破圈</span></li>
           <li>现场访谈<span class="tag">破圈</span></li>
+          <li>新闻稿<span class="tag">破圈</span></li>
         </ul>
       </div>
     </div>
@@ -665,20 +672,14 @@ p{letter-spacing:.02em}
     </div>
   
     <div class="combos-in" id="combos">
-      <h3 class="lib-sub"><span data-i18n="cmbH">组合套餐与包月</span><span class="en">Bundles &amp; Monthly</span></h3>
-      <p class="lib-note" data-i18n="cmbP">从单品库挑好的组合，开箱即用；长期陪跑，选包月。</p>
+      <h3 class="lib-sub"><span data-i18n="cmbH">组合套餐</span><span class="en">Bundles</span></h3>
+      <p class="lib-note" data-i18n="cmbP">从单品库挑好的组合，开箱即用，就这两包。</p>
   <div class="combo-grid">
         <div class="combo">
           <span class="ck" data-i18n="cmbK">组合套餐</span>
-          <h3>影像拍摄包</h3>
+          <h3>摄影拍摄包</h3>
           <p class="items">菜品拍摄 ＋ 产品拍摄 ＋ 商业拍摄</p>
-          <div class="foot"><span class="price" data-i18n="priceQ">价格：咨询获取报价</span><button class="btn btn-line-dark btn-sm" type="button" data-pick="影像拍摄包">获取报价</button></div>
-        </div>
-        <div class="combo">
-          <span class="ck" data-i18n="cmbK">组合套餐</span>
-          <h3>印刷物料包</h3>
-          <p class="items">卡片传单 ＋ 海报横幅 ＋ 招牌贴纸 ＋ 3D 制品 ＋ 菜单</p>
-          <div class="foot"><span class="price" data-i18n="priceQ">价格：咨询获取报价</span><button class="btn btn-line-dark btn-sm" type="button" data-pick="印刷物料包">获取报价</button></div>
+          <div class="foot"><span class="price" data-i18n="priceQ">价格：咨询获取报价</span><button class="btn btn-line-dark btn-sm" type="button" data-pick="摄影拍摄包">获取报价</button></div>
         </div>
         <div class="combo">
           <span class="ck" data-i18n="cmbK">组合套餐</span>
@@ -686,23 +687,18 @@ p{letter-spacing:.02em}
           <p class="items">户外投放 ＋ Google 互联网 ＋ 邮寄广告<br>电视 / 报刊广告可加选</p>
           <div class="foot"><span class="price" data-i18n="priceQ">价格：咨询获取报价</span><button class="btn btn-line-dark btn-sm" type="button" data-pick="广告投放包">获取报价</button></div>
         </div>
-        <div class="combo">
-          <span class="ck" data-i18n="cmbK">组合套餐</span>
-          <h3>访谈公关包</h3>
-          <p class="items">人物访谈 ＋ 媒体采访 ＋ 专题访谈 ＋ 现场访谈</p>
-          <div class="foot"><span class="price" data-i18n="priceQ">价格：咨询获取报价</span><button class="btn btn-line-dark btn-sm" type="button" data-pick="访谈公关包">获取报价</button></div>
-        </div>
+      </div>
+    </div>
+
+    <div class="combos-in" id="monthly" style="scroll-margin-top:96px">
+      <h3 class="lib-sub"><span data-i18n="nav11">新媒体包月</span><span class="en">Monthly Social Media</span></h3>
+      <p class="lib-note" data-i18n="mthP">单独一项包月，长期陪跑，按月交付。</p>
+      <div class="combo-grid monthly-grid">
         <div class="combo monthly">
           <span class="ck" data-i18n="cmbKM">包月</span>
           <h3>新媒体包月</h3>
           <p class="items">账号运营 ＋ 内容策划与发布 ＋ 数据分析与优化<br>按月交付，持续更新。</p>
           <div class="foot"><span class="price" data-i18n="priceQM">价格：咨询获取报价（按月）</span><button class="btn btn-gold btn-sm" type="button" data-pick="新媒体包月">获取报价</button></div>
-        </div>
-        <div class="combo monthly">
-          <span class="ck" data-i18n="cmbKM">包月 · 定制</span>
-          <h3>全案包月定制</h3>
-          <p class="items">项目统筹打头，按店所处阶段从单品库挑项组合<br>包月陪跑，一家店一套打法。</p>
-          <div class="foot"><span class="price" data-i18n="priceQM">价格：咨询获取报价（按月）</span><button class="btn btn-gold btn-sm" type="button" data-pick="全案包月定制">获取报价</button></div>
         </div>
       </div>
     </div>
@@ -879,7 +875,7 @@ p{letter-spacing:.02em}
             </optgroup>
             <optgroup label="增长单品">
               <option>拍摄（含宣传片单点）</option>
-              <option>印刷制作（菜单、卡片传单、海报横幅、招牌贴纸、3D 制品）</option>
+              <option>印刷制作（菜单、卡片传单、书本画册、杂志、海报、横幅、易拉宝）</option>
               <option>社媒运营</option>
               <option>广告投放</option>
               <option>Google 商家档案和评分口碑（含谷歌地图优化）</option>
@@ -900,14 +896,11 @@ p{letter-spacing:.02em}
               <option>落地执行（场地协调 / 供应商管理 / 数字科技 / 全程服务）</option>
             </optgroup>
             <optgroup label="组合套餐">
-              <option>影像拍摄包</option>
-              <option>印刷物料包</option>
+              <option>摄影拍摄包</option>
               <option>广告投放包</option>
-              <option>访谈公关包</option>
             </optgroup>
-            <optgroup label="包月">
+            <optgroup label="新媒体包月">
               <option>新媒体包月</option>
-              <option>全案包月定制</option>
             </optgroup>
             <option>还不确定，先聊聊</option>
           </select>
@@ -975,7 +968,7 @@ p{letter-spacing:.02em}
 (function(){
 "use strict";
 var EN = {
-nav1:"Three Stages", nav2:"Library", nav3:"Bundles & Monthly", nav4:"Service Area", nav5:"Contact", nav6:"Cases", nav7:"Reviews", nav8:"Team", nav9:"Observation", nav10:"Google Maps", navMore:"More", navMenu:"Menu",
+nav1:"Three Stages", nav2:"Library", nav3:"Bundles", nav4:"Service Area", nav5:"Contact", nav6:"Cases", nav7:"Reviews", nav8:"Team", nav9:"Observation", nav10:"Google Maps", nav11:"Monthly Social", navMore:"More", navMenu:"Menu",
 heroH1:"The brand and growth agency for Asian restaurants and local businesses in New York",
 heroOne:"Full-service for restaurants and local stores, in three stages: Launch, Grow, Break Through.",
 ctaCall:"Call (646) 809-6388", ctaForm:"Leave Your Number · Get a Quote",
@@ -1000,10 +993,10 @@ s3pkg:"Custom by Project", s3pkgd:"Picked item by item from the Events & Executi
 pkgTag:"Stage bundle", pkgTagM:"Stage bundle · Monthly",
 priceQ:"Price: contact us for a quote", priceQM:"Price: contact us for a quote (monthly)",
 libH:"Service Library", libP:"Bundles are built from single items. See the full list first, then choose.",
-libA:"Core Services", libAn:"Six categories, twenty-five items. The small tag on each item marks its stage.",
+libA:"Core Services", libAn:"Six categories, twenty-nine items. The small tag on each item marks its stage.",
 libB:"Events & Execution", libBn:"Project-based services for the Break Through stage — six categories, twenty-five items, combined per project. Kept separate from the same-named categories above.",
-cmbH:"Bundles & Monthly Plans", cmbP:"Ready-made combinations from the library — or a monthly plan for the long run.",
-cmbK:"Bundle", cmbKM:"Monthly",
+cmbH:"Bundles", cmbP:"Ready-made combinations from the library — just two bundles.",
+cmbK:"Bundle", cmbKM:"Monthly", mthP:"One monthly plan on its own, delivered month by month.",
 conH:"Contact", conP:"Call us, or leave the form. Quotes come after a real conversation — never a made-up price tag.",
 conInfo:"Contact Info", conScope:"Centered on Flushing, covering nearby areas, Brooklyn and Manhattan Chinatown. Grow and Break Through can be delivered remotely, across the US.",
 formH:"Leave Your Details", formBtn:"Send", formNote:"We will call you back at the number you leave. In a hurry? Call (646) 809-6388.",
@@ -1049,12 +1042,12 @@ mainNav.querySelectorAll("a[href^='#']").forEach(function(a){
     if (window.innerWidth <= 820){ mainNav.classList.remove("open"); navToggle.setAttribute("aria-expanded","false"); }
   });
 });
-var navIds = ["coverage","stages","library","cases","reviews","team","observation","gmap","contact"];
+var navIds = ["coverage","stages","library","monthly","cases","reviews","team","observation","gmap","contact"];
 function setActiveNav(id){
   mainNav.querySelectorAll("[data-navlink]").forEach(function(a){
     a.classList.toggle("active", a.getAttribute("data-navlink") === id);
   });
-  var inMore = ["reviews","team","observation","gmap"].indexOf(id) !== -1;
+  var inMore = ["monthly","reviews","team","observation","gmap"].indexOf(id) !== -1;
   navMore.classList.toggle("has-active", inMore);
 }
 if ("IntersectionObserver" in window){
@@ -1110,14 +1103,14 @@ function answer(q){
   var s = q.toLowerCase();
   if (/(区域|范围|布鲁克林|唐人街|曼哈顿|远程|全美|brooklyn|chinatown|remote|area)/.test(s)) return "服务范围以法拉盛为中心，覆盖周边、布鲁克林和曼哈顿唐人街。增长、破圈两个阶段可远程交付，服务全美华人餐饮与实体店。门店地址：36-26 Main St, Ste 2x, Flushing, NY 11354。";
   if (/(阶段|开业|增长|破圈|stage|launch|grow)/.test(s)) return "服务按三个阶段推进：\n开业：品牌定位、店名视觉、菜单设计、开业造势、开业宣传片，套餐是开业一站式套餐。\n增长：拍摄、印刷制作、社媒运营、广告投放、Google 商家档案和评分口碑（含谷歌地图优化）、官网留资，套餐有菜品拍摄套餐和新媒体月运营套餐。\n破圈：媒体访谈、新闻公关、协会活动、纽约华人餐饮观察合作，套餐按项目定制。\n您现在处在哪个阶段？";
-  if (/(套餐|单品|单点|怎么选|bundle|single)/.test(s)) return "两种买法：套餐是把一个阶段的单品打包，一次到位；单品只买缺的那一两样。也可以先单品试，再升套餐。阶段套餐之外，单品库还有四个组合套餐：影像拍摄包、印刷物料包、广告投放包、访谈公关包。价格均为咨询获取报价。";
-  if (/(单品库|清单|有哪些服务|服务有|library|services)/.test(s)) return "单品库分两组。官网服务六大类共 25 项：设计印刷、影像制作、广告投放、策划执行、新媒体运营、新闻访谈；另有「活动与执行」一组六类 25 项（品牌策划、设计印刷、影像制作、展会策划、舞台设计搭建、落地执行），全属破圈阶段、按项目组合。页面「单品库」一节有全量清单，每项都标了所属阶段。";
-  if (/(包月|月运营|monthly)/.test(s)) return "包月有两种：新媒体包月（账号运营＋内容策划与发布＋数据分析与优化，按月交付）和全案包月定制（项目统筹打头，按您店所处阶段从单品库挑项组合，包月陪跑）。价格为咨询获取报价（按月）。增长阶段的新媒体月运营套餐也按月走。";
+  if (/(套餐|单品|单点|怎么选|bundle|single)/.test(s)) return "两种买法：套餐是把一个阶段的单品打包，一次到位；单品只买缺的那一两样。也可以先单品试，再升套餐。阶段套餐之外，单品库还有两个组合套餐：摄影拍摄包、广告投放包。价格均为咨询获取报价。";
+  if (/(单品库|清单|有哪些服务|服务有|library|services)/.test(s)) return "单品库分两组。官网服务六大类共 29 项：设计印刷、影像制作、广告投放、策划执行、新媒体运营、新闻访谈；另有「活动与执行」一组六类 25 项（品牌策划、设计印刷、影像制作、展会策划、舞台设计搭建、落地执行），全属破圈阶段、按项目组合。页面「单品库」一节有全量清单，每项都标了所属阶段。";
+  if (/(包月|月运营|monthly)/.test(s)) return "包月只有一项：新媒体包月（账号运营＋内容策划与发布＋数据分析与优化，按月交付，持续更新），在单品库里单独成一块。价格为咨询获取报价（按月）。增长阶段的新媒体月运营套餐也按月走。";
   if (/(报价|价格|多少钱|收费|quote|price)/.test(s)) return "每家店的阶段和需求不同，价格一律咨询获取报价，不乱标价。拨打 (646) 809-6388，或在页面留资表单留下姓名和电话，我们回电给您报价。";
   if (/(谷歌|google|地图|评分|口碑)/.test(s)) return "Google 商家档案和评分口碑在增长阶段，含谷歌地图优化：建好档案、管好评分，让客人先搜到您、再选您。可单点，也可先单品试再升套餐。";
   if (/(地址|在哪|电话|联系|address|phone)/.test(s)) return "电话：(646) 809-6388，可直接拨打。地址：36-26 Main St, Ste 2x, Flushing, NY 11354。官网：www.newstarlightmedia.com。";
   if (/(做什么|定位|介绍|是谁|公司|about)/.test(s)) return "星辉，因每一家小店而组成。星辉传媒是纽约华人餐饮与实体店的品牌增长伙伴（The brand and growth agency for Asian restaurants and local businesses in New York），餐饮全案服务按开业、增长、破圈三个阶段推进。";
-  if (/(访谈|采访|观察|协会|interview)/.test(s)) return "媒体访谈、新闻公关、协会活动和纽约华人餐饮观察合作都在破圈阶段，套餐按项目定制；单品库里还有访谈公关包（人物访谈＋媒体采访＋专题访谈＋现场访谈）和「活动与执行」整组可按项目组合。";
+  if (/(访谈|采访|观察|协会|interview)/.test(s)) return "媒体访谈、新闻公关、协会活动和纽约华人餐饮观察合作都在破圈阶段，套餐按项目定制；单品库「新闻访谈」类含新闻稿，「活动与执行」整组也可按项目组合。";
   return "收到。可以问我「三个阶段分别做什么」「套餐和单品怎么选」「单品库有哪些」「包月是什么」「价格」「服务范围」「电话地址」，或直接拨打 (646) 809-6388 人工咨询。";
 }
 function send(){
