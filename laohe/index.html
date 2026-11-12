@@ -52,6 +52,19 @@ a{color:inherit}
 .core-line.label{font-size:12px;letter-spacing:.18em;opacity:.8;font-weight:900}
 .core-line.line{font-family:"Noto Serif SC",serif;font-size:30px;font-weight:900;line-height:1.35;margin-top:8px}
 .core-note{text-align:center;color:var(--muted);font-size:14px;margin-top:12px}
+/* issues collapsible */
+.issues{margin-top:18px;background:var(--paper);border:1px solid var(--line);border-radius:24px;overflow:hidden}
+.issues summary{list-style:none;cursor:pointer;display:flex;align-items:center;justify-content:space-between;gap:14px;padding:20px 30px;font-weight:900;font-size:17px;color:var(--green2);min-height:44px}
+.issues summary::-webkit-details-marker{display:none}
+.issues summary::after{content:"▾";flex:0 0 auto;width:32px;height:32px;border-radius:50%;background:var(--green3);color:var(--green2);display:grid;place-items:center;font-size:16px;transition:transform .2s}
+.issues[open ] summary::after{transform:rotate(180deg)}
+.issues summary:hover{background:var(--green3)}
+.issues-body{border-top:1px solid var(--line);padding:8px 30px 22px}
+.issues-list{list-style:none;margin:0;padding:0}
+.issues-list li{padding:11px 0;border-top:1px solid var(--line);font-size:14.5px;line-height:1.65;color:#35493c}
+.issues-list li:first-child{border-top:none}
+.issues-list b{color:var(--green2)}
+@media(max-width:820px){.issues summary{padding:16px 18px;font-size:15.5px}.issues-body{padding:4px 18px 16px}}
 /* reasons */
 .grid{display:grid;grid-template-columns:1fr 1fr;gap:14px}
 .card{border:1px solid var(--line);border-radius:18px;padding:20px 20px 18px;background:#fcfefc}
@@ -135,8 +148,10 @@ a{color:inherit}
 .topic-cat-no{flex:0 0 auto;min-width:44px;height:36px;padding:0 8px;border-radius:999px;background:var(--green3);color:var(--green2);display:grid;place-items:center;font-weight:900;font-size:13px}
 .topic-cat h3{margin:0;font-size:16.5px;line-height:1.35}
 .topic-cat .cat-note{margin:4px 0 0;font-size:13px;color:var(--muted);line-height:1.55}
-.cat-aim{margin:8px 0 0;display:inline-block;background:var(--green2);color:#fff;font-size:12.5px;font-weight:800;line-height:1.5;padding:6px 10px;border-radius:999px}
-.cat-aim b{color:#ffe9a8;font-weight:900}
+.cat-title-row{display:flex;align-items:center;gap:8px;flex-wrap:wrap}
+.cat-tag{flex:0 0 auto;display:inline-flex;align-items:center;background:var(--green3);color:var(--green2);border:1px solid var(--green4);font-size:12px;font-weight:800;line-height:1.3;padding:4px 8px;border-radius:999px;white-space:nowrap}
+.cat-proof{margin:6px 0 0;font-size:13px;color:#5a6f62;line-height:1.55}
+.cat-proof b{color:var(--green2);font-weight:800}
 .aim-block{border:2px solid var(--green);border-radius:18px;padding:20px 22px;background:#f7fbf7;margin:0 0 20px}
 .aim-cols{display:grid;grid-template-columns:1fr 1fr 1fr;gap:10px;margin-top:14px}
 .aim-col{border:1px solid var(--line);border-radius:14px;padding:14px;background:#fff}
@@ -167,7 +182,12 @@ a{color:inherit}
 .acct-row:first-of-type{border-top:none}
 .acct-person{font-weight:900;font-size:14.5px;color:var(--ink)}
 .acct-person small{display:block;font-weight:700;color:var(--muted);font-size:12.5px;margin-top:1px}
-@media(max-width:820px){.acct-row{grid-template-columns:1fr}}
+.acct-line{display:flex;flex-wrap:wrap;align-items:center;gap:6px 12px;padding:11px 18px;border-top:1px solid var(--line)}
+.acct-line:first-of-type{border-top:none}
+.acct-line .acct-name{font-weight:900;font-size:14.5px;white-space:nowrap;color:var(--ink)}
+.acct-line .acct-desc{flex:1 1 340px;font-size:13.5px;color:#35493c;line-height:1.55}
+.acct-line .acct-plat{font-size:12.5px;font-weight:800;color:var(--muted);white-space:nowrap}
+@media(max-width:820px){.acct-row{grid-template-columns:1fr}.acct-line .acct-desc{flex-basis:100%}}
 .topic-exclude{margin-top:14px;border:1px dashed #c3a1a1;border-radius:16px;padding:16px 18px;background:#fdf7f7}
 .topic-exclude h4{margin:0 0 4px;font-size:14px;color:#7a2e2e}
 .topic-exclude p{margin:0;font-size:14px;color:#5c3a3a}
@@ -207,7 +227,7 @@ a{color:inherit}
 .tang-item h4{margin:0 0 6px;font-size:15.5px;color:var(--green2)}
 .tang-item p{margin:0;font-size:14px;color:#35493c}
 .tang-item .quote{font-family:"Noto Serif SC",serif;font-size:19px;font-weight:900;color:var(--ink);line-height:1.5}
-.tang-steps5{display:grid;grid-template-columns:repeat(5,1fr);gap:8px;margin-top:10px}
+.tang-steps5{display:grid;grid-template-columns:repeat(3,1fr);gap:8px;margin-top:10px}
 .tang-step{border:1px solid var(--green4);background:var(--green3);border-radius:12px;padding:10px;font-size:13px;color:#24382c;line-height:1.55}
 .tang-step b{display:block;color:var(--green2);font-size:12px;margin-bottom:3px}
 .tang-flow4{display:grid;grid-template-columns:1fr auto 1fr auto 1fr auto 1fr;gap:8px;align-items:stretch;margin-top:10px}
@@ -263,12 +283,13 @@ footer{padding:22px 6px 0;color:var(--muted);font-size:13px;text-align:center}
 <div class="hero-left">
 <span class="kicker">Proposal · 系统化营销提案 · 亲和力为主</span>
 <h1>法拉盛的事，<br>先问干了 <em>20 年</em><br>的老何</h1>
-<p class="hero-sub">亲和力打头，20 年托底。不拼低价，不拼嗓门，不走专家压人、也不走豪宅销售那套——就走「法拉盛村长」这条路：像街坊一样好说话、好接近、有事没事都能先问一句，信任是慢慢处出来的。</p>
+<p class="hero-sub">亲和力打头，20 年托底。就走「法拉盛村长」这条路：像街坊一样好说话、好接近、有事没事都能先问一句，信任是慢慢处出来的。</p>
 <p class="hero-desc">本提案仿汤汤商学「营销策略图 × 购买理由坐标系 × 企业故事 × 策略增长模型」四件套，为老何（地产 + 保险）定制：一条置顶视频定调，六点理由立柱，四层系统持续营造，并把全美做得好的地产博主能抄的打法一并放进来，全部改成法拉盛版。</p>
 <div class="hero-meta">
 <span class="pill">主调 <b>亲和力为主 · 村长人设</b></span>
 <span class="pill">主战场 <b>法拉盛 · 缅街 / 罗斯福大道 / Kissena</b></span>
 <span class="pill">业务 <b>租房 · 买房 · 租铺 · 保险</b></span>
+<span class="pill">身份 <b>联合房产创始人</b></span>
 <span class="pill">人设 <b>亲和 · 温暖 · 负责 · 靠谱</b></span>
 </div>
 </div>
@@ -280,6 +301,23 @@ footer{padding:22px 6px 0;color:var(--muted);font-size:13px;text-align:center}
 <div class="hero-quote">「法拉盛租房、买房、租铺、保险，<br>拿不准，先问老何。<br><span style="font-size:14px;font-weight:700;opacity:.92">暂时不办，来问问也没关系。」</span></div>
 </div>
 </section>
+
+<!-- ISSUES -->
+<details class="issues">
+<summary>问题汇总 · 44 条视频实测（点开看）</summary>
+<div class="issues-body">
+<ul class="issues-list">
+<li><b>一，节奏崩坏</b>——最长断更 39 天、9 月整月 0 条、3 月却扎堆 16 条</li>
+<li><b>二，配比失衡</b>——地产只占 34%，纯不相关占一半多，真房源只有 4 条</li>
+<li><b>三，标题没钩子</b>——带数字的只有四分之一，带人群词的不到一成</li>
+<li><b>四，爆款不复制</b>——暖气 8,806、探店几万播放都没做成系列</li>
+<li><b>五，结尾零转化</b>——抽查 9 条没有一条留联系方式</li>
+<li><b>六，规格不统一</b>——时长 15 秒到 4 分多、3 条横屏、只有 3 条全高清</li>
+<li><b>七，拍法两个极端</b>——AI 配音没人出镜，或一镜到底没字幕没剪辑</li>
+<li><b>八，互动几乎为零</b>——抽查 9 条里 6 条评论只有 0 到 1 条</li>
+</ul>
+</div>
+</details>
 
 <!-- CORE -->
 <section class="section" id="core">
@@ -295,7 +333,7 @@ footer{padding:22px 6px 0;color:var(--muted);font-size:13px;text-align:center}
 <article class="card" style="border-color:var(--green);background:var(--green3)"><div class="card-top"><span class="card-no" style="background:var(--green);color:#fff">1</span><h3>人亲，像村长不像销售 ★ 主打</h3></div><p>在一片地方待久了，是熟人逻辑：先帮你看值不值，不合适敢说别买；暂时不办也没关系，先问问不欠人情。说话不端着、不催单，客户才敢把真问题说出来。</p><div class="proof"><b>证明内容 →</b> 每条视频先打招呼、再讲事；评论和私信都用视频认真回。消费者原话：「在法拉盛买房租房开店拿不准的时候，先问老何。」</div></article>
 <article class="card"><div class="card-top"><span class="card-no">2</span><h3>时间够长，不是新手</h3></div><p>20 年都在法拉盛这一片。哪栋楼什么行情、哪条街租金涨过几轮，他是亲眼看过来的——讲的时候不炫资历，只讲街坊用得上的变化。</p><div class="proof"><b>证明内容 →</b> 地标变迁：同一个地点，讲它 20 年变了什么。</div></article>
 <article class="card"><div class="card-top"><span class="card-no">3</span><h3>周期见过，知道坑在哪</h3></div><p>涨的时候、跌的时候、疫情铺子大批关门的时候，他都在场。房东被罚、租户退租、商铺转让的坑，他见人踩过——讲坑是为了帮人躲坑，语气是提醒，不是吓人。</p><div class="proof"><b>证明内容 →</b> 房东避坑系列：如暖气被罚那条（播放 8,806）一类真实案例复盘。</div></article>
-<article class="card"><div class="card-top"><span class="card-no">4</span><h3>本地熟，资源找得到</h3></div><p>在一片地方待 20 年，房东、商户、律师、装修、保险的人都熟。客户要的不只是一条信息，是有事能找到人对接。</p><div class="proof"><b>证明内容 →</b> 实拍房源与空铺：人到现场、门牌拍得到。</div></article>
+<article class="card"><div class="card-top"><span class="card-no">4</span><h3>本地熟，资源找得到</h3></div><p>在一片地方待 20 年，房东、商户、律师、装修、保险的人都熟。客户要的不只是一条信息，是有事能找到人对接。他不是只做中介的——自己也在法拉盛创办了联合房产、当过老板，所以商户老板租铺、开店真正怕什么，他自己经历过，更懂。</p><div class="proof"><b>证明内容 →</b> 实拍房源与空铺：人到现场、门牌拍得到。</div></article>
 <article class="card"><div class="card-top"><span class="card-no">5</span><h3>地产 + 保险，双视角算风险</h3></div><p>这是他跟别的经纪最不一样的地方。别人只讲能不能买、能不能租；他多算一步：买完租完之后风险在哪、保险怎么配、真出事赔不赔——用大白话讲，不拿术语唬人。</p><div class="proof"><b>证明内容 →</b> 每条干货结尾多一句风险提醒，慢慢把标签立住。</div></article>
 <article class="card"><div class="card-top"><span class="card-no">6</span><h3>长期在场，跑不了也躲不了</h3></div><p>干 20 年的人，名声就是本钱。成交不是结束——续租、转租、房子出问题，回来还能找到他本人。</p><div class="proof"><b>证明内容 →</b> 老客户回访与续租故事：找得到人，心里踏实。</div></article>
 </div>
@@ -315,9 +353,9 @@ footer{padding:22px 6px 0;color:var(--muted);font-size:13px;text-align:center}
 <section class="section" id="topics">
 <div class="section-head"><div class="num">03</div><div><h2>选题库：老板适合的 82 条，十类全罗列</h2><p>按老何的底子筛的：法拉盛本地熟、干了 20 年、地产 + 保险双身份、人亲好说话。前九类是选题，第十类是互动形式——套在任何一类上用。下面在十类之上再按流量主力、证明在场、立人设三大功能分组展示。每条结尾固定那句：拿不准，先问老何。</p></div></div>
 <div class="topic-intro" style="background:var(--green3);border:1px solid var(--green4);border-radius:18px;padding:14px">
-<div class="topic-ratio"><b>约 50%</b><span><strong>流量主力</strong> · 第一类房东避坑 + 第二类本地新规，学 Jeb Smith 本地新闻打法</span><div class="acct-btns" style="margin-top:10px"><a class="acct-btn" href="https://www.tiktok.com/@mrjebsmith" target="_blank" rel="noopener">TikTok @mrjebsmith ↗</a></div></div>
-<div class="topic-ratio"><b>约 30%</b><span><strong>证明在场</strong> · 第五类房源实拍 + 第六类老何探店，人到现场、门牌拍得到</span></div>
 <div class="topic-ratio"><b>约 20%</b><span><strong>立人设</strong> · 第七类 20 年故事 + 第十类评论区问答，把亲和力立住</span></div>
+<div class="topic-ratio"><b>约 30%</b><span><strong>证明在场</strong> · 第五类房源实拍 + 第六类老何探店，人到现场、门牌拍得到</span></div>
+<div class="topic-ratio"><b>约 50%</b><span><strong>流量主力</strong> · 第一类房东避坑 + 第二类本地新规，学 Jeb Smith 本地新闻打法</span><div class="acct-btns" style="margin-top:10px"><a class="acct-btn" href="https://www.tiktok.com/@mrjebsmith" target="_blank" rel="noopener">TikTok @mrjebsmith ↗</a></div></div>
 </div>
 <p class="small" style="margin:0 0 14px">下面按三大功能再分一层展示：<strong style="color:var(--green2)">流量主力 22 条 · 证明在场 40 条 · 立人设 20 条，共 82 条</strong>。十类和每条编号原样保留，组内仍按原来的类排列。这是<strong>库存条数分组</strong>，不是发布比例——发布排期仍按流量主力优先，先发能拉播放的，再穿插证明在场和立人设。</p>
 <div style="border:2px solid var(--green);border-radius:18px;padding:20px 22px;background:#fff;margin:0 0 20px">
@@ -340,20 +378,13 @@ footer{padding:22px 6px 0;color:var(--muted);font-size:13px;text-align:center}
 </div>
 <div class="aim-block">
 <div style="font-size:12px;font-weight:900;letter-spacing:.14em;color:var(--green)">选题对栏 · 脚本先定目的</div>
-<h3 style="font-family:'Noto Serif SC',serif;font-size:22px;line-height:1.25;margin:6px 0 8px">每条选题，先对板二坐标系，再写脚本</h3>
-<p style="margin:0;font-size:14.5px;line-height:1.7;color:#35493c">选题库不是题目堆，是板二「购买理由定位坐标系」的弹药库。<strong style="color:var(--green2)">每条选题开工写脚本之前，先定死它证明哪一栏、哪一条</strong>——硬理由管「凭什么信」、对比理由管「为什么不选别人」、感性理由管「感觉他是什么样的人」。<strong style="color:var(--green2)">对不上栏的，不拍；对上了，整条脚本都往那一栏上靠。</strong>下面十类卡头都标了「主打」，点题时先看主打，再动笔。</p>
+<h3 style="font-family:'Noto Serif SC',serif;font-size:22px;line-height:1.25;margin:6px 0 8px">每条选题，先对板一坐标系，再写脚本</h3>
+<p style="margin:0;font-size:14.5px;line-height:1.7;color:#35493c">选题库不是题目堆，是板一「购买理由定位坐标系」的弹药库。<strong style="color:var(--green2)">每条选题开工写脚本之前，先定死它证明哪一栏、哪一条</strong>——硬理由管「凭什么信」、对比理由管「为什么不选别人」、感性理由管「感觉他是什么样的人」。<strong style="color:var(--green2)">对不上栏的，不拍；对上了，整条脚本都往那一栏上靠。</strong>下面十类卡头都标了「主打」，点题时先看主打，再动笔。</p>
 <div class="aim-cols">
 <div class="aim-col"><div class="pct">约 50%</div><b>硬理由 · 凭什么信</b><p>20 年同街区在场、成交记录可查、见过涨跌和疫情周期、地产 + 保险双视角。选题主力，证据必须可验证、可举证。</p></div>
 <div class="aim-col"><div class="pct">约 30%</div><b>对比理由 · 为什么不选别人</b><p>比新手经纪：靠年头，不靠话术；比大公司销售：本人在街上找得到人；比只做地产的同行：多算一步风险和保险。</p></div>
 <div class="aim-col"><div class="pct">约 20%</div><b>感性理由 · 他是什么样的人</b><p>亲和、温暖、负责、靠谱。不单独喊口号，靠故事、生活和有问必答的语气让人自己感觉到。</p></div>
 </div>
-<p style="margin:14px 0 0;font-size:13.5px;font-weight:900;color:var(--green2)">脚本三段，段段往栏上靠 ——</p>
-<div class="aim-script">
-<div class="aim-step"><b>开头 · 钩子点人群</b>第一句先点中这一栏要说服的人：房东、商户、买房人，或正在比经纪的人。不先自我介绍，不绕弯。</div>
-<div class="aim-step"><b>中段 · 只给对栏的证据</b>只放能证明本栏那一条的事实、数字、现场和案例；跟本栏无关的干货再好也不塞，一条只证明一件事。</div>
-<div class="aim-step"><b>结尾 · 收回核心一句</b>统一收回「法拉盛的事，先问在这一片干了 20 年的老何」，再加私信词，把围观往咨询上引。</div>
-</div>
-<p style="margin:12px 0 0;font-size:13.5px;color:var(--muted)">配比跟着目的走：<strong style="color:var(--green2)">硬理由约五成、对比理由约三成、感性理由约两成</strong>。排期仍按流量主力优先，但每条发布前多过一关——它在证明哪一栏、哪一条？答不上来，退回重写。</p>
 </div>
 <div class="func-groups">
 
@@ -362,7 +393,7 @@ footer{padding:22px 6px 0;color:var(--muted);font-size:13px;text-align:center}
 <div class="topic-grid">
 
 <article class="topic-cat">
-<div class="topic-cat-head"><span class="topic-cat-no">一</span><div><h3>房东避坑 · 主力栏目</h3><p class="cat-note">学 Jeb Smith 的本地新闻打法。暖气那条已经跑出来，原样复制成系列。</p><p class="cat-aim">主打 · <b>硬理由</b> — 见过涨跌和疫情周期，兼地产 + 保险双视角</p></div></div>
+<div class="topic-cat-head"><span class="topic-cat-no">一</span><div><div class="cat-title-row"><h3>房东避坑 · 主力栏目</h3><span class="cat-tag">对栏：硬理由</span></div><p class="cat-note">学 Jeb Smith 的本地新闻打法。暖气那条已经跑出来，原样复制成系列。</p><p class="cat-proof"><b>证明点：</b>见过涨跌和疫情周期，兼地产 + 保险双视角</p></div></div>
 <ol class="topic-list">
 <li><span class="tno">1</span><span>暖气不达标被罚，房东注意——已跑出的爆款（播放 8,806），原样复制成系列</span></li>
 <li><span class="tno">2</span><span>租户不交租，房东第一步先做什么，别一上来就犯错</span></li>
@@ -380,7 +411,7 @@ footer{padding:22px 6px 0;color:var(--muted);font-size:13px;text-align:center}
 </article>
 
 <article class="topic-cat">
-<div class="topic-cat-head"><span class="topic-cat-no">二</span><div><h3>法拉盛新规和本地新闻</h3><p class="cat-note">必须挂地产角度，只讲跟房东、商户直接有关的那一条。</p><p class="cat-aim">主打 · <b>硬理由</b> — 20 年同街区在场</p></div></div>
+<div class="topic-cat-head"><span class="topic-cat-no">二</span><div><div class="cat-title-row"><h3>法拉盛新规和本地新闻</h3><span class="cat-tag">对栏：硬理由</span></div><p class="cat-note">必须挂地产角度，只讲跟房东、商户直接有关的那一条。</p><p class="cat-proof"><b>证明点：</b>20 年同街区在场</p></div></div>
 <ol class="topic-list">
 <li><span class="tno">13</span><span>罚单大赦开始了，房东和商户哪些罚单能减免</span></li>
 <li><span class="tno">14</span><span>铁门和招牌新规，法拉盛商户不改会怎样</span></li>
@@ -403,7 +434,7 @@ footer{padding:22px 6px 0;color:var(--muted);font-size:13px;text-align:center}
 <div class="topic-grid">
 
 <article class="topic-cat">
-<div class="topic-cat-head"><span class="topic-cat-no">三</span><div><h3>买房算账</h3><p class="cat-note">学 MK Group 的数据报告打法，用法拉盛真实盘子算，不讲空理论。</p><p class="cat-aim">主打 · <b>对比理由</b> — 比只做地产的同行：多算一步风险和保险，兼硬理由</p></div></div>
+<div class="topic-cat-head"><span class="topic-cat-no">三</span><div><div class="cat-title-row"><h3>买房算账</h3><span class="cat-tag">对栏：对比理由</span></div><p class="cat-note">学 MK Group 的数据报告打法，用法拉盛真实盘子算，不讲空理论。</p><p class="cat-proof"><b>证明点：</b>比只做地产的同行：多算一步风险和保险，兼硬理由</p></div></div>
 <ol class="topic-list">
 <li><span class="tno">23</span><span>法拉盛两家庭 159.9 万这种盘，账到底怎么算才不亏</span></li>
 <li><span class="tno">24</span><span>边住边赚钱的房子，自住一户租一户的真实算法</span></li>
@@ -419,7 +450,7 @@ footer{padding:22px 6px 0;color:var(--muted);font-size:13px;text-align:center}
 </article>
 
 <article class="topic-cat">
-<div class="topic-cat-head"><span class="topic-cat-no">四</span><div><h3>商铺和开店</h3><p class="cat-note">学 Pozek 那种小而准的本地号，只做搜得到的开店真问题。</p><p class="cat-aim">主打 · <b>硬理由</b> — 见过涨跌和疫情周期，兼对比理由</p></div></div>
+<div class="topic-cat-head"><span class="topic-cat-no">四</span><div><div class="cat-title-row"><h3>商铺和开店</h3><span class="cat-tag">对栏：硬理由</span></div><p class="cat-note">学 Pozek 那种小而准的本地号，只做搜得到的开店真问题。</p><p class="cat-proof"><b>证明点：</b>见过涨跌和疫情周期，兼对比理由</p></div></div>
 <ol class="topic-list">
 <li><span class="tno">33</span><span>法拉盛 9,000 尺旺铺这种盘，老何实拍带看加租金点评</span></li>
 <li><span class="tno">34</span><span>租仓库之前必须问的 3 件事——以前拍过，原样做成系列</span></li>
@@ -433,7 +464,7 @@ footer{padding:22px 6px 0;color:var(--muted);font-size:13px;text-align:center}
 </article>
 
 <article class="topic-cat">
-<div class="topic-cat-head"><span class="topic-cat-no">五</span><div><h3>房源实拍 · 现在最缺的</h3><p class="cat-note">每月至少 2 条。位置、价格、户型一次说清，老何说实话。</p><p class="cat-aim">主打 · <b>硬理由</b> — 成交记录可查、20 年同街区在场</p></div></div>
+<div class="topic-cat-head"><span class="topic-cat-no">五</span><div><div class="cat-title-row"><h3>房源实拍 · 现在最缺的</h3><span class="cat-tag">对栏：硬理由</span></div><p class="cat-note">每月至少 2 条。位置、价格、户型一次说清，老何说实话。</p><p class="cat-proof"><b>证明点：</b>成交记录可查、20 年同街区在场</p></div></div>
 <ol class="topic-list">
 <li><span class="tno">41</span><span>Kissena 旁两家庭实拍——拍过，原样定成模板</span></li>
 <li><span class="tno">42</span><span>法拉盛一家庭和两家庭各拍一条，同周做对比</span></li>
@@ -447,7 +478,7 @@ footer{padding:22px 6px 0;color:var(--muted);font-size:13px;text-align:center}
 </article>
 
 <article class="topic-cat">
-<div class="topic-cat-head"><span class="topic-cat-no">六</span><div><h3>老何探店 · 历史爆款在这</h3><p class="cat-note">49K 那条就是探店。每条结尾必须带地产钩子，不拍成纯热闹。</p><p class="cat-aim">主打 · <b>硬理由</b> — 20 年同街区在场，兼感性理由 · 亲和</p></div></div>
+<div class="topic-cat-head"><span class="topic-cat-no">六</span><div><div class="cat-title-row"><h3>老何探店 · 历史爆款在这</h3><span class="cat-tag">对栏：硬理由</span></div><p class="cat-note">49K 那条就是探店。每条结尾必须带地产钩子，不拍成纯热闹。</p><p class="cat-proof"><b>证明点：</b>20 年同街区在场，兼感性理由 · 亲和</p></div></div>
 <ol class="topic-list">
 <li><span class="tno">49</span><span>新奇餐饮探店，比如人体寿司那类，结尾补一句这个位置租金大概什么水平</span></li>
 <li><span class="tno">50</span><span>老字号探店，怡东楼那类开多年的店，讲它为什么能活这么久</span></li>
@@ -461,7 +492,7 @@ footer{padding:22px 6px 0;color:var(--muted);font-size:13px;text-align:center}
 </article>
 
 <article class="topic-cat">
-<div class="topic-cat-head"><span class="topic-cat-no">八</span><div><h3>地产 + 保险双视角 · 独有</h3><p class="cat-note">别人抄不走：别人只讲能不能买、能不能租，他多算一步风险。</p><p class="cat-aim">主打 · <b>对比理由</b> — 比只做地产的同行：多算一步风险和保险（地产 + 保险双视角）</p></div></div>
+<div class="topic-cat-head"><span class="topic-cat-no">八</span><div><div class="cat-title-row"><h3>地产 + 保险双视角 · 独有</h3><span class="cat-tag">对栏：对比理由</span></div><p class="cat-note">别人抄不走：别人只讲能不能买、能不能租，他多算一步风险。</p><p class="cat-proof"><b>证明点：</b>比只做地产的同行多算一步风险和保险（地产＋保险双视角）</p></div></div>
 <ol class="topic-list">
 <li><span class="tno">67</span><span>买房时保险没配对，出事才发现不赔的那几类</span></li>
 <li><span class="tno">68</span><span>商铺老板的保险清单，开业前必须齐的几样</span></li>
@@ -480,7 +511,7 @@ footer{padding:22px 6px 0;color:var(--muted);font-size:13px;text-align:center}
 <div class="topic-grid">
 
 <article class="topic-cat">
-<div class="topic-cat-head"><span class="topic-cat-no">七</span><div><h3>20 年故事和亲和人设</h3><p class="cat-note">学 Glennda Baker 讲故事，这是把亲和力立住的栏目。</p><p class="cat-aim">主打 · <b>感性理由</b> — 亲和、温暖、负责、靠谱，兼硬理由 · 20 年同街区在场</p></div></div>
+<div class="topic-cat-head"><span class="topic-cat-no">七</span><div><div class="cat-title-row"><h3>20 年故事和亲和人设</h3><span class="cat-tag">对栏：感性理由</span></div><p class="cat-note">学 Glennda Baker 讲故事，这是把亲和力立住的栏目。</p><p class="cat-proof"><b>证明点：</b>亲和、温暖、负责、靠谱，兼硬理由 · 20 年同街区在场</p></div></div>
 <ol class="topic-list">
 <li><span class="tno">57</span><span>我在法拉盛干了 20 年——就是置顶，自我介绍定版</span></li>
 <li><span class="tno">58</span><span>20 年前缅街什么样，拿老地标讲变迁</span></li>
@@ -496,7 +527,7 @@ footer{padding:22px 6px 0;color:var(--muted);font-size:13px;text-align:center}
 </article>
 
 <article class="topic-cat">
-<div class="topic-cat-head"><span class="topic-cat-no">九</span><div><h3>住在法拉盛</h3><p class="cat-note">学 Vidana 和 Lascsak 的「住在这一片」系列，讲真实生活距离。</p><p class="cat-aim">主打 · <b>感性理由</b> — 亲和、温暖、靠谱</p></div></div>
+<div class="topic-cat-head"><span class="topic-cat-no">九</span><div><div class="cat-title-row"><h3>住在法拉盛</h3><span class="cat-tag">对栏：感性理由</span></div><p class="cat-note">学 Vidana 和 Lascsak 的「住在这一片」系列，讲真实生活距离。</p><p class="cat-proof"><b>证明点：</b>亲和、温暖、靠谱</p></div></div>
 <ol class="topic-list">
 <li><span class="tno">73</span><span>住在法拉盛的一天，吃穿行全在步行范围是什么体验</span></li>
 <li><span class="tno">74</span><span>法拉盛对比法拉盛周边小镇，安静和方便怎么选</span></li>
@@ -508,7 +539,7 @@ footer{padding:22px 6px 0;color:var(--muted);font-size:13px;text-align:center}
 </article>
 
 <article class="topic-cat" style="border-color:var(--green);background:var(--green3)">
-<div class="topic-cat-head"><span class="topic-cat-no" style="background:var(--green);color:#fff">十</span><div><h3>评论区问答 · 互动形式</h3><p class="cat-note">学 Tat Londono 用视频回复问题。这不是选题类，是形式，套在上面任何一类上。</p><p class="cat-aim">主打 · <b>感性理由</b> — 亲和、负责，兼对比理由 · 比大公司销售：本人在街上找得到人</p></div></div>
+<div class="topic-cat-head"><span class="topic-cat-no" style="background:var(--green);color:#fff">十</span><div><div class="cat-title-row"><h3>评论区问答 · 互动形式</h3><span class="cat-tag">对栏：感性理由</span></div><p class="cat-note">学 Tat Londono 用视频回复问题。这不是选题类，是形式，套在上面任何一类上。</p><p class="cat-proof"><b>证明点：</b>亲和、负责，兼对比理由 · 比大公司销售：本人在街上找得到人</p></div></div>
 <ol class="topic-list">
 <li><span class="tno">79</span><span>每周至少 1 条，直接用视频回评论区问得最多的那个问题</span></li>
 <li><span class="tno">80</span><span>私信里反复被问的——法拉盛现在能不能买、铺子租金多少，做成公开回复</span></li>
@@ -521,29 +552,24 @@ footer{padding:22px 6px 0;color:var(--muted);font-size:13px;text-align:center}
 </section>
 
 </div>
-<p class="small" style="margin-top:12px">用法：批量拍那天从库里直接点题，点中哪条就按哪条拍；每条发布前对一次号——它在证明六点理由里的哪一点，对不上不发。</p>
 </section>
 
 <!-- SYSTEM (merged with 90-day rhythm) -->
 <section class="section" id="system">
-<div class="section-head"><div class="num">04</div><div><h2>系统化营销：汤汤四张板 × 90 天三场战役</h2><p>不再讲零散的「四层架构」，整节严格按福州汤汤商学成果汇总的原始格式来：一张策略图把任务量定死，一个坐标系把购买理由找准，一套企业故事把证据备齐，一个增长模型把打法和重复管住。四张板从上到下就是执行顺序——先定量，再定理由，再备故事，最后按模型打。90 天三轮不再单独成节，直接接在第四张板的内容策略之下，作为这套系统的落地节奏：三轮就是三场关键战役，每轮主打哪张板、用哪类证据，卡片上逐轮标明。</p></div></div>
+<div class="section-head"><div class="num">04</div><div><h2>系统化营销：汤汤四张板 × 90 天三场战役</h2><p>不再讲零散的「四层架构」，整节严格按福州汤汤商学成果汇总的原始格式来：一个坐标系把购买理由找准，一张策略图把任务量定死，一套企业故事把证据备齐，一个增长模型把打法和重复管住。四张板从上到下就是执行顺序——先定理由，再定量，再备故事，最后按模型打。90 天三轮不再单独成节，直接接在第四张板的内容策略之下，作为这套系统的落地节奏：三轮就是三场关键战役，每轮主打哪张板、用哪类证据，卡片上逐轮标明。</p></div></div>
+<div style="border:1px solid var(--line);border-radius:18px;padding:18px;background:#f7fbf7;margin-bottom:18px">
+<p class="tang-note" style="margin:0 0 10px"><strong style="color:var(--green2)">落地节奏 · 90 天三场战役</strong>——四张板不是挂在墙上看的，靠这三轮一场一场打出来。不追求一条爆，每轮解决一个问题：先知道，再相信，最后选择——三轮的语气始终是亲和的，变的只是证据越来越足。每张卡片最后一行标明这一轮主打哪张板。</p>
+<div class="rounds">
+<div class="round"><span>第 1 轮 · 1–30 天</span><h3>让人知道，更让人敢问</h3><p>高频重复「法拉盛 20 年」：置顶视频 + 地标打卡 + Jeb 式本地新闻。目标是刷到 3 次以上能记住名字和年头，并且觉得「这个人好说话」。评论区开始用视频回复，先把亲和的印象立住。</p><p style="margin-top:10px;padding-top:10px;border-top:1px dashed var(--green4);font-size:13.5px"><strong style="color:var(--green2)">这一轮主打：板一 ＋ 板二</strong> —— 执行策略图的任务量 ＋ 高频重复核心购买理由</p></div>
+<div class="round"><span>第 2 轮 · 31–60 天</span><h3>让人相信</h3><p>用证据说话：房东避坑系列、地标变迁、20 年时间线故事，穿插 Glennda 式批量故事和 Vidana「住在法拉盛」系列。目标是评论区出现「他真懂这一片，人也实在」。</p><p style="margin-top:10px;padding-top:10px;border-top:1px dashed var(--green4);font-size:13.5px"><strong style="color:var(--green2)">这一轮主打：板三 ＋ 板一</strong> —— 企业故事和证据补强（板一的硬理由与对比理由）</p></div>
+<div class="round"><span>第 3 轮 · 61–90 天</span><h3>让人选择</h3><p>用成交感说话：房源实拍、客户原话、续租回访；Pozek 式搜索词库这时开始持续被搜到，Tat 式视频回复把老问题变成新咨询。私信钩子统一导向避坑清单，把围观变咨询。</p><p style="margin-top:10px;padding-top:10px;border-top:1px dashed var(--green4);font-size:13.5px"><strong style="color:var(--green2)">这一轮主打：板四</strong> —— 市场包围与成交证据（板四市场三步 ＋ 成交案例、客户原话）</p></div>
+</div>
+</div>
 <div class="tang-boards">
 
 <!-- BOARD 1 -->
 <div class="tang-board">
-<div class="tang-board-head"><span class="tb-no">板 一</span><h3>汤汤 · 营销策略图</h3><span>先把量定死，再谈质量 · 所有动作都挂一个购买理由</span></div>
-<div class="tang-board-body">
-<p class="tang-note">汤汤原法：营销不是想起来才做，是按图索骥的任务量。公域负责被看见，私域负责被信任，线下负责有实物证据——三行缺一行，系统就漏。下面任务量全是硬数字，做没做完一眼能对。</p>
-<div class="tang-thead"><span>渠道</span><span>具体营销动作</span><span>任务量（硬数字）</span></div>
-<div class="tang-trow"><span class="ch">公域</span><ul><li>TikTok 发布短视频，每条必须挂六点理由之一，不发无关内容；小红书同一条同步分发。</li><li>评论区和私信的问题攒成选题，用视频回复公开回答（学 Tat Londono 的形式）。</li><li>每月集中半天批量拍摄，一次备够一个月的量，不靠每天现想题。</li></ul><div class="tang-task">TikTok 每周 3 条底线<br>小红书：每条同步<br>视频回复：每周至少 1 条<br>批量拍摄：每月半天 1 次</div></div>
-<div class="tang-trow"><span class="ch">私域</span><ul><li>朋友圈只发法拉盛实拍和新规解读，不刷广告、不转发鸡汤。</li><li>房东群、开店群各发干货：避坑提醒、新规解读、空铺信息，先帮忙、先答疑。</li><li>私信和群里的问题当天回复；答不清的先回一句、查清再补。</li></ul><div class="tang-task">朋友圈：每天 1 条<br>房东群：每周发 1 次干货<br>开店群：每周发 1 次干货<br>私信：当天回</div></div>
-<div class="tang-trow"><span class="ch">线下</span><ul><li>到新开的店和新空出的铺实拍，报位置、报面积、报适合业态，和商户老板合影留素材。</li><li>参加或组织房东、商户小聚，只聊房东商户真关心的事，不做推销场。</li></ul><div class="tang-task">实拍：每月 4 家新店或空铺<br>小聚：每季度参加或组织 1 次</div></div>
-</div>
-</div>
-
-<!-- BOARD 2 -->
-<div class="tang-board">
-<div class="tang-board-head"><span class="tb-no">板 二</span><h3>汤汤 · 购买理由定位坐标系</h3><span>理由不是编的，是从三个考古里挖出来的</span></div>
+<div class="tang-board-head"><span class="tb-no">板 一</span><h3>汤汤 · 购买理由定位坐标系</h3><span>理由不是编的，是从三个考古里挖出来的</span></div>
 <div class="tang-board-body">
 <p class="tang-note" style="margin-bottom:10px"><strong style="color:var(--green2)">第一步 · 寻找购买理由的三角</strong>——汤汤原法：先考古、再听原话，最后才提炼理由。三头对上了，理由才站得住。</p>
 <div class="tang-tri">
@@ -554,7 +580,7 @@ footer{padding:22px 6px 0;color:var(--muted);font-size:13px;text-align:center}
 <div class="tang-converge">↓ &nbsp;三头对齐，收进坐标系&nbsp; ↓</div>
 <p class="tang-note" style="margin:6px 0 0"><strong style="color:var(--green2)">第二步 · 定位坐标系三栏</strong>——硬理由管「凭什么信」，对比理由管「为什么不选别人」，感性理由管「感觉他是什么样的人」。每条内容发布前先对栏：它在证明哪一栏、哪一条？对不上不发。</p>
 <div class="tang-cols3">
-<div class="tang-col"><h4>硬理由 · 可验证</h4><ul><li>20 年同街区在场</li><li>成交记录可查</li><li>见过涨跌和疫情周期</li><li>地产 + 保险双视角</li></ul></div>
+<div class="tang-col"><h4>硬理由 · 可验证</h4><ul><li>20 年同街区在场</li><li>成交记录可查</li><li>见过涨跌和疫情周期</li><li>地产 + 保险双视角</li><li>在法拉盛创办联合房产，创始人出身、当过老板</li></ul></div>
 <div class="tang-col"><h4>对比理由 · 跟同行比</h4><ul><li>比新手经纪：靠年头，不靠话术</li><li>比大公司销售：本人在街上找得到人</li><li>比只做地产的同行：多算一步风险和保险</li></ul></div>
 <div class="tang-col"><h4>感性理由 · 感觉坐标</h4><p style="margin:0 0 6px;font-size:14px;color:#35493c">所有视频的语气都往这四个词靠，不喊口号、不硬卖、不讲课：</p><div class="tang-words"><span class="word">亲和</span><span class="word">温暖</span><span class="word">负责</span><span class="word">靠谱</span></div></div>
 </div>
@@ -562,17 +588,30 @@ footer{padding:22px 6px 0;color:var(--muted);font-size:13px;text-align:center}
 </div>
 </div>
 
+<!-- BOARD 2 -->
+<div class="tang-board">
+<div class="tang-board-head"><span class="tb-no">板 二</span><h3>汤汤 · 营销策略图</h3><span>先把量定死，再谈质量 · 所有动作都挂一个购买理由</span></div>
+<div class="tang-board-body">
+<p class="tang-note">汤汤原法：营销不是想起来才做，是按图索骥的任务量。公域负责被看见，私域负责被信任，线下负责有实物证据——三行缺一行，系统就漏。下面任务量全是硬数字，做没做完一眼能对。</p>
+<div class="tang-thead"><span>渠道</span><span>具体营销动作</span><span>任务量（硬数字）</span></div>
+<div class="tang-trow"><span class="ch">公域</span><ul><li>TikTok 发布短视频，每条必须挂六点理由之一，不发无关内容；小红书同一条同步分发。</li><li>评论区和私信的问题攒成选题，用视频回复公开回答（学 Tat Londono 的形式）。</li><li>每月集中半天批量拍摄，一次备够一个月的量，不靠每天现想题。</li></ul><div class="tang-task">TikTok 每周 3 条底线<br>小红书：每条同步<br>视频回复：每周至少 1 条<br>批量拍摄：每月半天 1 次</div></div>
+<div class="tang-trow"><span class="ch">私域</span><ul><li>朋友圈只发法拉盛实拍和新规解读，不刷广告、不转发鸡汤。</li><li>房东群、开店群各发干货：避坑提醒、新规解读、空铺信息，先帮忙、先答疑。</li><li>私信和群里的问题当天回复；答不清的先回一句、查清再补。</li></ul><div class="tang-task">朋友圈：每天 1 条<br>房东群：每周发 1 次干货<br>开店群：每周发 1 次干货<br>私信：当天回</div></div>
+<div class="tang-trow"><span class="ch">线下</span><ul><li>到新开的店和新空出的铺实拍，报位置、报面积、报适合业态，和商户老板合影留素材。</li><li>参加或组织房东、商户小聚，只聊房东商户真关心的事，不做推销场。</li></ul><div class="tang-task">实拍：每月 4 家新店或空铺<br>小聚：每季度参加或组织 1 次</div></div>
+</div>
+</div>
+
 <!-- BOARD 3 -->
 <div class="tang-board">
 <div class="tang-board-head"><span class="tb-no">板 三</span><h3>汤汤 · 企业故事操作实务</h3><span>故事是理由的证据链 · 四项备齐再开拍</span></div>
 <div class="tang-board-body">
-<div class="tang-item"><h4>1 · 创始人故事 —— 老何 20 年，五段讲完</h4><p>只讲这一条时间线，不另编人设。五段各拍透，合起来拆成 <strong>6–8 条短视频</strong>慢慢发，就是 02 节六点理由的证据链：</p>
+<div class="tang-item"><h4>1 · 创始人故事 —— 老何 20 年，六段讲完</h4><p>只讲这一条时间线，不另编人设。六段各拍透，合起来拆成 <strong>6–8 条短视频</strong>慢慢发，就是 02 节六点理由的证据链：</p>
 <div class="tang-steps5">
 <div class="tang-step"><b>第一段</b>哪一年来法拉盛，为什么落在这片</div>
 <div class="tang-step"><b>第二段</b>第一单是怎么成的，当时有多难</div>
-<div class="tang-step"><b>第三段</b>最难的一年，是怎么熬过来的</div>
-<div class="tang-step"><b>第四段</b>疫情那几年，陪房东和商户熬过什么</div>
-<div class="tang-step"><b>第五段</b>到今天，为什么还守在这一片</div>
+<div class="tang-step"><b>第三段 · 创办联合房产</b>在法拉盛创办联合房产，自己当老板、创过业的那一段</div>
+<div class="tang-step"><b>第四段</b>最难的一年，是怎么熬过来的</div>
+<div class="tang-step"><b>第五段</b>疫情那几年，陪房东和商户熬过什么</div>
+<div class="tang-step"><b>第六段</b>到今天，为什么还守在这一片</div>
 </div></div>
 <div class="tang-item"><h4>2 · 服务主张 —— 一句话</h4><p class="quote">「门一直开着，暂时不办，来问问也没关系。」</p><p style="margin-top:6px">这是对客户的态度承诺：先问不欠人情。置顶结尾、主页介绍、私信第一句回复，都用这一句。</p></div>
 <div class="tang-item"><h4>3 · 产品一句话 —— 一句话说清卖什么</h4><p class="quote">「法拉盛租房、买房、租铺、保险，先问老何，一站问清。」</p><p style="margin-top:6px">四件业务一句说完，不列服务清单。客户有其中任何一件拿不准，第一反应就是先问老何。</p></div>
@@ -608,12 +647,6 @@ footer{padding:22px 6px 0;color:var(--muted);font-size:13px;text-align:center}
 </div></div></div>
 <div class="tang-strat"><span class="tang-strat-no">4</span><div><h4>内容策略 · 重复 × 集中，不停营造</h4><p>横轴是<strong>重复（时间）</strong>，纵轴是<strong>集中（关键战役）</strong>：同一个购买理由换不同场景反复出现，走完 <strong>发现 → 识别 → 再发现 → 再识别</strong>，理由才长进客户脑子里。下面紧接着的 <strong>90 天三轮就是三场关键战役</strong>——每轮集中打一个理由，打透一轮再换下一轮，不平均用力。</p></div></div>
 </div>
-<p class="tang-note" style="margin:16px 0 10px"><strong style="color:var(--green2)">落地节奏 · 90 天三场战役</strong>——四张板不是挂在墙上看的，靠这三轮一场一场打出来。不追求一条爆，每轮解决一个问题：先知道，再相信，最后选择——三轮的语气始终是亲和的，变的只是证据越来越足。每张卡片最后一行标明这一轮主打哪张板。</p>
-<div class="rounds">
-<div class="round"><span>第 1 轮 · 1–30 天</span><h3>让人知道，更让人敢问</h3><p>高频重复「法拉盛 20 年」：置顶视频 + 地标打卡 + Jeb 式本地新闻。目标是刷到 3 次以上能记住名字和年头，并且觉得「这个人好说话」。评论区开始用视频回复，先把亲和的印象立住。</p><p style="margin-top:10px;padding-top:10px;border-top:1px dashed var(--green4);font-size:13.5px"><strong style="color:var(--green2)">这一轮主打：板一 ＋ 板二</strong> —— 执行策略图的任务量 ＋ 高频重复核心购买理由</p></div>
-<div class="round"><span>第 2 轮 · 31–60 天</span><h3>让人相信</h3><p>用证据说话：房东避坑系列、地标变迁、20 年时间线故事，穿插 Glennda 式批量故事和 Vidana「住在法拉盛」系列。目标是评论区出现「他真懂这一片，人也实在」。</p><p style="margin-top:10px;padding-top:10px;border-top:1px dashed var(--green4);font-size:13.5px"><strong style="color:var(--green2)">这一轮主打：板三 ＋ 板二</strong> —— 企业故事和证据补强（板二的硬理由与对比理由）</p></div>
-<div class="round"><span>第 3 轮 · 61–90 天</span><h3>让人选择</h3><p>用成交感说话：房源实拍、客户原话、续租回访；Pozek 式搜索词库这时开始持续被搜到，Tat 式视频回复把老问题变成新咨询。私信钩子统一导向避坑清单，把围观变咨询。</p><p style="margin-top:10px;padding-top:10px;border-top:1px dashed var(--green4);font-size:13.5px"><strong style="color:var(--green2)">这一轮主打：板四</strong> —— 市场包围与成交证据（板四市场三步 ＋ 成交案例、客户原话）</p></div>
-</div>
 <p class="tang-note" style="margin:14px 0 0">四张板怎么合起来用：策略图管「每天做什么、做多少」，坐标系管「每条内容证明什么」，企业故事管「拿什么证明」，增长模型管「先打哪、后打哪、重复多久」。四张板对齐了，才叫系统化营销；只做其中一块，就是零散发视频。</p>
 </div>
 </div>
@@ -623,7 +656,7 @@ footer{padding:22px 6px 0;color:var(--muted);font-size:13px;text-align:center}
 
 <!-- BENCHMARKS -->
 <section class="section" id="benchmarks">
-<div class="section-head"><div class="num">05</div><div><h2>对标打法：做得好的地产，都在这样拍</h2><p>只放能抄的，不放学不了的。豪宅大片、明星经纪那一档只学定位、不学拍法；下面五套全部一人就能执行，并且都往亲和力上收——学他们的结构，不学他们的腔调。每张卡下面都放了本人账号直达链接，点开就能看他原号怎么拍；本节末尾还有一份账号速查表，六个人一处找齐。</p></div></div>
+<div class="section-head"><div class="num">05</div><div><h2>对标打法：做得好的地产，都在这样拍</h2><p>只放能抄的，不放学不了的。豪宅大片、明星经纪那一档只学定位、不学拍法；下面五套全部一人就能执行，并且都往亲和力上收——学他们的结构，不学他们的腔调。每张卡下面都放了本人账号直达链接，点开就能看他原号怎么拍；本节末尾还有一份账号速查表，十个人一处找齐。</p></div></div>
 <div class="grid">
 <article class="card"><div class="card-top"><span class="card-no">J</span><h3>Jeb Smith · 本地新闻打法</h3></div><p><b>他怎么做：</b>加州地方经纪，粉丝不大，单条播放却很稳。他拍的不是房子，是本地新闻——补贴、新店开业、道路工程、停车变化；前 5 秒先甩一句带数字的事实，拍实景，最后一句抛问题引评论。</p><div class="proof"><b>老何版学法 →</b> 这就是暖气被罚那条（播放 8,806）的同款打法，把它定为第一主力：法拉盛新店、空铺、修路、市政新规占公域五到六成。标题先给事实，不先自我介绍。</div><div class="acct-links"><div class="acct-label">本人账号 · 点开直达 ↓</div><div class="acct-btns"><a class="acct-btn main" href="https://www.tiktok.com/@mrjebsmith" target="_blank" rel="noopener">TikTok @mrjebsmith ↗</a><a class="acct-btn" href="https://www.instagram.com/jebsmith" target="_blank" rel="noopener">Instagram @jebsmith ↗</a><a class="acct-btn" href="https://www.jebsmith.net/" target="_blank" rel="noopener">官网 jebsmith.net ↗</a></div></div></article>
 <article class="card"><div class="card-top"><span class="card-no">G</span><h3>Glennda Baker · 批量拍 + 讲故事</h3></div><p><b>她怎么做：</b>亚特兰大经纪，平时把客户问过的问题随手记在手机里当选题库；每月集中半天，一口气拍 30–50 条。讲真实翻车故事的视频，播放明显高过纯讲干货的——故事让人亲近，干货只让人收藏。</p><div class="proof"><b>老何版学法 →</b> 每月固定半天批量拍 20–30 条，不靠每天现想题。故事优先：锅炉、退房、看房、涨租这些真事匿名讲，讲完再带一句避坑要点，正好合亲和力的路子。</div><div class="acct-links"><div class="acct-label">本人账号 · 点开直达 ↓</div><div class="acct-btns"><a class="acct-btn main" href="https://www.tiktok.com/@glenndabaker" target="_blank" rel="noopener">TikTok @glenndabaker ↗</a><a class="acct-btn" href="https://www.instagram.com/glenndabaker" target="_blank" rel="noopener">Instagram @glenndabaker ↗</a><a class="acct-btn" href="https://glennda.net/" target="_blank" rel="noopener">官网 glennda.net ↗</a></div></div></article>
@@ -633,13 +666,17 @@ footer{padding:22px 6px 0;color:var(--muted);font-size:13px;text-align:center}
 <article class="card" style="border-color:var(--green);background:var(--green3)"><div class="card-top"><span class="card-no" style="background:var(--green);color:#fff">合</span><h3>五套合起来 · 老何的一周排法</h3></div><p>不用五套分开跑，揉进同一周就行：本地新闻打底管流量，故事管亲近，搜索系列管长尾，视频回复管信任。</p><div class="proof"><b>一周模板 →</b> 周一 Jeb 式本地新闻 1 条 · 周三 Glennda 式真人故事 1 条 · 周五 Vidana「住在法拉盛」或 Pozek 式搜索题 1 条 · 评论攒够问题随时补 1 条 Tat 式视频回复。全部出自每月半天批量拍摄，临时新闻随到随拍。</div></article>
 </div>
 <div class="acct-directory" id="accounts">
-<div class="acct-directory-head"><b>📎 可模仿账号速查 · 全部直达链接</b><span>六个人、十四个入口，一处找齐。点任意按钮直接跳到本人账号，看原号、原视频怎么拍。链接为 2026 年 11 月核对的本人公开账号。</span></div>
-<div class="acct-row"><div class="acct-person">Jeb Smith<small>本地新闻打法 · 加州 Huntington Beach</small></div><div class="acct-btns"><a class="acct-btn main" href="https://www.tiktok.com/@mrjebsmith" target="_blank" rel="noopener">TikTok @mrjebsmith ↗</a><a class="acct-btn" href="https://www.instagram.com/jebsmith" target="_blank" rel="noopener">Instagram @jebsmith ↗</a><a class="acct-btn" href="https://www.jebsmith.net/" target="_blank" rel="noopener">官网 ↗</a></div></div>
-<div class="acct-row"><div class="acct-person">Glennda Baker<small>批量拍 + 讲故事 · 亚特兰大</small></div><div class="acct-btns"><a class="acct-btn main" href="https://www.tiktok.com/@glenndabaker" target="_blank" rel="noopener">TikTok @glenndabaker ↗</a><a class="acct-btn" href="https://www.instagram.com/glenndabaker" target="_blank" rel="noopener">Instagram @glenndabaker ↗</a><a class="acct-btn" href="https://glennda.net/" target="_blank" rel="noopener">官网 ↗</a></div></div>
-<div class="acct-row"><div class="acct-person">Ken Pozek<small>本地搜索号 · 奥兰多 The Orlando Real</small></div><div class="acct-btns"><a class="acct-btn main" href="https://www.youtube.com/@kenpozek" target="_blank" rel="noopener">YouTube @kenpozek ↗</a><a class="acct-btn" href="https://www.instagram.com/kenpozek/" target="_blank" rel="noopener">Instagram @kenpozek ↗</a><a class="acct-btn" href="https://www.pozek.com/" target="_blank" rel="noopener">官网 ↗</a></div></div>
-<div class="acct-row"><div class="acct-person">Levi Lascsak<small>本地搜索号 · 达拉斯 Living in Dallas</small></div><div class="acct-btns"><a class="acct-btn main" href="https://www.youtube.com/@LIVINGINDALLAS" target="_blank" rel="noopener">YouTube @LIVINGINDALLAS ↗</a><a class="acct-btn" href="https://www.instagram.com/levilascsak" target="_blank" rel="noopener">Instagram @levilascsak ↗</a></div></div>
-<div class="acct-row"><div class="acct-person">Javier Vidana<small>「住在这一片」· 凤凰城</small></div><div class="acct-btns"><a class="acct-btn main" href="https://www.youtube.com/@JavyVidana" target="_blank" rel="noopener">YouTube @JavyVidana ↗</a><a class="acct-btn" href="https://www.instagram.com/thejaviervidana/" target="_blank" rel="noopener">Instagram @thejaviervidana ↗</a><a class="acct-btn" href="https://javiervidana.com/" target="_blank" rel="noopener">官网 ↗</a></div></div>
-<div class="acct-row"><div class="acct-person">Tat Londono<small>视频回复评论区 · 蒙特利尔 / 纽约</small></div><div class="acct-btns"><a class="acct-btn main" href="https://www.tiktok.com/@tatlondono" target="_blank" rel="noopener">TikTok @tatlondono ↗</a><a class="acct-btn" href="https://www.instagram.com/tatlondono" target="_blank" rel="noopener">Instagram @tatlondono ↗</a><a class="acct-btn" href="https://www.facebook.com/TatLondono" target="_blank" rel="noopener">Facebook ↗</a><a class="acct-btn" href="https://tatlondono.com/" target="_blank" rel="noopener">官网 ↗</a></div></div>
+<div class="acct-directory-head"><b>📎 可模仿账号速查 · 简洁版</b><span>十个人，一行一个，只留类型＋为什么算同款＋体量。有核实链接的点按钮直达本人账号；没核实的只写名字和平台，不编链接。</span></div>
+<div class="acct-line"><span class="acct-name">Jeb Smith</span><span class="acct-desc">本地新闻型 · 同款：先甩事实数字、拍实景，老何的避坑与新规主力学他 · 体量：粉丝不大，单条播放稳</span><a class="acct-btn main" href="https://www.tiktok.com/@mrjebsmith" target="_blank" rel="noopener">TikTok @mrjebsmith ↗</a></div>
+<div class="acct-line"><span class="acct-name">Glennda Baker</span><span class="acct-desc">批量拍＋讲故事型 · 同款：把客户问题攒成选题、讲真事立亲和 · 体量：亚特兰大经纪，故事条播放明显高于干货条</span><a class="acct-btn main" href="https://www.tiktok.com/@glenndabaker" target="_blank" rel="noopener">TikTok @glenndabaker ↗</a></div>
+<div class="acct-line"><span class="acct-name">Ken Pozek</span><span class="acct-desc">本地搜索型 · 同款：只做搜得到的本地词，长尾攒够了持续来线索 · 体量：奥兰多本地号，不追全国流量</span><a class="acct-btn main" href="https://www.youtube.com/@kenpozek" target="_blank" rel="noopener">YouTube @kenpozek ↗</a></div>
+<div class="acct-line"><span class="acct-name">Levi Lascsak</span><span class="acct-desc">本地搜索型 · 同款：与 Pozek 同路，做「住在某地」攒本地词库 · 体量：达拉斯本地号</span><a class="acct-btn main" href="https://www.youtube.com/@LIVINGINDALLAS" target="_blank" rel="noopener">YouTube @LIVINGINDALLAS ↗</a></div>
+<div class="acct-line"><span class="acct-name">Javier Vidana</span><span class="acct-desc">「住在这一片」型 · 同款：讲真实居住感受，出线索的是更本地的小号 · 体量：凤凰城单干经纪，大号＋本地小号双开</span><a class="acct-btn main" href="https://www.youtube.com/@JavyVidana" target="_blank" rel="noopener">YouTube @JavyVidana ↗</a></div>
+<div class="acct-line"><span class="acct-name">Tat Londono</span><span class="acct-desc">视频回复型 · 同款：把评论区当选题库，一问一答攒信任 · 体量：受众是经纪人，只学形式、不学选题</span><a class="acct-btn main" href="https://www.tiktok.com/@tatlondono" target="_blank" rel="noopener">TikTok @tatlondono ↗</a></div>
+<div class="acct-line"><span class="acct-name">Levi Pinson</span><span class="acct-desc">纽约租赁实拍型 · 同款：同城租房实拍，老何的房源实拍可直接对标 · 体量：TikTok 约 99 万粉</span><a class="acct-btn main" href="https://www.tiktok.com/@rentnewyork" target="_blank" rel="noopener">TikTok @rentnewyork ↗</a></div>
+<div class="acct-line"><span class="acct-name">Cash Jordan</span><span class="acct-desc">纽约租房实拍型 · 同款：同城租房实拍打法，和老何的房源实拍一路 · 体量：约 64 万粉</span><span class="acct-plat">TikTok</span></div>
+<div class="acct-line"><span class="acct-name">Barbara Corcoran</span><span class="acct-desc">老牌经纪讲真话型 · 同款：只学定位，不学拍法 · 体量：TikTok 约 120 万粉</span><span class="acct-plat">TikTok</span></div>
+<div class="acct-line"><span class="acct-name">MK Group</span><span class="acct-desc">湾区华人双语内容型 · 同款：华人受众＋双语内容，跟老何受众最接近 · 体量：湾区华人团队号</span></div>
 </div>
 <p class="small" style="margin-top:12px">口径说明：对标账号数据为 2026 年 11 月调研，部分成交与线索数字为账号本人自报、未经独立审计，本页只学打法，不拿这些数字对客户做承诺。Serhant、Heider 的豪宅制作不列入执行清单，原因只有一个：老何一人团队抄不了，也不符合亲和力这条主线。</p>
 </section>
