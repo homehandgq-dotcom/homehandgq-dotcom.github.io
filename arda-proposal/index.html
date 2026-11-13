@@ -113,6 +113,28 @@
         color: var(--navy); margin: 0; line-height: 1.45;
       }
       .sec-lead { color: var(--ink-soft); margin: 10px 0 24px; font-size: 15.5px; }
+
+      /* 本节结论：每节统一的第一句 */
+      .sec-conclusion {
+        font-family: "Noto Serif SC", "Songti SC", serif;
+        font-size: 17px; font-weight: 700; color: var(--navy-deep);
+        background: var(--wash);
+        border-top: 2px solid var(--gold);
+        padding: 14px 20px; margin: 14px 0 6px; line-height: 1.7;
+      }
+      .sec-conclusion .c-label {
+        color: var(--gold); font-size: 13px; letter-spacing: .3em;
+        margin-right: 12px; white-space: nowrap;
+      }
+      /* 分组小标题：先看懂什么 / 协会做什么 / 落到会员店的结果 */
+      .group-label {
+        display: flex; align-items: center; gap: 12px;
+        font-size: 13px; font-weight: 700; letter-spacing: .3em;
+        color: var(--gold); margin: 28px 0 14px;
+      }
+      .group-label::after {
+        content: ""; flex: 1; border-top: 1px solid var(--line);
+      }
       p { margin: 0 0 14px; }
       strong.navy { color: var(--navy); }
 
@@ -164,6 +186,15 @@
         font-size: 19px; font-weight: 700; color: var(--navy);
         margin: 30px 0 0; letter-spacing: .04em;
       }
+      .samples {
+        text-align: center; font-size: 13.5px; color: var(--ink-soft);
+        margin: 26px auto 0; max-width: 640px; line-height: 1.8;
+      }
+      .samples a {
+        color: var(--navy); font-weight: 700; text-decoration: none;
+        border-bottom: 1px solid var(--gold); padding-bottom: 1px;
+      }
+      .samples a:hover { color: var(--gold); }
 
       /* 六大方向 */
       .directions { border-top: 1px solid var(--line); }
@@ -275,7 +306,7 @@
 
       <header>
         <p class="org-line">美国餐饮业发展协会 · ARDA</p>
-        <h1>美国餐饮业发展协会<br /><span class="h1-sub">发展提案</span></h1>
+        <h1>美国餐饮业发展协会<br /><span class="h1-sub">发展提案（阶段一）</span></h1>
         <p class="subtitle">凝心聚力，链通全美餐饮产业</p>
         <hr class="rule" />
         <p class="positioning">不求做最广，<br />但争取做AI食代<span class="gold">最贴近华人圈子和中餐</span>的餐饮协会。</p>
@@ -284,69 +315,102 @@
 
       <section id="dingwei">
         <div class="sec-head"><span class="sec-num">01</span><h2>定位说明 · 把第一阶段做深做透</h2></div>
+        <p class="sec-conclusion"><span class="c-label">本节结论</span>第一阶段先不比规模，只把一件事做到位：成为最贴近华人圈子和中餐的餐饮协会。</p>
+        <p class="group-label">先看懂什么</p>
         <div class="focus-position">
           <span class="focus-label">定位</span>
-          <p class="focus-statement">不求做最广，但争取做AI食代最贴近华人圈子和中餐的餐饮协会。</p>
-          <p class="focus-expand">先说清这个「AI食代」是什么。华人餐饮正在换一套打法：客人改在线上找店，AI 工具开始进店，资金有了新的模式，铺面也有了新的做法。店还是那些店，环境已经全变了。环境换了打法，华人餐饮迎来的，是一个<strong>AI食代</strong>——食物的食，变的正是吃饭这门生意本身。在这个AI食代里，华人餐饮老板最缺的不是再多一个大协会，而是<strong>离得近、听得懂、能帮上眼前事</strong>的协会。ARDA 的定位，就定在这里——不求做最广，先把贴近这一件事做到位。</p>
+          <p class="focus-statement">最贴近华人圈子和中餐的餐饮协会。</p>
+          <p class="focus-expand">先说清这个「AI食代」是什么。AI食代，食就是食物的食，变的正是吃饭这门生意本身。华人餐饮正在换一套打法：客人改在线上找店，AI 工具开始进店，资金有了新的模式，铺面也有了新的做法。店还是那些店，环境已经全变了。在这个AI食代里，华人餐饮老板最缺的不是再多一个大协会，而是<strong>离得近、听得懂、能帮上眼前事</strong>的协会。ARDA 的定位，就定在这里——不求做最广，先把贴近这一件事做到位。</p>
         </div>
+        <p class="group-label">协会做什么</p>
         <p>协会的定位分三个阶段：先扎根华人餐饮社群，再扩展至亚裔餐饮，最终建设国际性组织。这是一个稳健而清晰的次序——根扎得越深，后面的扩展才越有底气。而这三步走到的终点，是协会的终极愿景：<strong class="navy">助力华餐发展成为主流</strong>。</p>
         <p>本提案聚焦的，正是<strong class="navy">第一阶段</strong>。把这一阶段做深做透，意思很具体：让协会成为<strong class="navy">离华人餐饮老板最近、服务最贴身</strong>的协会。规模可以慢慢长，贴近这件事，从第一天起就可以做到位。</p>
-        <p>具体做法分两部分：社群以固定节奏运转，协会既定的六大方向各自落下一步实动作。以下逐项说明。</p>
-        <p>本提案全部内容，归结为一件事：<strong class="navy">协会给餐饮实体做赋能</strong>。金融、AI、资源、品牌、门店模式，都是赋能的手段。</p>
-      </section>
-
-      <section id="shequn">
-        <div class="sec-head"><span class="sec-num">02</span><h2>社群节奏 · 每月饭局，半月一次球友会</h2></div>
-        <p class="sec-lead">第一阶段先做这两件：饭局每月一局，球友会半个月办一场，先由纽约开始跑起来，其他地区随后跟上。与其一年办一场大活动，不如把见面做成日常，让协会走进经营者的生活。</p>
-        <div class="rhythm">
-          <div class="rhythm-item">
-            <h3><span class="freq">每月一局</span>协会饭局</h3>
-            <p>每月一局，由会员老板轮流主办，就在主办老板自己的店里办。主办人定桌，协会负责召集人，固定时间，规模二三十人，以餐饮经营者与产业链上下游为主。饭局开在哪家店，就为哪家店带来一桌客人，也是一次实地的展示机会。时间固定下来，久了便成习惯。</p>
-          </div>
-          <div class="rhythm-item">
-            <h3><span class="freq">纽约先行</span>半月一次球友会</h3>
-            <p>球友会半个月一次，固定节奏，先从纽约开始：纽约先把半个月一场跑成习惯，时间、场地固定下来；其他地区随后跟上，照纽约的样子在本地组织本地场，时间和场地按本地节奏定（球种筹备中）。协会给出召集与按水平分组的框架，新人友好，让不常运动的经营者也能轻松加入。球友会不设门槛，会员和老板们可以带身边的朋友一起来，先打球、先吃饭，熟络了自然进圈子；人带人，圈子是这样一圈圈滚大的。纽约先跑出样子，其他地区照着复制。球场上先熟络起来，合作与生意，都是顺带聊出来的。</p>
-          </div>
-          <div class="rhythm-item">
-            <h3><span class="freq">拍照留影</span>活动照片上官网展示</h3>
-            <p>每次活动都拍照留影，照片发到协会官网的活动与动态栏目里展示。各地区的活动在官网上看得见、晒得出，彼此带动，也让还没组织起来的地区有个现成的样子可以照着学。</p>
-          </div>
-        </div>
-        <p class="punchline">见面频率，就是贴近程度。</p>
+        <p>这也是 ARDA 与老牌大协会的错位所在。老牌协会的强项，在论坛和一年一度的会议，强在那几天的场面与声势；ARDA 不在这条路上比——它是<strong class="navy">新时代的发展协会</strong>，贴合落在日常里：市场和文化带着会员一起看，信息和视野天天共享，遇事随时有人问，融资、AI 工具这些新变化跟得上，一件件落到店里，<strong class="navy">助力每一个餐饮和实体老板</strong>把店往前推。</p>
+        <p>贴近之外，协会的角色还有两个字：<strong class="navy">规范和发展</strong>，而且顺序不能反——先规范，再发展。规范，是把合规的底线帮老板做对：执照怎么办、检查怎么过、用工怎么合规、税务怎么不出错，先把这些做到不出事，店才站得稳。发展，是在站稳之后往前推：把客户、资本、资源和 AI 工具一件件接上，让店有新客、有资金、有工具可用。底线守住了，发展才走得远。</p>
+        <p>具体做法分两部分：协会既定的六大方向各自落下一步实动作（见 05 节），社群以固定节奏运转（见 07 节）。</p>
+        <p class="group-label">落到会员店的结果</p>
+        <p>本提案的总逻辑，说到底是一条线：先真正<strong class="navy">了解美国市场，了解美国文化</strong>，把外国客户和外国资本引进来——说白了，就是让中餐赚老外的钱。一家店单打独斗，看不全、问不到、也跟不上；大家团结起来，信息共享、视野眼界共享，遇事有人问，执照、融资、AI 智能工具都有人能问，招工难、引客难这些共同难题一起想办法，跟上 AI 时代的发展。这条线落到每一家会员店上，就是<strong class="navy">协会给餐饮实体做赋能</strong>：金融、AI、资源、品牌、文化、门店模式，都是赋能的手段。其中文化这一件最难、也最关键，单列一节细讲（见 03 节文化破圈）。</p>
       </section>
 
       <section id="tieqin">
-        <div class="sec-head"><span class="sec-num">03</span><h2>贴近华人圈子 · 四件实事</h2></div>
-        <p class="sec-lead">「贴近」不是一句口号，落在日常里是四件具体的事。</p>
+        <div class="sec-head"><span class="sec-num">02</span><h2>贴近华人圈子 · 四件实事</h2></div>
+        <p class="sec-conclusion"><span class="c-label">本节结论</span>「贴近」不是一句口号，是把老板团结起来——信息共享、视野共享，问题一起解，遇事有人问。</p>
+        <p class="group-label">先看懂什么</p>
+        <p>一家店单打独斗，看不清美国市场、看不懂美国文化，也不知道外国客户和资本怎么进来；大家聚到一起，把各自看到的市场、文化和客人变化共享出来，眼界就打开了。招工、检查、房租、评分这些眼前事，单靠一家店扛，也最难扛。贴近，就是先把大家聚起来。</p>
+        <p class="group-label">协会做什么</p>
         <div class="grid2">
           <div class="fact">
             <h3>语言贴近</h3>
-            <p>政策、执照、检查、税务这些与经营直接相关的信息，以中文通俗呈现，讲清要求、步骤与时间节点，让经营者看得懂、用得上。</p>
+            <p>不只政策、执照这些信息，市场和文化的信息也一样：都用中文讲成人话，让老板看得懂美国市场、看得懂老外客人，心里有数、用得上。</p>
           </div>
           <div class="fact">
             <h3>渠道贴近</h3>
-            <p>信息发到经营者每天在看的地方：经微信、小红书触达，也走进法拉盛与唐人街的店面里，不只停留在官网与邮件。</p>
+            <p>对内的信息发到老板每天在看的地方：微信、小红书，也走进法拉盛与唐人街的店面里，大家一起共享；对外的，让老外看见的细法，见文化破圈一节。</p>
           </div>
           <div class="fact">
             <h3>事情贴近</h3>
-            <p>聚焦经营者日常真正头疼的问题：招工、卫生检查、房租续约、线上评分维护。协会帮的是眼前的事，信任就是这样一点点攒起来的。</p>
+            <p>共同的难题一起解：招工难、引客难、房租续约、线上评分维护，不再是一家店自己头疼。协会帮的是眼前这些事，办法是大家凑出来的。</p>
           </div>
           <div class="fact">
             <h3>人贴近</h3>
-            <p>协会的发起人与经营者是同行。活动就设在法拉盛与唐人街，时间贴合餐饮从业者的作息，收了摊走几步就能到。</p>
+            <p>协会的发起人与经营者是同行。人聚起来、常见面，遇事就有人问：执照怎么办、融资找谁、AI 智能工具怎么用，都有人能问，跟得上 AI 时代的发展。</p>
           </div>
         </div>
+        <p class="group-label">落到会员店的结果</p>
+        <p>老板看得懂市场和文化，信息有人共享，难题有人共解，遇事有人可问——这样店才有机会把外国客户和外国资本引进来。</p>
+      </section>
+
+      <section id="poquan">
+        <div class="sec-head"><span class="sec-num">03</span><h2>文化破圈 · 在文化上和主流衔接上</h2></div>
+        <p class="sec-conclusion"><span class="c-label">本节结论</span>这一节解决华人餐饮最深的一个痛点：很多店不是输在味道，是输在文化上和主流衔接不上。破圈，破的就是这一层。</p>
+        <p>不懂老外客人怎么想，进不了老外的圈子，也用不上老外的资源，再好的菜，也只在华人圈里转。先把话说清：<strong class="navy">文化破圈，不是让华餐改成西餐。</strong>味道是根，不能动。要变的是讲法和接法——让主流客人听得懂、敢进来、愿意再来，让主流的资源找得到、接得住。具体分四步走。</p>
+        <p class="group-label">先看懂什么</p>
+        <p>这里先定一个前提。破圈要看懂的，不只是老外客人爱吃什么、点菜有什么习惯，那只是表面。更底下一层，是美国主流文化本身怎么运转：一种吃法往往先在小圈子里出现，被人拍照、分享，再经媒体报道和社交平台传播，慢慢变成大家都想试一试的潮流；客人选一家店，也很少只看菜单，点评平台上的评分、照片和评价，店家讲的品牌故事，都会先影响他的判断，觉得可信、对味，才会走进来；一家店能不能长久留住人，还看它有没有把人聚起来的办法，靠熟客、靠活动、靠固定的社区来往，让客人一次次回来，也把新客人带进来。把这几件事看明白，才知道中餐应该从哪里接进去：是先把点评平台和照片做齐，还是先把店的故事讲清，或是先靠活动把人聚起来，要按主流文化的这个发展模式来定顺序，而不是看见别人做什么就跟着做什么。下面四步，都是在这个前提上展开的。</p>
+        <div class="steps">
+          <div class="step">
+            <span class="step-badge">一</span>
+            <h3>先看懂老外客人</h3>
+            <p>主流客人找店先看 Google 和 Yelp 的评分与评价，点菜看重讲得清、吃得明白，讲究效率、透明和体验。先把这套消费文化看懂，店里的做法才知道往哪里调——这和 AI 赋能讲的先看懂时代、再谈工具，是同一个道理。</p>
+          </div>
+        </div>
+        <p class="group-label">协会做什么</p>
+        <div class="steps">
+          <div class="step">
+            <span class="step-badge">二</span>
+            <h3>把店讲成主流听得懂的话</h3>
+            <p>英文菜单不只是把菜名翻译过去，还要讲清这道菜是什么、怎么吃、故事在哪里；英文点评平台的门面、照片与评价回复做齐，让老外客人在进店之前，就先看懂这家店。菜还是那道菜，讲法换成对方听得懂的讲法。</p>
+          </div>
+          <div class="step">
+            <span class="step-badge">三</span>
+            <h3>把老外的资源引进来</h3>
+            <p>协会把华人圈之外的资源注入会员单位：inKind 这类平台带来的主流食客，基金会与主流餐饮圈的活动、评选和媒体曝光机会。先让会员店在主流圈子里露面、被看见，再谈被选择——老外客户和老外资源，都是这样一步步引进来的。</p>
+          </div>
+          <div class="step">
+            <span class="step-badge">四</span>
+            <h3>在老外的社交平台上被看见 · 引客户，也引资本</h3>
+            <p>老外日常用的社交平台，就是衔接的主战场。协会帮会员店在主流社交平台上把英文内容做起来：探店短视频、活动动态、店里的人和菜的故事，一件件发出去，让更多老外客户先在网上看见中餐、看见中餐的力量。老外资本也一样——投资人先在这些平台上看见中餐的热度、人气和增长，才谈得上把资本引进来。平台上被看见，是客户进店和资本进场共同的第一步。</p>
+          </div>
+        </div>
+        <p class="samples">破圈样板：<a href="https://dtf.com/en/locations/new-york" target="_blank" rel="noopener">鼎泰丰 Din Tai Fung</a>（把中餐做成全球主流品牌）、<a href="https://chinalivesf.com/" target="_blank" rel="noopener">China Live</a>（把唐人街中餐做成主流食客愿意走进去的文化空间）、<a href="https://www.misterjius.com/" target="_blank" rel="noopener">Mister Jiu's</a>（旧金山唐人街米其林，把粤菜做成主流追捧的样子）、<a href="https://www.haidilao.com/" target="_blank" rel="noopener">海底捞 Haidilao</a>（靠服务和体验把火锅开进全美主流商场）、<a href="https://timhowanusa.com/" target="_blank" rel="noopener">添好运 Tim Ho Wan</a>（米其林点心开成全球连锁）、<a href="https://hakkasan.com/las-vegas/" target="_blank" rel="noopener">Hakkasan</a>（把粤菜做成全球高端品牌）、<a href="http://xianfoods.com/" target="_blank" rel="noopener">西安名吃 Xi'an Famous Foods</a>（法拉盛小档口做成纽约人排队的连锁）、<a href="http://www.redfarmnyc.com/" target="_blank" rel="noopener">RedFarm</a>（把点心做成纽约主流食客追捧的创意中餐）。</p>
+        <p class="group-label">落到会员店的结果</p>
+        <p class="punchline">味道不用改，文化先破圈——客户和资本，一起引进来。</p>
+        <p class="punchline" style="margin-top:16px;">说到底，文化破圈就一件事——让中餐赚老外的钱。</p>
+        <p style="text-align:center; color:var(--ink-soft); font-size:15px; margin:12px auto 0; max-width:640px;">客户进店吃饭是钱，资本看进来也是钱；前面讲的衔接、平台、资源，最后都落到这一句上。</p>
       </section>
 
       <section id="huode">
         <div class="sec-head"><span class="sec-num">04</span><h2>在协会，能获得什么</h2></div>
-        <p class="sec-lead">加入进来，能拿到什么，比协会要做什么更重要。落在会员店里的，是这六样。</p>
+        <p class="sec-conclusion"><span class="c-label">本节结论</span>加入进来，能拿到什么，比协会要做什么更重要。落在会员店里的，是这八样。</p>
+        <p class="group-label">先看懂什么</p>
         <div class="points">
-          <div class="point">
+          <div class="point wide">
             <span class="p-num">获得一</span>
-            <h3>用上现成的 AI 工具</h3>
-            <p>已经跑通的 AI 语音点餐和 AI 营销先试点用起来，忙时不漏单，广告和评价有人管，省下的是真人手。</p>
+            <h3>先看懂智能化时代</h3>
+            <p>客人找店、点餐、评价的方式都在变，美国餐饮正进入智能化时代。先把这个时代看明白，再把已经跑通的 AI 工具一件件试点用进店里，不盲目追新，省下的是真人手。工具怎么落，见 06 节。</p>
           </div>
+        </div>
+        <p class="group-label">协会做什么</p>
+        <div class="points">
           <div class="point">
             <span class="p-num">获得二</span>
             <h3>产业链一张桌子对接</h3>
@@ -355,12 +419,15 @@
           <div class="point">
             <span class="p-num">获得三</span>
             <h3>资金的事有人帮</h3>
-            <p>常见融资问题先讲明白，对接名单现成，预付额度、流水信用这些新模式有路可走。</p>
+            <p>常见融资问题先讲明白，对接名单现成，预付额度、流水信用这些新模式有路可走。模式怎么走，见 06 节。</p>
           </div>
+        </div>
+        <p class="group-label">落到会员店的结果</p>
+        <div class="points">
           <div class="point">
             <span class="p-num">获得四</span>
             <h3>品牌被更多人看见</h3>
-            <p>每月的饭局承办店就是当月展示位，活动照片上协会官网展示，菜与人的故事有渠道讲出去。</p>
+            <p>每月的饭局承办店就是当月展示位，活动照片上协会官网展示；媒体营销也有人帮，探店内容、媒体报道、渠道推广，协会牵线搭台，菜与人的故事有渠道讲出去。</p>
           </div>
           <div class="point">
             <span class="p-num">获得五</span>
@@ -372,12 +439,25 @@
             <h3>缺什么，在协会里补什么</h3>
             <p>品牌、供应链、科技、资本、媒体、社区这些资源整合在一处，缺哪样对接哪样，不用再满世界跑。</p>
           </div>
+          <div class="point">
+            <span class="p-num">获得七</span>
+            <h3>有一手店铺资源</h3>
+            <p>想开店、扩店或转让，铺位和转让信息先在协会里流通，一手消息早知道，少过一道手，少花冤枉钱。</p>
+          </div>
+          <div class="point">
+            <span class="p-num">获得八</span>
+            <h3>文化破圈 · 引来更多老外客户</h3>
+            <p>协会帮会员店在文化上破圈，把老外的资源引进来、把衔接功夫做足，老外客户进得来。这一件是全案的重点，怎么破，见 03 节细讲。</p>
+          </div>
         </div>
       </section>
 
       <section id="fangxiang">
         <div class="sec-head"><span class="sec-num">05</span><h2>沿协会六大方向 · 各落一步</h2></div>
-        <p class="sec-lead">协会提出的六个方向，每一个都先落下一步看得见的动作，与饭局、球局相互衔接。</p>
+        <p class="sec-conclusion"><span class="c-label">本节结论</span>协会提出的六个方向不改，每一个都先落下一步看得见的动作。</p>
+        <p class="group-label">先看懂什么</p>
+        <p>六大方向是协会已经定下的框架，本节不另起炉灶：方向不变，只给每个方向配一个能马上动手的第一步，并与饭局、球局相互衔接。</p>
+        <p class="group-label">协会做什么 · 落到会员店的结果</p>
         <div class="directions">
           <div class="direction">
             <h3>链通产业</h3>
@@ -397,22 +477,34 @@
           </div>
           <div class="direction">
             <h3>育才储能</h3>
-            <p>方向：为行业聚拢并培养新生代餐饮人。<span class="act">一步动作：新生代餐饮人及创业委员会以饭局、球局为入口，把年轻从业者先聚到一起。</span></p>
+            <p>方向：为行业聚拢并培养新生代餐饮人。<span class="act">一步动作：新生代餐饮人及创业委员会以饭局、球局为入口，把年轻从业者先聚到一起；协会不自己从头办课，先把现成的官方培训资源对接进来——纽约市小企业服务局（NYC SBS）办的纽约餐饮学院免费餐饮经营课，讲经营、财务、合规这些老板和店长真正用得上的东西，协会帮会员对上去上课，缺哪块补哪块。</span></p>
           </div>
           <div class="direction">
             <h3>文化传播</h3>
-            <p>方向：讲好华人餐饮的菜与人的故事。<span class="act">一步动作：协会动态持续记录会员企业的菜与人，从身边的一家店讲起。</span></p>
+            <p>方向：讲好华人餐饮的菜与人的故事，更要用主流听得懂的方式讲出去——这就是文化破圈。<span class="act">一步动作：会员企业的菜与人，先做一版英文讲述，进协会英文动态与主流渠道，从身边的一家店讲起。</span></p>
           </div>
         </div>
+        <p style="margin-top:18px;">六个方向各先走一步，第一阶段就有了六个看得见的落点。</p>
       </section>
 
       <section id="funeng">
         <div class="sec-head"><span class="sec-num">06</span><h2>金融与 AI 如何赋能餐饮实体</h2></div>
-        <p class="sec-lead">赋能不是口号。美国主流餐饮在金融工具和标准化运营上，已经跑出成熟的模式，华人餐饮实体大多还没用上。协会要做的，就是把这些已经跑通的美国模式，翻译成华人老板听得懂、用得上的版本，带进店里。具体落在实体老板每天真正卡住的两个问题上：钱和人。金融解决现金流，AI 解决人手，协会各自先落一步。</p>
+        <p class="sec-conclusion"><span class="c-label">本节结论</span>赋能落到实体老板每天真正卡住的问题上：金融解决现金流，AI 解决人手，门店模式解决铺面，协会各自先落一步。</p>
+        <p>美国主流餐饮在金融工具和标准化运营上，已经跑出成熟的模式，华人餐饮实体大多还没用上。协会要做的，就是把这些已经跑通的美国模式，翻译成华人老板听得懂、用得上的版本，带进店里。</p>
 
+        <p class="group-label">先看懂什么</p>
+        <div class="empower">
+          <h3>钱的问题 · 卡在现金流</h3>
+          <p class="problem">餐饮实体最缺的不是生意，是现金流：房租押金、装修、设备、进货样样先垫钱，回款却是一天一天慢慢收；小店没抵押物、账目不规范，银行的门难进。金融赋能，就是把这条路打通。美国已经跑通的两个模式，可以先带进来：一是<strong class="navy">预付餐饮额度模式</strong>，以 inKind 为代表——平台与食客预先买下餐厅未来的餐饮额度，餐厅提前拿到现金周转，食客之后慢慢来店里消费，本质是把未来的营业额，提前变成今天的资金。二是<strong class="navy">流水信用模式</strong>——美国的支付与 POS 平台已经按餐厅的真实流水给小店放周转资金，不用抵押，按营业额的比例慢慢还款；会员企业把流水理清，就是帮他们接上这类工具。</p>
+        </div>
+        <div class="empower">
+          <h3>人的问题 · 先看懂时代与文化</h3>
+          <p class="problem">AI 赋能，先不是买工具。先看懂两件事：一是<strong class="navy">时代</strong>——美国客人的消费习惯已经在线化和智能化，找店、点餐、评价、付款都先过手机，主流餐饮的接单、营销、账目都在跟着变；二是<strong class="navy">文化</strong>——这些做法背后，是美国客人看重效率、透明与评价的消费文化。华人餐饮想走进主流，先要理解这个时代、理解这套文化，再把工具一件件用顺。工具，是后面的事。</p>
+        </div>
+
+        <p class="group-label">协会做什么</p>
         <div class="empower">
           <h3>金融赋能 · 先解决现金流</h3>
-          <p class="problem">餐饮实体最缺的不是生意，是现金流：房租押金、装修、设备、进货样样先垫钱，回款却是一天一天慢慢收；小店没抵押物、账目不规范，银行的门难进。金融赋能，就是把这条路打通。美国已经跑通的两个模式，可以先带进来：一是<strong class="navy">预付餐饮额度模式</strong>，以 inKind 为代表——平台与食客预先买下餐厅未来的餐饮额度，餐厅提前拿到现金周转，食客之后慢慢来店里消费，本质是把未来的营业额，提前变成今天的资金。二是<strong class="navy">流水信用模式</strong>——美国的支付与 POS 平台已经按餐厅的真实流水给小店放周转资金，不用抵押，按营业额的比例慢慢还款；会员企业把流水理清，就是帮他们接上这类工具。</p>
           <div class="steps">
             <div class="step">
               <span class="step-badge">一</span>
@@ -433,8 +525,8 @@
         </div>
 
         <div class="empower">
-          <h3>AI 赋能 · 先把现成的工具用起来</h3>
-          <p class="problem">协会科技与 AI 委员会的负责人温林鑫，创办的 Chowbus 是北美服务亚洲餐厅的餐饮科技公司，服务上万家餐厅。它已经上线的两件 AI 工具，正对着华人餐饮店最紧的两个点：接单的人和做营销的人。协会要做的，是把这种现成的工具带进会员店里先用起来。</p>
+          <h3>AI 赋能 · 先看懂时代，再谈工具</h3>
+          <p class="problem">在这个基础上，再看已经跑通的工具。协会科技与 AI 委员会的负责人温林鑫，创办的 Chowbus 是北美服务亚洲餐厅的餐饮科技公司，服务上万家餐厅。它已经上线的两件 AI 工具，正对着华人餐饮店最紧的两个点：接单的人和做营销的人。协会要做的，是把这种现成的工具带进会员店里先用起来。</p>
           <div class="steps">
             <div class="step">
               <span class="step-badge">一</span>
@@ -459,10 +551,38 @@
           <p class="problem">除了钱和人，铺面本身也是赋能的一块。把美国主流餐饮已经跑顺的铺面模式拿过来——门店形象、店内动线、菜单结构、明档与自助点餐，这些成熟的铺面做法，结合华人餐馆的实际做本地化，让华人小店的铺面看起来、运转起来都向主流看齐。助力华餐发展成为主流，先从铺面进入主流的样子开始。</p>
         </div>
 
-        <p class="vision">助力华餐发展成为主流</p>
-        <p class="org-sign">美国餐饮业发展协会 · American Restaurant Development Association</p>
-        <p class="closing">以上均在协会既有基础上推进，先把第一阶段的节奏跑起来。</p>
+        <p class="group-label">落到会员店的结果</p>
+        <p>三件事最后都落到店里：现金流有路可走，接单和营销省下真人手，铺面看起来、运转起来向主流看齐。</p>
+
       </section>
+
+      <section id="shequn">
+        <div class="sec-head"><span class="sec-num">07</span><h2>社群节奏 · 每月饭局，半月一次球友会</h2></div>
+        <p class="sec-conclusion"><span class="c-label">本节结论</span>第一阶段先做这两件：饭局每月一局，球友会半个月办一场——与其一年办一场大活动，不如把见面做成日常，让协会走进经营者的生活。</p>
+        <p class="group-label">先看懂什么</p>
+        <p>为什么偏偏是运动？餐馆老板平常各忙各的店，正经的会很难把人聚齐；运动是大家自己也愿意出来的事。信息只有在见面交流的碰撞中才会产生，人先出来、常碰面，关系才保持得住；关系在，生意和链接都是顺带的事。每场活动的照片和动态发出去，本身也是协会和会员店现成的宣传。</p>
+        <p class="group-label">协会做什么</p>
+        <div class="rhythm">
+          <div class="rhythm-item">
+            <h3><span class="freq">每月一局</span>协会饭局</h3>
+            <p>每月一局，由会员老板轮流主办，就在主办老板自己的店里办。主办人定桌，协会负责召集人，固定时间，规模二三十人，以餐饮经营者与产业链上下游为主。饭局开在哪家店，就为哪家店带来一桌客人，也是一次实地的展示机会。时间固定下来，久了便成习惯。</p>
+          </div>
+          <div class="rhythm-item">
+            <h3><span class="freq">纽约先行</span>半月一次球友会</h3>
+            <p>球友会半个月一次，固定节奏，先从纽约开始：纽约先把半个月一场跑成习惯，时间、场地固定下来；其他地区随后跟上，照纽约的样子在本地组织本地场，时间和场地按本地节奏定（球种筹备中）。协会给出召集与按水平分组的框架，新人友好，让不常运动的经营者也能轻松加入。球友会不设门槛，会员和老板们可以带身边的朋友一起来，先打球、先吃饭，熟络了自然进圈子；人带人，圈子是这样一圈圈滚大的。纽约先跑出样子，其他地区照着复制。球场上先熟络起来，合作与生意，都是顺带聊出来的。</p>
+          </div>
+          <div class="rhythm-item">
+            <h3><span class="freq">拍照留影</span>活动照片上官网展示</h3>
+            <p>每次活动都拍照留影，照片发到协会官网的活动与动态栏目里展示。各地区的活动在官网上看得见、晒得出，彼此带动，也让还没组织起来的地区有个现成的样子可以照着学。</p>
+          </div>
+        </div>
+        <p class="group-label">落到会员店的结果</p>
+        <p class="punchline">见面频率，就是贴近程度。</p>
+      </section>
+
+      <p class="vision">助力华餐发展成为主流</p>
+      <p class="org-sign">美国餐饮业发展协会 · American Restaurant Development Association</p>
+      <p class="closing">以上均在协会既有基础上推进，先把第一阶段的节奏跑起来。</p>
 
       <footer>美国餐饮业发展协会 · 发展提案</footer>
 
