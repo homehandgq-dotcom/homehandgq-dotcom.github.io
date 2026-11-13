@@ -68,21 +68,6 @@
         color: var(--ink-soft); font-size: 15.5px;
       }
 
-      /* ---------- 目录 ---------- */
-      nav.toc {
-        margin: 48px 0 8px; border-top: 1px solid var(--line);
-        border-bottom: 1px solid var(--line);
-        padding: 18px 4px;
-        display: flex; flex-wrap: wrap; gap: 6px 26px; justify-content: center;
-      }
-      nav.toc a {
-        color: var(--navy); text-decoration: none; font-size: 14.5px;
-        font-weight: 500; display: inline-flex; align-items: center;
-        min-height: 36px; padding: 2px 4px;
-      }
-      nav.toc a span { color: var(--gold); font-weight: 700; margin-right: 7px; font-size: 13px; }
-      nav.toc a:hover { text-decoration: underline; text-underline-offset: 4px; }
-
       /* ---------- 章节 ---------- */
       section { padding-top: 52px; }
       .sec-head { display: flex; align-items: baseline; gap: 14px; margin-bottom: 8px; }
@@ -240,7 +225,6 @@
         .direction { grid-template-columns: 1fr; gap: 2px; }
         .step { grid-template-columns: 40px 1fr; padding: 18px; }
         .step-badge { font-size: 22px; }
-        nav.toc { justify-content: flex-start; gap: 2px 18px; }
       }
       @media (prefers-reduced-motion: reduce) {
         html { scroll-behavior: auto; }
@@ -259,18 +243,9 @@
         <p class="intro">本提案沿协会章程与既有口径展开，只把已经定下来的事情，一项一项做深、做实。</p>
       </header>
 
-      <nav class="toc" aria-label="目录">
-        <a href="#dingwei"><span>01</span>定位说明</a>
-        <a href="#tieqin"><span>02</span>贴近华人圈子</a>
-        <a href="#shequn"><span>03</span>社群节奏</a>
-        <a href="#fangxiang"><span>04</span>六大方向落地</a>
-        <a href="#maidian"><span>05</span>我们的方向 · 六大卖点</a>
-        <a href="#funeng"><span>06</span>金融与 AI 赋能餐饮实体</a>
-      </nav>
-
       <section id="dingwei">
         <div class="sec-head"><span class="sec-num">01</span><h2>定位说明 · 把第一阶段做深做透</h2></div>
-        <p>协会的定位分三个阶段：先扎根华人餐饮社群，再扩展至亚裔餐饮，最终建设国际性组织。这是一个稳健而清晰的次序——根扎得越深，后面的扩展才越有底气。而这三步走到的终点，是协会的终极愿景：<strong class="navy">让华餐成为主流</strong>。</p>
+        <p>协会的定位分三个阶段：先扎根华人餐饮社群，再扩展至亚裔餐饮，最终建设国际性组织。这是一个稳健而清晰的次序——根扎得越深，后面的扩展才越有底气。而这三步走到的终点，是协会的终极愿景：<strong class="navy">助力华餐发展成为主流</strong>。</p>
         <p>本提案聚焦的，正是<strong class="navy">第一阶段</strong>。把这一阶段做深做透，意思很具体：让协会成为<strong class="navy">离华人餐饮老板最近、服务最贴身</strong>的协会。规模可以慢慢长，贴近这件事，从第一天起就可以做到位。</p>
         <p>具体做法分两部分：社群以固定节奏运转，协会既定的六大方向各自落下一步实动作。以下逐项说明。</p>
         <p>本提案全部内容，归结为一件事：<strong class="navy">协会给餐饮实体做赋能</strong>。金融、AI、资源、品牌、门店模式，都是赋能的手段。</p>
@@ -300,16 +275,16 @@
       </section>
 
       <section id="shequn">
-        <div class="sec-head"><span class="sec-num">03</span><h2>社群节奏 · 每月饭局，各地球友会</h2></div>
-        <p class="sec-lead">第一阶段先做这两件：饭局每月一局，球友会由各地区自己组织，先从纽约开始跑起来。圈子靠见面黏住。与其一年办一场大活动，不如把见面做成日常，让协会走进经营者的生活。</p>
+        <div class="sec-head"><span class="sec-num">03</span><h2>社群节奏 · 每月饭局，每周球友会</h2></div>
+        <p class="sec-lead">第一阶段先做这两件：饭局每月一局，球友会每周办一场，先由纽约开始跑起来，其他地区随后跟上。圈子靠见面黏住。与其一年办一场大活动，不如把见面做成日常，让协会走进经营者的生活。</p>
         <div class="rhythm">
           <div class="rhythm-item">
             <h3><span class="freq">每月一局</span>协会饭局</h3>
             <p>每月一局，由会员老板轮流主办，就在主办老板自己的店里办。主办人定桌，协会负责召集人，固定时间，规模二三十人，以餐饮经营者与产业链上下游为主。饭局开在哪家店，就为哪家店带来一桌客人，也是一次实地的展示机会。时间固定下来，久了便成习惯。</p>
           </div>
           <div class="rhythm-item">
-            <h3><span class="freq">各地组织</span>球友会</h3>
-            <p>球友会不设统一时间，由各地区自行组织：本地人组织本地场，时间、场地都按本地的节奏来定（球种筹备中）；协会给出召集与按水平分组的框架，新人友好，让不常运动的经营者也能轻松加入。第一阶段先由纽约开始，纽约先把球友会跑出样子，其他地区照着复制跟上。球场上先熟络起来，合作与生意，都是顺带聊出来的。</p>
+            <h3><span class="freq">纽约先行</span>每周球友会</h3>
+            <p>球友会每周一次，固定节奏，先从纽约开始：纽约先把每周一场跑成习惯，时间、场地固定下来；其他地区随后跟上，照纽约的样子在本地组织本地场，时间和场地按本地节奏定（球种筹备中）。协会给出召集与按水平分组的框架，新人友好，让不常运动的经营者也能轻松加入。纽约先跑出样子，其他地区照着复制。球场上先熟络起来，合作与生意，都是顺带聊出来的。</p>
           </div>
           <div class="rhythm-item">
             <h3><span class="freq">拍照留影</span>活动照片上官网展示</h3>
@@ -371,13 +346,13 @@
           </div>
           <div class="point">
             <span class="p-num">卖点四</span>
-            <h3>品牌推广营销</h3>
-            <p>帮会员企业做品牌推广与营销，从本地口碑到媒体曝光，一步步把牌子打出去。</p>
+            <h3>品牌故事 · 助力品牌</h3>
+            <p>讲每家会员企业的菜与人的故事，用故事传播助力品牌成长，让好店被更多人看见。</p>
           </div>
           <div class="point">
             <span class="p-num">卖点五</span>
-            <h3>品牌故事 · 助力品牌</h3>
-            <p>讲每家会员企业的菜与人的故事，用故事传播助力品牌成长，让好店被更多人看见。</p>
+            <h3>品牌推广营销</h3>
+            <p>帮会员企业做品牌推广与营销，从本地口碑到媒体曝光，一步步把牌子打出去。</p>
           </div>
           <div class="point">
             <span class="p-num">卖点六</span>
@@ -414,43 +389,33 @@
         </div>
 
         <div class="empower">
-          <h3>AI 赋能 · 给每家店配一个标准化助理</h3>
-          <p class="problem">餐饮实体最紧的是人：请人贵、留人难，老板天天守店，没空做营销和数据。美国连锁餐饮靠的是一套标准化流程，小店缺的正是这个。AI 赋能，就是把 AI 做成餐饮实体的标准化助理：点餐、评价回复、订货提醒、排班、数据看板，这些重复又必须按标准做的活，交给 AI 助理按统一标准干，老板不用天天守店盯细节，小店也能有连锁店的标准化程度。</p>
+          <h3>AI 赋能 · 先把现成的工具用起来</h3>
+          <p class="problem">协会科技与 AI 委员会的负责人温林鑫，创办的 Chowbus 是北美服务亚洲餐厅的餐饮科技公司，服务上万家餐厅。它已经上线的两件 AI 工具，正对着华人餐饮店最紧的两个点：接单的人和做营销的人。协会要做的，是把这种现成的工具带进会员店里先用起来。</p>
           <div class="steps">
             <div class="step">
               <span class="step-badge">一</span>
-              <h3>点餐环节</h3>
-              <p>AI 助理电话接单、在线点餐、自助点餐，按统一标准接待，忙时不漏单，人工省下来。</p>
+              <h3>AI 语音点餐</h3>
+              <p>客人打电话来，用普通话、粤语、韩语或英文说话就能点餐，AI 自动识别语言接单，订单直接进店里的收银系统和厨房出单；忙时不漏单，还能顺带接订位、答营业时间这类常见问题。</p>
             </div>
             <div class="step">
               <span class="step-badge">二</span>
-              <h3>厨房环节</h3>
-              <p>按历史销量预测备菜量，少浪费、少缺货。</p>
+              <h3>AI 营销</h3>
+              <p>广告和评价有人管了。在系统里直接投 Google 和 Yelp 的广告，不用再找代理公司；两家的评价自动汇总到一处，AI 按评价内容生成回复建议，老板选个语气就能回。</p>
             </div>
             <div class="step">
               <span class="step-badge">三</span>
-              <h3>营销环节</h3>
-              <p>评价由 AI 助理按统一口径回复，社媒内容生成、老客唤醒和会员营销，让小店也有人管营销。</p>
-            </div>
-            <div class="step">
-              <span class="step-badge">四</span>
-              <h3>管理环节</h3>
-              <p>排班、库存订货提醒、经营数据看板由 AI 助理盯着，老板一眼看清哪道菜赚钱、哪天最忙。</p>
-            </div>
-            <div class="step">
-              <span class="step-badge">五</span>
               <h3>协会先落一步</h3>
-              <p>由科技与 AI 委员会牵头，先选少数会员企业做试点，跑出真实使用效果，再向更多会员推广，不搞一刀切换系统。</p>
+              <p>由科技与 AI 委员会牵头，先选少数会员企业试点这两件工具，跑出真实效果，再向更多会员推广。</p>
             </div>
           </div>
         </div>
 
         <div class="empower">
           <h3>门店模式 · 把主流餐饮的铺面做法带进来</h3>
-          <p class="problem">除了钱和人，铺面本身也是赋能的一块。把美国主流餐饮已经跑顺的铺面模式拿过来——门店形象、店内动线、菜单结构、明档与自助点餐，这些成熟的铺面做法，结合华人餐馆的实际做本地化，让华人小店的铺面看起来、运转起来都向主流看齐。让华餐成为主流，先从铺面进入主流的样子开始。</p>
+          <p class="problem">除了钱和人，铺面本身也是赋能的一块。把美国主流餐饮已经跑顺的铺面模式拿过来——门店形象、店内动线、菜单结构、明档与自助点餐，这些成熟的铺面做法，结合华人餐馆的实际做本地化，让华人小店的铺面看起来、运转起来都向主流看齐。助力华餐发展成为主流，先从铺面进入主流的样子开始。</p>
         </div>
 
-        <p class="vision">让华餐成为主流</p>
+        <p class="vision">助力华餐发展成为主流</p>
         <p class="closing">以上均在协会既有基础上推进，先把第一阶段的节奏跑起来。</p>
       </section>
 
