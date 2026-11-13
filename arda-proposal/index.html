@@ -68,6 +68,37 @@
         color: var(--ink-soft); font-size: 15.5px;
       }
 
+      /* 定位重点块（第 01 节开篇） */
+      .focus-position {
+        background: var(--gold-soft);
+        border-top: 3px solid var(--gold);
+        padding: 30px 32px 26px;
+        margin: 20px 0 28px;
+        text-align: center;
+      }
+      .focus-label {
+        display: inline-block;
+        font-size: 12.5px; font-weight: 700;
+        letter-spacing: .45em; text-indent: .45em;
+        color: var(--gold);
+        border: 1px solid var(--gold);
+        padding: 3px 12px 3px 14px;
+        margin-bottom: 18px;
+      }
+      .focus-statement {
+        font-family: "Noto Serif SC", "Songti SC", serif;
+        font-size: clamp(22px, 4.4vw, 30px);
+        font-weight: 900; color: var(--navy-deep);
+        line-height: 1.55; letter-spacing: .02em;
+        margin: 0 auto 18px; max-width: 680px;
+      }
+      .focus-expand {
+        max-width: 680px; margin: 0 auto;
+        color: var(--ink-soft); font-size: 15.5px;
+        line-height: 1.9; text-align: left;
+      }
+      .focus-expand strong { color: var(--navy); }
+
       /* ---------- 章节 ---------- */
       section { padding-top: 52px; }
       .sec-head { display: flex; align-items: baseline; gap: 14px; margin-bottom: 8px; }
@@ -225,6 +256,8 @@
         .direction { grid-template-columns: 1fr; gap: 2px; }
         .step { grid-template-columns: 40px 1fr; padding: 18px; }
         .step-badge { font-size: 22px; }
+        .focus-position { padding: 24px 20px 20px; }
+        .focus-expand { text-align: left; }
       }
       @media (prefers-reduced-motion: reduce) {
         html { scroll-behavior: auto; }
@@ -239,20 +272,45 @@
         <h1>美国餐饮业发展协会<br />发展提案</h1>
         <p class="subtitle">凝心聚力，链通全美餐饮产业</p>
         <hr class="rule" />
-        <p class="positioning">不求做最广，<br />但争取做新时代<span class="gold">最贴近华人圈子和中餐</span>的餐饮协会。</p>
+        <p class="positioning">不求做最广，<br />但争取做AI食代<span class="gold">最贴近华人圈子和中餐</span>的餐饮协会。</p>
         <p class="intro">本提案沿协会章程与既有口径展开，只把已经定下来的事情，一项一项做深、做实。</p>
       </header>
 
       <section id="dingwei">
         <div class="sec-head"><span class="sec-num">01</span><h2>定位说明 · 把第一阶段做深做透</h2></div>
+        <div class="focus-position">
+          <span class="focus-label">定位</span>
+          <p class="focus-statement">不求做最广，但争取做AI食代最贴近华人圈子和中餐的餐饮协会。</p>
+          <p class="focus-expand">先说清这个「AI食代」是什么。华人餐饮正在换一套打法：客人改在线上找店，AI 工具开始进店，资金有了新的模式，铺面也有了新的做法。店还是那些店，环境已经全变了。环境换了打法，华人餐饮迎来的，是一个<strong>AI食代</strong>——食物的食，变的正是吃饭这门生意本身。在这个AI食代里，华人餐饮老板最缺的不是再多一个大协会，而是<strong>离得近、听得懂、能帮上眼前事</strong>的协会。ARDA 的定位，就定在这里——不求做最广，先把贴近这一件事做到位。</p>
+        </div>
         <p>协会的定位分三个阶段：先扎根华人餐饮社群，再扩展至亚裔餐饮，最终建设国际性组织。这是一个稳健而清晰的次序——根扎得越深，后面的扩展才越有底气。而这三步走到的终点，是协会的终极愿景：<strong class="navy">助力华餐发展成为主流</strong>。</p>
         <p>本提案聚焦的，正是<strong class="navy">第一阶段</strong>。把这一阶段做深做透，意思很具体：让协会成为<strong class="navy">离华人餐饮老板最近、服务最贴身</strong>的协会。规模可以慢慢长，贴近这件事，从第一天起就可以做到位。</p>
         <p>具体做法分两部分：社群以固定节奏运转，协会既定的六大方向各自落下一步实动作。以下逐项说明。</p>
         <p>本提案全部内容，归结为一件事：<strong class="navy">协会给餐饮实体做赋能</strong>。金融、AI、资源、品牌、门店模式，都是赋能的手段。</p>
       </section>
 
+      <section id="shequn">
+        <div class="sec-head"><span class="sec-num">02</span><h2>社群节奏 · 每月饭局，每周球友会</h2></div>
+        <p class="sec-lead">第一阶段先做这两件：饭局每月一局，球友会每周办一场，先由纽约开始跑起来，其他地区随后跟上。圈子靠见面黏住。与其一年办一场大活动，不如把见面做成日常，让协会走进经营者的生活。</p>
+        <div class="rhythm">
+          <div class="rhythm-item">
+            <h3><span class="freq">每月一局</span>协会饭局</h3>
+            <p>每月一局，由会员老板轮流主办，就在主办老板自己的店里办。主办人定桌，协会负责召集人，固定时间，规模二三十人，以餐饮经营者与产业链上下游为主。饭局开在哪家店，就为哪家店带来一桌客人，也是一次实地的展示机会。时间固定下来，久了便成习惯。</p>
+          </div>
+          <div class="rhythm-item">
+            <h3><span class="freq">纽约先行</span>每周球友会</h3>
+            <p>球友会每周一次，固定节奏，先从纽约开始：纽约先把每周一场跑成习惯，时间、场地固定下来；其他地区随后跟上，照纽约的样子在本地组织本地场，时间和场地按本地节奏定（球种筹备中）。协会给出召集与按水平分组的框架，新人友好，让不常运动的经营者也能轻松加入。纽约先跑出样子，其他地区照着复制。球场上先熟络起来，合作与生意，都是顺带聊出来的。</p>
+          </div>
+          <div class="rhythm-item">
+            <h3><span class="freq">拍照留影</span>活动照片上官网展示</h3>
+            <p>每次球友会都拍照留影，照片发到协会官网的活动与动态栏目里展示。各地区的活动在官网上看得见、晒得出，彼此带动，也让还没组织起来的地区有个现成的样子可以照着学。</p>
+          </div>
+        </div>
+        <p class="punchline">见面频率，就是贴近程度。</p>
+      </section>
+
       <section id="tieqin">
-        <div class="sec-head"><span class="sec-num">02</span><h2>贴近华人圈子 · 四件实事</h2></div>
+        <div class="sec-head"><span class="sec-num">03</span><h2>贴近华人圈子 · 四件实事</h2></div>
         <p class="sec-lead">「贴近」不是一句口号，落在日常里是四件具体的事。</p>
         <div class="grid2">
           <div class="fact">
@@ -272,26 +330,6 @@
             <p>协会的发起人与经营者是同行。活动就设在法拉盛与唐人街，时间贴合餐饮从业者的作息，收了摊走几步就能到。</p>
           </div>
         </div>
-      </section>
-
-      <section id="shequn">
-        <div class="sec-head"><span class="sec-num">03</span><h2>社群节奏 · 每月饭局，每周球友会</h2></div>
-        <p class="sec-lead">第一阶段先做这两件：饭局每月一局，球友会每周办一场，先由纽约开始跑起来，其他地区随后跟上。圈子靠见面黏住。与其一年办一场大活动，不如把见面做成日常，让协会走进经营者的生活。</p>
-        <div class="rhythm">
-          <div class="rhythm-item">
-            <h3><span class="freq">每月一局</span>协会饭局</h3>
-            <p>每月一局，由会员老板轮流主办，就在主办老板自己的店里办。主办人定桌，协会负责召集人，固定时间，规模二三十人，以餐饮经营者与产业链上下游为主。饭局开在哪家店，就为哪家店带来一桌客人，也是一次实地的展示机会。时间固定下来，久了便成习惯。</p>
-          </div>
-          <div class="rhythm-item">
-            <h3><span class="freq">纽约先行</span>每周球友会</h3>
-            <p>球友会每周一次，固定节奏，先从纽约开始：纽约先把每周一场跑成习惯，时间、场地固定下来；其他地区随后跟上，照纽约的样子在本地组织本地场，时间和场地按本地节奏定（球种筹备中）。协会给出召集与按水平分组的框架，新人友好，让不常运动的经营者也能轻松加入。纽约先跑出样子，其他地区照着复制。球场上先熟络起来，合作与生意，都是顺带聊出来的。</p>
-          </div>
-          <div class="rhythm-item">
-            <h3><span class="freq">拍照留影</span>活动照片上官网展示</h3>
-            <p>每次球友会都拍照留影，照片发到协会官网的活动与动态栏目里展示。各地区的活动在官网上看得见、晒得出，彼此带动，也让还没组织起来的地区有个现成的样子可以照着学。</p>
-          </div>
-        </div>
-        <p class="punchline">见面频率，就是贴近程度。</p>
       </section>
 
       <section id="fangxiang">
