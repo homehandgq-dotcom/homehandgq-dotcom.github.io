@@ -46,6 +46,7 @@
         font-weight: 900; color: var(--navy);
         margin: 0 0 14px; line-height: 1.35; letter-spacing: .02em;
       }
+      h1 .h1-sub { font-size: .52em; }
       .subtitle {
         font-family: "Noto Serif SC", "Songti SC", serif;
         font-size: clamp(16px, 3vw, 20px); color: var(--ink-soft);
@@ -178,7 +179,7 @@
       .direction p { margin: 0; color: var(--ink-soft); font-size: 15px; }
       .direction p .act { color: var(--ink); }
 
-      /* 六大卖点 */
+      /* 在协会能获得什么 */
       .points { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; }
       .point {
         border: 1px solid var(--line); padding: 22px 24px; background: var(--paper);
@@ -241,6 +242,11 @@
         margin-top: 12px; font-size: 14.5px; font-weight: 400;
         color: var(--ink-soft);
       }
+      .org-sign {
+        margin: 22px 0 0; text-align: center;
+        font-size: 13.5px; color: var(--ink-soft); letter-spacing: .08em;
+      }
+      .org-sign + .closing { margin-top: 10px; }
       footer {
         margin-top: 56px; border-top: 1px solid var(--line);
         padding-top: 22px; text-align: center;
@@ -269,7 +275,7 @@
 
       <header>
         <p class="org-line">美国餐饮业发展协会 · ARDA</p>
-        <h1>美国餐饮业发展协会<br />发展提案</h1>
+        <h1>美国餐饮业发展协会<br /><span class="h1-sub">发展提案</span></h1>
         <p class="subtitle">凝心聚力，链通全美餐饮产业</p>
         <hr class="rule" />
         <p class="positioning">不求做最广，<br />但争取做AI食代<span class="gold">最贴近华人圈子和中餐</span>的餐饮协会。</p>
@@ -290,20 +296,20 @@
       </section>
 
       <section id="shequn">
-        <div class="sec-head"><span class="sec-num">02</span><h2>社群节奏 · 每月饭局，每周球友会</h2></div>
-        <p class="sec-lead">第一阶段先做这两件：饭局每月一局，球友会每周办一场，先由纽约开始跑起来，其他地区随后跟上。圈子靠见面黏住。与其一年办一场大活动，不如把见面做成日常，让协会走进经营者的生活。</p>
+        <div class="sec-head"><span class="sec-num">02</span><h2>社群节奏 · 每月饭局，半月一次球友会</h2></div>
+        <p class="sec-lead">第一阶段先做这两件：饭局每月一局，球友会半个月办一场，先由纽约开始跑起来，其他地区随后跟上。与其一年办一场大活动，不如把见面做成日常，让协会走进经营者的生活。</p>
         <div class="rhythm">
           <div class="rhythm-item">
             <h3><span class="freq">每月一局</span>协会饭局</h3>
             <p>每月一局，由会员老板轮流主办，就在主办老板自己的店里办。主办人定桌，协会负责召集人，固定时间，规模二三十人，以餐饮经营者与产业链上下游为主。饭局开在哪家店，就为哪家店带来一桌客人，也是一次实地的展示机会。时间固定下来，久了便成习惯。</p>
           </div>
           <div class="rhythm-item">
-            <h3><span class="freq">纽约先行</span>每周球友会</h3>
-            <p>球友会每周一次，固定节奏，先从纽约开始：纽约先把每周一场跑成习惯，时间、场地固定下来；其他地区随后跟上，照纽约的样子在本地组织本地场，时间和场地按本地节奏定（球种筹备中）。协会给出召集与按水平分组的框架，新人友好，让不常运动的经营者也能轻松加入。纽约先跑出样子，其他地区照着复制。球场上先熟络起来，合作与生意，都是顺带聊出来的。</p>
+            <h3><span class="freq">纽约先行</span>半月一次球友会</h3>
+            <p>球友会半个月一次，固定节奏，先从纽约开始：纽约先把半个月一场跑成习惯，时间、场地固定下来；其他地区随后跟上，照纽约的样子在本地组织本地场，时间和场地按本地节奏定（球种筹备中）。协会给出召集与按水平分组的框架，新人友好，让不常运动的经营者也能轻松加入。球友会不设门槛，会员和老板们可以带身边的朋友一起来，先打球、先吃饭，熟络了自然进圈子；人带人，圈子是这样一圈圈滚大的。纽约先跑出样子，其他地区照着复制。球场上先熟络起来，合作与生意，都是顺带聊出来的。</p>
           </div>
           <div class="rhythm-item">
             <h3><span class="freq">拍照留影</span>活动照片上官网展示</h3>
-            <p>每次球友会都拍照留影，照片发到协会官网的活动与动态栏目里展示。各地区的活动在官网上看得见、晒得出，彼此带动，也让还没组织起来的地区有个现成的样子可以照着学。</p>
+            <p>每次活动都拍照留影，照片发到协会官网的活动与动态栏目里展示。各地区的活动在官网上看得见、晒得出，彼此带动，也让还没组织起来的地区有个现成的样子可以照着学。</p>
           </div>
         </div>
         <p class="punchline">见面频率，就是贴近程度。</p>
@@ -332,8 +338,45 @@
         </div>
       </section>
 
+      <section id="huode">
+        <div class="sec-head"><span class="sec-num">04</span><h2>在协会，能获得什么</h2></div>
+        <p class="sec-lead">加入进来，能拿到什么，比协会要做什么更重要。落在会员店里的，是这六样。</p>
+        <div class="points">
+          <div class="point">
+            <span class="p-num">获得一</span>
+            <h3>用上现成的 AI 工具</h3>
+            <p>已经跑通的 AI 语音点餐和 AI 营销先试点用起来，忙时不漏单，广告和评价有人管，省下的是真人手。</p>
+          </div>
+          <div class="point">
+            <span class="p-num">获得二</span>
+            <h3>产业链一张桌子对接</h3>
+            <p>食材、设备、冷链物流、配套服务在协会里直接见面谈，采购和合作不用自己一家家找。</p>
+          </div>
+          <div class="point">
+            <span class="p-num">获得三</span>
+            <h3>资金的事有人帮</h3>
+            <p>常见融资问题先讲明白，对接名单现成，预付额度、流水信用这些新模式有路可走。</p>
+          </div>
+          <div class="point">
+            <span class="p-num">获得四</span>
+            <h3>品牌被更多人看见</h3>
+            <p>每月的饭局承办店就是当月展示位，活动照片上协会官网展示，菜与人的故事有渠道讲出去。</p>
+          </div>
+          <div class="point">
+            <span class="p-num">获得五</span>
+            <h3>一个能常来往来圈子</h3>
+            <p>每月饭局、半月一次球友会，同行老板和上下游常来常往，人先熟了，合作和生意顺带就谈出来了。</p>
+          </div>
+          <div class="point">
+            <span class="p-num">获得六</span>
+            <h3>缺什么，在协会里补什么</h3>
+            <p>品牌、供应链、科技、资本、媒体、社区这些资源整合在一处，缺哪样对接哪样，不用再满世界跑。</p>
+          </div>
+        </div>
+      </section>
+
       <section id="fangxiang">
-        <div class="sec-head"><span class="sec-num">04</span><h2>沿协会六大方向 · 各落一步</h2></div>
+        <div class="sec-head"><span class="sec-num">05</span><h2>沿协会六大方向 · 各落一步</h2></div>
         <p class="sec-lead">协会提出的六个方向，每一个都先落下一步看得见的动作，与饭局、球局相互衔接。</p>
         <div class="directions">
           <div class="direction">
@@ -359,43 +402,6 @@
           <div class="direction">
             <h3>文化传播</h3>
             <p>方向：讲好华人餐饮的菜与人的故事。<span class="act">一步动作：协会动态持续记录会员企业的菜与人，从身边的一家店讲起。</span></p>
-          </div>
-        </div>
-      </section>
-
-      <section id="maidian">
-        <div class="sec-head"><span class="sec-num">05</span><h2>我们的方向 · 六大卖点</h2></div>
-        <p class="sec-lead">协会往前走，靠的是六个实实在在的方向：把新技术、产业链、资本、营销、故事与各方资源，一件件落到会员企业的店里。</p>
-        <div class="points">
-          <div class="point">
-            <span class="p-num">卖点一</span>
-            <h3>AI 赋能</h3>
-            <p>把 AI 工具带进店里，点餐、厨房、营销、管理、数据分析，先试点再推广，让小店也用得上新技术。</p>
-          </div>
-          <div class="point">
-            <span class="p-num">卖点二</span>
-            <h3>联通各个产业</h3>
-            <p>品牌、食材、设备、冷链物流、配套服务同桌对接，产业链上下游在协会里直接见面谈。</p>
-          </div>
-          <div class="point">
-            <span class="p-num">卖点三</span>
-            <h3>资本赋能</h3>
-            <p>连接投资、融资与资本市场资源，先帮经营者把常见融资问题弄明白、把对接名单备齐。</p>
-          </div>
-          <div class="point">
-            <span class="p-num">卖点四</span>
-            <h3>品牌故事 · 助力品牌</h3>
-            <p>讲每家会员企业的菜与人的故事，用故事传播助力品牌成长，让好店被更多人看见。</p>
-          </div>
-          <div class="point">
-            <span class="p-num">卖点五</span>
-            <h3>品牌推广营销</h3>
-            <p>帮会员企业做品牌推广与营销，从本地口碑到媒体曝光，一步步把牌子打出去。</p>
-          </div>
-          <div class="point">
-            <span class="p-num">卖点六</span>
-            <h3>资源整合</h3>
-            <p>把品牌、供应链、科技、资本、媒体、社区这些原本分散的资源整合到一张桌子上，会员企业缺什么，在协会里就能对接什么，不用再自己满世界找。</p>
           </div>
         </div>
       </section>
@@ -454,6 +460,7 @@
         </div>
 
         <p class="vision">助力华餐发展成为主流</p>
+        <p class="org-sign">美国餐饮业发展协会 · American Restaurant Development Association</p>
         <p class="closing">以上均在协会既有基础上推进，先把第一阶段的节奏跑起来。</p>
       </section>
 
