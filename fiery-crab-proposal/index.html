@@ -1,0 +1,437 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="color-scheme" content="light">
+<link rel="icon" href="data:,">
+<title>Fiery Crab 旗舰店试点提案</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Noto+Serif+SC:wght@700;900&family=Noto+Sans+SC:wght@400;500;700;900&display=swap" rel="stylesheet">
+<style>
+:root{
+  --red:#C1272D; --red-dark:#9E1B22; --red-soft:#FFF1F1;
+  --blue:#0F2E4D; --blue2:#1B4A73; --blue-soft:#EEF3F8;
+  --ink:#17202A; --muted:#5D6B7A; --line:#E6EAF0;
+  --bg:#FFFFFF; --panel:#F7F8FA; --gold:#C9A86A;
+}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{margin:0;font-family:"Noto Sans SC",system-ui,-apple-system,Segoe UI,Roboto,sans-serif;color:var(--ink);background:var(--bg);line-height:1.75}
+a{color:inherit}
+button,[role="button"],summary{min-height:36px}
+/* top bar */
+.topbar{position:sticky;top:0;z-index:20;background:rgba(255,255,255,.96);backdrop-filter:blur(10px);border-bottom:1px solid var(--line)}
+.topbar-inner{max-width:1200px;margin:0 auto;padding:0 28px;height:58px;display:flex;align-items:center;gap:28px}
+.brand{font-weight:900;letter-spacing:.02em;color:var(--blue);white-space:nowrap;font-size:15px}
+.brand span{color:var(--red)}
+.topnav{display:flex;gap:4px;overflow:auto;scrollbar-width:none}
+.topnav::-webkit-scrollbar{display:none}
+.topnav a{text-decoration:none;font-size:13.5px;font-weight:700;color:#3A4756;padding:8px 12px;border-radius:999px;white-space:nowrap;min-height:36px;display:inline-flex;align-items:center}
+.topnav a:hover{background:var(--blue-soft);color:var(--blue)}
+.top-cta{margin-left:auto;background:var(--red);color:#fff !important}
+/* layout */
+.wrap{max-width:1200px;margin:0 auto;padding:0 28px}
+.hero{padding:52px 0 36px;border-bottom:1px solid var(--line);background:linear-gradient(180deg,#fff 0%,#fff 62%,#FDF6F3 100%)}
+.eyebrow{display:inline-flex;align-items:center;gap:8px;font-size:12px;font-weight:900;letter-spacing:.14em;color:var(--red);text-transform:uppercase}
+.eyebrow::before{content:"";width:28px;height:2px;background:var(--red);display:inline-block}
+.hero h1{font-family:"Noto Serif SC",serif;font-size:52px;line-height:1.08;margin:14px 0 12px;color:var(--blue);letter-spacing:-.02em}
+.hero h1 em{font-style:normal;color:var(--red)}
+.tagline{font-size:26px;font-weight:900;line-height:1.35;color:var(--ink)}
+.tagline b{color:var(--red)}
+.hero-desc{max-width:760px;color:var(--muted);font-size:16px;margin:14px 0 0}
+.pillars{display:grid;grid-template-columns:repeat(4,1fr);gap:14px;margin-top:28px}
+.pillar{background:#fff;border:1px solid var(--line);border-top:4px solid var(--blue);padding:18px 18px 16px;border-radius:12px}
+.pillar:nth-child(1){border-top-color:var(--red)} .pillar:nth-child(3){border-top-color:var(--red)}
+.pillar strong{display:block;font-size:16px;color:var(--blue);line-height:1.3}
+.pillar p{margin:6px 0 0;font-size:13.5px;color:var(--muted);line-height:1.6}
+.meta-row{display:flex;flex-wrap:wrap;gap:10px;margin-top:18px}
+.meta{font-size:12.5px;font-weight:700;background:var(--blue-soft);color:var(--blue);padding:7px 11px;border-radius:999px}
+.meta.red{background:var(--red-soft);color:var(--red-dark)}
+section{padding:44px 0;border-bottom:1px solid var(--line)}
+.sec-head{display:flex;gap:18px;align-items:flex-start;margin-bottom:22px}
+.sec-num{flex:0 0 auto;width:52px;height:52px;border-radius:50%;background:var(--blue);color:#fff;display:grid;place-items:center;font-weight:900;font-size:18px}
+.sec-num.red{background:var(--red)}
+.sec-head h2{font-family:"Noto Serif SC",serif;font-size:30px;line-height:1.2;margin:2px 0 6px;color:var(--blue)}
+.sec-head p{margin:0;color:var(--muted);max-width:820px}
+.kicker{font-size:12px;font-weight:900;letter-spacing:.12em;color:var(--red);text-transform:uppercase}
+/* background */
+.bg-grid{display:grid;grid-template-columns:1.55fr .85fr;gap:18px}
+.card{background:var(--panel);border:1px solid var(--line);border-radius:16px;padding:22px}
+.card h3{margin:0 0 10px;font-size:17px;color:var(--blue)}
+.card p{margin:0;color:#344256}
+.facts{list-style:none;margin:0;padding:0;display:grid;gap:12px}
+.facts li{display:flex;justify-content:space-between;gap:16px;border-bottom:1px dashed #D6DEE8;padding-bottom:10px;font-size:14px}
+.facts li:last-child{border:0;padding:0}
+.facts b{color:var(--blue);text-align:right}
+/* pool */
+.pool{display:grid;grid-template-columns:repeat(3,1fr);gap:14px;margin-top:16px}
+.pool-item{border-radius:14px;padding:18px;color:#fff}
+.pool-item:nth-child(1){background:var(--blue)} .pool-item:nth-child(2){background:var(--blue2)} .pool-item:nth-child(3){background:var(--red)}
+.pool-item .n{font-size:36px;font-weight:900;line-height:1}
+.pool-item strong{display:block;margin-top:6px}
+.pool-item p{margin:4px 0 0;font-size:13px;opacity:.92;line-height:1.6}
+.total-line{margin-top:14px;background:#0F2E4D;color:#fff;border-radius:12px;padding:14px 18px;display:flex;justify-content:space-between;gap:16px;flex-wrap:wrap;font-weight:700}
+.total-line span{opacity:.85;font-weight:400;font-size:13.5px}
+/* chapter grids */
+.grid3{display:grid;grid-template-columns:repeat(3,1fr);gap:14px}
+.grid2{display:grid;grid-template-columns:1fr 1fr;gap:14px}
+.grid4{display:grid;grid-template-columns:repeat(4,1fr);gap:14px}
+.list-card{background:#fff;border:1px solid var(--line);border-radius:14px;padding:18px}
+.list-card h4{margin:0 0 4px;font-size:15px;color:var(--blue)}
+.list-card .sub{font-size:12.5px;color:var(--muted);margin:0 0 12px}
+.chip-list{display:flex;flex-wrap:wrap;gap:7px}
+.chip{font-size:13px;font-weight:700;padding:6px 9px;border-radius:999px;background:var(--blue-soft);color:var(--blue);line-height:1.3}
+.chip.red{background:var(--red-soft);color:var(--red-dark)}
+.chip.gold{background:#FBF3DF;color:#7A5E1F;border:1px solid #EAD9A8}
+.note{font-size:13px;color:var(--muted);background:#FFF8E6;border:1px solid #F0DDA3;border-radius:10px;padding:10px 12px;margin-top:12px;line-height:1.6}
+.subhead{font-size:13px;font-weight:900;letter-spacing:.08em;color:var(--blue);margin:26px 0 12px;display:flex;align-items:center;gap:10px}
+.subhead::after{content:"";flex:1;height:1px;background:var(--line)}
+.method{background:var(--panel);border:1px solid var(--line);border-radius:14px;padding:18px}
+.method b{color:var(--blue);display:block;margin-bottom:4px}
+.method p{margin:0;font-size:14px;color:#3B4A5E}
+.redline{display:grid;grid-template-columns:repeat(3,1fr);gap:12px}
+.redline div{border:1px solid #F3C2C4;background:#FFF7F7;border-radius:12px;padding:14px;font-size:14px}
+.redline b{color:var(--red-dark)}
+.check{border-radius:12px;background:var(--blue);color:#fff;padding:18px 20px;margin-top:16px}
+.check h4{margin:0 0 8px}
+.check ul{margin:0;padding-left:18px;columns:2;column-gap:28px}
+.check li{break-inside:avoid;margin-bottom:4px;font-size:14px}
+/* fish table */
+.fish-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:12px}
+.fish{background:#fff;border:1px solid var(--line);border-radius:14px;padding:16px;position:relative;overflow:hidden}
+.fish::before{content:"";position:absolute;left:0;top:0;bottom:0;width:4px;background:var(--blue)}
+.fish.star::before{background:var(--red)}
+.fish strong{font-size:16px;color:var(--blue)}
+.fish .en{font-size:11px;letter-spacing:.06em;color:var(--muted);text-transform:uppercase;font-weight:700}
+.fish p{margin:7px 0 0;font-size:13px;color:#3B4A5E;line-height:1.6}
+.badge{display:inline-block;font-size:11px;font-weight:900;padding:3px 7px;border-radius:999px;background:var(--red);color:#fff;margin-left:6px;vertical-align:2px}
+/* platter hero */
+.platter-hero{display:grid;grid-template-columns:1.2fr .8fr;gap:16px}
+.platter-main{background:var(--blue);color:#fff;border-radius:18px;padding:26px}
+.platter-main h3{font-family:"Noto Serif SC",serif;font-size:28px;margin:0 0 8px;line-height:1.25}
+.platter-main p{color:#D7E3F0;margin:0}
+.platter-main .big{font-size:44px;font-weight:900;line-height:1;margin:18px 0 4px}
+.tiers{display:grid;gap:12px}
+.tier{border:1px solid var(--line);border-radius:14px;padding:18px;background:#fff}
+.tier h4{margin:0;color:var(--blue)} .tier p{margin:5px 0 0;font-size:14px;color:var(--muted)}
+.checkcard{background:#FFFBEB;border:1.5px dashed var(--gold);border-radius:14px;padding:18px}
+.checkcard h4{margin:0 0 8px;color:#7A5E1F}
+.steps{display:grid;grid-template-columns:repeat(3,1fr);gap:12px;margin-top:14px}
+.step{border:1px solid var(--line);border-radius:12px;padding:16px;background:#fff}
+.step b{color:var(--red);font-size:22px;line-height:1}
+.step strong{display:block;margin:6px 0 4px;color:var(--blue)} .step p{margin:0;font-size:13.5px;color:var(--muted)}
+/* timeline */
+.timeline{display:grid;grid-template-columns:repeat(3,1fr);gap:14px}
+.phase{border-radius:16px;padding:20px;border:1px solid var(--line);background:#fff}
+.phase .days{font-weight:900;color:var(--red);font-size:13px;letter-spacing:.06em}
+.phase h4{margin:6px 0 8px;color:var(--blue);font-size:17px}
+.phase ul{margin:0;padding-left:18px;font-size:14px;color:#3B4A5E}
+.kpis{display:grid;grid-template-columns:repeat(5,1fr);gap:10px}
+.kpi{background:var(--panel);border:1px solid var(--line);border-radius:12px;padding:14px;text-align:center}
+.kpi strong{display:block;color:var(--blue);font-size:14px;line-height:1.4}
+.kpi span{font-size:12px;color:var(--muted)}
+.gate{margin-top:14px;display:grid;grid-template-columns:1fr 1fr;gap:12px}
+.gate div{border-radius:12px;padding:16px;font-size:14px}
+.gate .go{background:#EAF7EE;border:1px solid #BFE3C8}
+.gate .stop{background:#FFF1F1;border:1px solid #F0B8BA}
+/* win */
+.win{background:var(--blue);color:#fff;border-radius:20px;padding:28px}
+.win h2{font-family:"Noto Serif SC",serif;margin:0 0 10px;font-size:28px}
+.win-grid{display:grid;grid-template-columns:1fr 1fr;gap:18px;margin-top:16px}
+.win-grid div{background:rgba(255,255,255,.08);border:1px solid rgba(255,255,255,.16);border-radius:14px;padding:18px}
+.win-grid h3{margin:0 0 6px;font-size:16px} .win-grid p{margin:0;color:#D7E3F0;font-size:14px}
+.closing{margin-top:18px;background:#fff;border-left:5px solid var(--red);border-radius:12px;padding:20px 22px}
+.closing p{margin:0;font-size:17px;font-weight:700;color:var(--blue);line-height:1.7}
+footer{padding:26px 0 40px;color:var(--muted);font-size:13px}
+@media(max-width:900px){
+  .wrap{padding:0 18px}.topbar-inner{padding:0 18px}
+  .hero{padding-top:34px}.hero h1{font-size:36px}.tagline{font-size:21px}
+  .pillars,.grid3,.grid4,.fish-grid,.steps,.timeline{grid-template-columns:1fr 1fr}
+  .bg-grid,.grid2,.platter-hero,.win-grid,.gate{grid-template-columns:1fr}
+  .pool{grid-template-columns:1fr}.kpis{grid-template-columns:1fr 1fr}
+  .check ul{columns:1}
+  .top-cta{display:none !important}
+}
+@media(max-width:560px){
+  .pillars,.grid3,.grid4,.fish-grid,.steps,.timeline,.kpis{grid-template-columns:1fr}
+  .hero h1{font-size:32px}.sec-head h2{font-size:25px}
+  .sec-num{width:44px;height:44px}
+  .redline{grid-template-columns:1fr}
+}
+</style>
+</head>
+<body>
+<header class="topbar">
+  <div class="topbar-inner">
+    <div class="brand">FIERY CRAB <span>· 旗舰店试点提案</span></div>
+    <nav class="topnav" aria-label="目录">
+      <a href="#background">背景</a>
+      <a href="#ch1">① 稀缺 · 平民价</a>
+      <a href="#ch2">② 鱼类补全</a>
+      <a href="#ch3">③ 一次吃遍</a>
+      <a href="#ch4">④ 旗舰店试点</a>
+      <a href="#win">为什么能赢</a>
+      <a class="top-cta" href="#ch4">90天试点 →</a>
+    </nav>
+  </div>
+</header>
+
+<main class="wrap">
+  <!-- HERO -->
+  <div class="hero">
+    <span class="eyebrow">Flagship Pilot Proposal · Baton Rouge</span>
+    <h1>Fiery Crab<br>旗舰店试点<em>提案</em></h1>
+    <p class="tagline">食材高端，价格平民，<b>一次吃遍</b>，旗舰店先试。</p>
+    <p class="hero-desc">不跟同条街的对手再拼一锅普通煮袋。这份提案只做四件事：把全球稀缺海鲜搜罗进来、用平民价格卖；把鱼从 1 种补到 8 种；做一盘能一次吃遍很多种海鲜的图鉴拼盘；全部只在一家旗舰店先试 90 天，跑出数据再谈复制。</p>
+    <div class="pillars">
+      <article class="pillar"><strong>稀缺海鲜搜罗<br>平民价格</strong><p>全球找货，船冻直采 + 小份拼盘摊薄成本，稀缺不卖天价。</p></article>
+      <article class="pillar"><strong>鱼类补全<br>1 种 → 8 种</strong><p>补上不吃壳类、午餐轻食和年轻人日常的高频入口。</p></article>
+      <article class="pillar"><strong>一次能吃完<br>很多海鲜</strong><p>图鉴拼盘一桌尝二十种上下，吃一种勾一种，天生适合拍和晒。</p></article>
+      <article class="pillar"><strong>旗舰店试点<br>90 天验证</strong><p>只在 Baton Rouge 先改，达标才下放，未验证绝不全链铺开。</p></article>
+    </div>
+    <div class="meta-row">
+      <span class="meta">总池口径：32 种 · 全案只用这一套数</span>
+      <span class="meta">常驻 19 + 季节 7 + 稀缺轮换 6</span>
+      <span class="meta red">试点店：Baton Rouge 旗舰店</span>
+      <span class="meta">价格只讲原则与价格带逻辑 · 不虚标具体金额</span>
+    </div>
+  </div>
+
+  <!-- BACKGROUND -->
+  <section id="background">
+    <div class="sec-head">
+      <div class="sec-num">序</div>
+      <div>
+        <div class="kicker">Background · 为什么现在要试</div>
+        <h2>普通煮袋已经同质化，必须换物种、换吃法破局</h2>
+        <p>只用一段说清背景，后面全部落到四章执行。</p>
+      </div>
+    </div>
+    <div class="bg-grid">
+      <div class="card">
+        <h3>背景 · 一段话</h3>
+        <p>Fiery Crab 是 2018 年在路易斯安那 Lafayette 起家、如今 20+ 店的手抓海鲜连锁，大本营在路易斯安那。同地区头号对手 The Juicy Seafood 就在 Baton Rouge 同一条街上，产品、酱料、拼盘打法高度同款，客人直接同街比价比味；再加本地小龙虾老店在季节里牢牢占住“正宗”心智，普通煮袋继续拼只会越拼越像、越拼越累。与此同时，年轻人已经吃腻了重口大袋子——吃几次就腻、一年只在聚餐时想起一次。所以这份提案不在全链同时大改，而是用一家旗舰店试点“新物种 + 新吃法”：用稀缺宽度拉开差距，用一次吃遍制造新鲜感和复购理由。</p>
+      </div>
+      <div class="card">
+        <h3>关键事实</h3>
+        <ul class="facts">
+          <li><span>起家</span><b>2018 · Lafayette, LA</b></li>
+          <li><span>规模</span><b>20+ 店 · 大本营路易斯安那</b></li>
+          <li><span>头号同地区对手</span><b>The Juicy Seafood · 同条街</b></li>
+          <li><span>现有短板</span><b>鱼只有鲶鱼 1 种</b></li>
+          <li><span>试点方式</span><b>单店 90 天 · 先验证后复制</b></li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="subhead">全案统一口径 · 32 种总池（后文所有数字都对齐这里）</div>
+    <div class="pool">
+      <div class="pool-item"><div class="n">19</div><strong>常驻种</strong><p>日常稳定供应的主力海鲜，撑住煮袋基本盘和拼盘底座。</p></div>
+      <div class="pool-item"><div class="n">7</div><strong>季节种</strong><p>按季轮换，含季节鱼比目鱼、鲯鳅等，制造“这次不吃下次没有”。</p></div>
+      <div class="pool-item"><div class="n">6</div><strong>稀缺轮换种</strong><p>深海皇家红虾、海胆、湾扇贝、象拔蚌、海鳌虾、红鲍，限量轮换做话题。</p></div>
+    </div>
+    <div class="total-line"><div>合计 <strong style="font-size:20px">32 种总池</strong></div><span>船冻是供应方式，不是新种类——冻货清单不重复计数。拼盘实际可供种数按当季供应标注，不虚标。</span></div>
+  </section>
+
+  <!-- CH1 -->
+  <section id="ch1">
+    <div class="sec-head">
+      <div class="sec-num red">01</div>
+      <div>
+        <div class="kicker">Chapter 01 · 稀缺海鲜搜罗 · 平民价格</div>
+        <h2>全球搜罗稀缺海鲜，但不卖天价</h2>
+        <p><strong>要做什么：</strong>把别家菜单上没有、年轻人愿意专门来尝的稀缺海鲜系统性搜进来，同时把价格压在普通客人吃得起的带里。高端只指食材和呈现，不指宰客的价格。</p>
+      </div>
+    </div>
+
+    <div class="subhead">具体清单 · 三层搜罗（冻货不重复计数）</div>
+    <div class="grid3">
+      <article class="list-card">
+        <h4>活鲜季节 · 靠时令</h4>
+        <p class="sub">有季节才上，卖新鲜感和本地感</p>
+        <div class="chip-list"><span class="chip">佛州石蟹爪</span><span class="chip">软壳蟹</span></div>
+        <p style="font-size:13.5px;color:var(--muted);margin:12px 0 0">做法以清蒸、蒜香、黑化等能吃出本味的方式为主，不用重酱盖住稀缺感。</p>
+      </article>
+      <article class="list-card">
+        <h4>稀缺轮换 6 种 · 靠话题</h4>
+        <p class="sub">计入 32 种总池 · 限量轮换，不求天天全有</p>
+        <div class="chip-list"><span class="chip red">深海皇家红虾</span><span class="chip red">海胆</span><span class="chip red">Nantucket 湾扇贝</span><span class="chip red">象拔蚌</span><span class="chip red">海鳌虾</span><span class="chip red">红鲍</span></div>
+        <p style="font-size:13.5px;color:var(--muted);margin:12px 0 0">每次只主推 1–2 种做限定，避免全上导致损耗失控。</p>
+      </article>
+      <article class="list-card">
+        <h4>船冻顶货 10 款 · 靠稳定供应</h4>
+        <p class="sub">船上急冻锁鲜 · 是供应方式，不另加种类数</p>
+        <div class="chip-list"><span class="chip gold">西班牙深海红虾</span><span class="chip gold">海鳌虾</span><span class="chip gold">北海道刺身扇贝</span><span class="chip gold">牡丹虾</span><span class="chip gold">蓝鳍金枪鱼大腹</span><span class="chip gold">智利海鲈</span><span class="chip gold">黑鳕</span><span class="chip gold">毛蟹</span><span class="chip gold">智利南部帝王蟹</span><span class="chip gold">澳洲冻鲍</span></div>
+      </article>
+    </div>
+    <div class="note">为什么稀缺品反而要靠冻货落地：顶级货很多本身就是船上急冻流通——捕上来马上冻住锁鲜，供应稳、能囤、能统一标准。活鲜稀缺品断货风险高、损耗不可控，不适合做连锁试点的主力。菜单上大大方方写“船冻锁鲜”，不假装活鲜。</div>
+
+    <div class="subhead">怎么做成 · 平民价格四招</div>
+    <div class="grid4">
+      <div class="method"><b>1 · 船冻直采</b><p>直接对接船冻源头，省掉多层中间环节。省下来的不是变利润，是让利到拼盘价格带。</p></div>
+      <div class="method"><b>2 · 旗舰店集中采购</b><p>试点期只供一家店，量集中、议价和品控都更容易，损耗也只在一家店里学。</p></div>
+      <div class="method"><b>3 · 小份进拼盘分摊</b><p>稀缺品每种只放一小份进图鉴拼盘，单桌成本被二十种分摊，客人感知是“全吃到了”。</p></div>
+      <div class="method"><b>4 · 不单独卖天价</b><p>稀缺品只做拼盘构成 + 小份加购，不做单点天价菜。靠翻台和复购赚钱，不靠宰一桌。</p></div>
+    </div>
+    <p style="font-size:14px;color:var(--muted);margin:12px 0 0">定价原则：锚定普通拼盘的价格带逻辑——客人点图鉴拼盘的决策门槛，要接近他平时点一桌煮袋的心理门槛；加购是“再加一点就能尝到稀缺种”的小步决策，不是重新点一道大菜。</p>
+
+    <div class="subhead">红线 · 三条不能碰</div>
+    <div class="redline">
+      <div><b>明码时价：</b>稀缺和时令品标清当日价与供应状态，缺货就写缺货，不拿近似品冒充。</div>
+      <div><b>不假装活鲜：</b>船冻就写船冻，产地和冻货属性写在拼盘格和菜单插页上，靠诚实建立高端感。</div>
+      <div><b>低温慢解冻 SOP：</b>只许低温慢解冻、禁止反复冻融；解冻和出品标准写成一页纸贴在后厨。</div>
+    </div>
+
+    <div class="check"><h4>验收看什么 · 第一章</h4><ul><li>稀缺品进拼盘后的拼盘点单率是否提升</li><li>稀缺品毛利能否守住、损耗率是否可控</li><li>客人是否感知“贵食材、平民价”（点评与复购反馈）</li><li>缺货与替换是否零投诉冒充、零以次充好</li></ul></div>
+  </section>
+
+  <!-- CH2 -->
+  <section id="ch2">
+    <div class="sec-head">
+      <div class="sec-num">02</div>
+      <div>
+        <div class="kicker">Chapter 02 · 鱼类补全</div>
+        <h2>鱼从 1 种补到 8 种，这是最明显的短板</h2>
+        <p><strong>要做什么：</strong>Fiery 原来鱼只有鲶鱼 1 种。不吃壳类的人、想吃轻一点的人、午餐想快速吃完的人，在现有菜单里几乎没得选。补全鱼家族，等于补上一整批新客和新时段。</p>
+      </div>
+    </div>
+
+    <div class="subhead">具体清单 · 8 种鱼全家福（每种都有做法和角色）</div>
+    <div class="fish-grid">
+      <article class="fish"><div class="en">Catfish</div><strong>鲶鱼</strong><p><b>做法：</b>炸鱼篮 / Po-Boy<br><b>角色：</b>原有基本盘，本地人熟悉的 comfort 入口。</p></article>
+      <article class="fish star"><div class="en">Redfish</div><strong>路易斯安那红鱼</strong><span class="badge">招牌</span><p><b>做法：</b>黑化烤（Blackened）<br><b>角色：</b>最能打“正宗路易斯安那”的鱼，做旗舰店鱼类门面。</p></article>
+      <article class="fish"><div class="en">Red Snapper</div><strong>红鲷</strong><p><b>做法：</b>炸鱼三明治 / 鱼 taco<br><b>角色：</b>肉质细、接受度高，接日常高频点单。</p></article>
+      <article class="fish"><div class="en">Grouper</div><strong>石斑</strong><p><b>做法：</b>炸鱼三明治 / 烤鱼盘<br><b>角色：</b>厚肉有满足感，撑家庭份和正餐感。</p></article>
+      <article class="fish"><div class="en">Salmon</div><strong>三文鱼</strong><p><b>做法：</b>poke 碗 / 半熟煎<br><b>角色：</b>年轻人轻食主力，午餐和一人食的核心。</p></article>
+      <article class="fish"><div class="en">Tuna</div><strong>金枪鱼</strong><p><b>做法：</b>poke 碗 / 鱼 taco / 半熟<br><b>角色：</b>和三文鱼组双 poke 线，内容和出片都更丰富。</p></article>
+      <article class="fish"><div class="en">Halibut · Seasonal</div><strong>比目鱼（季节）</strong><p><b>做法：</b>烤 / 炸鱼三明治<br><b>角色：</b>季节限定鱼位，制造轮换新鲜感。</p></article>
+      <article class="fish"><div class="en">Mahi Mahi · Seasonal</div><strong>鲯鳅（季节）</strong><p><b>做法：</b>鱼 taco / 黑化烤<br><b>角色：</b>taco 线的季节主力，清爽、适合配酱和配菜。</p></article>
+    </div>
+    <div class="note">另设冻货稀缺鱼位 3 种：蓝鳍金枪鱼大腹、智利海鲈、黑鳕——只在旗舰店以船冻顶货形式供应，进生食吧 / 烤鱼限定，不重复计入 8 种全家福，也不重复计入 32 种总池的种类数。</div>
+
+    <div class="subhead">怎么做成 · 鱼的价值不只是“多几种”</div>
+    <div class="grid3">
+      <div class="method"><b>补不吃壳类的人</b><p>同桌只要有一人不吃虾蟹，整桌就容易流失。鱼盘、鱼三明治、poke 碗让这一桌能留下来。</p></div>
+      <div class="method"><b>补午餐与轻食时段</b><p>煮袋是晚餐重餐，鱼 taco、三文鱼碗、炸鱼三明治是能中午快速吃、一个人也能点的日常品。</p></div>
+      <div class="method"><b>补年轻人高频日常</b><p>poke 碗和鱼 taco 本来就是年轻人平常餐厅天天吃的东西，换成 Fiery 的酱和做法，不另开厨线。</p></div>
+    </div>
+    <div class="check"><h4>验收看什么 · 第二章</h4><ul><li>鱼类点单占比与午餐时段点单变化</li><li>8 种鱼在图鉴拼盘中的到齐率（见第三章）</li><li>poke 碗 / 鱼 taco 的复购与年轻客占比</li><li>季节鱼的售罄速度与损耗是否健康</li></ul></div>
+  </section>
+
+  <!-- CH3 -->
+  <section id="ch3">
+    <div class="sec-head">
+      <div class="sec-num red">03</div>
+      <div>
+        <div class="kicker">Chapter 03 · 一次能吃完很多海鲜</div>
+        <h2>头号产品：「一次吃遍」图鉴拼盘</h2>
+        <p><strong>要做什么：</strong>年轻人不是不想吃海鲜，是吃腻了“一袋全是虾蟹玉米土豆”的单一感。把选择困难反过来做成卖点——不用选，一盘全尝到。</p>
+      </div>
+    </div>
+
+    <div class="platter-hero">
+      <div class="platter-main">
+        <h3>一桌一次，尝二十种上下</h3>
+        <p>从 32 种总池里，按当季实际可供品种组装小份分格拼盘 / 分层塔。每种只放一小份，种类拉满、分量克制、价格靠分摊压住。</p>
+        <div class="big">≈ 20 种 / 桌</div>
+        <p style="font-size:13px">按当季实际供应标注实际种数，不虚标 32 种全到。鱼类 8 种必须全员到齐——这是拼盘的硬规则，也是和别家拼盘最直观的区别。</p>
+      </div>
+      <div class="tiers">
+        <div class="tier"><h4>两人份 · 尝鲜档</h4><p>适合情侣 / 朋友第一次来：种类优先、分量小份，目标是“全尝到 + 拍一张完整的图鉴照”。</p></div>
+        <div class="tier"><h4>家庭份 · 聚餐档</h4><p>适合家庭和多人聚餐：在两人份基础上加主力种的分量，仍守平民价格带，不做成天价大盘。</p></div>
+        <div class="tier"><h4>稀缺加购 · 小步升级</h4><p>当天稀缺轮换种以小份加购形式出现，让客人用很小的决策成本尝到当天的限定货。</p></div>
+      </div>
+    </div>
+
+    <div class="grid2" style="margin-top:14px">
+      <div class="checkcard">
+        <h4>📇 配图鉴打卡卡 · 吃一种，勾一种</h4>
+        <p style="margin:0;font-size:14px;color:#5C4A1F;line-height:1.7">每桌发一张图鉴卡，印着本桌拼盘的实际品种。吃一种勾一种，集齐整张就是一张天然的分享图——不用店家求客人发，客人自己就想晒。卡面同时标清每格的名字、产地和推荐吃法，顺带完成“专人讲产地”的轻量版。</p>
+      </div>
+      <div class="list-card">
+        <h4>出品规则 · 写死，不靠临场发挥</h4>
+        <ul style="margin:8px 0 0;padding-left:18px;font-size:14px;color:#3B4A5E;line-height:1.8">
+          <li>每格标名字、产地、吃法，客人不用问也知道在吃什么</li>
+          <li>缺货替换只换同家族品种，并上桌前提前告知、图鉴卡同步改标</li>
+          <li>鱼类 8 种缺一不可；实在缺货当天直接降档说明，不硬凑</li>
+          <li>分格 / 分层呈现，不再塑料袋倒桌——摆盘本身就是内容素材</li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="steps">
+      <div class="step"><b>01</b><strong>能拍</strong><p>分层塔 + 分格 + 图鉴卡同框，一张图讲清“这一桌有多全”，是短视频和照片的现成构图。</p></div>
+      <div class="step"><b>02</b><strong>能集</strong><p>季节和稀缺轮换让图鉴永远差几格没集齐，给下一次来留一个具体的理由。</p></div>
+      <div class="step"><b>03</b><strong>能晒</strong><p>集齐打卡本身就是UGC，店家要做的是把卡和摆盘做好，而不是额外买流量求转发。</p></div>
+    </div>
+
+    <div class="check"><h4>验收看什么 · 第三章</h4><ul><li>图鉴拼盘点单率（占桌数比）是否为全店第一梯队</li><li>打卡卡带图的分享 / 短视频内容量</li><li>两人份与家庭份的档位分布是否健康</li><li>客人复购时是否冲着“集齐 / 新一季图鉴”回来</li></ul></div>
+  </section>
+
+  <!-- CH4 -->
+  <section id="ch4">
+    <div class="sec-head">
+      <div class="sec-num">04</div>
+      <div>
+        <div class="kicker">Chapter 04 · 旗舰店试点</div>
+        <h2>只在 Baton Rouge 先试 90 天</h2>
+        <p><strong>要做什么：</strong>前面三章全部只在一家店落地。试点的意义不是“先开一家好看的店”，是先用最小成本把物种、损耗、点单和内容四件事验证清楚。</p>
+      </div>
+    </div>
+
+    <div class="subhead">轻改造 · 只改出品和呈现，不大兴土木</div>
+    <div class="grid3">
+      <div class="method"><b>生食吧台</b><p>承接牡丹虾、蓝鳍大腹、北海道扇贝等刺身级冻货，让“稀缺”被看见、被现场处理。</p></div>
+      <div class="method"><b>船冻展示冰柜明档</b><p>顶货摆在明档冰柜里，标产地与船冻锁鲜说明——冻货不藏着卖，透明本身就是信任。</p></div>
+      <div class="method"><b>黑金插页菜单</b><p>大众煮袋菜单不动，只加一本黑金插页装高端线：稀缺、鱼全家福、图鉴拼盘，翻页就分清档次。</p></div>
+      <div class="method"><b>托盘瓷盘摆盘</b><p>高端线不用塑料袋倒桌，改托盘 / 瓷盘 + 分格分层，和普通煮袋在视觉上一眼分开。</p></div>
+      <div class="method"><b>专人讲产地</b><p>每班配能讲清产地、冻货和吃法的人，图鉴卡做辅助，不靠客人自己猜。</p></div>
+      <div class="method"><b>大众基本盘不动</b><p>老客的煮袋、酱料和点单习惯全部保留。高端线是加一条线，不是把老店推倒重来。</p></div>
+    </div>
+
+    <div class="subhead">90 天三阶段 · 节奏定死</div>
+    <div class="timeline">
+      <div class="phase"><div class="days">DAY 1–30 · 先上最稳的</div><h4>图鉴拼盘 + 鱼类补全</h4><ul><li>图鉴拼盘正式上桌，鱼 8 种全员到齐</li><li>打卡卡、黑金插页、明档冰柜到位</li><li>先看点单率和出品稳定性</li></ul></div>
+      <div class="phase"><div class="days">DAY 31–60 · 再上最险的</div><h4>稀缺轮换 + 限定风味</h4><ul><li>稀缺轮换 6 种逐个轮换上</li><li>叠加当季限定风味做新鲜感</li><li>重点盯损耗率和毛利，别让稀缺品吃掉利润</li></ul></div>
+      <div class="phase"><div class="days">DAY 61–90 · 只做决定</div><h4>复盘定下放清单</h4><ul><li>逐品判定：下放 / 留旗舰店 / 下架</li><li>输出可复制的采购、解冻、出品 SOP</li><li>用数据谈全系统复制，不用感觉谈</li></ul></div>
+    </div>
+
+    <div class="subhead">验收看什么 · 五个指标一起看，不看单一数字</div>
+    <div class="kpis">
+      <div class="kpi"><strong>图鉴拼盘点单率</strong><span>头号产品是否真被点</span></div>
+      <div class="kpi"><strong>年轻客占比</strong><span>破腻是否真拉来年轻人</span></div>
+      <div class="kpi"><strong>稀缺品毛利与损耗率</strong><span>稀缺线是否算得过账</span></div>
+      <div class="kpi"><strong>打卡内容量</strong><span>图鉴卡是否自带传播</span></div>
+      <div class="kpi"><strong>复购间隔</strong><span>是否从“一年一次”变近</span></div>
+    </div>
+    <div class="gate">
+      <div class="go"><b style="color:#1E6B2E">达标 → 下放：</b>指标达标的品，带着采购价、解冻 SOP、出品标准和图鉴卡模板一起下放其他店，复制的是整套打法，不是只复制一个菜名。</div>
+      <div class="stop"><b style="color:var(--red-dark)">不达标 → 就地调整：</b>不达标的品只在旗舰店内调整或下架。<b>禁止未验证就全链铺开</b>——这是试点最重要的纪律。</div>
+    </div>
+  </section>
+
+  <!-- WIN -->
+  <section id="win" style="border-bottom:0">
+    <div class="win">
+      <div class="kicker" style="color:#F0B8BA">Closing · 为什么这套能赢同地区对手</div>
+      <h2>对手拼煮袋和价格，我们拼宽度、体验和平民价稀缺</h2>
+      <p style="color:#D7E3F0;margin:0;max-width:860px">The Juicy Seafood 和 Fiery 在同一条街上，煮袋、酱料、拼盘已经像到客人只能比价。在这条赛道里继续加码，赢了也是惨胜。这套提案故意错位——比的不是谁的袋子更便宜，是谁的桌子更全、更新鲜、更值得拍。</p>
+      <div class="win-grid">
+        <div><h3>物种宽度 · 对手短期抄不全</h3><p>32 种总池 + 鱼 8 种全家福 + 稀缺轮换，背后是船冻直采和集中采购的供应链动作，不是改个菜单名就能抄的。</p></div>
+        <div><h3>一次吃遍 · 对手没有这个产品形态</h3><p>图鉴拼盘把“种类多”变成一个能点、能拍、能集的具体产品。对手卖的还是一袋，客人记住的是两种完全不同的体验。</p></div>
+        <div><h3>平民价稀缺 · 打破“稀缺 = 贵”</h3><p>稀缺品进拼盘、做加购、不卖天价，让普通客人也吃得起顶货——这是同街对手用单点高价逻辑做不到的定价结构。</p></div>
+        <div><h3>旗舰店验证 · 风险只在一家店里</h3><p>90 天只赌一家店的轻改造和一季货，验证成功再复制，失败也只输一家店的试点成本，不伤全系统基本盘。</p></div>
+      </div>
+    </div>
+    <div class="closing">
+      <p>谈判落点：先用 Baton Rouge 一家旗舰店、90 天，跑出图鉴拼盘点单率、稀缺品损耗和年轻人复购这三组硬数据——数据成立，再谈全系统复制；数据不成立，就在旗舰店里改，不拿 20+ 家店陪试。</p>
+    </div>
+  </section>
+</main>
+
+<footer>
+  <div class="wrap" style="padding:0 28px">Fiery Crab 旗舰店试点提案 · 口径说明：全案海鲜总数统一为 32 种总池（常驻 19 + 季节 7 + 稀缺轮换 6）；船冻为供应方式不重复计数；拼盘实际种数按当季供应标注；价格只陈述定价原则与价格带逻辑，不标注具体金额。</div>
+</footer>
+</body>
+</html>
