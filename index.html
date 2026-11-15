@@ -153,6 +153,16 @@ nav.main a.active{color:var(--gold-bright);box-shadow:inset 0 -2px 0 var(--gold)
 .lib-cat li{display:flex;justify-content:space-between;align-items:baseline;gap:12px;padding:8px 0;border-top:1px solid rgba(255,255,255,.07);font-size:15px;color:var(--on-navy)}
 .lib-cat li:first-child{border-top:0}
 .tag{flex:0 0 auto;font-size:11.5px;letter-spacing:.14em;color:var(--gold-2);border:1px solid rgba(205,178,126,.4);padding:1px 8px;line-height:1.7}
+.lib-toggle-row{display:flex;justify-content:flex-start;margin:4px 0 0}
+.lib-toggle-btn{display:inline-flex;align-items:center;gap:10px;background:var(--gold);color:#fff;border:1px solid var(--gold);padding:14px 30px;min-height:54px;font-size:15.5px;font-weight:500;letter-spacing:.08em;cursor:pointer;transition:background .2s,border-color .2s,color .2s}
+.lib-toggle-btn:hover{background:#9c7c40;border-color:#9c7c40}
+.lib-toggle-btn .lib-arrow{font-size:13px;transition:transform .35s ease;display:inline-block;line-height:1}
+.lib-toggle-btn[aria-expanded="true"]{background:transparent;color:var(--gold-bright);border-color:rgba(205,178,126,.6)}
+.lib-toggle-btn[aria-expanded="true"] .lib-arrow{transform:rotate(180deg)}
+.lib-collapse{max-height:0;overflow:hidden;opacity:0;transition:max-height .65s ease,opacity .45s ease}
+.lib-collapse.open{opacity:1}
+.lib-collapse-inner{padding-top:40px}
+@media(prefers-reduced-motion:reduce){.lib-collapse,.lib-toggle-btn .lib-arrow{transition:none}}
 
 /* combos (inside library, lower half) */
 .combos-in{margin-top:76px}
@@ -536,6 +546,13 @@ p{letter-spacing:.02em}
       <p data-i18n="libP">套餐由单品组合而成。先看全量清单，再挑组合。</p>
     </div>
 
+    <div class="lib-toggle-row">
+      <button class="lib-toggle-btn" id="libToggle" type="button" aria-expanded="false" aria-controls="libCollapse">
+        <span id="libToggleText">查看全部单品</span><span class="lib-arrow" aria-hidden="true">▾</span>
+      </button>
+    </div>
+    <div class="lib-collapse" id="libCollapse" aria-hidden="true">
+      <div class="lib-collapse-inner">
     <h3 class="lib-sub"><span data-i18n="libA">官网服务</span><span class="en">Core Services · 06 Categories</span></h3>
     <p class="lib-note" data-i18n="libAn">六大类，三十项。每项后的小标签是它所属的阶段。</p>
     <div class="lib-grid">
@@ -671,7 +688,9 @@ p{letter-spacing:.02em}
         </ul>
       </div>
     </div>
-  
+      </div>
+    </div>
+
     <div class="combos-in" id="combos">
       <h3 class="lib-sub"><span data-i18n="cmbH">组合套餐</span><span class="en">Bundles</span></h3>
       <p class="lib-note" data-i18n="cmbP">从单品库挑好的组合，开箱即用，就这两包。</p>
@@ -1007,7 +1026,16 @@ footPos:"The brand and growth agency for Asian restaurants and local businesses 
 var zhEls = {};
 var nodes = document.querySelectorAll("[data-i18n]");
 nodes.forEach(function(el){ zhEls[el.getAttribute("data-i18n")] = el.innerHTML; });
+var libExpanded = false;
+var libIsEn = false;
+function updateLibToggleText(){
+  var t = document.getElementById("libToggleText");
+  if (!t) return;
+  t.textContent = libExpanded ? (libIsEn ? "Hide Service Library" : "收起单品库") : (libIsEn ? "View All Services" : "查看全部单品");
+}
 function setLang(en){
+  libIsEn = !!en;
+  updateLibToggleText();
   nodes.forEach(function(el){
     var k = el.getAttribute("data-i18n");
     if (en && EN[k]) el.innerHTML = EN[k];
@@ -1020,6 +1048,32 @@ function setLang(en){
 }
 document.getElementById("langZh").addEventListener("click", function(){ setLang(false); });
 document.getElementById("langEn").addEventListener("click", function(){ setLang(true); });
+
+/* service library collapse / expand */
+var libToggle = document.getElementById("libToggle");
+var libCollapse = document.getElementById("libCollapse");
+if (libToggle && libCollapse){
+  libToggle.addEventListener("click", function(){
+    libExpanded = !libExpanded;
+    libToggle.setAttribute("aria-expanded", libExpanded ? "true" : "false");
+    libCollapse.setAttribute("aria-hidden", libExpanded ? "false" : "true");
+    if (libExpanded){
+      libCollapse.classList.add("open");
+      libCollapse.style.maxHeight = libCollapse.scrollHeight + "px";
+      setTimeout(function(){ if (libExpanded) libCollapse.style.maxHeight = "none"; }, 700);
+    } else {
+      libCollapse.style.maxHeight = libCollapse.scrollHeight + "px";
+      void libCollapse.offsetHeight;
+      requestAnimationFrame(function(){
+        requestAnimationFrame(function(){
+          libCollapse.classList.remove("open");
+          libCollapse.style.maxHeight = "0px";
+        });
+      });
+    }
+    updateLibToggleText();
+  });
+}
 
 /* structured nav: mobile toggle, More dropdown, scroll-spy */
 var mainNav = document.getElementById("mainNav");
