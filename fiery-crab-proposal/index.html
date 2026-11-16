@@ -239,6 +239,140 @@ footer{padding:34px 0 50px;color:var(--muted);font-size:13.5px}
 #rectify .seq-check li{padding:11px 14px 11px 40px}
 #rectify .seq-check li::before{left:14px;top:11px}
 @media(max-width:760px){#rectify .tl-item{grid-template-columns:88px 1fr;gap:12px;padding:11px 0}}
+
+/* table scroll wrapper (JS wraps each .kw-table) — neutral on desktop */
+.table-scroll{max-width:100%}
+.table-scroll>.kw-table{margin-top:0}
+.table-scroll{margin-top:12px}
+
+/* mobile-only language button next to the hero title — hidden on desktop */
+.lang-mobile{display:none}
+
+/* ============ MOBILE ADAPTATION (<=760px) — desktop untouched ============ */
+@media(max-width:760px){
+  /* page must never scroll sideways */
+  html,body{overflow-x:hidden;overflow-x:clip;max-width:100%}
+  body{font-size:16.5px}
+  img,figure,video,iframe{max-width:100%}
+  .wrap{padding:0 14px;min-width:0}
+  section{padding:34px 0 6px;min-width:0}
+  .wrap>*,section .wrap>*{min-width:0}
+
+  /* hero + language button beside the title */
+  .hero{padding:26px 0 0}
+  .hero-title-row{display:flex;align-items:flex-start;gap:10px;margin:14px 0 6px}
+  .hero-title-row h1{flex:1 1 auto;min-width:0;margin:0;font-size:29px;line-height:1.35}
+  .lang-mobile{display:inline-flex;align-items:center;justify-content:center;flex:0 0 auto;min-height:48px;margin-top:4px;background:var(--red);color:#fff;border:1px solid var(--red);border-radius:999px;padding:10px 16px;font-size:15px;font-weight:900;cursor:pointer;font-family:inherit;white-space:nowrap}
+  .hero .sub{font-size:17.5px}
+  .hero p.lead{font-size:16px}
+  .badge{font-size:13.5px}
+  .slogan{grid-template-columns:1fr !important;gap:8px;margin:20px 0}
+  .slogan div{padding:12px}
+  .slogan b{font-size:18px}
+  .slogan span{font-size:14px;line-height:1.6}
+  .hero-img img{height:56vw}
+  .stats{grid-template-columns:1fr 1fr;margin:20px 0}
+  .stats div{padding:13px 12px}
+  .stats b{font-size:23px}
+  .stats span{font-size:13.5px;line-height:1.55}
+
+  /* headings & readable base text sizes */
+  section h2{font-size:25px;line-height:1.4}
+  h3.blk{font-size:18.5px;line-height:1.5}
+  section .intro{font-size:16px}
+  .chip{font-size:13px;padding:5px 12px}
+  .card{padding:16px 14px}
+  .card h4{font-size:17px}
+  .card p,.card li{font-size:15.5px;line-height:1.75}
+  .note{font-size:15.5px;padding:14px}
+  .warn{padding:16px 14px}
+  .row{padding:14px}
+  .row b{font-size:16px}
+  .row p,.row p b{font-size:15.5px}
+  .op li{font-size:15.5px}
+  .verify{font-size:15.5px}
+  .check li{font-size:15.5px}
+  .tag{font-size:13px}
+  .photo figcaption{font-size:13.5px;line-height:1.6}
+  .pair{padding:14px}
+  .pair p{font-size:15.5px}
+  .steps{padding:14px}
+  .steps li{font-size:15.5px}
+  .steps .chk{font-size:15.5px}
+  .sheetbar{font-size:14.5px;padding:11px 10px;line-height:1.6}
+  footer{font-size:14px}
+  .gtop{padding:18px 14px}
+  .gnums{gap:8px}
+  .gnums b{font-size:20px}
+  .gnums span{font-size:13.5px}
+  .gjump a{font-size:14.5px;padding:11px 14px;min-height:44px;display:inline-flex;align-items:center}
+  .update-bar{padding:14px}
+  .update-bar span{font-size:14px}
+  .saddr{font-size:14.5px}
+  .subh{font-size:16.5px}
+  .sfacts{grid-template-columns:1fr}
+  .sfacts div{font-size:14.5px}
+  .sfacts b{font-size:13.5px}
+  .storetag{font-size:13px}
+  .storeend{font-size:14px}
+  .sev{font-size:13.5px}
+  .sevpill{font-size:12.5px;padding:4px 10px}
+  .pill{font-size:13px;padding:4px 10px}
+  .comp-meta{font-size:14px}
+  .comp-list li{font-size:15.5px}
+  .comp-sec b,.comp-sec p{font-size:15.5px}
+  .atlas{padding:18px 14px}
+  .atlas p{font-size:14.5px}
+  .atlas-grid button{font-size:14.5px;min-height:52px}
+  .atlas-grid button small{font-size:12px}
+  .atlas .count{font-size:14.5px}
+  .tl-item .when{white-space:normal;word-break:normal}
+  /* inline small text found in body copy: lift to readable sizes */
+  [style*="font-size:12.5px"]{font-size:14px !important}
+  [style*="font-size:13.5px"]{font-size:14.5px !important}
+  [style*="font-size:13px"]{font-size:14px !important}
+  [style*="font-size:12px"]{font-size:13px !important}
+  [style*="font-size:11px"]{font-size:12.5px !important}
+
+  /* long words / links must wrap, never push the page wide */
+  p,li,td,.pair,.note,.card,.row{min-width:0;overflow-wrap:break-word}
+  a{overflow-wrap:anywhere}
+
+  /* competitor cards: one per row */
+  #rectify .grid,#rectify .g3{grid-template-columns:1fr !important}
+  .g2,.g3,.gate,.final .nums,.contrast{grid-template-columns:1fr !important}
+  .final{padding:20px 16px}
+
+  /* tables: keep the real table + headers, scroll inside their own box */
+  .table-scroll{overflow-x:auto;-webkit-overflow-scrolling:touch;border:1px solid var(--line);border-radius:12px;scrollbar-width:thin}
+  .table-scroll>.kw-table{display:table;width:100%;min-width:640px;border-collapse:collapse;font-size:14.5px}
+  .table-scroll>.kw-table thead{display:table-header-group}
+  .table-scroll>.kw-table tbody{display:table-row-group}
+  .table-scroll>.kw-table tr{display:table-row;border:none;border-radius:0;margin:0;padding:0}
+  .table-scroll>.kw-table th{display:table-cell;font-size:13.5px;padding:10px;white-space:normal}
+  .table-scroll>.kw-table td{display:table-cell;border:1px solid var(--line);padding:10px;white-space:normal;overflow-wrap:break-word;min-width:86px}
+  .table-scroll>.kw-table td:last-child{min-width:180px}
+  .table-scroll>.kw-table tr td:first-child{white-space:normal;min-width:104px}
+
+  /* images never exceed the screen */
+  .photo img{min-height:0}
+  .figrow{grid-template-columns:1fr}
+  .figwall{grid-template-columns:1fr 1fr;gap:10px}
+  .figwide .photo img{height:54vw}
+
+  /* new add-on items: three small images per row */
+  .addonrow{grid-template-columns:repeat(3,1fr) !important;gap:8px}
+  .addonrow figcaption{font-size:13.5px;padding-top:6px;line-height:1.45}
+
+  /* store fold headers: big, easy to tap */
+  .storepage,.menusheet{padding:18px 14px;box-shadow:0 0 0 3px #fff5f2}
+  .menusheet{box-shadow:0 0 0 3px var(--teal-bg)}
+  .storefold>summary{min-height:60px;padding:12px 2px;gap:8px 10px;align-items:flex-start}
+  .storefold>summary h3{flex:1 1 200px;font-size:19.5px;line-height:1.45}
+  .storepage h3,.menusheet h3{font-size:19.5px;line-height:1.45}
+  .storefold .hint{font-size:14.5px;padding:6px 0}
+  .storefold .saddr2{font-size:14px;line-height:1.6}
+}
 </style>
 </head>
 <body>
@@ -262,7 +396,7 @@ footer{padding:34px 0 50px;color:var(--muted);font-size:13.5px}
 
 <header class="hero"><div class="wrap">
   <span class="badge">品牌改善提案 · FIERY CRAB</span>
-  <h1>Fiery Crab 品牌改善提案</h1>
+  <div class="hero-title-row"><h1>Fiery Crab 品牌改善提案</h1><button id="langBtnMobile" class="lang-mobile" type="button">中文 / English</button></div>
   <p class="sub">三个阶段：先解决找不找得到，再解决为什么选我们，最后把客人留下来</p>
   <p class="note" style="margin-top:16px;max-width:720px">先交代一句：这次筹备只有 1 天，个别信息可能了解不到位。先挑最要紧的几项动手，不用一次全改完。</p>
   <p class="lead">这份提案分三个阶段：第 1 阶段找不找得到——搜品类词时店出不出现、排第几；第 2 阶段为什么选我们——同城摆在一起，守住本地海鲜煮袋的领先；第 3 阶段怎么留下来，在板块三单独讲。先看板块一和板块二。</p>
@@ -1641,8 +1775,12 @@ function setLang(next){
   document.title = lang === "en" ? "Fiery Crab Brand Improvement Proposal" : "Fiery Crab 品牌改善提案";
   var btn = document.getElementById("langBtn");
   if(btn) btn.textContent = lang === "en" ? "English / \u4e2d\u6587" : "\u4e2d\u6587 / English";
+  var btnM = document.getElementById("langBtnMobile");
+  if(btnM) btnM.textContent = lang === "en" ? "English / \u4e2d\u6587" : "\u4e2d\u6587 / English";
 }
 document.getElementById("langBtn").addEventListener("click", function(){ setLang(lang === "zh" ? "en" : "zh"); });
+var btnMobile = document.getElementById("langBtnMobile");
+if(btnMobile) btnMobile.addEventListener("click", function(){ setLang(lang === "zh" ? "en" : "zh"); });
 </script>
 
 <script>
@@ -1660,6 +1798,20 @@ document.getElementById("langBtn").addEventListener("click", function(){ setLang
   }
   window.addEventListener('hashchange',openFromHash);
   openFromHash();
+})();
+</script>
+
+<script>
+(function(){
+  var tables=document.querySelectorAll('table.kw-table');
+  for(var i=0;i<tables.length;i++){
+    var t=tables[i];
+    if(t.parentNode && t.parentNode.className==='table-scroll'){continue;}
+    var w=document.createElement('div');
+    w.className='table-scroll';
+    t.parentNode.insertBefore(w,t);
+    w.appendChild(t);
+  }
 })();
 </script>
 </body>
