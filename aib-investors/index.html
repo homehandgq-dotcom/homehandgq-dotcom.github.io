@@ -1,0 +1,471 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover"/>
+<meta name="color-scheme" content="light dark"/>
+<link rel="icon" href="data:,"/>
+<title>AIB 找投资人模拟站 — 按材料重排版</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Noto+Serif+SC:wght@700;900&family=Noto+Sans+SC:wght@400;500;700;900&display=swap" rel="stylesheet">
+<style>
+:root{
+  --bg:#f7f5f0; --surface:#ffffff; --surface2:#fffdf7; --ink:#101828; --muted:#5b6577; --line:#e6e0d1;
+  --navy:#0f2040; --navy2:#162e5a; --gold:#c5960c; --gold-bg:#fdf3d7; --green:#0f7a4d; --green-bg:#e6f4ec;
+  --red:#b42318; --red-bg:#fef0ee; --amber:#b54708; --amber-bg:#fffaeb; --blue:#175cd3; --blue-bg:#eff4ff;
+  --radius:14px;
+}
+@media (prefers-color-scheme: dark){
+  :root{ --bg:#0c1220; --surface:#141c2e; --surface2:#182238; --ink:#eef1f7; --muted:#a6b0c2; --line:#26314d; --gold-bg:#2e270f; --green-bg:#123324; --red-bg:#331714; --amber-bg:#33270e; --blue-bg:#16294d; }
+}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{margin:0;background:var(--bg);color:var(--ink);font-family:"Noto Sans SC",system-ui,-apple-system,Segoe UI,Roboto,sans-serif;line-height:1.65}
+a{color:var(--blue)}
+button,[role="button"],select,summary,input:not([type="checkbox"]){min-height:40px}
+.wrap{max-width:1120px;margin:0 auto;padding:0 18px 56px}
+.topbar{position:sticky;top:0;z-index:20;background:color-mix(in srgb,var(--bg) 88%, transparent);backdrop-filter:blur(10px);border-bottom:1px solid var(--line)}
+.topbar-in{max-width:1120px;margin:0 auto;padding:10px 18px;display:flex;gap:10px;align-items:center;justify-content:space-between;flex-wrap:wrap}
+.brand{font-weight:900;letter-spacing:.02em;font-size:14px}
+.brand span{color:var(--gold)}
+.topnav{display:flex;gap:6px;flex-wrap:wrap}
+.topnav a{font-size:13px;text-decoration:none;color:var(--ink);padding:8px 10px;border:1px solid var(--line);border-radius:999px;background:var(--surface);min-height:36px;display:inline-flex;align-items:center}
+.hero{margin-top:18px;background:var(--navy);color:#fff;border-radius:20px;padding:28px 24px 24px;position:relative;overflow:hidden}
+.hero:after{content:"SILVER CURVE GAMES";position:absolute;right:-8px;bottom:6px;font-weight:900;font-size:52px;letter-spacing:.04em;color:rgba(255,255,255,.06);white-space:nowrap;pointer-events:none}
+.hero h1{font-family:"Noto Serif SC",serif;font-size:32px;line-height:1.2;margin:6px 0 10px;max-width:720px}
+.hero p{color:#d6deee;max-width:760px;margin:0}
+.kicker{font-size:12px;letter-spacing:.14em;font-weight:700;color:#f2c94c;text-transform:uppercase}
+.hero-tags{display:flex;flex-wrap:wrap;gap:8px;margin-top:16px;position:relative;z-index:1}
+.tag{font-size:13px;padding:7px 11px;border-radius:999px;background:rgba(255,255,255,.12);border:1px solid rgba(255,255,255,.22)}
+.tag.gold{background:#f2c94c;color:#1a1400;border-color:#f2c94c;font-weight:700}
+.grid{display:grid;gap:14px}
+.grid2{grid-template-columns:1fr 1fr}.grid3{grid-template-columns:1fr 1fr 1fr}.grid4{grid-template-columns:1fr 1fr 1fr 1fr}
+@media(max-width:820px){.grid2,.grid3,.grid4{grid-template-columns:1fr}.hero h1{font-size:26px}.hero:after{font-size:34px}}
+section{margin-top:26px}
+h2{font-family:"Noto Serif SC",serif;font-size:22px;line-height:1.3;margin:0 0 6px}
+.sub{color:var(--muted);font-size:14px;margin:0 0 14px}
+.card{background:var(--surface);border:1px solid var(--line);border-radius:var(--radius);padding:16px 16px 14px}
+.card h3{margin:0 0 6px;font-size:16px}
+.stat b{font-size:22px;display:block;line-height:1.2}
+.stat span{font-size:13px;color:var(--muted)}
+.note{font-size:13px;color:var(--muted)}
+.pill{display:inline-flex;align-items:center;padding:4px 9px;border-radius:999px;font-size:12px;font-weight:700;border:1px solid var(--line)}
+.pill.main{background:var(--green-bg);color:var(--green);border-color:transparent}
+.pill.parallel{background:var(--blue-bg);color:var(--blue);border-color:transparent}
+.pill.fill{background:var(--gold-bg);color:#7a5a00;border-color:transparent}
+.pill.out{background:var(--red-bg);color:var(--red);border-color:transparent}
+.pill.warn{background:var(--amber-bg);color:var(--amber);border-color:transparent}
+.product{display:flex;gap:12px;align-items:flex-start}
+.avatar{width:44px;height:44px;border-radius:10px;background:var(--navy);color:#fff;display:grid;place-items:center;font-weight:900;flex:0 0 auto;font-size:13px}
+.filters{display:flex;gap:8px;flex-wrap:wrap;margin:12px 0}
+.fbtn{border:1px solid var(--line);background:var(--surface);border-radius:999px;padding:9px 14px;font-weight:700;cursor:pointer;color:var(--ink)}
+.fbtn.active{background:var(--navy);color:#fff;border-color:var(--navy)}
+.inv{background:var(--surface);border:1px solid var(--line);border-radius:16px;padding:18px;margin-bottom:12px}
+.inv-head{display:flex;gap:12px;justify-content:space-between;align-items:flex-start;flex-wrap:wrap}
+.rank{width:42px;height:42px;border-radius:50%;background:var(--navy);color:#fff;display:grid;place-items:center;font-weight:900;font-size:18px;flex:0 0 auto}
+.rank.gold{background:var(--gold)}
+.inv h3{margin:0;font-size:18px}
+.inv h3 small{font-weight:400;color:var(--muted);font-size:13px}
+.meter{height:8px;background:var(--line);border-radius:999px;overflow:hidden;margin:8px 0 4px}
+.meter i{display:block;height:100%;background:var(--green)}
+.kv{display:grid;grid-template-columns:110px 1fr;gap:6px 10px;font-size:14px;margin-top:10px}
+.kv dt{color:var(--muted)} .kv dd{margin:0}
+@media(max-width:560px){.kv{grid-template-columns:1fr}.kv dt{font-weight:700;color:var(--ink)}}
+.tierbtns{display:flex;gap:8px;flex-wrap:wrap}
+.tierbtn{flex:1;min-width:140px;border:1.5px solid var(--line);background:var(--surface);border-radius:12px;padding:12px;cursor:pointer;text-align:left}
+.tierbtn.active{border-color:var(--navy);background:var(--surface2);box-shadow:0 0 0 3px color-mix(in srgb,var(--navy) 12%, transparent)}
+.tierbtn b{font-size:18px;display:block}
+.timeline{border-left:3px solid var(--line);margin-left:8px;padding-left:18px;display:grid;gap:16px}
+.tl-item{position:relative}.tl-item:before{content:"";position:absolute;left:-26px;top:6px;width:13px;height:13px;border-radius:50%;background:var(--gold);border:3px solid var(--bg)}
+.alert{border-radius:14px;padding:16px;border:1px solid}
+.alert.red{background:var(--red-bg);border-color:#f5c6c0}.alert.amber{background:var(--amber-bg);border-color:#f2d492}
+.alert h3{margin-top:0}
+table{width:100%;border-collapse:collapse;font-size:14px;background:var(--surface);border:1px solid var(--line);border-radius:12px;overflow:hidden}
+th,td{padding:10px 12px;text-align:left;border-bottom:1px solid var(--line);vertical-align:top}
+th{background:var(--surface2)}
+tr:last-child td{border-bottom:none}
+.scrollx{overflow:auto;border-radius:12px}
+.footer{margin-top:28px;padding:16px;border:1px dashed var(--line);border-radius:12px;font-size:13px;color:var(--muted);background:var(--surface)}
+.hidden{display:none !important}
+.checklist{list-style:none;padding:0;margin:8px 0;display:grid;gap:8px}
+.checklist li{padding:10px 12px;background:var(--surface);border:1px solid var(--line);border-radius:10px;font-size:14px}
+.checklist li b{color:var(--navy)}
+@media (prefers-color-scheme: dark){.checklist li b{color:#f2c94c}}
+.fig{margin:0}
+.fig img{width:100%;display:block;object-fit:cover}
+.figcap{font-size:12px;color:var(--muted);padding:8px 2px 0;line-height:1.5}
+.herofig{border-radius:16px;overflow:hidden;border:1px solid var(--line);background:var(--surface)}
+.herofig img{aspect-ratio:16/8.2}
+@media(max-width:640px){.herofig img{aspect-ratio:4/3}}
+.split{display:grid;grid-template-columns:1.05fr .95fr;gap:16px;align-items:start}
+@media(max-width:820px){.split{grid-template-columns:1fr}}
+.game{background:var(--surface);border:1px solid var(--line);border-radius:16px;overflow:hidden;display:flex;flex-direction:column}
+.game img{width:100%;aspect-ratio:16/10;object-fit:cover;display:block}
+.game-body{padding:14px 16px 16px;display:flex;flex-direction:column;gap:6px;flex:1}
+.game-body h3{margin:0;font-size:17px;line-height:1.35}
+.game-body p{margin:0;font-size:14px}
+.game-meta{display:flex;flex-wrap:wrap;gap:6px;margin-top:2px}
+.layer{display:grid;grid-template-columns:44px 1fr;gap:12px;padding:14px 0;border-bottom:1px solid var(--line)}
+.layer:last-child{border-bottom:none}
+.layer-n{width:44px;height:44px;border-radius:10px;background:var(--navy);color:#fff;display:grid;place-items:center;font-weight:900}
+.layer h3{margin:0 0 4px;font-size:16px}.layer p{margin:0;font-size:14px}
+.steps{display:grid;grid-template-columns:1fr 1fr 1fr;gap:12px}
+@media(max-width:820px){.steps{grid-template-columns:1fr}}
+.step{background:var(--surface2);border:1px solid var(--line);border-radius:12px;padding:14px}
+.step b{display:block;margin-bottom:4px}.step p{margin:0;font-size:14px;color:var(--muted)}
+.factlist{list-style:none;padding:0;margin:0;display:grid;gap:10px;font-size:14px}
+.factlist li{padding:10px 12px;border:1px solid var(--line);border-radius:10px;background:var(--surface)}
+.factlist li b{color:var(--navy)}
+@media (prefers-color-scheme: dark){.factlist li b{color:#f2c94c}.layer-n{background:var(--navy2)}}
+.inv{padding:0;overflow:hidden}
+.inv-img{width:100%;aspect-ratio:16/6.5;object-fit:cover;display:block}
+@media(max-width:640px){.inv-img{aspect-ratio:16/9}}
+.inv-body{padding:16px 18px 18px}
+.inv-sec{margin-top:12px;font-size:14px}
+.inv-sec h4{margin:0 0 4px;font-size:13px;letter-spacing:.06em;color:var(--gold);text-transform:uppercase}
+.inv-sec p{margin:0}
+.proj{list-style:none;padding:0;margin:6px 0 0;display:grid;gap:8px}
+.proj li{border:1px solid var(--line);border-radius:10px;padding:10px 12px;background:var(--surface2);font-size:14px}
+.proj li b{display:block}
+.extlink{display:inline-flex;align-items:center;gap:4px;margin-top:5px;font-size:13px;font-weight:700;text-decoration:none;padding:6px 10px;border:1px solid var(--line);border-radius:999px;background:var(--surface);min-height:32px}
+.extlink:hover{border-color:var(--blue)}
+</style>
+</head>
+<body>
+<header class="topbar"><div class="topbar-in">
+<div class="brand">AIB <span>·</span> 找投资人模拟站 <span style="color:var(--muted);font-weight:400">按材料重排版</span></div>
+<nav class="topnav">
+<a href="#介绍">详细介绍</a><a href="#现状">种子已有多少</a><a href="#产品">产品细看</a><a href="#三档">天使三档</a><a href="#排名">天使排名</a><a href="#打法">出手打法</a><a href="#硬伤">材料硬伤</a>
+</nav></div></header>
+
+<div class="wrap">
+<!-- HERO -->
+<div class="hero">
+<div class="kicker">AiBlockchain · Silver Curve Games · 种子已募完 · 现在只找最后一轮天使</div>
+<h1>不是 AI + 区块链公司，是真人运动员授权的双屏体育电玩</h1>
+<p>先把轮次说清：他种子轮已经募完了，不要种子了，现在只要天使。种子已募约 260–270 万美元，本轮是最后一轮天使，找 90 万 / 125 万 / 150 万美元。区块链只是客人看不到的后台结算，真正能打动投资人的，是 Agassi、Canelo、Winfield、Max Taylor 这些真人授权 + iPhone Duo 双屏玩法。所以最适合的钱是体育 + 电玩的专项天使钱，不是加密钱，也不是纯 AI 钱。</p>
+<div class="hero-tags">
+<span class="tag gold">本轮只找天使 · 不再募种子</span><span class="tag">种子已募约 260–270 万 · 已结束</span><span class="tag">天使目标：先关 90 万档</span><span class="tag">天使三档 90万 / 125万 / 150万美元</span><span class="tag">简报估值 1000 万美元</span><span class="tag">介绍人 Anna Wang · 5% 费用</span>
+</div>
+</div>
+
+<!-- 详细介绍 -->
+<section id="介绍">
+<h2>AIB 到底是做什么的 — 详细介绍</h2>
+<p class="sub">先用一句话说清，再一层一层拆开：它是谁、做什么、靠什么赚钱、和普通手游公司差在哪。本节全部按简报和邮件口径写，图片是对应题材的示意照片，不是 AIB 的游戏截图。</p>
+
+<figure class="fig herofig">
+<img src="assets/dualscreen.jpg" alt="双屏手机打赛车游戏示意：上屏是赛车画面，下屏是虚拟手柄"/>
+<figcaption class="figcap" style="padding:10px 14px 12px">双屏玩法示意（题材示意照片，不是 AIB 产品图）：上面一块屏放比赛画面，下面一块屏放手柄、按键和数据。这正是 AIB 简报主打的形态——它把宝押在 iPhone Duo 这类双屏硬件上，游戏从一开始就按两块屏来设计，而不是把单屏游戏硬拉大。</figcaption>
+</figure>
+
+<div class="split" style="margin-top:16px">
+<div class="card" style="padding-top:6px;padding-bottom:6px">
+<div class="layer"><div class="layer-n">1</div><div><h3>第一层 · 客人看得见的：真人运动员游戏</h3><p>开发方叫 <b>AiBlockchain</b>，游戏品牌叫 <b>Silver Curve Games</b>。它做的不是一款游戏，是一排游戏，每一款都挂一位真实运动员的名字和肖像：网球传奇打匹克球、赛车新星开赛车、拳王打拳击、棒球名人堂打棒球。客人冲着人来下载，这是它获客的方式——不用从零教育市场，运动员本人就是广告牌。</p></div></div>
+<div class="layer"><div class="layer-n">2</div><div><h3>第二层 · 玩法上的赌注：双屏</h3><p>普通手游只有一块屏，画面、按键、数据全挤在一起。AIB 按双屏设计：一块屏专心放比赛，另一块屏放操作、实时数据和第二视角。简报把这件事和 iPhone Duo 的硬件节奏绑在一起，写了配合 2026 年 10 月 23 日硬件首发（简报口径）。赌对了，它是双屏体育游戏里最早的一批；赌错了，单屏版本就只剩授权本身的价值——这是投资人会反复问的一点。</p></div></div>
+<div class="layer"><div class="layer-n">3</div><div><h3>第三层 · 客人看不见的：后台结算</h3><p>名字里的 Blockchain 在这里：它在新泽西做了一条零 gas 的私有链，用来在后台做结算和记录，客人玩游戏时根本感觉不到。所以不要把它当加密公司去卖——链上没有给客人炒的东西，它更像水电管道。公司手里有 3 个专利：美国 10,579,974、11,669,361 和 WO2017019530A1，这是它讲“技术壁垒”时能拿出来的硬东西。</p></div></div>
+</div>
+<div>
+<ul class="factlist">
+<li><b>谁创办的</b> — Drew Hingorani 和 Stephen Reed，两人各持 25,500 股，合计约 71%，公司还是创始人牢牢说了算的阶段。</li>
+<li><b>靠什么赚钱</b> — 主要靠 Season Pass（赛季通行证）+ 造型皮肤，简报说这两项约占 60%。说白了就是：游戏免费或低价进来，靠一季一季的内容和外观持续收费。</li>
+<li><b>产品到哪一步了</b> — 邮件口径是产品已上架 Apple、Amazon、Google Play；但材料里没有实际收入、下载、留存数字，只有预估（第一年 200–500 万、第三年 800–1400 万）。“已上架”和“已跑出数据”是两回事，见硬伤区。</li>
+<li><b>还挂着什么</b> — 简报里另有 AI 电台、音乐游戏和一部给 A24 用的 AI 电影预告。这些和主业不是一条线，对体育 / 电玩投资人反而是减分项，正式谈的时候要按对象裁剪，别一股脑全发。</li>
+<li><b>现在走到哪一步</b> — 种子已募约 260–270 万美元、已结束；现在找的是最后一轮天使 90 万 / 125 万 / 150 万美元，先关 90 万档，细账见下一节。</li>
+</ul>
+<div class="card" style="margin-top:12px"><h3>一句话记住它</h3><p style="margin:0">它卖的不是“AI + 区块链”这两个词，它卖的是：<b>你喜欢的运动员，亲手能玩的比赛，再加一块别人没有的第二块屏。</b>后面的投资人排名，全是按这个定位排的——谁最懂运动员、体育内容和手机电玩，谁就排最前面。</p></div>
+</div>
+</div>
+
+<h3 style="margin:20px 0 8px;font-size:17px">双屏具体怎么分工</h3>
+<div class="steps">
+<div class="step"><b>上屏 · 只放比赛</b><p>赛道、球场、拳台完整呈现，不被按键和弹窗挡住，观感更接近看一场真比赛。</p></div>
+<div class="step"><b>下屏 · 放操作和数据</b><p>虚拟手柄、技能按键、实时比分和运动员数据放在第二块屏上，手指操作不遮画面。</p></div>
+<div class="step"><b>赛季 · 把人留下来</b><p>用 Season Pass 按赛季更新内容和造型，让客人一季一季回来，而不是下载一次就走。</p></div>
+</div>
+</section>
+
+<!-- 现状 -->
+<section id="现状">
+<h2>他现在是什么情况：种子已有多少</h2>
+<p class="sub">全部来自简报 + 3 张 cap table + Anna Wang 2026-11-16 邮件。没有的数据直接写没有，不用预估冒充实际。轮次口径已纠正：种子已经有了，不再募种子，本站后面排的全是天使轮。</p>
+<div class="alert amber" style="margin-bottom:14px"><h3 style="margin:0 0 6px">轮次说清：种子已募完，现在只要天使</h3><p style="margin:0"><b>种子已募约 260–270 万美元。</b>其中材料里能对上的：Paget One Bermuda 出 100 万，pre-seed 约 25–26 人出约 123 万，余下部分简报只给了总额口径、三张 cap table 又对不上，所以只能写约数，不能写死一个精确数。这一轮已经结束，不要再按种子轮去谈；现在找的是<b>最后一轮天使 90 万 / 125 万 / 150 万美元</b>，先关 90 万档。</p></div>
+<div class="grid grid4">
+<div class="card stat"><b>约 260–270 万</b><span>种子已募总额（简报口径）· 已结束<br>Paget One Bermuda 出 100 万，pre-seed 约 25–26 人出约 123 万</span></div>
+<div class="card stat"><b>71%</b><span>创始人合计持股<br>Drew Hingorani 与 Stephen Reed 各 25,500 股</span></div>
+<div class="card stat"><b>3 个专利</b><span>美国 10,579,974 / 11,669,361<br>WO2017019530A1 · 零 gas 私有链在新泽西做</span></div>
+<div class="card stat"><b>0 个</b><span>材料里的实际收入数字<br>没有收入、下载、留存，只有预估：第一年 200–500 万，第三年 800–1400 万</span></div>
+</div>
+<div class="grid grid2" style="margin-top:14px">
+<div class="card"><h3>变现怎么讲的</h3><p style="margin:0">靠 Season Pass + 造型皮肤，简报说约占 60%。平台赌的是 iPhone Duo 双屏，配合简报所写 2026 年 10 月 23 日硬件首发。另挂 AI 电台、音乐游戏和一部给 A24 用的 AI 电影预告——这些对游戏投资人是减分项，见下方版本裁剪。</p></div>
+<div class="card"><h3>新泽西税抵 — 别照邮件原话转</h3><p style="margin:0">邮件写的 40% 不是普遍口径。2026 年现行基本是 <b>35%</b>，少数族裔 / 女性认证企业或在 Opportunity Zone 才到 40%，且要少于 150 名员工、至少 75% 在新泽西。更不能写“零风险”——退税 + 营收不等于零风险，投资人一定挑。正式材料先确认资格再写。</p></div>
+</div>
+</section>
+
+<!-- 产品 -->
+<section id="产品">
+<h2>产品阵容细看：6 款游戏，每款挂一个真人</h2>
+<p class="sub">一款一款拆开看：挂的是谁、这个人在体育圈是什么分量、为什么选这个题材、投资人会怎么看。图片均为对应运动题材的示意照片，不是游戏截图。这套“真人矩阵”正是 SeventySix 和运动员天使排得靠前的原因——他缺的下一批授权，这些人能直接补。</p>
+<div class="grid grid3">
+
+<article class="game">
+<img src="assets/pickleball.webp" alt="匹克球运动员在球场上挥拍击球"/>
+<div class="game-body">
+<h3>Andre Agassi · 匹克球</h3>
+<div class="game-meta"><span class="pill main">已上架口径</span><span class="pill">引流款</span></div>
+<p><b>挂的人：</b>Andre Agassi，网球史上最有观众缘的传奇之一，名字本身在美国就是流量。</p>
+<p><b>为什么是匹克球：</b>匹克球是这几年美国增长最快的运动之一，中老年和家庭人群都在打，和 Agassi 的粉丝年龄正好重叠。用网球传奇来带匹克球，等于把两个圈子的人一起拉进来。</p>
+<p><b>状态：</b>邮件口径已上架 Apple / Amazon / Google Play，是整排产品里最适合当“第一款被投资人实际打开看”的。</p>
+</div></article>
+
+<article class="game">
+<img src="assets/racing.jpg" alt="INDY NXT 风格开轮赛车在赛道上高速过弯"/>
+<div class="game-body">
+<h3>Max Taylor · 赛车 ★ 简报主打</h3>
+<div class="game-meta"><span class="pill main">简报主打人物</span><span class="pill">双屏最适配</span></div>
+<p><b>挂的人：</b>Max Taylor，Andretti Global 旗下的 INDY NXT 车手。Andretti 是美国赛车界的招牌家族，简报把他放在主打位置。</p>
+<p><b>为什么排主打：</b>赛车是双屏分工最直观的题材——上屏放赛道，下屏放手柄、档位和圈速数据，上面那张双屏示意图画的正好就是赛车。年轻车手还在上升期，授权故事能跟着他的成绩一起涨。</p>
+<p><b>投资人看点：</b>他背后的 Andretti / INDY 圈子本身就是第 6 名策略天使的来源，产品和融资在这里是同一条线。</p>
+</div></article>
+
+<article class="game">
+<img src="assets/boxing.jpg" alt="座无虚席的拳击场馆，聚光灯下的拳台"/>
+<div class="game-body">
+<h3>Canelo Alvarez + Cain Velasquez · 拳击</h3>
+<div class="game-meta"><span class="pill">双人授权</span><span class="pill">拉美市场</span></div>
+<p><b>挂的人：</b>一边是 Canelo Alvarez，当今拳击界票房号召力最强的名字之一；一边是 Cain Velasquez，UFC 重量级出身。一个游戏同时吃拳击和综合格斗两个圈子。</p>
+<p><b>为什么值钱：</b>格斗人群付费意愿强、赛事节奏密，每逢大赛就是天然的获客窗口；Canelo 的拉美粉丝盘子，还能帮产品走出美国英语市场。</p>
+<p><b>要注意：</b>双人授权意味着两份合同，投资人尽调时会问清期限和续约条件——这类问题要提前备好答案。</p>
+</div></article>
+
+<article class="game">
+<img src="assets/baseball.jpg" alt="棒球手在满场观众的球场里挥棒击球"/>
+<div class="game-body">
+<h3>David Winfield · 棒球</h3>
+<div class="game-meta"><span class="pill">MLB 名人堂</span><span class="pill">长青题材</span></div>
+<p><b>挂的人：</b>David Winfield，MLB 名人堂人物，美国国民运动里的殿堂级名字，对棒球迷是无需介绍的信任背书。</p>
+<p><b>为什么要有棒球：</b>棒球赛季长、场次多、数据文化最重，天然适合“上屏比赛、下屏数据”的双屏分工，也适合按赛季卖 Season Pass——和简报的变现结构正好咬合。</p>
+<p><b>投资人看点：</b>这是整排产品里受众最稳、最不依赖短期热点的一款，负责压住阵容的基本盘。</p>
+</div></article>
+
+<article class="game">
+<img src="assets/golf.jpg" alt="夕阳下高尔夫球手在球场上挥杆"/>
+<div class="game-body">
+<h3>Manolo Vega · 高尔夫</h3>
+<div class="game-meta"><span class="pill">慢节奏题材</span><span class="pill">高净值人群</span></div>
+<p><b>挂的人：</b>Manolo Vega，高尔夫题材的授权人物。</p>
+<p><b>为什么要有高尔夫：</b>高尔夫节奏慢、单局长，玩家年龄和消费力都偏高，是体育游戏里客单价最好的人群之一。它不负责冲下载量，负责把人群结构往高消费端拉。</p>
+<p><b>和双屏的关系：</b>选杆、看果岭坡度、查记分卡这类“第二屏信息”在高尔夫里特别自然，是双屏玩法容易讲通的题材。</p>
+</div></article>
+
+<article class="game">
+<img src="assets/sailing.webp" alt="远洋帆船赛船队在大海上全速航行"/>
+<div class="game-body">
+<h3>Cole Brauer · 帆船</h3>
+<div class="game-meta"><span class="pill">小众稀缺</span><span class="pill">故事性最强</span></div>
+<p><b>挂的人：</b>Cole Brauer，远洋帆船人物。帆船是这排产品里最小众的一个，但故事性最强——一个人、一片海、长距离航行，天然带内容传播点。</p>
+<p><b>为什么放它：</b>它证明这套打法不挑项目大小：只要人物有真实故事和一批死忠粉丝，就能做成一款授权游戏。阵容里有它，“可复制的授权机器”这个说法才立得住。</p>
+<p><b>附带一条线：</b>材料里另有一部和她相关的 AI 电影预告项目——那是支线，谈游戏投资人时不要喧宾夺主。</p>
+</div></article>
+
+</div>
+<div class="card" style="margin-top:14px"><h3>把 6 款连起来看</h3><p style="margin:0">匹克球负责引流、赛车负责主打和双屏演示、拳击负责付费和拉美市场、棒球负责基本盘、高尔夫负责高消费人群、帆船负责证明模式可复制。这不是随便凑的六个名字，是一张按功能分工的授权矩阵——也是为什么下一批授权补得上，这家公司就能继续滚大的原因。</p></div>
+</section>
+
+<!-- 三档 -->
+<section id="三档">
+<h2>天使轮三档：只要天使，先关小档，别一上来谈 150 万</h2>
+<p class="sub">这三档全是天使轮的额度，不是种子轮——种子约 260–270 万已经募完。点下面切换，看每一档的谈法。附件里 3 张 cap table 分别对应这三档，但三张之间对不上，见硬伤区。</p>
+<div class="tierbtns" role="tablist">
+<button class="tierbtn active" data-tier="900" onclick="setTier(900,this)"><b>$900K</b>推荐先关 · 90 万档<span class="note" id="t900"></span></button>
+<button class="tierbtn" data-tier="1250" onclick="setTier(1250,this)"><b>$1.25M</b>125 万档</button>
+<button class="tierbtn" data-tier="1500" onclick="setTier(1500,this)"><b>$1.5M</b>150 万档</button>
+</div>
+<div class="card" style="margin-top:12px" id="tierDetail"></div>
+</section>
+
+<!-- 排名 -->
+<section id="排名">
+<h2>最适合的天使投资人 — 按材料重排，每家展开说</h2>
+<p class="sub">本轮只找天使，不找种子：种子约 260–270 万已募完，下面按天使轮来排。排序是综合出手优先级：懂不懂运动员肖像 + 体育内容 + 手机电玩、单笔能不能吃下这一轮天使、阶段对不对得上，三项一起算。<b>前 7 家逐家展开：每家一张题材图、现在什么情况、为什么适配 AIB、以前投过的对口项目逐个列出并配可点的原文链接、最后是怎么谈。</b>判断一个买家适不适配，就看他以前有没有投过授权体育、体育游戏、运动员资源这三件事里的至少两件。第 8、9 名不计分，不参与排序。名单里偏种子期的机构，本轮都按天使轮 / 最后一轮的口径去谈，不再开新的种子轮。卡片图片为对应城市 / 赛场 / 题材的示意照片，不是这些机构的办公室实拍。</p>
+<div class="filters">
+<button class="fbtn active" onclick="filterInv('all',this)">全部 9 组</button>
+<button class="fbtn" onclick="filterInv('main',this)">主攻</button>
+<button class="fbtn" onclick="filterInv('parallel',this)">并行</button>
+<button class="fbtn" onclick="filterInv('fill',this)">补额度</button>
+<button class="fbtn" onclick="filterInv('out',this)">先筛掉 / 最后</button>
+</div>
+<div id="invList"></div>
+</section>
+
+<!-- 对比表 -->
+<section>
+<h2>一眼对比</h2>
+<div class="scrollx"><table>
+<thead><tr><th>投资人</th><th>类型</th><th>单笔 / 门槛</th><th>为什么排这里</th><th>第一步</th></tr></thead>
+<tbody>
+<tr><td><b>1 Courtside Ventures</b></td><td>纽约早期体育专项基金</td><td>50–250 万，平均约 100–150 万</td><td>唯一同时懂肖像、体育内容、手机电玩，本轮按天使轮谈</td><td>主攻，完整游戏版简报</td></tr>
+<tr><td><b>2 SeventySix Capital</b></td><td>费城体育科技 + 运动员团</td><td>面向消费者体育科技</td><td>不只给钱，能补下一批运动员授权</td><td>主攻，走 Athlete Venture Group</td></tr>
+<tr><td><b>3 JumpStart NJ</b></td><td>新泽西天使网络</td><td>成员 2.5–5 万起，有人 50 万+</td><td>最吃 NJ 税抵，但卡收入门槛</td><td>补收入数字后再正式申请</td></tr>
+<tr><td><b>4 Play Ventures</b></td><td>全球电玩早期基金</td><td>约 50–300 万</td><td>只投电玩，爱做第一张支票</td><td>只发纯游戏裁剪版</td></tr>
+<tr><td><b>5 Phoenix Capital Ventures</b></td><td>早期体育 / 电玩 / 沉浸媒体</td><td>早期</td><td>双屏 + 真人数据玩法对口</td><td>体育专项第二接触点</td></tr>
+<tr><td><b>6 已签运动员背后的策略天使</b></td><td>策略天使（人，不是机构）</td><td>约 10–25 万级</td><td>授权变利益绑定，还能滚大授权管线；先例 OneTeam 投过 Nifty Games</td><td>与 1、2 名同时启动，和授权合同绑着谈</td></tr>
+<tr><td><b>7 Keiretsu Mid-Atlantic</b></td><td>天使网络（含纽约）</td><td>找 75–500 万，已募 50–150 万可申请</td><td>甜蜜区是 A/B 轮，他这轮是最后一轮天使，阶段略早</td><td>只走免费初筛，别先付大会费</td></tr>
+</tbody></table></div>
+<p class="note">Keiretsu 注意：被邀去正式大会要付 12,000 美元行政费，申请和初筛免费——先走免费那步。JumpStart 申请只走 Dealum，过了初筛每月 10 分钟简报 + 10 分钟问答，联系 swaters@jumpstartnj.org。</p>
+</section>
+
+<!-- 打法 -->
+<section id="打法">
+<h2>出手打法：4 周顺序</h2>
+<div class="timeline">
+<div class="tl-item"><b>第 1 周 · 先修材料，不发简报</b><br>统一 cap table（三张变一张）、统一估值口径（1000 万还是反推的约 7100 万，二选一讲清）、补一页真实数据：收入 / 下载 / 留存，哪怕数字小也要有。同时确认两件事：NJ 税抵资格、是否女性领导（决定 Golden Seeds 能不能投）。</div>
+<div class="tl-item"><b>第 1–2 周 · 主攻双线同时开</b><br>Courtside Ventures + SeventySix Capital / Athlete Venture Group 同步接触；运动员圈子（Andretti / INDY 圈、Thirty-5 Capital 匹克球家族办公室、Agassi 与 Winfield 圈子）同步热引荐。</div>
+<div class="tl-item"><b>第 2–3 周 · 并行线</b><br>Play Ventures 发纯游戏版；Phoenix Capital Ventures 做第二接触点；JumpStart NJ 在补上收入数字后走 Dealum 申请。</div>
+<div class="tl-item"><b>第 3–4 周 · 补额度收尾</b><br>有人领投后，再用 Keiretsu 免费初筛、NJEDA 的 Angel Match（10–100 万可转债配对）与 Founders and Funders、AngelList syndicate（Balaji / Naval / Jason Calacanis，需热引荐）、SV Angel 约 20 万 / AI Grant 25 万这类小额共投补最后一截。先关 90 万档，关掉再谈扩到 125 万。</div>
+</div>
+<div class="grid grid3" style="margin-top:16px">
+<div class="card"><h3>给 Courtside / SeventySix 的版本</h3><p class="note" style="margin:0">完整版：真人授权矩阵 + 双屏玩法 + Season Pass 变现 + 下一批想签的运动员名单（让他们看到自己能帮上忙）。</p></div>
+<div class="card"><h3>给 Play Ventures 的版本</h3><p class="note" style="margin:0">纯游戏版：把电影、电台、区块链那几页拿掉，只讲游戏、工作室和数据。</p></div>
+<div class="card"><h3>给 JumpStart 的版本</h3><p class="note" style="margin:0">新泽西版：税抵资格写清（35% 基本口径）、新泽西团队与私有链落地、付费试点 / 经常性收入数字放第一页。</p></div>
+</div>
+</section>
+
+<!-- 硬伤 -->
+<section id="硬伤">
+<h2>材料三大硬伤 — 不修好，排第一也没用</h2>
+<div class="grid grid3">
+<div class="alert red"><h3>1 · Cap table 三张对不上</h3><p style="margin:0">pre-seed 股数一张 6,583、一张 9,480；bridge 一张 90 万、一张 3 万；总股数两个版本。投资人一对表就会停下来问，先合成一张统一版再发任何人。</p></div>
+<div class="alert red"><h3>2 · 估值差 7 倍</h3><p style="margin:0">简报写种子估值 1000 万美元，但 cap table 里 125 万只占 1.75%，反推约 7100 万。两个数字不能同时出现在同一套材料里。</p></div>
+<div class="alert red"><h3>3 · 说已在赚钱，却没有一个实际数字</h3><p style="margin:0">简报说已在赚钱，却只有预估（第一年 200–500 万、第三年 800–1400 万），没有实际收入、下载、留存。这也是 JumpStart 会先卡住的原因：它硬性要 5–8 万经常性收入或 2 个付费试点。</p></div>
+</div>
+<div class="alert amber" style="margin-top:12px"><h3>另外两句不能直接转给投资人</h3><p style="margin:0">① “投了 Anthropic 8 亿、A24 2.25 亿、见过 Bezos 和 Musk”——邮件里没附证明，正式材料要么补出处，要么拿掉。② Golden Seeds 新泽西分会第一轮典型 25–200 万、金额完全重叠，但只投女性领导公司——符合就直接升到第 2 名，不符合就跳过，别浪费时间。TiE New Jersey Angels 只作引荐和人脉补充，单靠它凑满整轮机会不大。</p></div>
+</section>
+
+<section>
+<h2>出发前清单</h2>
+<ul class="checklist">
+<li><b>先确认</b> — NJ 税抵资格到底是 35% 还是够到 40% 的条件</li>
+<li><b>先确认</b> — AIB 是否女性领导（决定 Golden Seeds 排第 2 还是直接跳过）</li>
+<li><b>先统一</b> — cap table 只留一张、估值只留一个口径</li>
+<li><b>先补页</b> — 真实收入 / 下载 / 留存一页，哪怕数字小</li>
+<li><b>先关小档</b> — 用天使 90 万档 cap table 去谈，关掉再扩档；种子约 260–270 万已募完，不再重开</li>
+</ul>
+</section>
+
+<div class="footer">
+<b>这个站是什么：</b>单独为 AIB 找天使投资人做的模拟站，按“现在情况”新建——种子已募约 260–270 万美元、已结束，本轮只找最后一轮天使。以简报 + 3 张 cap table 为准重排，推翻只看邮件时的加密 / AI 口径。资料来源：Anna Wang（Keller Williams NYC）邮件、AIB 简报 PDF、90 万 / 125 万 / 150 万三张 cap table，已同步存入 Google 云盘「AIB 天使轮」文件夹（共 7 个文件，含按材料版名单）。本页为模拟演示，不代表任何投资人已接触或承诺投资；金额、门槛以各机构正式申请页为准。投资人卡片里“投过的对口项目”链接均为外部原文页，点开可核对。详细介绍、产品细看和投资人卡片中的照片均为对应运动题材、城市、赛场与双屏设备的示意照片，不是 AIB 的游戏截图、产品实拍或投资人机构实拍。
+</div>
+</div>
+
+<script>
+var investors=[
+{n:1,name:"Courtside Ventures",loc:"纽约 · 早期体育专项基金",tier:"main",tierLabel:"主攻 · 第 1 名",fit:96,img:"assets/inv-courtside.jpg",imgAlt:"纽约麦迪逊广场花园篮球赛现场，满场观众",imgCap:"纽约主场氛围示意 — Courtside 就在纽约，投的是体育、游戏、生活方式的交叉点。",
+check:"单笔常见 10 万–250 万美元这一档；2023 年开了 1 亿美元第三期基金",
+status:"2015 年成立的早期基金，定位写得很直白：体育、游戏、生活方式三者的交叉点。2023 年开出 1 亿美元的第三期基金，单笔常见 10 万到 250 万美元，正好覆盖 AIB 这轮天使的量级。",
+why:"7 家里唯一三件事全占的：投过官方授权体育游戏、投过链上结算的体育游戏、组合里还有电竞和体育消费品牌。AIB 是真人运动员授权 + 双屏体育电玩 + 后台私有链结算，Courtside 不用被教育任何一层——授权模型他投过同款，链上结算他不排斥、还投过同类，双屏和 Season Pass 变现也是他日常看的游戏语言。",
+projects:[
+{n:"Nifty Games — 官方授权手机体育游戏",d:"拿 NFL 和 NBA 官方授权做手机对战体育游戏，Courtside 跟投了它的 A 轮（该轮融了 1200 万美元以上）。这和 AIB 拿 Agassi、Winfield 授权做游戏是同一个模型：先拿真人 / 联盟授权，再做手机游戏。",u:"https://sgbonline.com/nifty-games-raises-more-than-12-million/",label:"看 Nifty Games 融资报道"},
+{n:"Swoops — 区块链篮球策略游戏",d:"350 万美元种子轮由 Courtside 和 Alpaca 领投。说明 AIB 后台那套链上结算在他这里不是减分项，他投过同类、懂这套东西该怎么估值。",u:"https://teaserclub.com/investors/courtside-ventures",label:"看 Courtside 投资记录页"},
+{n:"组合全表 — 100 Thieves、WinZO、StockX 等",d:"电竞俱乐部、游戏平台、体育消费都在他组合里，整张表就是体育 × 游戏 × 消费的交叉点，和 AIB 的定位是同一张图。",u:"https://parsers.vc/fund/courtsidevc.com/",label:"看 Courtside 组合全表"}],
+risk:"尽调会盯真实留存和授权合同期限——授权还剩多久、续约条件是什么，要先备好；材料三大硬伤不修，他这种专业基金第一关就查 cap table。",
+action:"按最后一轮天使谈，不按新一轮机构轮谈。主打授权管线 + 双屏专利，第一顺位发完整游戏版简报。"},
+{n:2,name:"SeventySix Capital + Athlete Venture Group",loc:"费城郊区 King of Prussia · 体育科技 + 运动员团",tier:"main",tierLabel:"主攻 · 第 2 名",fit:92,img:"assets/inv-seventysix.jpg",imgAlt:"费城 Citizens Bank Park 棒球场全景，远处是费城天际线",imgCap:"费城棒球场示意 — 合伙人里就有前 MLB 全明星，棒球线正好对上 Winfield。",
+check:"面向消费者的体育科技、电竞、体育博彩，金额以正式沟通为准",
+status:"1999 年成立，合伙人 Wayne Kimmel 加前 MLB 全明星 Ryan Howard，专投体育科技、电竞、体育博彩。他旗下还有一个 Athlete Venture Group，专门让现役和退役运动员直接投被投公司并上手帮忙。",
+why:"他能给的不只是钱，是运动员。Athlete Venture Group 的成员有 Ryan Howard、DeMarco Murray、Ralph Sampson、Brian Westbrook——AIB 最缺的下一个授权，他这里有现成人。AIB 每款游戏挂一个真人，这家的资源正好接在产品管线的下一格上；Winfield 这条棒球线，又正好对上 Ryan Howard 的 MLB 背景。",
+projects:[
+{n:"早期三家 — Whistle Sports、VSiN、N3rd Street Gamers",d:"Whistle Sports 体育媒体后来被 Eleven Sports 收购、再转 DAZN；VSiN 体育博彩媒体卖给了 DraftKings；N3rd Street Gamers 是电竞公司。三家都是他早期投的，体育内容 + 体育数据 + 电竞，他全趟过。",u:"https://www.lebow.drexel.edu/affiliate-bios/wayne-kimmel",label:"看 Wayne Kimmel 介绍页（列了这三家）"},
+{n:"Athlete Venture Group — 运动员直接入场",d:"运动员成员名单和组合全表都在这个整理页里。谈的时候可以直接指着名单问：下一批授权里，哪几个项目的人能从这个组里补上。",u:"https://vc-mapping.gilion.com/vc-firms/seventysix-capital",label:"看运动员组与组合全表"},
+{n:"Ralph Sampson 加入运动员组的公告",d:"公告里写清了运动员组的玩法和组合名单，是理解他家“钱 + 人一起进”模式最直接的一篇。",u:"https://sgbonline.com/ralph-sampson-joins-seventysix-capitals-athlete-venture-group/",label:"看加入公告原文"}],
+risk:"要讲清消费者收入模型（Season Pass + 造型怎么赚钱），不能只摆授权名单；运动员资源是加分项，尽调照样看数字。",
+action:"钱和授权一起谈：请他帮 AIB 补下一个大 IP，与 Courtside 同时启动。"},
+{n:3,name:"JumpStart NJ Angel Network",loc:"新泽西 · 本地天使网络",tier:"parallel",tierLabel:"并行 · 90 万档关门主力",fit:84,img:"assets/inv-jumpstart.jpg",imgAlt:"新泽西纽瓦克城市天际线，河面倒影",imgCap:"新泽西纽瓦克天际线示意 — 本地天使网络，退税故事只有本地人最买账。",
+check:"会员每人 2.5 万–5 万美元起，凑起来一家能过 100 万美元",
+status:"2002 年成立的新泽西本地天使网，会员自己掏钱投、不拼基金池，单人一般 2.5 万到 5 万美元，一屋子人凑起来能过 100 万。公开标准写得很死：偏好有自有技术、能颠覆传统行业的早期公司，喜欢投前估值在 1000 万美元以下、已经有收入的公司，三分之一要投新泽西本地。申请只走 Dealum，联系 swaters@jumpstartnj.org。",
+why:"AIB 简报估值正好 1000 万美元，卡在他家标准线上；3 个专利就是他说的自有技术；公司在新泽西做私有链，新泽西天使税抵这个故事只有本地人最买账、也最会用。短板也要说清：单人额度小，要靠人数凑，所以他适合当 90 万档的关门主力，不适合领投大档。",
+projects:[
+{n:"投资标准原文 — 先对着标准备材料",d:"他家官网把偏好写死了：自有技术、投前估值 1000 万以下、已有收入、三分之一投本地。AIB 的材料第一页就该按这四条排：专利、新泽西雇佣、估值口径、收入数字。",u:"https://www.jumpstartnj.org/services",label:"看 JumpStart 投资标准原文"},
+{n:"组合名单 — 体育沾边的只有 Realplay Sports",d:"实话实说：他家投的多数是科技和医疗，不是体育游戏。组合里和体育沾边的是 Realplay Sports，代表作还有 Calamu（网络安全）、SunRay Scientific（材料科技）、ConnectYard、AptDeco。适配他靠的是地域 + 专利 + 税抵，不是赛道先例。",u:"https://parsers.vc/fund/jumpstartnj.org/",label:"看 JumpStart 组合名单"},
+{n:"2021 年投了 220 万美元的报道",d:"报道写了那年他投 SunRay 和 Calamu 等公司的实际出手记录，能看出他真实的单笔节奏和偏好，和官网标准对得上。",u:"https://www.roi-nj.com/2022/01/24/finance/banner-year-for-jumpstart-nj-angel-network-as-2-2m-is-invested/",label:"看 ROI-NJ 报道原文"}],
+risk:"硬性门槛摆在那里：经常性收入或付费试点这类证据，材料里现在一个实际数字都没有，会先卡住。先补一页真实数据再正式申请。",
+action:"走 Meet the Angels 当面讲，材料第一页放专利和新泽西雇佣，定位是 90 万档的关门主力。"},
+{n:4,name:"Play Ventures",loc:"全球 · 游戏基金（总部偏新加坡和欧洲）",tier:"parallel",tierLabel:"并行",fit:82,img:"assets/inv-play.jpg",imgAlt:"手游电竞选手戴着耳机在比赛现场专注打手机游戏",imgCap:"手游电竞现场示意 — 纯游戏基金，只看游戏本身，别的故事不用讲。",
+check:"投 pre-seed 到 A 轮，单笔约 50 万–300 万美元，本轮按天使轮谈",
+status:"2018 年成立，只投游戏一样东西，阶段从 pre-seed 到 A 轮，重点是免费玩（free-to-play）游戏。是这 7 家里最纯粹的游戏脑子。",
+why:"AIB 靠 Season Pass + 造型赚钱这套免费玩变现逻辑，他一看就懂，不用教育。短板同样清楚：他没有美国运动员 IP 的操作经验，而且 AIB 这一轮对他偏晚——要把这轮包装成通往 A 轮的桥，而不是当成一轮普通的早期游戏融资去讲。",
+projects:[
+{n:"Deftouch / All-Star Games — 体育手游先例",d:"做板球实时多人体育手游的工作室，Play Ventures 参与了它 150 万美元那一轮。这一笔证明他对体育题材手游有胃口，不是只投休闲和中重度非体育品类。",u:"https://yourstory.com/2021/03/funding-alert-lumikai-play-ventures-pre-series-funding-gaming-startups-15-million",label:"看 YourStory 融资报道"},
+{n:"同一轮的另一篇报道 — live multiplayer sports titles",d:"这篇把工作室定位写得更清楚：做的是实时多人体育游戏。和 AIB 的体育电玩是同一品类语言，谈的时候可以直接引用这个先例对位。",u:"https://www.techcircle.in/2021/03/04/edtech-startup-questt-games-studio-all-star-games-online-shopping-platform-dealshare-raise-capital/",label:"看 TechCircle 报道原文"},
+{n:"组合全表 — Deftouch 有两笔记录",d:"全表里 Deftouch 有种子和 2024 年两笔记录，说明他对投过的体育手游工作室会持续跟投，不是打一枪就走。",u:"https://teaserclub.com/investors/play-ventures",label:"看 Play Ventures 组合全表"}],
+risk:"对非游戏业务零容忍——AI 电影、AI 电台、区块链那几页必须从给他的版本里拿掉，只讲游戏、工作室和数据。",
+action:"主打免费玩模型和留存打法，不要主打运动员故事，那不是他的主场；只发纯游戏裁剪版。"},
+{n:5,name:"Phoenix Capital Ventures",loc:"亚特兰大 · 体育 / 游戏专项",tier:"parallel",tierLabel:"并行 · 有人领投后跟投补额度",fit:76,img:"assets/inv-phoenix.jpg",imgAlt:"亚特兰大市中心天际线",imgCap:"亚特兰大天际线示意 — 只投体育、游戏、人体表现和沉浸媒体四样，赛道最纯。",
+check:"早期阶段，单笔偏小，适合跟投补额度",
+status:"2016 年成立，官方口径只投四样：体育、游戏、人体表现、沉浸媒体，别的都不看。是 7 家里赛道限定最死的一家。",
+why:"赛道最纯，所以对口最直接。他组合里的 PrizePicks 是靠真实球员表现做产品的，和 AIB 靠真实运动员 IP 变现是近亲——都是把真人运动员的表现和肖像变成可付费的产品。他单笔偏小，所以定位不是领投，是有人领投之后跟投补额度；另外他的体育圈关系比他的钱更值钱。",
+projects:[
+{n:"官方组合页 — PrizePicks、Ghost Gaming、Skillshot",d:"PrizePicks 是日常幻想体育（靠真实球员表现）、Ghost Gaming 是电竞、Skillshot 是电竞媒体，全在官方组合页里；官方页第一句就写只聚焦体育、健身、游戏和娱乐。",u:"https://www.pcv.fund/portfolio",label:"看 PCV 官方组合页"},
+{n:"组合整理页 — 出手记录全表",d:"PrizePicks、Ghost Gaming 等的投资记录在这里能逐条对上，方便谈之前先摸清他近几年实际出手的节奏。",u:"https://parsers.vc/fund/pcv.fund/",label:"看 PCV 组合整理页"},
+{n:"PitchBook 记录 — 2026 年投了 JOA",d:"PitchBook 记录他 2026 年还投了 JOA，JOA 那条线和可玩的体育粉丝游戏有关，说明他到现在还在体育游戏这条线上出手，不是老基金躺平。",u:"https://pitchbook.com/profiles/investor/438402-52",label:"看 PitchBook 投资人页"}],
+risk:"知名度和确定性不如前两名，别把它当唯一主攻；单笔小，凑不满整轮。",
+action:"有人领投之后再找他补额度，把他当体育专项的第二个接触点同期推进。"},
+{n:6,name:"已签运动员背后的策略天使",loc:"Agassi / Winfield / Canelo / Cain Velasquez 的团队圈子",tier:"main",tierLabel:"主攻 · 放大器，不是主力",fit:88,img:"assets/inv-athletes.jpg",imgAlt:"多个项目的运动员在通道里并排站立的群像",imgCap:"运动员群像示意 — 这批不是机构、是人：已经签了授权的运动员本人和他们背后的团队。",
+check:"单笔约 10 万–25 万级，金额不定、出钱慢",
+status:"这批不是机构、是人。Agassi、Winfield、Canelo、Cain Velasquez 已经把授权给了 AIB，这批谈的是让运动员本人或他们背后的团队顺手再投一笔小钱，把授权关系升级成利益绑定。",
+why:"授权关系变成利益绑定之后，运动员发一条动态比广告管用，还能介绍同项目的其他运动员，把授权管线滚大——这是 AIB 增长模型里最便宜的一格。先例也跑通过：球员工会背景的投资载体投授权体育游戏，已经有成功样本。出钱慢、金额不定，所以只能当放大器，不能当主力，更不能等他们先动。",
+projects:[
+{n:"OneTeam Ventures — 第一笔就投了 Nifty Games",d:"OneTeam 是 RedBird 加 NFLPA、MLBPA 等几个球员工会一起做的投资载体，它的第一笔就投了第 1 名 Courtside 也投过的 Nifty Games。运动员集体用 IP + 资本入场这个模式，在授权体育游戏上已经跑通了一遍。",u:"https://sgbonline.com/nifty-games-raises-more-than-12-million/",label:"看 OneTeam 投 Nifty Games 的报道"},
+{n:"EnOne Ventures — 2026 年正式推出",d:"OneTeam 后续和 EnTrust 在 2026 年正式推了 EnOne Ventures，专门投运动员 IP 驱动的公司。AIB 正是运动员 IP 驱动的公司，这是谈运动员天使时最现成的对标故事。",u:"https://ministryofsport.com/entrust-global-and-oneteam-partners-launch-enone-ventures/",label:"看 EnOne Ventures 推出报道"}],
+risk:"靠热引荐，不能冷发；每个团队节奏不同，别把关门时间押在这一批身上。",
+action:"每个运动员团队单独谈：小额 + 宣传配合，和授权合同绑在一起说，不单独谈钱；与第 1、2 名同时启动。"},
+{n:7,name:"Keiretsu Forum Mid-Atlantic",loc:"费城 / 华盛顿 / 匹兹堡 · 天使网络大西洋中部分会",tier:"fill",tierLabel:"补额度 · 最后去",fit:62,img:"assets/inv-keiretsu.webp",imgAlt:"一群投资人围坐在会议桌旁讨论项目",imgCap:"天使网络开会示意 — 流程是先出正式尽调报告、再让会员投票，适合最后关门。",
+check:"公司通常已先募 50 万–150 万，找 75 万–500 万；正式大会行政费 12,000 美元",
+status:"全球大天使网络的大西洋中部分会，覆盖费城、华盛顿、匹兹堡。流程是先出正式尽调报告、再让会员投票表决，适合需要一锤定音关门的最后一轮。申请和初筛免费，被邀去正式大会才付行政费。",
+why:"这是结构适配、不是赛道适配，必须说实话：他家组合里没查到体育游戏先例，投的多是医疗和生命科学。所以他排最后——价值不在懂体育，在于那套正式尽调流程能给这轮天使一个背书，帮着把门关上。有人领投、材料修干净之后再去，顺序不能反。",
+projects:[
+{n:"Astarte Medical — 他家领投的代表作",d:"早产儿精准医疗软件，500 万美元 A 轮是 Keiretsu Mid-Atlantic 领投的。这笔正好说明他的主场是医疗、不是体育游戏——拿它对位是为了看清他的流程和出手量级，不是赛道先例。",u:"https://K4-MA.clubexpress.com/content.aspx?page_id=5&club_id=415290&item_id=53127",label:"看 Astarte Medical 融资页"},
+{n:"同一轮的另一篇报道",d:"MobiHealthNews 对同一轮的报道，可以和上面那页互相印证他领投的量级和方式。",u:"https://www.mobihealthnews.com/news/astarte-gets-5m-build-technology-gut-health-nicu",label:"看 MobiHealthNews 报道原文"}],
+risk:"甜蜜区偏 A / B 轮，AIB 这轮是最后一轮天使，阶段略早；正式大会行政费 12,000 美元，别先付。",
+action:"最后去：只走免费初筛，用他的尽调背书帮着关门，不指望他先动。"},
+{n:8,name:"BITKRAFT / Konvoy / Griffin",loc:"名字像，但不合",tier:"out",tierLabel:"先筛掉 · 不计分",fit:0,check:"—",why:"看着像电玩基金，初筛就会拒。Konvoy 明确只投游戏平台和基础设施、不投内容工作室——AIB 是内容工作室。",projects:[],risk:"别因为名气大就发，会留拒信记录。",action:"本轮不投。"},
+{n:9,name:"Animoca / 加密天使 / 纯 AI 天使（含 776 冲刺）",loc:"区块链电玩 / AI 小额共投",tier:"out",tierLabel:"最后 · 不计分 · 有人领投后再补",fit:0,check:"SV Angel 约 20 万、AI Grant 25 万级小额共投",why:"AIB 的链是客人看不见的后台结算，对加密投资人含量太低；AI 对纯 AI 投资人又只是营销功能。776（Alexis Ohanian）看体育 + Web3 + 电玩、Animoca 做区块链电玩，口径最接近，也都要热引荐，只当冲刺。",projects:[],risk:"当主攻会错位定价、拖慢节奏。",action:"有人领投后再用 AngelList syndicate 等补最后一截。"}
+];
+function esc(s){return s.replace(/&/g,'&amp;').replace(/</g,'&lt;');}
+function renderInv(filter){
+  var el=document.getElementById('invList'); el.innerHTML='';
+  investors.filter(function(v){return filter==='all'||v.tier===filter}).forEach(function(v){
+    var d=document.createElement('article'); d.className='inv';
+    var fitHtml=v.fit>0?'<span class="pill">匹配 '+v.fit+' / 100</span>':'<span class="pill">不计分 · 不参与排序</span>';
+    var meter=v.fit>0?'<div class="meter"><i style="width:'+v.fit+'%"></i></div>':'';
+    var imgHtml=v.img?'<img class="inv-img" src="'+v.img+'" alt="'+esc(v.imgAlt||'')+'"/>':'';
+    var capHtml=v.imgCap?'<p class="note" style="margin-top:6px">'+esc(v.imgCap)+'</p>':'';
+    var statusHtml=v.status?'<div class="inv-sec"><h4>现在什么情况</h4><p>'+esc(v.status)+'</p></div>':'';
+    var projHtml='';
+    if(v.projects&&v.projects.length){
+      projHtml='<div class="inv-sec"><h4>投过的对口项目 — 点链接看原文</h4><ul class="proj">'+v.projects.map(function(p){return '<li><b>'+esc(p.n)+'</b>'+esc(p.d)+'<br><a class="extlink" href="'+p.u+'" target="_blank" rel="noopener">↗ '+esc(p.label)+'</a></li>';}).join('')+'</ul></div>';
+    }
+    d.innerHTML=imgHtml+'<div class="inv-body"><div class="inv-head"><div style="display:flex;gap:12px;align-items:flex-start"><div class="rank '+(v.n===1?'gold':'')+'">'+v.n+'</div><div><h3>'+esc(v.name)+' <small>'+esc(v.loc)+'</small></h3><div style="display:flex;gap:6px;flex-wrap:wrap;margin-top:4px"><span class="pill '+v.tier+'">'+esc(v.tierLabel)+'</span>'+fitHtml+'</div></div></div></div>'+meter+capHtml
+    +'<dl class="kv"><dt>单笔 / 门槛</dt><dd>'+esc(v.check)+'</dd></dl>'
+    +statusHtml
+    +'<div class="inv-sec"><h4>为什么适配 AIB</h4><p>'+esc(v.why)+'</p></div>'
+    +projHtml
+    +'<div class="inv-sec"><h4>要注意</h4><p>'+esc(v.risk)+'</p></div>'
+    +'<div class="inv-sec"><h4>怎么谈</h4><p><b>'+esc(v.action)+'</b></p></div></div>';
+    el.appendChild(d);
+  });
+  if(!el.children.length) el.innerHTML='<div class="card">这一类暂时没有条目。</div>';
+}
+function filterInv(f,btn){document.querySelectorAll('.fbtn').forEach(function(b){b.classList.remove('active')});btn.classList.add('active');renderInv(f);}
+renderInv('all');
+
+var tiers={
+900:{title:"90 万档 — 推荐先关",body:"<p><b>谈法：</b>用 90 万档 cap table 去谈，先关小档。金额正好落在 Courtside 平均单笔（100–150 万）的下沿、JumpStart 一组人能凑满的范围、Keiretsu 申请门槛之上，进门阻力最小。</p><p class='note'>关掉 90 万后再谈扩到 125 万，比一上来要 150 万成交率高得多。注意：附件 90 万档 cap table 与另外两张对不上（bridge 一张 90 万、一张 3 万），发出前必须先统一。</p>"},
+1250:{title:"125 万档 — 有领投后再扩",body:"<p><b>谈法：</b>等 Courtside / SeventySix 或运动员天使先给领投意向，再把额度扩到 125 万，用领投方的背书带 Keiretsu、NJEDA Angel Match 等补齐。</p><p class='note'>硬伤提醒：这一档在 cap table 里只占 1.75%，反推估值约 7100 万，与简报的 1000 万差 7 倍——谈这一档前必须先把估值口径统一，否则一对表就露馅。</p>"},
+1500:{title:"150 万档 — 上限档，别当开价",body:"<p><b>谈法：</b>150 万是三档上限，适合在 90 万已关、需求被抢时顺势扩满，不适合当第一口价。没有真实收入数字支撑时，直接开 150 万会放大尽调压力。</p><p class='note'>三档共用同一套修好的 cap table 和同一页真实数据，不要一档一套说法。</p>"}
+};
+function setTier(k,btn){document.querySelectorAll('.tierbtn').forEach(function(b){b.classList.remove('active')});btn.classList.add('active');var t=tiers[k];document.getElementById('tierDetail').innerHTML='<h3 style="margin-top:0">'+t.title+'</h3>'+t.body;}
+setTier(900,document.querySelector('.tierbtn'));
+</script>
+</body>
+</html>
