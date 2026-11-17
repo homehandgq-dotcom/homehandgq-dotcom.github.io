@@ -1,0 +1,677 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
+<meta name="color-scheme" content="light dark" />
+<link rel="icon" href="data:," />
+<title>自我关怀的力量 解读</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Serif+SC:wght@600;700;900&family=Noto+Sans+SC:wght@400;500;700&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --bg:#fdfaf6;
+    --surface:#ffffff;
+    --surface-2:#f6efe6;
+    --ink:#2b2118;
+    --ink-soft:#5c4f42;
+    --ink-faint:#8a7a68;
+    --line:#e7dccb;
+    --accent:#b4552d;        /* 陶土橙红 */
+    --accent-soft:#fbe9dd;
+    --accent-ink:#8f3d1e;
+    --sage:#4f7a5e;
+    --sage-soft:#e6f0e8;
+    --gold:#9a7414;
+    --gold-soft:#fbf0cd;
+    --radius:14px;
+    --shadow:0 1px 3px rgba(60,40,20,.07), 0 8px 24px rgba(60,40,20,.05);
+  }
+  @media (prefers-color-scheme: dark){
+    :root{
+      --bg:#171310;
+      --surface:#211b16;
+      --surface-2:#2a231c;
+      --ink:#f2e9dd;
+      --ink-soft:#cbbba6;
+      --ink-faint:#9c8a76;
+      --line:#3d332a;
+      --accent:#e08a5f;
+      --accent-soft:#3d2718;
+      --accent-ink:#f0a87e;
+      --sage:#8fbc9c;
+      --sage-soft:#223329;
+      --gold:#d9b45c;
+      --gold-soft:#38300f;
+      --shadow:0 1px 3px rgba(0,0,0,.4), 0 8px 24px rgba(0,0,0,.3);
+    }
+  }
+  *{box-sizing:border-box}
+  html{scroll-behavior:smooth}
+  body{
+    margin:0;background:var(--bg);color:var(--ink);
+    font-family:"Noto Sans SC",-apple-system,"PingFang SC","Microsoft YaHei",sans-serif;
+    font-size:16.5px;line-height:1.75;-webkit-font-smoothing:antialiased;
+  }
+  .wrap{max-width:760px;margin:0 auto;padding:0 18px 64px}
+  h1,h2,h3{font-family:"Noto Serif SC","Songti SC",serif;line-height:1.35;margin:0}
+  p{margin:0}
+  a{color:var(--accent-ink)}
+  button,[role="button"],summary{min-height:44px}
+
+  /* ---------- 顶部 ---------- */
+  .hero{padding:34px 0 8px}
+  .book-meta{font-size:13.5px;color:var(--ink-faint);letter-spacing:.04em;margin-bottom:12px}
+  .hero h1{font-size:34px;font-weight:900;letter-spacing:.01em}
+  .hero .en{font-size:14px;color:var(--ink-faint);margin-top:6px;font-style:italic}
+  .hero .one-line{
+    margin-top:18px;font-size:18.5px;line-height:1.7;font-weight:500;
+    border-left:4px solid var(--accent);padding:4px 0 4px 14px;
+  }
+  .hero .one-line b{color:var(--accent-ink)}
+  .hero-note{margin-top:14px;color:var(--ink-soft);font-size:15.5px}
+
+  /* ---------- 目录 ---------- */
+  nav.toc{
+    position:sticky;top:0;z-index:20;background:var(--bg);
+    padding:12px 0 10px;margin-top:22px;border-bottom:1px solid var(--line);
+  }
+  nav.toc ul{list-style:none;margin:0;padding:0;display:flex;flex-wrap:wrap;gap:8px}
+  @media(max-width:640px){
+    nav.toc ul{flex-wrap:nowrap;overflow-x:auto;-webkit-overflow-scrolling:touch;scrollbar-width:none;padding-bottom:2px}
+    nav.toc ul::-webkit-scrollbar{display:none}
+    nav.toc li{flex:none}
+  }
+  nav.toc a{
+    display:inline-flex;align-items:center;min-height:38px;padding:6px 13px;
+    border:1px solid var(--line);border-radius:999px;background:var(--surface);
+    color:var(--ink-soft);text-decoration:none;font-size:14px;font-weight:500;
+  }
+  nav.toc a:active{background:var(--accent-soft)}
+
+  section{margin-top:44px;scroll-margin-top:92px}
+  @media(max-width:640px){section{scroll-margin-top:74px}}
+  .sec-head{margin-bottom:16px}
+  .sec-head h2{font-size:23px;font-weight:700}
+  .sec-head p{color:var(--ink-soft);font-size:15.5px;margin-top:6px}
+
+  /* ---------- 结构图 ---------- */
+  .flow{display:flex;flex-direction:column;gap:0}
+  .flow-step{
+    background:var(--surface);border:1px solid var(--line);border-radius:var(--radius);
+    padding:16px 18px;box-shadow:var(--shadow);
+  }
+  .flow-step .part{font-size:12.5px;font-weight:700;color:var(--accent-ink);letter-spacing:.08em}
+  .flow-step h3{font-size:18px;margin:3px 0 4px}
+  .flow-step p{font-size:15px;color:var(--ink-soft)}
+  .flow-step .chs{font-size:13.5px;color:var(--ink-faint);margin-top:6px}
+  .flow-arrow{text-align:center;color:var(--ink-faint);font-size:16px;line-height:1;padding:5px 0}
+
+  /* ---------- 三大成分 ---------- */
+  .pillars{display:grid;gap:12px}
+  @media(min-width:640px){.pillars{grid-template-columns:1fr 1fr 1fr}}
+  .pillar{
+    border-radius:var(--radius);padding:18px;border:1px solid var(--line);background:var(--surface);
+    box-shadow:var(--shadow);
+  }
+  .pillar .num{
+    width:34px;height:34px;border-radius:50%;display:flex;align-items:center;justify-content:center;
+    font-family:"Noto Serif SC",serif;font-weight:900;font-size:17px;margin-bottom:10px;
+    background:var(--accent-soft);color:var(--accent-ink);
+  }
+  .pillar.sage .num{background:var(--sage-soft);color:var(--sage)}
+  .pillar.gold .num{background:var(--gold-soft);color:var(--gold)}
+  .pillar h3{font-size:18.5px;margin-bottom:2px}
+  .pillar .vs{font-size:13px;color:var(--ink-faint);margin-bottom:8px}
+  .pillar p{font-size:15px;color:var(--ink-soft)}
+  .pillar .say{
+    margin-top:12px;background:var(--surface-2);border-radius:10px;padding:10px 12px;
+    font-size:14.5px;color:var(--ink);
+  }
+  .pillar .say span{display:block;font-size:12px;color:var(--ink-faint);margin-bottom:2px}
+
+  /* ---------- 章节 ---------- */
+  .part-label{
+    display:flex;align-items:baseline;gap:10px;margin:26px 0 10px;
+  }
+  .part-label .p{font-size:12.5px;font-weight:700;color:var(--accent-ink);letter-spacing:.08em;white-space:nowrap}
+  .part-label h3{font-size:18px}
+  .part-label .line{flex:1;height:1px;background:var(--line)}
+  details.ch{
+    background:var(--surface);border:1px solid var(--line);border-radius:var(--radius);
+    margin-bottom:10px;overflow:hidden;
+  }
+  details.ch summary{
+    list-style:none;cursor:pointer;display:flex;align-items:center;gap:12px;
+    padding:13px 16px;-webkit-tap-highlight-color:transparent;
+  }
+  details.ch summary::-webkit-details-marker{display:none}
+  .ch-no{
+    flex:none;width:30px;height:30px;border-radius:9px;background:var(--surface-2);
+    display:flex;align-items:center;justify-content:center;
+    font-family:"Noto Serif SC",serif;font-weight:700;font-size:15px;color:var(--ink-soft);
+  }
+  details.ch[open ] .ch-no{background:var(--accent);color:#fff}
+  .ch-title{flex:1;font-weight:700;font-size:16.5px;line-height:1.4}
+  .ch-title small{display:block;font-weight:400;font-size:13px;color:var(--ink-faint);margin-top:1px}
+  .ch-caret{flex:none;color:var(--ink-faint);transition:transform .2s;font-size:13px}
+  details.ch[open ] .ch-caret{transform:rotate(180deg)}
+  .ch-body{padding:2px 16px 18px 58px}
+  @media(max-width:480px){.ch-body{padding-left:16px}}
+  .ch-body p{font-size:15.5px;color:var(--ink-soft);margin-bottom:10px}
+  .ch-body p b{color:var(--ink)}
+  .ch-key{
+    background:var(--accent-soft);border-radius:10px;padding:11px 13px;font-size:15px;color:var(--ink);
+  }
+  .ch-key b{color:var(--accent-ink)}
+  .ch-you{
+    margin-top:10px;font-size:14.5px;color:var(--ink-soft);
+    border-top:1px dashed var(--line);padding-top:10px;
+  }
+  .ch-you b{color:var(--sage)}
+  .toolbar{display:flex;gap:8px;margin-bottom:6px}
+  .toolbar button{
+    border:1px solid var(--line);background:var(--surface);color:var(--ink-soft);
+    border-radius:999px;padding:8px 16px;font-size:14px;font-family:inherit;cursor:pointer;min-height:40px;
+  }
+
+  /* ---------- 对照表 ---------- */
+  .vs-table{display:grid;gap:12px}
+  @media(min-width:640px){.vs-table{grid-template-columns:1fr 1fr}}
+  .vs-col{border-radius:var(--radius);padding:18px;border:1px solid var(--line)}
+  .vs-col.bad{background:var(--surface)}
+  .vs-col.good{background:var(--sage-soft);border-color:transparent}
+  .vs-col h3{font-size:17px;margin-bottom:10px}
+  .vs-col.bad h3{color:var(--ink-faint)}
+  .vs-col.good h3{color:var(--sage)}
+  .vs-col ul{margin:0;padding-left:20px;font-size:15px;color:var(--ink-soft);display:grid;gap:7px}
+  .vs-col.good ul{color:var(--ink)}
+
+  /* ---------- 对到你身上 ---------- */
+  .match{display:grid;gap:12px}
+  .match-card{
+    background:var(--surface);border:1px solid var(--line);border-radius:var(--radius);
+    padding:18px;box-shadow:var(--shadow);
+  }
+  .match-card .quote{font-family:"Noto Serif SC",serif;font-size:18px;font-weight:700;margin-bottom:6px}
+  .match-card p{font-size:15.5px;color:var(--ink-soft)}
+  .match-card .go{margin-top:10px;font-size:14.5px}
+  .match-card .go b{color:var(--accent-ink)}
+
+  /* ---------- 换一句话 互动 ---------- */
+  .swap-box{
+    background:var(--surface);border:1px solid var(--line);border-radius:var(--radius);
+    padding:20px 18px;box-shadow:var(--shadow);
+  }
+  .swap-btns{display:flex;flex-wrap:wrap;gap:8px;margin-bottom:16px}
+  .swap-btns button{
+    border:1px solid var(--line);background:var(--surface-2);color:var(--ink);
+    border-radius:999px;padding:9px 15px;font-size:14.5px;font-family:inherit;cursor:pointer;
+  }
+  .swap-btns button.on{background:var(--accent);border-color:var(--accent);color:#fff;font-weight:700}
+  .swap-harsh{
+    font-family:"Noto Serif SC",serif;font-size:17.5px;font-weight:700;color:var(--ink-faint);
+    text-decoration:line-through;text-decoration-color:var(--accent);text-decoration-thickness:2px;
+    margin-bottom:12px;min-height:32px;
+  }
+  .swap-kind{
+    background:var(--sage-soft);border-radius:10px;padding:14px 15px;font-size:16px;line-height:1.7;min-height:84px;
+  }
+  .swap-kind .tag{font-size:12px;font-weight:700;color:var(--sage);letter-spacing:.06em;display:block;margin-bottom:4px}
+
+  /* ---------- 练习 ---------- */
+  .break-card{
+    background:var(--accent-soft);border-radius:var(--radius);padding:20px 18px;
+  }
+  .break-card h3{font-size:18.5px;line-height:1.55;margin-bottom:6px;color:var(--accent-ink)}
+  .break-card>p{font-size:15px;color:var(--ink-soft);margin-bottom:14px}
+  .break-steps{display:grid;gap:10px}
+  .break-step{background:var(--surface);border-radius:10px;padding:13px 15px;display:flex;gap:12px}
+  .break-step .n{
+    flex:none;width:26px;height:26px;border-radius:50%;background:var(--accent);color:#fff;
+    display:flex;align-items:center;justify-content:center;font-size:14px;font-weight:700;margin-top:2px;
+  }
+  .break-step .t b{display:block;font-size:15.5px}
+  .break-step .t span{font-size:14.5px;color:var(--ink-soft)}
+  .break-step .t em{font-style:normal;color:var(--accent-ink);font-weight:500}
+
+  .route{display:grid;gap:12px;margin-top:14px}
+  @media(min-width:640px){.route{grid-template-columns:1fr 1fr 1fr}}
+  .route-card{background:var(--surface);border:1px solid var(--line);border-radius:var(--radius);padding:16px 18px}
+  .route-card .step{font-size:12.5px;font-weight:700;color:var(--gold);letter-spacing:.06em}
+  .route-card h3{font-size:16.5px;margin:3px 0 5px}
+  .route-card p{font-size:14.5px;color:var(--ink-soft)}
+
+  /* ---------- 书目 ---------- */
+  .book-info{
+    background:var(--surface-2);border-radius:var(--radius);padding:18px;font-size:14.5px;color:var(--ink-soft);
+    display:grid;gap:6px;
+  }
+  .book-info b{color:var(--ink)}
+  footer{margin-top:48px;padding-top:18px;border-top:1px solid var(--line);font-size:13.5px;color:var(--ink-faint);line-height:1.7}
+</style>
+</head>
+<body>
+<div class="wrap">
+
+  <!-- ================= 头部 ================= -->
+  <header class="hero">
+    <p class="book-meta">克里斯廷·内夫 Kristin Neff · 自我关怀研究开创者 · 得克萨斯大学奥斯汀分校副教授</p>
+    <h1>自我关怀的力量</h1>
+    <p class="en">Self-Compassion: The Proven Power of Being Kind to Yourself（2011）</p>
+    <p class="one-line">全书一句话：<b>对自己狠，不会让你变好，只会让你更不敢动。</b>真正让人站起来的，是像对好朋友那样对自己说话。</p>
+    <p class="hero-note">这本书不讲大道理，它是一套练法：你平时怎么安慰最好的朋友，就怎么安慰自己——只是大多数人对朋友温柔，对自己只剩下骂。内夫用十几年的研究证明：自我关怀不是放纵、不是自怜，它比自我批评更能让人有动力，也更接得住失败。</p>
+  </header>
+
+  <nav class="toc" aria-label="本页目录">
+    <ul>
+      <li><a href="#structure">全书结构</a></li>
+      <li><a href="#pillars">三大核心成分</a></li>
+      <li><a href="#chapters">13 章逐章讲</a></li>
+      <li><a href="#compare">批评 vs 关怀</a></li>
+      <li><a href="#foryou">对到你身上</a></li>
+      <li><a href="#swap">换一句话练法</a></li>
+      <li><a href="#practice">最小练习</a></li>
+    </ul>
+  </nav>
+
+  <!-- ================= 结构 ================= -->
+  <section id="structure">
+    <div class="sec-head">
+      <h2>全书结构：五部分，13 章</h2>
+      <p>走法很清楚：先说清为什么骂自己没用，再给出三个核心成分，然后讲它带来的三个好处，接着放进关系里用，最后落到欣赏自己。目录按中信出版社 2017 年版（刘聪慧 译）。</p>
+    </div>
+    <div class="flow">
+      <div class="flow-step">
+        <p class="part">PART I</p>
+        <h3>为什么自我关怀</h3>
+        <p>先拆旧办法：靠自我批评逼自己，代价是焦虑、抑郁和更不敢尝试。</p>
+        <p class="chs">第 1 章 揭秘自我关怀 · 第 2 章 终结疯狂的行为</p>
+      </div>
+      <p class="flow-arrow">↓</p>
+      <div class="flow-step">
+        <p class="part">PART II</p>
+        <h3>自我关怀的核心成分</h3>
+        <p>全书的心脏。三个成分，缺一个都不完整，后面所有练习都从这里长出来。</p>
+        <p class="chs">第 3 章 善待自己 · 第 4 章 我们同舟共济 · 第 5 章 秉持静观</p>
+      </div>
+      <p class="flow-arrow">↓</p>
+      <div class="flow-step">
+        <p class="part">PART III</p>
+        <h3>自我关怀的益处</h3>
+        <p>回答最常见的担心：对自己好，会不会变懒、变自大？恰恰相反。</p>
+        <p class="chs">第 6 章 情感弹性 · 第 7 章 跳出自尊的游戏 · 第 8 章 动机与个人成长</p>
+      </div>
+      <p class="flow-arrow">↓</p>
+      <div class="flow-step">
+        <p class="part">PART IV</p>
+        <h3>人际关系中的自我关怀</h3>
+        <p>先把自己照顾好，才有余力真的关怀别人，而不是耗干自己再怨别人。</p>
+        <p class="chs">第 9 章 关怀他人 · 第 10 章 自我关怀的培养 · 第 11 章 性与爱</p>
+      </div>
+      <p class="flow-arrow">↓</p>
+      <div class="flow-step">
+        <p class="part">PART V</p>
+        <h3>自我关怀之喜悦</h3>
+        <p>不只是难受时安慰自己，好事来的时候，也要敢欣赏自己、敢收下。</p>
+        <p class="chs">第 12 章 化蛹成蝶 · 第 13 章 自我欣赏</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- ================= 三大成分 ================= -->
+  <section id="pillars">
+    <div class="sec-head">
+      <h2>三大核心成分（先记住这三个）</h2>
+      <p>整本书你只带走三样东西就够了。每一个成分，都是用来替换一个折磨人的旧习惯的。</p>
+    </div>
+    <div class="pillars">
+      <div class="pillar">
+        <div class="num">1</div>
+        <h3>善待自己</h3>
+        <p class="vs">替换掉 → 自我评判</p>
+        <p>难受的时候，不骂自己，而是安慰自己、照顾自己——就像你会做的那样对一个你很在乎的人。身体上也算：手放在胸口、放慢呼吸，身体先安下来，心才跟得上。</p>
+        <p class="say"><span>心里默念</span>「这会儿很难受，我陪着自己，不骂了。」</p>
+      </div>
+      <div class="pillar sage">
+        <div class="num">2</div>
+        <h3>共通人性</h3>
+        <p class="vs">替换掉 → 孤立感</p>
+        <p>出错时人最容易想「怎么只有我这么差」。共通人性是提醒自己：失败、丢脸、不完美，是所有人共同的人生，不是你一个人的缺陷。你不是掉队了，你只是做了一回普通人。</p>
+        <p class="say"><span>心里默念</span>「这种事，很多人都经历过，不只我一个。」</p>
+      </div>
+      <div class="pillar gold">
+        <div class="num">3</div>
+        <h3>静观当下</h3>
+        <p class="vs">替换掉 → 过度认同</p>
+        <p>把痛苦看清楚，但不泡在里面无限放大。不是「我是个失败者」，而是「我现在有一个失败的感受」。感受是天气，你是天空——先承认它在，不急着把它编成关于你这个人的判决。</p>
+        <p class="say"><span>心里默念</span>「我注意到，我现在很羞愧。」——注意到，就够了。</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- ================= 章节 ================= -->
+  <section id="chapters">
+    <div class="sec-head">
+      <h2>13 章逐章讲：每章讲什么</h2>
+      <p>点开任意一章，看它讲什么、最关键的一句、和对你有什么用。不用按顺序读，先挑扎心的看。</p>
+    </div>
+    <div class="toolbar">
+      <button type="button" id="openAll">全部展开</button>
+      <button type="button" id="closeAll">全部收起</button>
+    </div>
+
+    <div class="part-label"><span class="p">PART I</span><h3>为什么自我关怀</h3><span class="line"></span></div>
+
+    <details class="ch">
+      <summary><span class="ch-no">1</span><span class="ch-title">揭秘自我关怀<small>先看清：骂自己，到底有没有用</small></span><span class="ch-caret">▼</span></summary>
+      <div class="ch-body">
+        <p>内夫先讲我们看自己像照<b>哈哈镜</b>：心情好时把自己看得过大，难受时又把自己缩得极小，都不真实。接着算了一笔账——<b>自我评判的代价</b>：长期自我批评和焦虑、抑郁、低配得感连在一起，它没让你变好，只让你更怕。</p>
+        <p>然后她给出「换种方式」：人天生会关怀他人，这套系统本来就在你身上，只是从没对准过自己。本章两个练习：观察你平时怎样对待自己；给自己写一封关怀信。</p>
+        <p class="ch-key"><b>关键一句：</b>自我关怀不是一种评价，不用打分——它是一种对待自己的方式，难受时就能用。</p>
+        <p class="ch-you"><b>对你：</b>这是全书的入口。你那句「我不配」，在这一章会被重新定义：那不是事实，是哈哈镜照出来的。</p>
+      </div>
+    </details>
+
+    <details class="ch">
+      <summary><span class="ch-no">2</span><span class="ch-title">终结疯狂的行为<small>为什么我们停不下来地想「比别人强」</small></span><span class="ch-caret">▼</span></summary>
+      <div class="ch-body">
+        <p>这一章讲<b>「更胜一筹的需要」</b>：为了觉得自己还行，我们必须觉得自己比平均水平强一点——可所有人都想在平均之上，这个游戏数学上就不可能赢。于是自尊像坐过山车：被夸就上去，出错就摔下来。</p>
+        <p>她还追了源头：父母的评价方式、文化里「赢家通吃」的氛围，怎样从小把自我批评装进我们脑子里，最后变成<b>自证预言</b>——越怕自己不行，越紧张出错，越证明「我果然不行」。</p>
+        <p class="ch-key"><b>关键一句：</b>靠比较得来的好感觉，注定留不住，因为比较永远有下一场。</p>
+        <p class="ch-you"><b>对你：</b>「考试永远考不完」就是这一章。赚多少、做到多好才敢收下好——门槛会一直往上移，因为它本来就是为留不住设计的。</p>
+      </div>
+    </details>
+
+    <div class="part-label"><span class="p">PART II</span><h3>自我关怀的核心成分</h3><span class="line"></span></div>
+
+    <details class="ch">
+      <summary><span class="ch-no">3</span><span class="ch-title">善待自己<small>核心成分一 · 你最该先看的一章</small></span><span class="ch-caret">▼</span></summary>
+      <div class="ch-body">
+        <p>善待自己不是口号，内夫讲了它背后的身体机制：<b>依恋与关爱系统</b>。被温柔对待时，身体会分泌催产素等让人安定的物质，压力系统随之降下来——这套系统对别人的温柔有效，对自己的温柔同样有效。</p>
+        <p>所以她给的练习很身体化：<b>安抚性的轻抚</b>——手掌放在心口、轻拍手臂，用身体先告诉自己「我在」。还有自我关怀日记：每天记一件难受的小事，再用关怀的口吻回应它。</p>
+        <p class="ch-key"><b>关键一句：</b>对自己说话的语气，要像对一个你深爱、正在受苦的朋友。</p>
+        <p class="ch-you"><b>对你：</b>你说过「别人对我好，我接不住」。这一章是先练自己对自己好——自己递的，接起来没那么怕，这是接住别人的好意之前的第一步。</p>
+      </div>
+    </details>
+
+    <details class="ch">
+      <summary><span class="ch-no">4</span><span class="ch-title">我们同舟共济<small>核心成分二 · 共通人性</small></span><span class="ch-caret">▼</span></summary>
+      <div class="ch-body">
+        <p>痛苦最折磨人的部分，往往不是痛苦本身，是<b>孤立感</b>：「为什么偏偏是我」「别人都好好的」。这一章拆这个错觉：比较游戏只让你看见别人的高光，看不见别人同样狼狈的部分。</p>
+        <p>共通人性的意思是：不完美不是你的个人故障，是做人的共同配置。把「我有问题」换成「人都会这样」，羞耻感会明显松动——因为羞耻最怕的就是「原来不只我」。</p>
+        <p class="ch-key"><b>关键一句：</b>你不是一个人坏掉了，你是和所有人一起，在过一种本来就难的生活。</p>
+        <p class="ch-you"><b>对你：</b>对治「被看到＝被抛弃」那条旧信念：别人看见你的不完美时，看见的不是一个异类，是一个和他们一样的人。</p>
+      </div>
+    </details>
+
+    <details class="ch">
+      <summary><span class="ch-no">5</span><span class="ch-title">秉持静观<small>核心成分三 · 看清痛苦，但不泡在里面</small></span><span class="ch-caret">▼</span></summary>
+      <div class="ch-body">
+        <p>静观（正念）在这里不是打坐功夫，是一个很朴素的动作：<b>停下来，如实觉知此刻的痛苦</b>，不压下去，也不放大。她给了一个公式：<b>折磨 ＝ 痛苦 × 对抗</b>——痛苦本身是一份，拼命抗拒、不肯承认，会把它乘上好几倍。</p>
+        <p>还要分清「过度认同」：情绪来的时候，人容易整个人变成那个情绪。她教的是退半步，给感受命名——「这是羞愧」「这是害怕」，命名本身就让人从情绪里脱身一半。</p>
+        <p class="ch-key"><b>关键一句：</b>先承认疼，才谈得上安慰；连疼都不许自己疼，关怀无从下手。</p>
+        <p class="ch-you"><b>对你：</b>你的「拥有即恐慌」也是这样：好事来了先抗拒、先预演失去，折磨被乘了好几倍。先停一下、承认「我现在很慌」，就是这一章的练法。</p>
+      </div>
+    </details>
+
+    <div class="part-label"><span class="p">PART III</span><h3>自我关怀的益处</h3><span class="line"></span></div>
+
+    <details class="ch">
+      <summary><span class="ch-no">6</span><span class="ch-title">情感弹性<small>摔倒之后，爬得起来</small></span><span class="ch-caret">▼</span></summary>
+      <div class="ch-body">
+        <p>这一部分开始讲回报。研究发现：自我关怀高的人，焦虑和抑郁更少，遇到挫折恢复得更快。原因不复杂——他们难受时不追加一顿骂，情绪走完本来的流程就过去了；自我批评的人，是痛苦之后再亲手加一层痛苦。</p>
+        <p>她还讲了<b>情绪智力</b>：能识别、能容纳自己的情绪，才不会被情绪推着做傻事。自我关怀的「治疗能力」也在这里：它不是逃避难受，是让难受变得可以承受。</p>
+        <p class="ch-key"><b>关键一句：</b>弹性不是不摔倒，是摔倒后不往自己身上再踩一脚。</p>
+      </div>
+    </details>
+
+    <details class="ch">
+      <summary><span class="ch-no">7</span><span class="ch-title">跳出自尊的游戏<small>配得感，不用靠赢来换</small></span><span class="ch-caret">▼</span></summary>
+      <div class="ch-body">
+        <p>这一章正面对比<b>自尊</b>和<b>自我关怀</b>。自尊建立在评价上：我做得好、比别人强，我才值得——所以它脆弱、要靠不断赢来续命，还容易滑向自恋和盲目夸奖。书里用「皇帝的新衣」和「自恋之池」讲这种空心的好感觉。</p>
+        <p>自我关怀不走评价这条路：不管这次成没成，你都站在自己这边。它的好感觉不依赖结果，所以失败的时候也不会整盘崩掉。</p>
+        <p class="ch-key"><b>关键一句：</b>自尊问的是「我够不够好」，自我关怀问的是「我现在需要什么」。</p>
+        <p class="ch-you"><b>对你：</b>这是离「配得感」最近的一章。配，不是考出来的分数，是不需要考试的立场——先站自己这边，再谈把事情做好。</p>
+      </div>
+    </details>
+
+    <details class="ch">
+      <summary><span class="ch-no">8</span><span class="ch-title">动机与个人成长<small>不靠鞭子，人动不动？</small></span><span class="ch-caret">▼</span></summary>
+      <div class="ch-body">
+        <p>最多人担心的问题：对自己太好，会不会就躺平了？内夫用研究回答：<b>不会，反而更敢拼</b>。自我批评式的动力靠恐惧——怕被骂才动，一旦失败就崩溃、逃避、不敢再试。</p>
+        <p>自我关怀式的动力靠在乎：因为在乎自己、在乎这件事，才愿意改。失败了不先崩，就能把精力用在复盘和再试上。研究里，自我关怀高的学生挂科后反而学得更投入，而不是放弃。</p>
+        <p class="ch-key"><b>关键一句：</b>鞭子能让人跑一时，关怀才能让人跑得久——因为不怕摔，才敢一直跑。</p>
+        <p class="ch-you"><b>对你：</b>「快成功就损坏」，有一半是怕：越接近成功，自我批评的赌注越大，摔下来越疼，所以先自己撤。把动力换成关怀，赌注降下来，才敢走完最后一段。</p>
+      </div>
+    </details>
+
+    <div class="part-label"><span class="p">PART IV</span><h3>人际关系中的自我关怀</h3><span class="line"></span></div>
+
+    <details class="ch">
+      <summary><span class="ch-no">9</span><span class="ch-title">关怀他人<small>先满自己的杯子</small></span><span class="ch-caret">▼</span></summary>
+      <div class="ch-body">
+        <p>这一章讲照顾者的耗竭：长期只给不收的人，会累到麻木、甚至对需要照顾的人产生怨气。自我关怀是给照顾者回血的方式——你对自己温柔，才有真的温柔分给别人。</p>
+        <p>还有一个细节：能接住自己的痛苦，才接得住别人的痛苦。自己难受时就关机的人，面对别人的眼泪也只想逃。</p>
+        <p class="ch-key"><b>关键一句：</b>关怀自己和关怀别人不是抢资源的对手，是同一个水源。</p>
+      </div>
+    </details>
+
+    <details class="ch">
+      <summary><span class="ch-no">10</span><span class="ch-title">自我关怀的培养<small>（中信版章题）· 讲教养：怎么不把自我批评传给下一代</small></span><span class="ch-caret">▼</span></summary>
+      <div class="ch-body">
+        <p>这一章讲父母怎样把自我关怀教给孩子：关键不是讲道理，是示范——父母自己出错时怎么对自己，孩子全看在眼里。先原谅自己的教养失误，才不会把焦虑转手压到孩子身上。</p>
+        <p>往回看也成立：我们这代人脑子里那个严厉的声音，很多正是小时候听惯了的语气。认出它的来历，就有机会不再自动播放。</p>
+        <p class="ch-key"><b>关键一句：</b>你对自己说话的语气，往往是你小时候被说话的语气——它可以换。</p>
+      </div>
+    </details>
+
+    <details class="ch">
+      <summary><span class="ch-no">11</span><span class="ch-title">性与爱<small>在亲密关系里站自己这边</small></span><span class="ch-caret">▼</span></summary>
+      <div class="ch-body">
+        <p>自我关怀高的人，在关系里更少焦虑型黏附、也更少回避：因为他的价值感不全押在对方的回应上，对方冷一下，不至于整个人塌掉；也更能真实地表达需要，而不是用讨好或控制来换安全感。</p>
+        <p>研究还发现，自我关怀高的人，伴侣对关系的满意度也更高——一个能安顿自己的人，在关系里更稳、更诚实，也更会道歉和修复。</p>
+        <p class="ch-key"><b>关键一句：</b>先能安顿自己，才不会把「让我觉得自己值得被爱」这份工作，全外包给对方。</p>
+        <p class="ch-you"><b>对你：</b>「一被深度关心就恐惧」，有一部分是因为对方的好意成了考试：我得表现得值得，才配继续被爱。这一章说的是把地基挪回自己身上，对方的好就只是好，不再是考卷。</p>
+      </div>
+    </details>
+
+    <div class="part-label"><span class="p">PART V</span><h3>自我关怀之喜悦</h3><span class="line"></span></div>
+
+    <details class="ch">
+      <summary><span class="ch-no">12</span><span class="ch-title">化蛹成蝶<small>敞开心，允许自己变好</small></span><span class="ch-caret">▼</span></summary>
+      <div class="ch-body">
+        <p>到了最后一部分，话题从「难受时怎么办」转向「好的时候怎么办」。内夫说，自我关怀练到深处，人会慢慢敢<b>敞开心胸</b>：接受自己正在变化，接受生活里好的部分，不再因为怕失去而提前把心关上。</p>
+        <p>她把这和积极心理学接上：关怀不只是止痛，它让人有能力去感受喜悦、投入生活，破茧不是一次事件，是心一点点打开的过程。</p>
+        <p class="ch-key"><b>关键一句：</b>敢收下好，和敢面对坏，是同一种勇气。</p>
+        <p class="ch-you"><b>对你：</b>这一章几乎是为「拥有即恐慌」写的：好东西来了，先练习不关门——停一停，让它在手里多留一会儿。</p>
+      </div>
+    </details>
+
+    <details class="ch">
+      <summary><span class="ch-no">13</span><span class="ch-title">自我欣赏<small>全书的收尾：也看看自己好的地方</small></span><span class="ch-caret">▼</span></summary>
+      <div class="ch-body">
+        <p>最后一章和第一部分遥遥相对：自我关怀管难受的时候，<b>自我欣赏</b>管顺遂的时候——认真看见自己的优点、做成的事、走过的路，并允许自己为此高兴，不急着谦虚、不急着打折。</p>
+        <p>她特意分清自我欣赏和自尊：欣赏是如实地品鉴，像感恩一样慢慢尝；自尊是打分排名。结尾的练习是感恩与品鉴生活里的小精彩，把注意力从「还差什么」挪一点到「已经有什么」。</p>
+        <p class="ch-key"><b>关键一句：</b>欣赏自己不是自大，是不把自己做对的部分，当作不存在。</p>
+        <p class="ch-you"><b>对你：</b>你做成的事不少，但你的记账方式只记亏空。这一章的练习很小：每天记一件自己做得还不错的小事，只记，不评。</p>
+      </div>
+    </details>
+  </section>
+
+  <!-- ================= 对照 ================= -->
+  <section id="compare">
+    <div class="sec-head">
+      <h2>一页看清：自我批评 vs 自我关怀</h2>
+      <p>同一件错事，两种内在声音，走向完全不同的结果。</p>
+    </div>
+    <div class="vs-table">
+      <div class="vs-col bad">
+        <h3>自我批评的声音</h3>
+        <ul>
+          <li>「我这个人就是不行」——把一件事，判成整个人</li>
+          <li>「别人都好好的，只有我」——把自己孤立出去</li>
+          <li>泡在情绪里反复回放，越想越觉得没救</li>
+          <li>动力靠恐惧：怕被看不起，才勉强动一下</li>
+          <li>失败后先崩溃、再逃避，下一场更不敢上</li>
+          <li>好感觉要靠赢、靠被夸，赢不到就归零</li>
+        </ul>
+      </div>
+      <div class="vs-col good">
+        <h3>自我关怀的声音</h3>
+        <ul>
+          <li>「这件事我没做好」——只说事，不判人</li>
+          <li>「人都会有这一课」——把自己放回人群里</li>
+          <li>承认难受，给它命名，然后让它慢慢过去</li>
+          <li>动力靠在乎：因为想让自己好，才愿意改</li>
+          <li>失败后先安顿，再复盘，还有力气再试一次</li>
+          <li>好感觉不靠排名：成与不成，都站自己这边</li>
+        </ul>
+      </div>
+    </div>
+  </section>
+
+  <!-- ================= 对到你身上 ================= -->
+  <section id="foryou">
+    <div class="sec-head">
+      <h2>对到你身上：三句话，三章书</h2>
+      <p>你说过的三句话，这本书里正好各有一章在等它。不用全读，先各读一章。</p>
+    </div>
+    <div class="match">
+      <div class="match-card">
+        <p class="quote">「我总觉得自己不配得世界上好的。」</p>
+        <p>内夫的回答在第 7 章：配得感如果靠考试挣，永远挣不够；自我关怀换的是一条不需要考试的路——先站自己这边，好东西来了先收，不用先出示证明。</p>
+        <p class="go">先看 → <b>第 7 章 跳出自尊的游戏</b>，再回看第 1 章的哈哈镜。</p>
+      </div>
+      <div class="match-card">
+        <p class="quote">「我一出错，就骂自己是垃圾。」</p>
+        <p>第 3 章的练法最直接：把骂自己的话，换成你会对好朋友说的话，再把手放在心口说出来。语气先换，身体先安，判决自然就轻了。第 5 章再补一刀：只说事——「我现在很羞愧」，不说「我是垃圾」。</p>
+        <p class="go">先看 → <b>第 3 章 善待自己</b> ＋ <b>第 5 章 秉持静观</b>。</p>
+      </div>
+      <div class="match-card">
+        <p class="quote">「别人对我好，我接不住；拥有即恐慌。」</p>
+        <p>第 11 章说，价值感全押在对方回应上时，好意也会变成压力。第 12 章再往前一步：敢收下好，和敢面对坏，是同一种勇气。练法还是那三步——停一下，收下，不急着还。</p>
+        <p class="go">先看 → <b>第 11 章 性与爱</b> ＋ <b>第 12 章 化蛹成蝶</b>。</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- ================= 换一句话 ================= -->
+  <section id="swap">
+    <div class="sec-head">
+      <h2>小练法：把骂自己的话，换一句</h2>
+      <p>点一句你熟悉的狠话，下面就是内夫式的改法——三个成分都藏在里面：善待、共通人性、只说事。</p>
+    </div>
+    <div class="swap-box">
+      <div class="swap-btns" role="group" aria-label="选择一句自我批评的话">
+        <button type="button" data-i="0" class="on">我真没用</button>
+        <button type="button" data-i="1">又搞砸了，我就是不行</button>
+        <button type="button" data-i="2">这种好事轮不到我</button>
+        <button type="button" data-i="3">我不配被对我这么好</button>
+      </div>
+      <p class="swap-harsh" id="swapHarsh">「我真没用，这点事都做不好。」</p>
+      <div class="swap-kind">
+        <span class="tag">换成这样对自己说</span>
+        <p id="swapKind">这件事没做好，我心里很难受（只说事）。做不好一件事的人到处都是，不只我（共通人性）。先不骂了，我陪自己把这一关过去，再看下一步（善待自己）。</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- ================= 练习 ================= -->
+  <section id="practice">
+    <div class="sec-head">
+      <h2>最小练习：今天就能做的两件小事</h2>
+      <p>不用读完书才开始。这两件，一件管难受的当下，一件管长期的顺序。</p>
+    </div>
+
+    <div class="break-card">
+      <h3>自我关怀暂停法（全书最出名的练习）</h3>
+      <p>难受、自责、慌的时候，停一分钟，把手放在心口，慢慢说完这三句——正好对应三大成分：</p>
+      <div class="break-steps">
+        <div class="break-step"><span class="n">1</span><p class="t"><b>静观</b><span>「这是一个痛苦的时刻。」——先承认，不硬扛、不装没事。</span></p></div>
+        <div class="break-step"><span class="n">2</span><p class="t"><b>共通人性</b><span>「痛苦是生活的一部分，很多人此刻和我一样。」——我不是一个人坏掉了。</span></p></div>
+        <div class="break-step"><span class="n">3</span><p class="t"><b>善待自己</b><span>「愿我对自己好一点。」——再补一句你此刻最需要听到的话，比如 <em>「没关系，慢慢来。」</em></span></p></div>
+      </div>
+    </div>
+
+    <div class="route">
+      <div class="route-card">
+        <p class="step">第一步 · 先读</p>
+        <h3>第 3 章 善待自己</h3>
+        <p>全书最实用的一章。先学会自己对自己好，接别人的好才不那么怕。</p>
+      </div>
+      <div class="route-card">
+        <p class="step">第二步 · 再读</p>
+        <h3>第 7 章 跳出自尊的游戏</h3>
+        <p>拆「配得感要靠考试」这个旧设定，正对你那句「我不配」。</p>
+      </div>
+      <div class="route-card">
+        <p class="step">第三步 · 然后</p>
+        <h3>第 12 章 化蛹成蝶</h3>
+        <p>练收下好：好事来时先停一停，不关门、不预演失去，让它多留一会儿。</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- ================= 书目 ================= -->
+  <section id="bookinfo">
+    <div class="sec-head"><h2>买书认准这一本</h2></div>
+    <div class="book-info">
+      <p><b>中文版：</b>《自我关怀的力量》，[美] 克里斯廷·内夫 著，刘聪慧 译，中信出版社 2017 年 7 月，ISBN 9787508676166。</p>
+      <p><b>原版：</b><i>Self-Compassion: The Proven Power of Being Kind to Yourself</i>，Kristin Neff，2011 年。繁体版多译作《自我慈悲》，是同一本书，别重复买。</p>
+      <p><b>注意区分：</b>作者后来还有《正念自我慈悲工作手册》（与 Christopher Germer 合著，纯练习册）和 <i>Fierce Self-Compassion</i>（讲勇敢的自我关怀），都不是这一本；先读完这本再考虑那两本。</p>
+      <p><b>作者：</b>克里斯廷·内夫是自我关怀（self-compassion）这一研究领域的开创者，得克萨斯大学奥斯汀分校教育心理学副教授，她创立的三个成分框架和自我关怀量表，至今是这个领域的标准工具。</p>
+    </div>
+  </section>
+
+  <footer>
+    <p>本页是《自我关怀的力量》的读书解读：结构与目录按中信出版社 2017 年版核对，章节内容为大白话转述，非原文摘录。它是一本自助读物，不替代心理咨询或治疗；如果低落和自责长期压得你喘不过气，找一位专业咨询师聊聊，是另一种善待自己。</p>
+  </footer>
+
+</div>
+
+<script>
+  // 全部展开 / 收起
+  var chapters = Array.prototype.slice.call(document.querySelectorAll('details.ch'));
+  document.getElementById('openAll').addEventListener('click', function(){
+    chapters.forEach(function(d){ d.open = true; });
+  });
+  document.getElementById('closeAll').addEventListener('click', function(){
+    chapters.forEach(function(d){ d.open = false; });
+  });
+
+  // 换一句话
+  var swaps = [
+    {
+      harsh: '「我真没用，这点事都做不好。」',
+      kind: '这件事没做好，我心里很难受（只说事）。做不好一件事的人到处都是，不只我（共通人性）。先不骂了，我陪自己把这一关过去，再看下一步（善待自己）。'
+    },
+    {
+      harsh: '「又搞砸了，我这个人就是不行。」',
+      kind: '这次的结果不好，这是事实，但它说的是一件事，不是我整个人（静观）。谁的人生没有几件搞砸的事（共通人性）。我先缓一缓，看看能补救哪一步——骂自己不会让事情变好（善待自己）。'
+    },
+    {
+      harsh: '「这种好事，轮不到我这种人。」',
+      kind: '好事落到我头上，我有点慌，这很正常（静观）。好运气本来就是随机落在普通人身上的，不用先通过考试（共通人性）。这次我先收下，停一停，不急着推开，也不急着还（善待自己）。'
+    },
+    {
+      harsh: '「她对我这么好，我不配，我得赶紧还。」',
+      kind: '被好好对待，我心里又感动又害怕，两种感觉可以同时在（静观）。值得被爱这件事，本来就不是靠表现换的，很多人都还在学着收下（共通人性）。我先说一声谢谢，把这份好留一会儿，不用马上还清（善待自己）。'
+    }
+  ];
+  var btns = Array.prototype.slice.call(document.querySelectorAll('.swap-btns button'));
+  var harshEl = document.getElementById('swapHarsh');
+  var kindEl = document.getElementById('swapKind');
+  btns.forEach(function(btn){
+    btn.addEventListener('click', function(){
+      btns.forEach(function(b){ b.classList.remove('on'); });
+      btn.classList.add('on');
+      var s = swaps[Number(btn.getAttribute('data-i'))];
+      harshEl.textContent = s.harsh;
+      kindEl.textContent = s.kind;
+    });
+  });
+</script>
+</body>
+</html>

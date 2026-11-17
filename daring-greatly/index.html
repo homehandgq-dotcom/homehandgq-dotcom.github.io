@@ -1,0 +1,952 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
+<meta name="color-scheme" content="light dark" />
+<link rel="icon" href="data:," />
+<title>脆弱的力量 解读 · Daring Greatly</title>
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Noto+Serif+SC:wght@600;700;900&family=Noto+Sans+SC:wght@400;500;700&display=swap" rel="stylesheet" />
+<style>
+  :root{
+    --bg:#faf8f3;
+    --surface:#ffffff;
+    --surface-2:#f2ede2;
+    --surface-3:#ece5d5;
+    --ink:#2a251e;
+    --muted:#6f6455;
+    --faint:#8a7f6e;
+    --accent:#9e451f;
+    --accent-soft:#f7e6dc;
+    --accent-ink:#ffffff;
+    --teal:#2e5a4c;
+    --teal-soft:#e2ede8;
+    --gold:#a9761f;
+    --gold-soft:#f6ecd4;
+    --line:#e2dac8;
+    --line-strong:#cfc3a8;
+    --shadow:0 1px 3px rgba(60,45,20,.08),0 8px 24px rgba(60,45,20,.06);
+    --radius:14px;
+  }
+  @media (prefers-color-scheme: dark){
+    :root{
+      --bg:#171410;
+      --surface:#221e19;
+      --surface-2:#2a251f;
+      --surface-3:#332c24;
+      --ink:#ede6d8;
+      --muted:#b3a893;
+      --faint:#948872;
+      --accent:#e08a5a;
+      --accent-soft:#3d2a1e;
+      --accent-ink:#1d130c;
+      --teal:#8fc3ae;
+      --teal-soft:#22352d;
+      --gold:#d9ab4e;
+      --gold-soft:#38301c;
+      --line:#3b352b;
+      --line-strong:#554c3d;
+      --shadow:0 1px 3px rgba(0,0,0,.4),0 8px 24px rgba(0,0,0,.3);
+    }
+  }
+  html{ scroll-behavior:smooth; }
+  @media (prefers-reduced-motion: reduce){ html{ scroll-behavior:auto; } }
+  body{
+    margin:0;
+    background:var(--bg);
+    color:var(--ink);
+    font-family:"Noto Sans SC",-apple-system,BlinkMacSystemFont,"PingFang SC","Microsoft YaHei",sans-serif;
+    font-size:17px;
+    line-height:1.75;
+    -webkit-font-smoothing:antialiased;
+  }
+  h1,h2,h3,h4,p,ul,ol,figure,blockquote{ margin:0; }
+  ul,ol{ padding:0; list-style:none; }
+  a{ color:var(--accent); }
+  button{ font-family:inherit; cursor:pointer; }
+  .wrap{ max-width:760px; margin:0 auto; padding:0 18px; }
+
+  /* ---------- hero ---------- */
+  .hero{ padding:34px 0 8px; }
+  .hero-tag{
+    display:inline-block; font-size:13px; font-weight:700; letter-spacing:.14em;
+    color:var(--teal); background:var(--teal-soft);
+    padding:6px 12px; border-radius:999px; margin-bottom:16px;
+  }
+  .hero h1{
+    font-family:"Noto Serif SC",serif; font-weight:900;
+    font-size:40px; line-height:1.25; letter-spacing:.01em;
+  }
+  .hero .en{
+    font-family:"Noto Serif SC",serif; font-size:16px; color:var(--muted);
+    margin-top:8px; line-height:1.5;
+  }
+  .hero .author{ margin-top:14px; font-size:15px; color:var(--muted); }
+  .hero .author strong{ color:var(--ink); }
+  .thesis{
+    margin-top:20px; background:var(--surface); border:1px solid var(--line);
+    border-left:5px solid var(--accent); border-radius:var(--radius);
+    padding:18px 18px 16px; box-shadow:var(--shadow);
+  }
+  .thesis .t-label{ font-size:13px; font-weight:700; letter-spacing:.12em; color:var(--accent); margin-bottom:6px; }
+  .thesis p{ font-size:18px; line-height:1.8; }
+  .thesis p strong{ color:var(--accent); }
+  .arena{
+    margin-top:16px; background:var(--surface-2); border-radius:var(--radius);
+    padding:18px; font-size:15.5px; line-height:1.85; color:var(--ink);
+  }
+  .arena .a-label{ font-size:13px; font-weight:700; letter-spacing:.12em; color:var(--gold); margin-bottom:6px; }
+  .arena em{ font-style:normal; font-weight:700; }
+  .gentle{
+    margin-top:16px; display:flex; gap:12px; align-items:flex-start;
+    background:var(--teal-soft); border-radius:var(--radius); padding:16px 18px;
+    font-size:15.5px; line-height:1.8;
+  }
+  .gentle .g-ico{ flex:0 0 auto; width:26px; height:26px; margin-top:3px; color:var(--teal); }
+  .gentle strong{ color:var(--teal); }
+
+  /* ---------- sticky nav ---------- */
+  .topnav{
+    position:sticky; top:0; z-index:50; margin-top:26px;
+    background:var(--bg); border-top:1px solid var(--line); border-bottom:1px solid var(--line);
+  }
+  .topnav-inner{
+    max-width:760px; margin:0 auto; padding:8px 10px;
+    display:flex; gap:6px; overflow-x:auto; -webkit-overflow-scrolling:touch;
+    scrollbar-width:none;
+  }
+  .topnav-inner::-webkit-scrollbar{ display:none; }
+  .topnav a{
+    flex:0 0 auto; display:flex; align-items:center; min-height:44px;
+    padding:8px 14px; border-radius:999px; text-decoration:none;
+    font-size:15px; font-weight:500; color:var(--muted);
+    border:1px solid transparent; white-space:nowrap;
+  }
+  .topnav a.active{ color:var(--accent-ink); background:var(--accent); font-weight:700; }
+  .topnav a:not(.active):active{ background:var(--surface-2); }
+
+  /* ---------- sections ---------- */
+  section{ padding:34px 0 6px; scroll-margin-top:76px; }
+  .sec-head{ margin-bottom:18px; }
+  .sec-head .kicker{ font-size:13px; font-weight:700; letter-spacing:.14em; color:var(--accent); margin-bottom:6px; }
+  .sec-head h2{ font-family:"Noto Serif SC",serif; font-weight:900; font-size:27px; line-height:1.35; }
+  .sec-head .sub{ margin-top:8px; color:var(--muted); font-size:15.5px; line-height:1.8; }
+  .card{
+    background:var(--surface); border:1px solid var(--line); border-radius:var(--radius);
+    padding:20px 18px; box-shadow:var(--shadow); margin-bottom:14px;
+  }
+  .card h3{ font-family:"Noto Serif SC",serif; font-size:20px; font-weight:700; line-height:1.45; margin-bottom:8px; }
+  .card p{ font-size:16px; line-height:1.85; }
+  .card p + p{ margin-top:10px; }
+  .muted{ color:var(--muted); }
+  .small{ font-size:14.5px; }
+
+  /* vs table-ish */
+  .vs{ display:grid; grid-template-columns:1fr; gap:12px; }
+  @media (min-width:640px){ .vs{ grid-template-columns:1fr 1fr; } }
+  .vs .book{ border-radius:var(--radius); padding:18px; border:1px solid var(--line); background:var(--surface); }
+  .vs .book.now{ border-color:var(--accent); background:var(--accent-soft); }
+  .vs .book .b-name{ font-family:"Noto Serif SC",serif; font-weight:900; font-size:19px; line-height:1.4; }
+  .vs .book .b-en{ font-size:13px; color:var(--muted); margin-top:2px; }
+  .vs .book p{ margin-top:10px; font-size:15px; line-height:1.8; }
+  .vs .book .b-tag{ display:inline-block; font-size:12.5px; font-weight:700; padding:3px 9px; border-radius:999px; background:var(--surface-3); color:var(--muted); margin-bottom:10px; }
+  .vs .book.now .b-tag{ background:var(--accent); color:var(--accent-ink); }
+
+  /* structure map */
+  .act{ margin-bottom:20px; }
+  .act-head{ display:flex; align-items:baseline; gap:10px; margin-bottom:10px; }
+  .act-head .act-no{
+    font-family:"Noto Serif SC",serif; font-weight:900; font-size:15px; color:var(--accent-ink);
+    background:var(--teal); border-radius:8px; padding:3px 10px; flex:0 0 auto;
+  }
+  .act-head h3{ font-family:"Noto Serif SC",serif; font-size:19px; font-weight:700; }
+  .act-head .act-note{ font-size:13.5px; color:var(--muted); }
+  .flow{ display:flex; flex-direction:column; gap:0; }
+  .flow-item{
+    display:flex; gap:14px; align-items:flex-start; position:relative;
+    padding:12px 14px; background:var(--surface); border:1px solid var(--line); border-radius:12px;
+  }
+  .flow-item + .flow-item{ margin-top:22px; }
+  .flow-item + .flow-item::before{
+    content:""; position:absolute; left:50%; top:-19px; width:2px; height:16px; background:var(--line-strong);
+  }
+  .flow-item + .flow-item::after{
+    content:""; position:absolute; left:50%; top:-6px; margin-left:-4.5px;
+    border-left:5px solid transparent; border-right:5px solid transparent; border-top:6px solid var(--line-strong);
+  }
+  .flow-item .f-no{
+    flex:0 0 auto; width:38px; height:38px; border-radius:50%;
+    background:var(--surface-3); color:var(--ink);
+    display:flex; align-items:center; justify-content:center;
+    font-family:"Noto Serif SC",serif; font-weight:900; font-size:16px;
+  }
+  .flow-item.hot .f-no{ background:var(--accent); color:var(--accent-ink); }
+  .flow-item .f-body{ flex:1; min-width:0; }
+  .flow-item .f-title{ font-weight:700; font-size:16.5px; line-height:1.5; }
+  .flow-item .f-desc{ font-size:14.5px; color:var(--muted); line-height:1.7; margin-top:2px; }
+  .hot-badge{ display:inline-block; font-size:12px; font-weight:700; color:var(--accent); background:var(--accent-soft); border-radius:999px; padding:2px 8px; margin-left:6px; vertical-align:2px; }
+
+  /* chapters */
+  details.chapter{
+    background:var(--surface); border:1px solid var(--line); border-radius:var(--radius);
+    margin-bottom:12px; box-shadow:var(--shadow); overflow:hidden;
+  }
+  details.chapter summary{
+    list-style:none; cursor:pointer; min-height:44px;
+    padding:16px 18px; display:flex; gap:14px; align-items:flex-start;
+  }
+  details.chapter summary::-webkit-details-marker{ display:none; }
+  details.chapter summary:active{ background:var(--surface-2); }
+  .ch-no{
+    flex:0 0 auto; font-family:"Noto Serif SC",serif; font-weight:900; font-size:22px;
+    color:var(--accent); line-height:1.2; min-width:34px; text-align:center;
+  }
+  .ch-head{ flex:1; min-width:0; }
+  .ch-title{ font-family:"Noto Serif SC",serif; font-weight:700; font-size:18.5px; line-height:1.45; }
+  .ch-en{ font-size:12.5px; color:var(--faint); line-height:1.5; margin-top:2px; }
+  .ch-one{ font-size:15px; color:var(--muted); line-height:1.7; margin-top:6px; }
+  .ch-arrow{ flex:0 0 auto; width:22px; height:22px; margin-top:6px; color:var(--faint); transition:transform .2s ease; }
+  details.chapter[open ] .ch-arrow{ transform:rotate(180deg); }
+  @media (prefers-reduced-motion: reduce){ .ch-arrow{ transition:none; } }
+  .ch-body{ padding:2px 18px 20px 66px; }
+  @media (max-width:480px){ .ch-body{ padding-left:18px; } }
+  .ch-body h4{ font-size:14px; font-weight:700; letter-spacing:.08em; color:var(--teal); margin:14px 0 6px; }
+  .ch-body h4:first-child{ margin-top:4px; }
+  .ch-body p{ font-size:15.5px; line-height:1.85; }
+  .ch-body ul{ margin-top:4px; }
+  .ch-body li{ font-size:15.5px; line-height:1.8; padding-left:20px; position:relative; margin-bottom:6px; }
+  .ch-body li::before{ content:""; position:absolute; left:4px; top:.72em; width:6px; height:6px; border-radius:50%; background:var(--accent); }
+  .ch-body li strong{ color:var(--ink); }
+  .toyou{
+    margin-top:14px; background:var(--gold-soft); border-radius:10px; padding:12px 14px;
+    font-size:15px; line-height:1.8;
+  }
+  .toyou .ty-label{ font-weight:700; color:var(--gold); font-size:13px; letter-spacing:.1em; display:block; margin-bottom:2px; }
+
+  /* tabs */
+  .tabs{ display:flex; gap:8px; flex-wrap:wrap; margin-bottom:14px; }
+  .tabs button{
+    min-height:44px; padding:9px 16px; border-radius:999px;
+    border:1.5px solid var(--line-strong); background:var(--surface);
+    font-size:15px; font-weight:500; color:var(--muted);
+  }
+  .tabs button[aria-selected="true"]{ background:var(--accent); border-color:var(--accent); color:var(--accent-ink); font-weight:700; }
+  .tab-panel{ display:none; }
+  .tab-panel.show{ display:block; }
+  .shield-grid{ display:grid; grid-template-columns:1fr; gap:12px; }
+  @media (min-width:640px){ .shield-grid{ grid-template-columns:1fr 1fr 1fr; } }
+  .shield{
+    border-radius:var(--radius); border:1px solid var(--line); background:var(--surface);
+    padding:18px; box-shadow:var(--shadow);
+  }
+  .shield .s-ico{ width:34px; height:34px; color:var(--accent); margin-bottom:10px; }
+  .shield h3{ font-family:"Noto Serif SC",serif; font-size:19px; font-weight:700; line-height:1.4; }
+  .shield .s-en{ font-size:12.5px; color:var(--faint); margin-bottom:10px; }
+  .shield h4{ font-size:13px; font-weight:700; letter-spacing:.08em; color:var(--teal); margin:12px 0 4px; }
+  .shield p, .shield li{ font-size:14.5px; line-height:1.8; }
+  .shield ul li{ padding-left:16px; position:relative; margin-bottom:4px; }
+  .shield ul li::before{ content:""; position:absolute; left:2px; top:.7em; width:5px; height:5px; border-radius:50%; background:var(--teal); }
+  .shield .s-do{ background:var(--teal-soft); border-radius:10px; padding:10px 12px; margin-top:12px; font-size:14.5px; line-height:1.75; }
+  .minor{ margin-top:14px; background:var(--surface); border:1px dashed var(--line-strong); border-radius:var(--radius); padding:16px 18px; }
+  .minor h3{ font-size:16px; font-weight:700; margin-bottom:8px; }
+  .minor p{ font-size:14.5px; line-height:1.85; color:var(--muted); }
+  .minor strong{ color:var(--ink); }
+
+  /* shame steps panel */
+  .step-panel{
+    background:var(--surface); border:1px solid var(--line); border-radius:var(--radius);
+    padding:20px 18px; box-shadow:var(--shadow);
+  }
+  .step-panel h3{ font-family:"Noto Serif SC",serif; font-size:20px; font-weight:700; margin-bottom:8px; }
+  .step-panel p{ font-size:15.5px; line-height:1.85; }
+  .step-panel .say{
+    margin-top:12px; background:var(--accent-soft); border-radius:10px; padding:12px 14px;
+    font-size:15px; line-height:1.8;
+  }
+  .step-panel .say .say-label{ font-weight:700; color:var(--accent); font-size:13px; letter-spacing:.1em; display:block; margin-bottom:2px; }
+  .defbox{
+    background:var(--surface-2); border-radius:var(--radius); padding:16px 18px; margin-bottom:14px;
+    font-size:15.5px; line-height:1.85;
+  }
+  .defbox strong{ color:var(--accent); }
+  .defbox .vs-line{ margin-top:8px; display:flex; flex-direction:column; gap:6px; }
+  .defbox .vs-line span{ background:var(--surface); border:1px solid var(--line); border-radius:8px; padding:8px 12px; font-size:14.5px; }
+
+  /* mapping */
+  .map-row{
+    background:var(--surface); border:1px solid var(--line); border-radius:var(--radius);
+    padding:18px; margin-bottom:12px; box-shadow:var(--shadow);
+  }
+  .map-row .m-you{ font-family:"Noto Serif SC",serif; font-weight:700; font-size:18px; line-height:1.5; }
+  .map-row .m-you::before{ content:"你说的 · "; font-size:13px; color:var(--faint); font-family:"Noto Sans SC",sans-serif; font-weight:500; letter-spacing:.08em; }
+  .map-row .m-book{ margin-top:10px; font-size:15.5px; line-height:1.85; }
+  .map-row .m-book .m-ch{
+    display:inline-block; font-size:13px; font-weight:700; color:var(--accent-ink); background:var(--accent);
+    border-radius:999px; padding:3px 10px; margin-right:8px; vertical-align:2px;
+  }
+  .map-row .m-do{ margin-top:10px; font-size:15px; line-height:1.8; color:var(--muted); border-top:1px dashed var(--line); padding-top:10px; }
+  .map-row .m-do strong{ color:var(--teal); }
+
+  /* reading order */
+  .order-list{ display:flex; flex-direction:column; gap:12px; }
+  .order-item{ display:flex; gap:14px; background:var(--surface); border:1px solid var(--line); border-radius:var(--radius); padding:16px 18px; box-shadow:var(--shadow); align-items:flex-start; }
+  .order-item .o-no{
+    flex:0 0 auto; width:34px; height:34px; border-radius:50%; background:var(--accent); color:var(--accent-ink);
+    display:flex; align-items:center; justify-content:center; font-weight:700; font-size:16px; margin-top:2px;
+  }
+  .order-item .o-body{ flex:1; min-width:0; }
+  .order-item .o-title{ font-weight:700; font-size:16.5px; line-height:1.5; }
+  .order-item p{ font-size:14.5px; color:var(--muted); line-height:1.75; margin-top:3px; }
+  .order-item.rest .o-no{ background:var(--surface-3); color:var(--muted); }
+
+  /* practice */
+  .practice{ background:var(--teal); color:#f2ede2; border-radius:18px; padding:24px 20px; margin-top:6px; }
+  @media (prefers-color-scheme: dark){ .practice{ background:#22352d; color:#e6efe9; } }
+  .practice h3{ font-family:"Noto Serif SC",serif; font-size:21px; font-weight:900; line-height:1.45; margin-bottom:6px; }
+  .practice .p-sub{ font-size:15px; opacity:.85; line-height:1.8; margin-bottom:16px; }
+  .practice ol{ counter-reset:pstep; display:flex; flex-direction:column; gap:12px; }
+  .practice li{
+    counter-increment:pstep; position:relative; padding:14px 14px 14px 52px;
+    background:rgba(255,255,255,.1); border-radius:12px; font-size:15.5px; line-height:1.8;
+  }
+  @media (prefers-color-scheme: dark){ .practice li{ background:rgba(255,255,255,.06); } }
+  .practice li::before{
+    content:counter(pstep); position:absolute; left:14px; top:13px;
+    width:26px; height:26px; border-radius:50%; background:#f2ede2; color:#2e5a4c;
+    display:flex; align-items:center; justify-content:center; font-weight:700; font-size:14px;
+  }
+  .practice li strong{ display:block; font-size:16px; margin-bottom:2px; }
+  .practice .p-end{ margin-top:16px; font-size:15px; line-height:1.8; opacity:.9; }
+
+  /* buy guide */
+  .buy-table{ display:flex; flex-direction:column; gap:12px; }
+  .buy-row{ background:var(--surface); border:1px solid var(--line); border-radius:var(--radius); padding:16px 18px; box-shadow:var(--shadow); }
+  .buy-row.bad{ border-color:var(--line-strong); background:var(--surface-2); }
+  .buy-row .b-head{ display:flex; align-items:center; gap:10px; flex-wrap:wrap; margin-bottom:6px; }
+  .buy-row .b-name{ font-weight:700; font-size:16.5px; }
+  .buy-row .verdict{ font-size:12.5px; font-weight:700; border-radius:999px; padding:3px 10px; }
+  .buy-row .verdict.ok{ background:var(--teal-soft); color:var(--teal); }
+  .buy-row .verdict.no{ background:var(--accent-soft); color:var(--accent); }
+  .buy-row p{ font-size:14.5px; line-height:1.8; color:var(--muted); }
+  .buy-row p strong{ color:var(--ink); }
+  .isbn{ font-variant-numeric:tabular-nums; font-weight:700; color:var(--ink); }
+
+  footer{ padding:36px 0 48px; }
+  .foot-card{ border-top:1px solid var(--line); padding-top:20px; }
+  .foot-card p{ font-size:14px; color:var(--muted); line-height:1.85; }
+  .foot-card p + p{ margin-top:8px; }
+</style>
+</head>
+<body>
+
+<div class="wrap">
+  <!-- ================= HERO ================= -->
+  <header class="hero">
+    <span class="hero-tag">布琳 · 布朗 &nbsp;整本解读</span>
+    <h1>脆弱的力量</h1>
+    <p class="en">Daring Greatly — How the Courage to Be Vulnerable Transforms the Way We Live, Love, Parent, and Lead</p>
+    <p class="author">作者 <strong>布琳·布朗（Brené Brown）</strong> · 休斯顿大学研究教授，研究羞耻感、脆弱与勇气二十多年 · 英文原版 2012 年出版</p>
+
+    <div class="thesis">
+      <p class="t-label">全书一句话</p>
+      <p>脆弱不是软弱，是<strong>不确定、要冒险、把心敞开</strong>——它恰恰是勇气、爱和联结出生的地方。你越想躲开它，穿上的盔甲越厚，好东西也越进不来。</p>
+    </div>
+
+    <div class="arena">
+      <p class="a-label">书名从哪来 · 竞技场</p>
+      <p>书名出自罗斯福 1910 年的演讲：荣耀不属于站在场边挑毛病的人，属于<em>真正站在竞技场里、脸上沾着灰和汗、敢上场也敢输</em>的人。布朗把这句话翻成大白话——<em>敢于脆弱，不是赢，也不是输，是你敢站出来、让别人看见你。</em>输赢不保证，但不上场，就什么都不会发生。</p>
+    </div>
+
+    <div class="gentle">
+      <svg class="g-ico" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 21s-7.5-4.6-10-9.3C.4 8.6 2.3 5 5.7 5c2 0 3.4 1.1 4.3 2.4h4c.9-1.3 2.3-2.4 4.3-2.4 3.4 0 5.3 3.6 3.7 6.7C19.5 16.4 12 21 12 21z" opacity="0"/><path d="M20.8 8.6c-.9-2-3-3.1-5-2.7-1.5.3-2.9 1.3-3.8 2.7-.9-1.4-2.3-2.4-3.8-2.7-2-.4-4.1.7-5 2.7C2.2 10.9 3.4 14 6 16.6c1.9 1.9 4.4 3.2 6 4.4 1.6-1.2 4.1-2.5 6-4.4 2.6-2.6 3.8-5.7 2.8-8z"/></svg>
+      <p><strong>先说好，看法跟上一篇一样：</strong>不用一口气看完。这一页很长，你今天只看一小块就算数——最推荐你先跳到<strong>第 4 章</strong>，那一章就是专门写你的。看到哪块扎心，停下来就行，我们下次就拆那一块。</p>
+    </div>
+  </header>
+</div>
+
+<!-- ================= NAV ================= -->
+<nav class="topnav" aria-label="本页目录">
+  <div class="topnav-inner" id="topnav">
+    <a href="#diff" class="active">和上一本的区别</a>
+    <a href="#map">全书结构图</a>
+    <a href="#chapters">逐章详解</a>
+    <a href="#armor">三面盾牌</a>
+    <a href="#shame">羞耻韧性四步</a>
+    <a href="#toyou">对到你身上</a>
+    <a href="#order">最小阅读顺序</a>
+    <a href="#buy">买书避坑</a>
+  </div>
+</nav>
+
+<div class="wrap">
+
+  <!-- ================= DIFF ================= -->
+  <section id="diff">
+    <div class="sec-head">
+      <p class="kicker">先分清</p>
+      <h2>这本和《不完美的礼物》是什么关系</h2>
+      <p class="sub">同一个作者，前后脚出的两本。上一本给你十个日常路标，告诉你「往哪走」；这一本往深处挖一层，告诉你「为什么你走不动」——挡路的就是羞耻感和你穿的那身盔甲。</p>
+    </div>
+    <div class="vs">
+      <div class="book">
+        <span class="b-tag">上一本 · 已解读</span>
+        <p class="b-name">《不完美的礼物》</p>
+        <p class="b-en">The Gifts of Imperfection（2010）</p>
+        <p>主题是<strong>配得感</strong>：我不需要先证明自己，我本来就够了。全书是 10 个指引——培养什么、放下什么，像一张过日子的清单，温和、好上手。</p>
+      </div>
+      <div class="book now">
+        <span class="b-tag">这一本 · 本页</span>
+        <p class="b-name">《脆弱的力量》</p>
+        <p class="b-en">Daring Greatly（2012）</p>
+        <p>主题是<strong>脆弱与羞耻</strong>：为什么你一被看见就想躲、一有好事就先害怕。拆的是机制——匮乏文化、四个迷思、羞耻感、三面盾牌，比上一本更深、更扎心，也更治本。</p>
+      </div>
+    </div>
+    <div class="card" style="margin-top:14px">
+      <p>一句话记法：<strong>上一本教你「收下」，这一本教你「卸甲」。</strong>收不下，往往不是你不想收，是盔甲太厚——好意、人、机会，都先撞在盔甲上。这一本就带你一件一件认出这身盔甲。</p>
+    </div>
+  </section>
+
+  <!-- ================= MAP ================= -->
+  <section id="map">
+    <div class="sec-head">
+      <p class="kicker">全书大纲</p>
+      <h2>全书结构图：导言 + 7 章 + 结语</h2>
+      <p class="sub">整本书是一条线，分三幕：先看清是什么在挡你，再认出你躲它的办法，最后把卸甲用到工作、关系和养育里。下面每一步，点开「逐章详解」都有展开。</p>
+    </div>
+
+    <div class="act">
+      <div class="act-head"><span class="act-no">第一幕</span><h3>看清挡路的东西</h3><span class="act-note">导言 — 第 3 章</span></div>
+      <div class="flow">
+        <div class="flow-item">
+          <span class="f-no">引</span>
+          <div class="f-body"><p class="f-title">导言：我的竞技场冒险</p><p class="f-desc">脆弱到底是什么，为什么「敢被看见」就是全书的起点。</p></div>
+        </div>
+        <div class="flow-item">
+          <span class="f-no">1</span>
+          <div class="f-body"><p class="f-title">匮乏：检视「永远不够」的文化</p><p class="f-desc">你不是一个人觉得不够——整个文化都在说「永远 ___ 不够」。</p></div>
+        </div>
+        <div class="flow-item">
+          <span class="f-no">2</span>
+          <div class="f-body"><p class="f-title">破解脆弱的四个迷思</p><p class="f-desc">脆弱＝软弱？我不搞脆弱？脆弱＝什么都往外说？能一个人扛？全是误会。</p></div>
+        </div>
+        <div class="flow-item hot">
+          <span class="f-no">3</span>
+          <div class="f-body"><p class="f-title">理解并对抗羞耻<span class="hot-badge">对你最重要之一</span></p><p class="f-desc">「我这个人有毛病」这句声音从哪来，怎么练出羞耻韧性。</p></div>
+        </div>
+      </div>
+    </div>
+
+    <div class="act">
+      <div class="act-head"><span class="act-no">第二幕</span><h3>认出你的盔甲</h3><span class="act-note">第 4 章</span></div>
+      <div class="flow">
+        <div class="flow-item hot">
+          <span class="f-no">4</span>
+          <div class="f-body"><p class="f-title">防卫脆弱的武器库<span class="hot-badge">先看这一章</span></p><p class="f-desc">三面主盾牌：预演悲剧、完美主义、麻木。你躲脆弱的办法，全在这里对号入座。</p></div>
+        </div>
+      </div>
+    </div>
+
+    <div class="act">
+      <div class="act-head"><span class="act-no">第三幕</span><h3>把卸甲用进生活</h3><span class="act-note">第 5 — 7 章 + 结语</span></div>
+      <div class="flow">
+        <div class="flow-item">
+          <span class="f-no">5</span>
+          <div class="f-body"><p class="f-title">留意落差：弥合疏离的鸿沟</p><p class="f-desc">嘴上说的价值和实际在做的事，中间那道缝，就是你慢慢退出人生的地方。</p></div>
+        </div>
+        <div class="flow-item">
+          <span class="f-no">6</span>
+          <div class="f-body"><p class="f-title">破坏性投入：让教育和职场重新有人味</p><p class="f-desc">羞耻文化怎么渗进学校和公司，反馈为什么那么难开口、难听进去。</p></div>
+        </div>
+        <div class="flow-item">
+          <span class="f-no">7</span>
+          <div class="f-body"><p class="f-title">全心投入的教养：敢做孩子想成为的大人</p><p class="f-desc">不只写给父母——也写给想重新养一遍自己的你：配得感是示范出来的，不是教出来的。</p></div>
+        </div>
+        <div class="flow-item">
+          <span class="f-no">结</span>
+          <div class="f-body"><p class="f-title">结语</p><p class="f-desc">无所畏惧不是一次到位，是一次次小小的上场。</p></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ================= CHAPTERS ================= -->
+  <section id="chapters">
+    <div class="sec-head">
+      <p class="kicker">逐章详解</p>
+      <h2>每一章讲什么</h2>
+      <p class="sub">点开任意一章，看这一章讲了什么、关键概念是什么、跟你有什么关系。不用按顺序，从你想看的那章开始就行。</p>
+    </div>
+
+    <details class="chapter">
+      <summary>
+        <span class="ch-no">引</span>
+        <span class="ch-head">
+          <span class="ch-title">导言：我的竞技场冒险</span>
+          <span class="ch-en" style="display:block">Introduction: My Adventures in the Arena</span>
+          <span class="ch-one" style="display:block">先把最要紧的定义立住：脆弱，就是不确定、冒险、情感暴露。</span>
+        </span>
+        <svg class="ch-arrow" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M6 9l6 6 6-6"/></svg>
+      </summary>
+      <div class="ch-body">
+        <h4>这一章讲什么</h4>
+        <p>布朗先讲自己的故事：她研究羞耻感多年，却最怕自己脆弱——直到 TED 演讲爆红，她被迫亲自走进竞技场，按自己研究出来的东西活一次。这一章就是全书的入场券。</p>
+        <h4>关键概念</h4>
+        <ul>
+          <li><strong>脆弱的定义：</strong>不确定性、风险、情感暴露。说「我爱你」、开口求助、等检查结果、把作品拿给人看——全是脆弱。</li>
+          <li><strong>敢于脆弱（Daring Greatly）：</strong>不是赢或输，是全心投入、让自己被看见。</li>
+          <li><strong>全心生活：</strong>带着「我已经够了」的配得感，勇敢地参与生活，而不是站在场边评判自己和别人。</li>
+        </ul>
+        <div class="toyou"><span class="ty-label">对你说</span>你不需要先变得不怕，才配上场。怕着，也可以上场——这句话是整本书的地基，先记住这一句就够了。</div>
+      </div>
+    </details>
+
+    <details class="chapter">
+      <summary>
+        <span class="ch-no">1</span>
+        <span class="ch-head">
+          <span class="ch-title">匮乏：检视我们「永远不够」的文化</span>
+          <span class="ch-en" style="display:block">Scarcity: Looking Inside Our Culture of “Never Enough”</span>
+          <span class="ch-one" style="display:block">「我不够好」不是你的私人毛病，是一种文化空气，你从小吸到大。</span>
+        </span>
+        <svg class="ch-arrow" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M6 9l6 6 6-6"/></svg>
+      </summary>
+      <div class="ch-body">
+        <h4>这一章讲什么</h4>
+        <p>布朗说，我们活在一种匮乏文化里：一睁眼就觉得睡得不够，白天觉得做得不够，睡前觉得拥有的不够。这个空格谁都能填——永远不够好、不够瘦、不够成功、不够确定、不够特别。</p>
+        <h4>关键概念</h4>
+        <ul>
+          <li><strong>匮乏的三个燃料：</strong>羞耻（怕被看不起）、比较（总跟别人比）、疏离（干脆退出、不玩了）。三样互相喂大。</li>
+          <li><strong>重新看「自恋」：</strong>很多看着自大的人，底下不是觉得自己太好，是羞耻驱动地怕自己太普通、太不起眼。</li>
+          <li><strong>匮乏的反面不是丰盛，是「够了」：</strong>不是拥有更多，而是心里真的信一句——我已经够了（enough）。</li>
+        </ul>
+        <div class="toyou"><span class="ty-label">对你说</span>你那句「我不配」，一半是文化塞给你的，不是你一个人的判决。先分清哪些声音是你的、哪些是空气里的，你肩上的重量会轻一点。</div>
+      </div>
+    </details>
+
+    <details class="chapter">
+      <summary>
+        <span class="ch-no">2</span>
+        <span class="ch-head">
+          <span class="ch-title">破解脆弱的迷思</span>
+          <span class="ch-en" style="display:block">Debunking the Vulnerability Myths</span>
+          <span class="ch-one" style="display:block">关于脆弱的四个流行误会，一个一个拆掉。</span>
+        </span>
+        <svg class="ch-arrow" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M6 9l6 6 6-6"/></svg>
+      </summary>
+      <div class="ch-body">
+        <h4>四个迷思，逐个拆</h4>
+        <ul>
+          <li><strong>迷思一「脆弱就是软弱」：</strong>错。有感觉就是脆弱；把感觉当软弱，等于把爱、喜乐、归属感这些让人生有意义的东西一起关掉。敢暴露情感，恰恰是勇气最清楚的量尺。</li>
+          <li><strong>迷思二「我不搞脆弱那一套」：</strong>躲不掉。不确定和风险不是可选项目，你唯一能选的，是它来的时候你怎么回应——是上场，还是用控制、挑剔、逃避来假装没事。</li>
+          <li><strong>迷思三「脆弱就是毫无保留、什么都往外倒」：</strong>错。脆弱有边界、有分寸：只对挣得了你信任的人、在对的时机、一点一点分享。信任像往罐子里一颗一颗放弹珠，慢慢攒，不是见人就掀底牌。</li>
+          <li><strong>迷思四「我们可以一个人扛」：</strong>扛不动。人被打倒在竞技场里的时候，需要有一只手拉他起来；接受帮助不丢人——你怎么看待「接受」，也决定了你能不能真心「给予」。</li>
+        </ul>
+        <div class="toyou"><span class="ty-label">对你说</span>迷思二和迷思四是给你写的：脆弱躲不掉，一个人也扛不完。你以前硬扛、硬躲，不是你不行，是这两条路本来就走不通。</div>
+      </div>
+    </details>
+
+    <details class="chapter">
+      <summary>
+        <span class="ch-no">3</span>
+        <span class="ch-head">
+          <span class="ch-title">理解并对抗羞耻</span>
+          <span class="ch-en" style="display:block">Understanding and Combating Shame（又名：小魔怪忍者训练）</span>
+          <span class="ch-one" style="display:block">全书的心脏：那句「我这个人有毛病」，就是羞耻感在说话。</span>
+        </span>
+        <svg class="ch-arrow" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M6 9l6 6 6-6"/></svg>
+      </summary>
+      <div class="ch-body">
+        <h4>这一章讲什么</h4>
+        <p>布朗给羞耻下了她研究多年的定义：<strong>羞耻，是一种剧痛的感觉——相信自己有缺陷，因此不配得到爱和归属。</strong>它和内疚完全不同：内疚说「我做错了一件事」，对着行为，还能推着人改；羞耻说「我这个人就是错的」，对着身份，只会把人冻住、逼人躲、逼人讨好或反击。</p>
+        <h4>关键概念</h4>
+        <ul>
+          <li><strong>羞耻靠三样东西活：</strong>保密、沉默、评判。越藏、越不说、越怕被评判，它长得越大。</li>
+          <li><strong>羞耻的解药是共情：</strong>把羞耻说出口、并且被对方接住（不是可怜，是「我懂，我也在过」），羞耻就活不下去。</li>
+          <li><strong>男女的羞耻之网不同：</strong>女性常被「什么都要做好、还要毫不费力」困住；男性常被「绝不能显得软弱」困住。两边都是网。</li>
+          <li><strong>羞耻韧性四要素：</strong>认出羞耻和它的扳机、练习批判性觉察、向外联结、把羞耻说出来。本页下面有专门一节，一步一步带你走。</li>
+        </ul>
+        <div class="toyou"><span class="ty-label">对你说</span>你那个「垃圾的自我」，用布朗的话翻译，就是羞耻感给自己起的名字。它不是事实陈述，是一种感觉——感觉再真，也不是判决。这一章就是教你怎么把这两样分开。</div>
+      </div>
+    </details>
+
+    <details class="chapter" open>
+      <summary>
+        <span class="ch-no">4</span>
+        <span class="ch-head">
+          <span class="ch-title">防卫脆弱的武器库</span>
+          <span class="ch-en" style="display:block">The Vulnerability Armory</span>
+          <span class="ch-one" style="display:block">最对你的一章：你躲开好东西的办法，书里一件一件都写了名字。</span>
+        </span>
+        <svg class="ch-arrow" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M6 9l6 6 6-6"/></svg>
+      </summary>
+      <div class="ch-body">
+        <h4>这一章讲什么</h4>
+        <p>小时候，我们都学会了穿盔甲保护自己：不被伤、不被看低、不被失望。长大以后问题来了——<strong>盔甲挡得住痛，也挡得住爱、喜乐和机会</strong>。布朗把最常见的盔甲分成三面主盾牌，外加一排次要盾牌。</p>
+        <h4>三面主盾牌</h4>
+        <ul>
+          <li><strong>预演悲剧（Foreboding Joy）：</strong>好事刚来，先在脑子里把失去它的画面演一遍，提前难受——用「先泼自己冷水」防被命运泼冷水。解法是当场感恩。</li>
+          <li><strong>完美主义（Perfectionism）：</strong>一块二十吨重的盾。以为做得完美、看得完美，就能躲开羞耻和评判。其实它不是上进，是拿表现换认可，越追越累。解法是对自己仁慈。</li>
+          <li><strong>麻木（Numbing）：</strong>用忙、吃、刷手机、酒精、工作把感觉关小。但感觉没法挑着关——你把难受关小，喜乐和爱也一起被关小。解法是设边界、找真正的安慰，而不是麻药。</li>
+        </ul>
+        <h4>次要盾牌（一排小的）</h4>
+        <p>非赢即输的「维京或受害者」心态、过度倾诉（拿猛爆料冒充亲密）、抢眼式的倾倒、遇到脆弱就蛇形绕开、犬儒、批评、装酷、刻薄——全是同一个动作的不同版本：<strong>别让真实的我被看见。</strong>下面「三面盾牌」一节有每一面的详解和当天小练习。</p>
+        <div class="toyou"><span class="ty-label">对你说</span>你的「拥有即恐慌、好＝走的前摇」，在书里有正式名字，就叫预演悲剧。你不是一个人这样，也不是你天生怪——这是一面很多人都在举的盾。认出它，就是卸它的第一步，你已经在做了。</div>
+      </div>
+    </details>
+
+    <details class="chapter">
+      <summary>
+        <span class="ch-no">5</span>
+        <span class="ch-head">
+          <span class="ch-title">留意落差：培养改变，弥合疏离的鸿沟</span>
+          <span class="ch-en" style="display:block">Mind the Gap: Cultivating Change and Closing the Disengagement Divide</span>
+          <span class="ch-one" style="display:block">你说的价值，和你在活的价值，中间那道缝最耗人。</span>
+        </span>
+        <svg class="ch-arrow" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M6 9l6 6 6-6"/></svg>
+      </summary>
+      <div class="ch-body">
+        <h4>这一章讲什么</h4>
+        <p>每个人、每个组织都有两种价值：<strong>向往的价值</strong>（嘴上说在乎的）和<strong>践行的价值</strong>（日程表和行动里真在做的）。两者的落差越大，人越容易「疏离」——慢慢退出、不再投入、人在心不在。</p>
+        <h4>关键概念</h4>
+        <ul>
+          <li><strong>疏离常常是自我保护：</strong>不是懒，是怕再投入又受伤，干脆先把心撤走。</li>
+          <li><strong>弥合落差靠小步对齐：</strong>不用完美，只要持续把行动往价值上挪，并敢把难谈的话谈开。</li>
+          <li><strong>投入式反馈：</strong>坐在桌子的同一边谈问题，而不是隔着桌子指责人——反馈给得出去、也听得进去，落差才合得上。</li>
+        </ul>
+        <div class="toyou"><span class="ty-label">对你说</span>你说自己「一拥有就不敢进一步、会主动回到缺少的状态」——换成这一章的话，那是心先撤了，人在假装还玩。先认出「我又在撤了」，比逼自己「必须投入」有用得多。</div>
+      </div>
+    </details>
+
+    <details class="chapter">
+      <summary>
+        <span class="ch-no">6</span>
+        <span class="ch-head">
+          <span class="ch-title">破坏性投入：让教育和职场重新有人味</span>
+          <span class="ch-en" style="display:block">Disruptive Engagement: Daring to Rehumanize Education and Work</span>
+          <span class="ch-one" style="display:block">把前面的道理搬进学校和公司：羞耻当管理工具的地方，人会慢慢死心。</span>
+        </span>
+        <svg class="ch-arrow" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M6 9l6 6 6-6"/></svg>
+      </summary>
+      <div class="ch-body">
+        <h4>这一章讲什么</h4>
+        <p>布朗走进学校和职场，看羞耻文化怎么运作：公开羞辱、甩锅、粉饰太平、拿排名和恐惧管人。结果都一样——没人敢提问、敢试错、敢创新，因为创新本身就是脆弱：把没把握的东西拿出来给人看。</p>
+        <h4>关键概念</h4>
+        <ul>
+          <li><strong>羞耻渗入文化的信号：</strong>甩锅成风、掩盖问题、八卦、偏袒、用羞辱当激励。</li>
+          <li><strong>领导者的功课：</strong>先自己敢脆弱——承认不知道、承认搞砸了，团队才敢说真话。</li>
+          <li><strong>反馈是脆弱的现场：</strong>给反馈和收反馈都难受，但躲开反馈，成长就停了；关键是把反馈和「你这个人不行」分开。</li>
+        </ul>
+        <div class="toyou"><span class="ty-label">对你说</span>你带团队、做商家运营，这一章能直接用：店里、团队里如果靠骂和羞耻推人动，人只会学会躲和装。先示范「搞砸了没关系、我们复盘」，比任何口号都管用——对员工这样，对你自己也一样。</div>
+      </div>
+    </details>
+
+    <details class="chapter">
+      <summary>
+        <span class="ch-no">7</span>
+        <span class="ch-head">
+          <span class="ch-title">全心投入的教养：敢做孩子想成为的大人</span>
+          <span class="ch-en" style="display:block">Wholehearted Parenting: Daring to Be the Adults We Want Our Children to Be</span>
+          <span class="ch-one" style="display:block">最后一章看似写给父母，其实写给每个想把自己重新养一遍的人。</span>
+        </span>
+        <svg class="ch-arrow" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M6 9l6 6 6-6"/></svg>
+      </summary>
+      <div class="ch-body">
+        <h4>这一章讲什么</h4>
+        <p>布朗的核心句是：<strong>我们是谁、我们怎么活，比我们懂多少育儿知识更能决定孩子长成什么样。</strong>孩子不是听你讲配得感学会配得感的，是看你怎么对自己学会的——你骂自己，他学会骂自己；你敢收下好意，他学会收下。</p>
+        <h4>关键概念</h4>
+        <ul>
+          <li><strong>归属感先在家里长出来：</strong>孩子需要在家先被「做自己就被接住」，才敢在外面做自己，而不是到处改自己去硬挤进人群。</li>
+          <li><strong>别给孩子贴羞耻标签：</strong>分清「你做了一件坏事」和「你是个坏孩子」——前者是内疚，能改；后者是羞耻，伤身份。</li>
+          <li><strong>希望是一种练法：</strong>定目标、找路径、相信自己能走——希望不是天生的性格，是可以教、可以练的思维方式。</li>
+        </ul>
+        <div class="toyou"><span class="ty-label">对你说</span>把这一章的「孩子」换成小时候的你来读：当年没人示范给你的——收下好意不骂自己、搞砸了不等于人坏——现在你可以自己示范给自己看，一次一小步，这就是重新养自己。</div>
+      </div>
+    </details>
+
+    <details class="chapter">
+      <summary>
+        <span class="ch-no">结</span>
+        <span class="ch-head">
+          <span class="ch-title">结语</span>
+          <span class="ch-en" style="display:block">Final Thoughts</span>
+          <span class="ch-one" style="display:block">全书收束成一句：无所畏惧，是一次次小小的上场，不是一次变身。</span>
+        </span>
+        <svg class="ch-arrow" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M6 9l6 6 6-6"/></svg>
+      </summary>
+      <div class="ch-body">
+        <p>布朗在结尾提醒：脆弱在「永远不够」的文化里，本身就是一种温柔的反叛。它不舒服，甚至有点危险，但它是唯一能把人带回联结、勇气和「够了」的路。书后附录还给了她的研究方法说明（扎根理论）和一份感恩练习——感恩，就是她给预演悲剧开的日常药。</p>
+        <div class="toyou"><span class="ty-label">对你说</span>读完不用立大志。今天能多上场一次——多收下一次、多说一句真话——这本书就没白读。</div>
+      </div>
+    </details>
+  </section>
+
+  <!-- ================= ARMOR ================= -->
+  <section id="armor">
+    <div class="sec-head">
+      <p class="kicker">第 4 章深挖</p>
+      <h2>三面主盾牌：你是哪一面</h2>
+      <p class="sub">盔甲小时候救过你，长大后开始收过路费：它挡痛，也挡爱。三面盾牌挨个看——表现、为什么没用、书里给的解法、今天就能做的一小步。</p>
+    </div>
+
+    <div class="shield-grid">
+      <div class="shield">
+        <svg class="s-ico" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 13.5A8.5 8.5 0 1 1 10.5 4 6.8 6.8 0 0 0 20 13.5z"/></svg>
+        <h3>预演悲剧</h3>
+        <p class="s-en">Foreboding Joy · 喜悦里排练灾难</p>
+        <h4>长什么样</h4>
+        <ul>
+          <li>好事刚发生，脑子里立刻闪过它失去的画面</li>
+          <li>嘴上先说「别高兴太早」「肯定没这么顺利」</li>
+          <li>越幸福越不安，宁可先把期待压到最低</li>
+        </ul>
+        <h4>为什么没用</h4>
+        <p>提前难受，并不会让真出事时少痛一点；它只偷走你当下这一份完整的喜乐。脆弱感最强的时刻，恰恰是喜乐的时刻——所以人最想在那时关掉它。</p>
+        <div class="s-do"><strong>书里的解法 · 感恩：</strong>怕，不是躲的信号，是提醒你「这一刻很珍贵」的信号。当场说出具体谢什么——谢这个人、这一刻、这件小事，把喜乐落地。</div>
+        <div class="s-do" style="background:var(--gold-soft)"><strong>今天一小步：</strong>今天遇到一件小好事，先不预演失去，在心里把「谢谢 ___」说完整一句，停十秒，再继续。</div>
+      </div>
+
+      <div class="shield">
+        <svg class="s-ico" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 3l7 3v5c0 4.6-3 8.4-7 10-4-1.6-7-5.4-7-10V6l7-3z"/><path d="M9 12l2 2 4-4"/></svg>
+        <h3>完美主义</h3>
+        <p class="s-en">Perfectionism · 二十吨重的盾</p>
+        <h4>长什么样</h4>
+        <ul>
+          <li>核心念头：如果我做得完美、看得完美，就能躲开批评和羞耻</li>
+          <li>在乎的不是把事做好，是别人怎么看我</li>
+          <li>一出错，先骂自己这个人，而不是修这件事</li>
+        </ul>
+        <h4>为什么没用</h4>
+        <p>完美不存在，所以这面盾永远举不到位；它还上瘾——偶尔被夸一次，就更不敢放下。它和健康的上进不是一回事：上进对着自己，完美主义对着别人的目光。</p>
+        <div class="s-do"><strong>书里的解法 · 对自己仁慈：</strong>三件套——像对好朋友那样跟自己说话；记住「大家都会搞砸，这很普通」；清醒地看着难受，不夸大也不压扁。</div>
+        <div class="s-do" style="background:var(--gold-soft)"><strong>今天一小步：</strong>今天出一件小错时，把要骂自己的那句话，改成会对好朋友说的版本，说出声一次就行。</div>
+      </div>
+
+      <div class="shield">
+        <svg class="s-ico" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 12h4l2.5-6 4 12L16 12h5"/></svg>
+        <h3>麻木</h3>
+        <p class="s-en">Numbing · 把感觉整体调小</p>
+        <h4>长什么样</h4>
+        <ul>
+          <li>用忙碌、食物、手机、酒精、拼命工作填满每个空隙</li>
+          <li>一天到晚「疯狂地忙」，停下来就心慌</li>
+          <li>难受说不出口，只觉得累、空、没意思</li>
+        </ul>
+        <h4>为什么没用</h4>
+        <p>感觉是一整套音响，没有单独关掉「难受」的旋钮。你把痛苦调小，喜乐、爱、感动会一起变小，最后人活得又累又平。</p>
+        <div class="s-do"><strong>书里的解法 · 边界 + 真安慰：</strong>少花力气讨好不重要的人，把时间还给真正的联结；难受时找真能安慰你的事（走路、说话、睡一觉），而不是麻药。</div>
+        <div class="s-do" style="background:var(--gold-soft)"><strong>今天一小步：</strong>今天留十分钟什么都不刷、不吃、不忙，就坐着。难受冒头不赶它，心里说一句「我现在有点难受」，这就够了。</div>
+      </div>
+    </div>
+
+    <div class="minor">
+      <h3>还有一排次要盾牌，认个脸熟就行</h3>
+      <p><strong>非赢即输：</strong>要么全赢要么全输，不敢试没把握的事。<strong>过度倾诉（探照灯式）：</strong>刚认识就掏心掏肺，用猛料换亲近感，事后又后悔羞耻。<strong>抢眼倾倒：</strong>一次性抛个大的博关注。<strong>蛇形绕开：</strong>一碰到真话话题就打岔、玩笑、换话题。<strong>犬儒、批评、装酷、刻薄：</strong>先把一切看扁、把人挑遍，就不用承认自己也在乎。这排盾牌的共同解法都一样：慢一点、有边界地、对对的人，说真话。</p>
+    </div>
+  </section>
+
+  <!-- ================= SHAME ================= -->
+  <section id="shame">
+    <div class="sec-head">
+      <p class="kicker">第 3 章工具箱</p>
+      <h2>羞耻韧性四步：声音响起时怎么走</h2>
+      <p class="sub">羞耻韧性不是「再也不羞耻」——没人做得到。它是羞耻来了，你能认出它、走过去，出来时勇气和联结比进去时还多一点。点下面的四步，一步一步看。</p>
+    </div>
+
+    <div class="defbox">
+      <p><strong>先分清两个词：</strong>内疚说「我做错了事」，羞耻说「我这个人有毛病」。内疚对着行为，能推人改正；羞耻对着身份，只会让人想躲、想藏、想讨好或反击。</p>
+      <div class="vs-line">
+        <span>内疚：这件事我搞砸了 → 还能修。</span>
+        <span>羞耻：我就是个垃圾 → 无处下手，只想消失。</span>
+      </div>
+      <p style="margin-top:10px">羞耻靠<strong>保密、沉默、评判</strong>长大；它的天敌是<strong>说出口 + 被共情接住</strong>。下面四步，就是把天敌请进来的顺序。</p>
+    </div>
+
+    <div class="tabs" role="tablist" aria-label="羞耻韧性四步">
+      <button type="button" role="tab" aria-selected="true" data-tab="s1">第 1 步 · 认出它</button>
+      <button type="button" role="tab" aria-selected="false" data-tab="s2">第 2 步 · 查一查</button>
+      <button type="button" role="tab" aria-selected="false" data-tab="s3">第 3 步 · 伸出手</button>
+      <button type="button" role="tab" aria-selected="false" data-tab="s4">第 4 步 · 说出来</button>
+    </div>
+
+    <div class="step-panel tab-panel show" id="panel-s1" role="tabpanel">
+      <h3>认出羞耻，认出你的扳机</h3>
+      <p>羞耻上身时身体先有反应：脸热、口干、脑子发空、想躲起来。先学会认这个身体信号，再回头找扳机——是哪句话、哪个场景、哪条「你应该……」的标准扣动了它。认出来，它就从「我就是这样的人」变回「哦，我的羞耻又被触发了」，这是完全不同的两句话。</p>
+      <div class="say"><span class="say-label">当时默念这一句</span>我现在是羞耻上头了，不是我这个人有定论了。</div>
+    </div>
+    <div class="step-panel tab-panel" id="panel-s2" role="tabpanel">
+      <h3>练习批判性觉察：给那句话验真假</h3>
+      <p>把触发你的标准拿出来验一验：这个要求现实吗？人能做到吗？它是我真心想要的，还是别人（文化、家人、网络）塞给我的？比如「男人就该什么都扛得住」「成功的人不会搞砸」——验完你会发现，很多标准根本没人真做得到，它不配当判决书。</p>
+      <div class="say"><span class="say-label">当时默念这一句</span>这条标准是谁定的？它对所有人都成立吗？</div>
+    </div>
+    <div class="step-panel tab-panel" id="panel-s3" role="tabpanel">
+      <h3>伸出手：找一个挣得你故事的人</h3>
+      <p>羞耻最怕联结。把这件事讲给一个你信任、且对方也敢对你说真话的人听——不是为了求安慰话术，是为了被「接住」：对方听完不评判、不吓退，说一句「我懂，这真的很难」。共情一到，羞耻就开始缩水。注意边界：不是逢人就讲，是讲给对的人。</p>
+      <div class="say"><span class="say-label">开口可以这样说</span>我有件挺丢脸的事想跟你说，你先听我说完就行。</div>
+    </div>
+    <div class="step-panel tab-panel" id="panel-s4" role="tabpanel">
+      <h3>把羞耻说出来：给小魔怪起名字</h3>
+      <p>最后一步是直接谈羞耻本身：说出「我现在很羞耻」，说出你此刻需要什么（听我说、陪我坐会儿、别急着出主意）。布朗把脑子里那些贬低你的声音叫「小魔怪」——你越把它们说出声、起上名字，它们越没法在暗处吓你。</p>
+      <div class="say"><span class="say-label">当时默念这一句</span>我可以难受，但我不用藏起来。说出来，它就小一圈。</div>
+    </div>
+  </section>
+
+  <!-- ================= TO YOU ================= -->
+  <section id="toyou">
+    <div class="sec-head">
+      <p class="kicker">专区</p>
+      <h2>对到你身上：你的四句话，书里都有地址</h2>
+      <p class="sub">你之前说过的话，我一句一句对到了这本书的具体章节。你不是零散地「有毛病」，是同一套机制在不同地方冒头——看清地址，才好逐个拆。</p>
+    </div>
+
+    <div class="map-row">
+      <p class="m-you">我配合感很低，总觉得自己不配得世界上好的</p>
+      <p class="m-book"><span class="m-ch">第 1 章</span>这是匮乏文化的核心句型：「永远 ___ 不够」。配得感的反面不是自大，是「够了」——配得感不是挣来的头衔，是出发点。</p>
+      <p class="m-do"><strong>先拆这一小步：</strong>下次「我不配」冒头，先在心里把它归类——这是匮乏在说话，不是在陈述事实。归类完，先不反驳，也不用信。</p>
+    </div>
+
+    <div class="map-row">
+      <p class="m-you">别人对我好，我接不住</p>
+      <p class="m-book"><span class="m-ch">第 2 章 · 迷思四</span>「我们可以一个人扛」是迷思。布朗说，不敢接受的人，也很难真正付出——因为你给「接受」贴了羞耻标签。接不住好意，很多时候是盔甲太厚，好意先撞在甲上。</p>
+      <p class="m-do"><strong>先拆这一小步：</strong>还是你练过的签收三步——停一下、收下、不急着还。这一章给你补上了原理：收下不是欠，是让联结成立。</p>
+    </div>
+
+    <div class="map-row">
+      <p class="m-you">拥有即恐慌，好事一来就想搞砸、想回到缺少的状态</p>
+      <p class="m-book"><span class="m-ch">第 4 章 · 预演悲剧</span>这就是 Foreboding Joy：在喜乐里排练灾难。再加上第 5 章的疏离——心先撤走，人回到「缺少」里，因为缺少最熟悉、不用脆弱。</p>
+      <p class="m-do"><strong>先拆这一小步：</strong>好事来时恐慌冒头，先认出它——「这是预演悲剧，不是预感」。然后做一件具体的感恩动作：把这件好事说出声，谢一个人或谢这一刻。</p>
+    </div>
+
+    <div class="map-row">
+      <p class="m-you">被看到 ＝ 被抛弃，一被深度关心就恐惧</p>
+      <p class="m-book"><span class="m-ch">第 3 章</span>这是羞耻的公式：羞耻就是怕「真实的我被看见，然后联结断掉」。所以被关心越深，羞耻越响——不是你冷，是那根弦被拨到了。解药不是躲开看见，是被看见之后发现：人还在，联结没断。</p>
+      <p class="m-do"><strong>先拆这一小步：</strong>下次被深度关心、想逃的时候，先不逃，多停十秒。十秒里什么都不用做，就体会一次「被看见了，但什么都没坏」。</p>
+    </div>
+  </section>
+
+  <!-- ================= ORDER ================= -->
+  <section id="order">
+    <div class="sec-head">
+      <p class="kicker">最小顺序</p>
+      <h2>不用从头读：先看这三章</h2>
+      <p class="sub">全书七章不用按顺序啃。按对你的用处排，先看这三章，剩下的等你想看再看，不看也不欠谁的。</p>
+    </div>
+    <div class="order-list">
+      <div class="order-item">
+        <span class="o-no">1</span>
+        <div class="o-body">
+          <p class="o-title">第 4 章 · 防卫脆弱的武器库</p>
+          <p>先认盔甲。预演悲剧、完美主义、麻木——认出你最常用的那一面，后面所有道理才有地方落。</p>
+        </div>
+      </div>
+      <div class="order-item">
+        <span class="o-no">2</span>
+        <div class="o-body">
+          <p class="o-title">第 3 章 · 理解并对抗羞耻</p>
+          <p>再拆声音。分清内疚和羞耻，学会四步走法——这是给你那个「垃圾的自我」准备的正面对策。</p>
+        </div>
+      </div>
+      <div class="order-item">
+        <span class="o-no">3</span>
+        <div class="o-body">
+          <p class="o-title">第 1 章 · 匮乏与「永远不够」</p>
+          <p>最后看背景。知道「不够」是文化空气、不是你的个人判决，前面两章的练习会轻很多。</p>
+        </div>
+      </div>
+      <div class="order-item rest">
+        <span class="o-no">·</span>
+        <div class="o-body">
+          <p class="o-title">其余章节，随缘</p>
+          <p>第 2 章拆迷思，适合想通原理时看；第 5、6 章对你带团队做运营有用；第 7 章当「重新养自己」读。想看哪章，跟我说，我们一章一章拆。</p>
+        </div>
+      </div>
+    </div>
+
+    <div class="practice" style="margin-top:22px">
+      <h3>今天只做一步：三步签收，升级版</h3>
+      <p class="p-sub">把你练过的签收三步，和这本书的解法接上。今天遇到任何一件小好事、一次好意，就走这一遍——全程不到一分钟。</p>
+      <ol>
+        <li><strong>停</strong>恐慌或「我不配」冒头时，先认出它：这是预演悲剧，是盔甲，不是预感。不推开好意，不急着还。</li>
+        <li><strong>收</strong>把好意收下来，嘴上说一句完整的「谢谢」，不加「我不值得」「这怎么好意思」。</li>
+        <li><strong>落地</strong>在心里具体说出谢什么——谢这个人、这一刻、这件小事。感恩一落地，喜乐就不会被预演偷走。</li>
+      </ol>
+      <p class="p-end">做到了，哪怕只有一次，今天这本书就算读对了。没做到也没关系，明天再试——卸甲是一次次小步，不是一次考试。</p>
+    </div>
+  </section>
+
+  <!-- ================= BUY ================= -->
+  <section id="buy">
+    <div class="sec-head">
+      <p class="kicker">买书避坑</p>
+      <h2>同名不同书：买这本别买错</h2>
+      <p class="sub">中文世界有两本书都叫《脆弱的力量》，内容完全不同。上一本解读时已经踩过这个坑，这里把这一本的版本一次说清，照 ISBN 买不会错。</p>
+    </div>
+    <div class="buy-table">
+      <div class="buy-row">
+        <div class="b-head"><span class="b-name">台版《脆弱的力量》· 马可孛罗文化（2013）</span><span class="verdict ok">是这本 ✓</span></div>
+        <p>繁体中文，译自 Daring Greatly，就是本页解读的这一本。ISBN <span class="isbn">9789866319877</span>，作者布芮尼·布朗。</p>
+      </div>
+      <div class="buy-row">
+        <div class="b-head"><span class="b-name">大陆版《无所畏惧》· 北京联合出版公司（2020）</span><span class="verdict ok">是这本 ✓</span></div>
+        <p>简体中文，同样译自 Daring Greatly，只是换了书名。ISBN <span class="isbn">9787559635709</span>。想要简体就买这本。</p>
+      </div>
+      <div class="buy-row">
+        <div class="b-head"><span class="b-name">英文原版 Daring Greatly · Gotham / Penguin（2012）</span><span class="verdict ok">原版 ✓</span></div>
+        <p>ISBN <span class="isbn">9781592407330</span>（另有平装版 9781592408412）。副标题是 How the Courage to Be Vulnerable Transforms the Way We Live, Love, Parent, and Lead，认准副标题最稳。</p>
+      </div>
+      <div class="buy-row bad">
+        <div class="b-head"><span class="b-name">大陆版《脆弱的力量》· 浙江人民出版社（2014）</span><span class="verdict no">不是这本 ✕</span></div>
+        <p>ISBN <span class="isbn">9787213060496</span>。名字一模一样，但内容其实是上一本 <strong>The Gifts of Imperfection《不完美的礼物》</strong>——是好书，我们已经解读过了，但它不是 Daring Greatly，别重复买错。</p>
+      </div>
+    </div>
+    <div class="card" style="margin-top:14px">
+      <p><strong>最稳的认法：</strong>不看中文书名，看英文原名。封面或版权页写 <strong>Daring Greatly</strong> 的，才是这一本；写 <strong>The Gifts of Imperfection</strong> 的，是上一本。</p>
+    </div>
+  </section>
+
+  <footer>
+    <div class="foot-card">
+      <p>本页是《脆弱的力量》（Daring Greatly，布琳·布朗，2012）的个人学习解读：章节结构、概念与框架均按原书整理，转述为大白话；个别短句为原书核心定义的直译，帮助理解用，不能替代原书。</p>
+      <p>读法提醒：这页不用一次看完。先看第 4 章，认出你最常用的那面盾，就已经走完最难的第一步了。</p>
+    </div>
+  </footer>
+</div>
+
+<script>
+(function(){
+  // Shame-resilience tabs
+  var btns = document.querySelectorAll('.tabs [data-tab]');
+  btns.forEach(function(btn){
+    btn.addEventListener('click', function(){
+      btns.forEach(function(b){ b.setAttribute('aria-selected','false'); });
+      btn.setAttribute('aria-selected','true');
+      document.querySelectorAll('.tab-panel').forEach(function(p){ p.classList.remove('show'); });
+      var panel = document.getElementById('panel-' + btn.getAttribute('data-tab'));
+      if(panel){ panel.classList.add('show'); }
+    });
+  });
+
+  // Nav scroll-spy
+  var links = document.querySelectorAll('#topnav a');
+  var map = {};
+  links.forEach(function(a){ map[a.getAttribute('href').slice(1)] = a; });
+  if('IntersectionObserver' in window){
+    var obs = new IntersectionObserver(function(entries){
+      entries.forEach(function(e){
+        if(e.isIntersecting){
+          links.forEach(function(a){ a.classList.remove('active'); });
+          var a = map[e.target.id];
+          if(a){
+            a.classList.add('active');
+            a.scrollIntoView({ block:'nearest', inline:'center', behavior:'smooth' });
+          }
+        }
+      });
+    }, { rootMargin:'-30% 0px -60% 0px' });
+    document.querySelectorAll('section[id]').forEach(function(s){ obs.observe(s); });
+  }
+})();
+</script>
+</body>
+</html>

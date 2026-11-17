@@ -1,0 +1,589 @@
+<!doctype html>
+<html lang="zh-CN">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
+    <meta name="color-scheme" content="light dark" />
+    <link rel="icon" href="data:," />
+    <title>跨越不可能等四本书 · 解读</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Serif+SC:wght@600;700;900&family=Noto+Sans+SC:wght@400;500;700&display=swap" rel="stylesheet" />
+    <style>
+      :root{
+        --bg:#fcfbF8; --bg2:#f3efe8; --card:#ffffff; --ink:#1e2420; --ink2:#4c554f; --ink3:#6d7771;
+        --line:#e2ddd2; --accent:#2a6b4f; --accent-ink:#ffffff; --accent-soft:#e6f0ea;
+        --rose:#a44a3f; --rose-soft:#f8ecea; --gold:#8a6414; --gold-soft:#f7f0dc;
+        --slate:#455a6b; --slate-soft:#eaf0f4; --teal:#1f6f6b; --teal-soft:#e6f2f1;
+        --warn-bg:#fdf3e3; --warn-line:#e8cf9f; --warn-ink:#6b4e12;
+        --shadow:0 1px 3px rgba(30,36,32,.07),0 8px 24px rgba(30,36,32,.05);
+        --radius:14px;
+      }
+      @media (prefers-color-scheme: dark){
+        :root{
+          --bg:#141716; --bg2:#1b1f1d; --card:#1f2422; --ink:#edf0ec; --ink2:#c3cbc4; --ink3:#9aa69d;
+          --line:#333b36; --accent:#5cb58c; --accent-ink:#0e1a13; --accent-soft:#22352c;
+          --rose:#e08a7d; --rose-soft:#3a2724; --gold:#dfb95e; --gold-soft:#38301c;
+          --slate:#9db8cc; --slate-soft:#26323c; --teal:#6fc4bf; --teal-soft:#213837;
+          --warn-bg:#332b18; --warn-line:#6b5a2e; --warn-ink:#ecd9a0;
+          --shadow:0 1px 3px rgba(0,0,0,.4),0 8px 24px rgba(0,0,0,.25);
+        }
+      }
+      *{box-sizing:border-box}
+      html{scroll-behavior:smooth}
+      @media (prefers-reduced-motion: reduce){ html{scroll-behavior:auto} *{transition:none!important} }
+      body{margin:0;background:var(--bg);color:var(--ink);font-family:"Noto Sans SC",system-ui,-apple-system,"PingFang SC","Microsoft YaHei",sans-serif;font-size:17px;line-height:1.75;-webkit-text-size-adjust:100%}
+      h1,h2,h3,.serif{font-family:"Noto Serif SC",serif}
+      a{color:var(--accent)}
+      button,[role="button"],summary,select,input:not([type="checkbox"],[type="radio"]){min-height:2.75rem}
+      .progress{position:fixed;top:0;left:0;height:3px;background:var(--accent);width:0;z-index:60}
+      .wrap{max-width:880px;margin:0 auto;padding:0 18px 64px}
+      /* ---------- nav ---------- */
+      .topnav{position:sticky;top:0;z-index:50;background:var(--bg);border-bottom:1px solid var(--line);padding:10px 0 8px;margin:0 -18px;padding-left:18px;padding-right:18px}
+      .topnav .row{display:flex;flex-wrap:wrap;gap:8px}
+      .topnav a{display:inline-flex;align-items:center;min-height:44px;padding:8px 14px;border:1px solid var(--line);border-radius:999px;background:var(--card);color:var(--ink);text-decoration:none;font-size:15px;font-weight:500;line-height:1.3}
+      .topnav a:active,.topnav a.on{background:var(--accent);border-color:var(--accent);color:var(--accent-ink)}
+      .topnav a .n{font-weight:700;margin-right:5px;opacity:.75}
+      /* ---------- hero ---------- */
+      .hero{padding:30px 0 8px}
+      .hero h1{font-size:32px;line-height:1.35;margin:0 0 10px;font-weight:900;letter-spacing:.01em}
+      .hero .lead{font-size:18px;color:var(--ink2);margin:0 0 16px;line-height:1.8}
+      .hero .lead strong{color:var(--ink)}
+      .howto{background:var(--accent-soft);border-radius:var(--radius);padding:16px 18px;margin:18px 0 6px}
+      .howto p{margin:0 0 8px}.howto p:last-child{margin:0}
+      .howto .t{font-weight:700}
+      /* ---------- route ---------- */
+      .route{display:grid;gap:10px;margin:14px 0 4px}
+      .route a{display:flex;gap:12px;align-items:flex-start;background:var(--card);border:1px solid var(--line);border-radius:var(--radius);padding:14px 16px;text-decoration:none;color:var(--ink);box-shadow:var(--shadow)}
+      .route .step{flex:0 0 auto;width:34px;height:34px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-weight:700;font-size:16px;color:#fff;margin-top:3px}
+      .route .b1{background:var(--rose)} .route .b2{background:var(--gold)} .route .b3{background:var(--slate)} .route .b4{background:var(--teal)}
+      @media (prefers-color-scheme: dark){ .route .step{color:#101312} .route .b1{background:var(--rose)} }
+      .route .rt{font-weight:700;font-size:17px;line-height:1.5}
+      .route .rd{color:var(--ink2);font-size:15.5px;line-height:1.65}
+      /* ---------- book sections ---------- */
+      section.book{margin-top:52px;scroll-margin-top:118px}
+      .book-head{border-top:4px solid var(--ink);padding-top:18px}
+      section.book.c-rose .book-head{border-top-color:var(--rose)}
+      section.book.c-gold .book-head{border-top-color:var(--gold)}
+      section.book.c-slate .book-head{border-top-color:var(--slate)}
+      section.book.c-teal .book-head{border-top-color:var(--teal)}
+      .book-no{font-size:14px;font-weight:700;letter-spacing:.08em;color:var(--ink3)}
+      .book-head h2{font-size:27px;line-height:1.4;margin:4px 0 2px;font-weight:900}
+      .book-head .en{font-size:15px;color:var(--ink3);line-height:1.5;margin:0 0 4px}
+      .book-head .author{font-size:15.5px;color:var(--ink2);margin:0 0 12px}
+      .thesis{font-size:19px;line-height:1.8;font-weight:500;margin:12px 0;padding:14px 16px;border-radius:var(--radius)}
+      .c-rose .thesis{background:var(--rose-soft)} .c-gold .thesis{background:var(--gold-soft)}
+      .c-slate .thesis{background:var(--slate-soft)} .c-teal .thesis{background:var(--teal-soft)}
+      .thesis .lbl{display:block;font-size:13.5px;font-weight:700;letter-spacing:.06em;opacity:.75;margin-bottom:4px}
+      .meta{display:flex;flex-wrap:wrap;gap:8px;margin:12px 0}
+      .meta span{font-size:14px;background:var(--bg2);border:1px solid var(--line);border-radius:999px;padding:5px 12px;color:var(--ink2);line-height:1.5}
+      h3.sec{font-size:20px;margin:28px 0 10px;font-weight:700;line-height:1.5}
+      p{margin:0 0 12px}
+      .muted{color:var(--ink2)}
+      ul.tight{margin:0 0 12px;padding-left:22px}
+      ul.tight li{margin-bottom:6px}
+      .you{background:var(--card);border:1px solid var(--line);border-radius:var(--radius);padding:16px 18px;box-shadow:var(--shadow);margin:14px 0}
+      .you .yt{font-weight:700;margin-bottom:6px}
+      .you p:last-child{margin-bottom:0}
+      .warn{background:var(--warn-bg);border:1px solid var(--warn-line);color:var(--warn-ink);border-radius:var(--radius);padding:14px 16px;margin:14px 0;font-size:15.5px;line-height:1.7}
+      .warn .wt{font-weight:700}
+      /* structure map */
+      .map{display:grid;gap:8px;margin:12px 0 4px}
+      .map .part{background:var(--bg2);border-radius:10px;padding:11px 14px;font-size:15.5px;line-height:1.6}
+      .map .part b{display:block;font-size:16px}
+      /* chapters */
+      .tools{display:flex;gap:8px;margin:16px 0 10px;flex-wrap:wrap}
+      .tools button{appearance:none;border:1px solid var(--line);background:var(--card);color:var(--ink);border-radius:999px;padding:9px 16px;font-size:15px;font-weight:500;cursor:pointer;min-height:44px;font-family:inherit}
+      details.ch{background:var(--card);border:1px solid var(--line);border-radius:var(--radius);margin-bottom:10px;box-shadow:var(--shadow);overflow:hidden}
+      details.ch summary{list-style:none;cursor:pointer;padding:14px 16px;display:flex;gap:12px;align-items:flex-start;min-height:44px}
+      details.ch summary::-webkit-details-marker{display:none}
+      details.ch .chn{flex:0 0 auto;font-size:13px;font-weight:700;border:1.5px solid var(--line);border-radius:999px;padding:2px 9px;margin-top:4px;color:var(--ink2);white-space:nowrap}
+      .c-rose details.ch .chn{border-color:var(--rose);color:var(--rose)}
+      .c-gold details.ch .chn{border-color:var(--gold);color:var(--gold)}
+      .c-slate details.ch .chn{border-color:var(--slate);color:var(--slate)}
+      .c-teal details.ch .chn{border-color:var(--teal);color:var(--teal)}
+      details.ch .cht{flex:1;font-weight:700;font-size:17px;line-height:1.55}
+      details.ch .cht small{display:block;font-weight:400;color:var(--ink3);font-size:13.5px;margin-top:1px}
+      details.ch .chev{flex:0 0 auto;color:var(--ink3);font-size:18px;margin-top:2px;transition:transform .2s}
+      details.ch[open ] .chev{transform:rotate(180deg)}
+      details.ch .body{padding:2px 16px 16px 16px;border-top:1px dashed var(--line)}
+      details.ch .body p{font-size:16px}
+      .tagline{display:flex;gap:8px;align-items:flex-start;background:var(--bg2);border-radius:10px;padding:10px 12px;margin-top:10px;font-size:15.5px;line-height:1.7}
+      .tagline .k{flex:0 0 auto;font-weight:700;font-size:13px;padding:2px 8px;border-radius:6px;background:var(--accent);color:var(--accent-ink);margin-top:3px}
+      .practice{display:flex;gap:8px;align-items:flex-start;border:1.5px dashed var(--accent);border-radius:10px;padding:10px 12px;margin-top:10px;font-size:15.5px;line-height:1.7}
+      .practice .k{flex:0 0 auto;font-weight:700;font-size:13px;padding:2px 8px;border-radius:6px;background:var(--accent-soft);color:var(--accent);margin-top:3px}
+      blockquote.mantra{margin:14px 0;padding:16px 18px;border-radius:var(--radius);background:var(--gold-soft);font-family:"Noto Serif SC",serif;font-size:18px;line-height:1.8}
+      blockquote.mantra small{display:block;font-family:"Noto Sans SC",sans-serif;font-size:14px;color:var(--ink2);margin-top:6px}
+      /* compare */
+      section.plain{margin-top:52px;scroll-margin-top:118px}
+      section.plain>h2{font-size:24px;line-height:1.45;margin:0 0 8px;font-weight:900;border-top:4px solid var(--ink);padding-top:18px}
+      .cmp{display:grid;gap:10px;margin-top:14px}
+      .cmp .row{background:var(--card);border:1px solid var(--line);border-radius:var(--radius);padding:14px 16px;box-shadow:var(--shadow)}
+      .cmp .row .h{font-weight:700;font-size:17px;margin-bottom:4px}
+      .cmp .row p{margin:0;font-size:15.5px;color:var(--ink2)}
+      .cmp .row p b{color:var(--ink)}
+      .steps{display:grid;gap:10px;counter-reset:st;margin-top:12px}
+      .steps .s{display:flex;gap:12px;background:var(--card);border:1px solid var(--line);border-radius:var(--radius);padding:14px 16px;box-shadow:var(--shadow)}
+      .steps .n{counter-increment:st;flex:0 0 auto;width:32px;height:32px;border-radius:50%;background:var(--accent);color:var(--accent-ink);display:flex;align-items:center;justify-content:center;font-weight:700;margin-top:2px}
+      .steps .n::before{content:counter(st)}
+      .steps p{margin:0}
+      footer{margin-top:56px;border-top:1px solid var(--line);padding-top:18px;font-size:14.5px;color:var(--ink3);line-height:1.8}
+      footer a{word-break:break-all}
+      .totop{position:fixed;right:16px;bottom:calc(16px + env(safe-area-inset-bottom));width:48px;height:48px;border-radius:50%;border:1px solid var(--line);background:var(--card);color:var(--ink);font-size:20px;cursor:pointer;box-shadow:var(--shadow);display:none;z-index:55;align-items:center;justify-content:center}
+      .totop.show{display:flex}
+      @media (min-width:720px){
+        body{font-size:17.5px}
+        .hero h1{font-size:40px}
+        .book-head h2{font-size:32px}
+        .route{grid-template-columns:1fr 1fr}
+        .cmp{grid-template-columns:1fr 1fr}
+        .map{grid-template-columns:1fr 1fr}
+        details.ch .body{padding-left:70px}
+      }
+    </style>
+  </head>
+  <body>
+    <div class="progress" id="progress"></div>
+    <div class="wrap">
+
+      <nav class="topnav" aria-label="本书目录">
+        <div class="row">
+          <a href="#neff"><span class="n">1</span>自我关怀</a>
+          <a href="#bigleap"><span class="n">2</span>跨越不可能</a>
+          <a href="#miller"><span class="n">3</span>天才儿童的悲剧</a>
+          <a href="#daring"><span class="n">4</span>脆弱的力量</a>
+          <a href="#compare">四本对照</a>
+          <a href="#first-step">最小开始</a>
+        </div>
+      </nav>
+
+      <header class="hero" id="start">
+        <h1>四本书，一条线：<br />从「我不配」到「我先收下」</h1>
+        <p class="lead">你点的四本都给你解读了。它们治的其实是<strong>同一件事的四层</strong>：最上面是<strong>你怎么对自己说话</strong>，往下是<strong>好事来了你为什么搞砸</strong>，再往下是<strong>这套程序小时候怎么装上的</strong>，最底下是<strong>你身上那层挡住一切的盔甲</strong>。不用四本一起啃，下面给你排好了顺序，一本一本慢慢来。</p>
+        <div class="howto">
+          <p><span class="t">这一页怎么用：</span>每本书都有完整的结构大纲，点开任意一章，就能看到这一章讲什么、跟你哪句话对得上、还有一个当天就能做的小练习。</p>
+          <p>看不完没关系。看到哪一章扎心，就停在哪一章，那一章就是你的。做到了任何一小步，都算数。</p>
+        </div>
+
+        <h3 class="sec">建议的读法顺序（从最温和到最深）</h3>
+        <div class="route">
+          <a href="#neff"><span class="step b1">1</span><span><span class="rt">《自我关怀的力量》· 先止骂</span><br /><span class="rd">最温和、最容易上手。先学会像对好朋友那样对自己说话，把内心的骂声停下来，后面三本才看得进去。</span></span></a>
+          <a href="#bigleap"><span class="step b2">2</span><span><span class="rt">《跨越不可能》· 拆总闸</span><br /><span class="rd">管「拥有即恐慌、快成功就损坏」的总开关。它给你的毛病起了个名字，叫上限问题——不是你坏，是你的恒温器设低了。</span></span></a>
+          <a href="#miller"><span class="step b3">3</span><span><span class="rt">《天才儿童的悲剧》· 挖源头</span><br /><span class="rd">最薄，也最深。小时候为了换爱，把真的自己藏起来——这一本告诉你，那个「垃圾的自我」是怎么拼出来的。</span></span></a>
+          <a href="#daring"><span class="step b4">4</span><span><span class="rt">《脆弱的力量》· 卸盔甲</span><br /><span class="rd">《不完美的礼物》的下一本。讲你挡好东西用的三件盔甲：提前预演失去、完美主义、用忙和刷手机把自己麻住。</span></span></a>
+        </div>
+      </header>
+
+      <!-- ================= BOOK 1 : NEFF ================= -->
+      <section class="book c-rose" id="neff">
+        <div class="book-head">
+          <div class="book-no">第 1 本 · 先止骂</div>
+          <h2>《自我关怀的力量》</h2>
+          <p class="en">Self-Compassion: The Proven Power of Being Kind to Yourself（2011）</p>
+          <p class="author">克里斯汀·内夫（Kristin Neff）· 得克萨斯大学奥斯汀分校心理学教授，自我关怀研究的开创者</p>
+          <div class="thesis"><span class="lbl">全书一句话</span>对自己狠，不会让你变好，只会让你更不敢动。换一种对自己说话的方式——像对好朋友那样——人反而站得起来。</div>
+          <div class="meta"><span>结构：5 个部分 · 13 章</span><span>难度：最温和</span><span>形式：每章都带小练习</span></div>
+        </div>
+
+        <h3 class="sec">这本书的骨架：三个零件</h3>
+        <p>整本书就围着三个零件转，先记住这三个，后面 13 章都是在讲它们：</p>
+        <ul class="tight">
+          <li><strong>善待自己</strong>（对着自我批评）：难受的时候哄自己，不骂自己。</li>
+          <li><strong>共通人性</strong>（对着孤立感）：出丑、失败不是只有你这样，是人都会这样。</li>
+          <li><strong>正念</strong>（对着钻牛角尖）：看见自己正在难受，但不把故事无限放大。</li>
+        </ul>
+        <div class="you">
+          <div class="yt">对到你身上</div>
+          <p>你说「配得感很低、总觉得自己不配得」，还有一出错就冒出来的那句「我是垃圾」。内夫会说：那不是事实，那是你从小练熟的一套<strong>自我批评程序</strong>。这本书不跟你辩论你配不配，它直接教你换程序。</p>
+        </div>
+
+        <h3 class="sec">全书结构图</h3>
+        <div class="map">
+          <div class="part"><b>第一部分 · 为什么要自我关怀</b>第 1–2 章：先看清自我批评把我们折腾成什么样。</div>
+          <div class="part"><b>第二部分 · 三个核心零件</b>第 3–5 章：善待自己、共通人性、正念，一章一个。</div>
+          <div class="part"><b>第三部分 · 它带来的好处</b>第 6–8 章：情绪韧性、退出自尊游戏、真正的动力。</div>
+          <div class="part"><b>第四部分 · 用到关系里</b>第 9–11 章：对别人有同情、养育、爱与亲密。</div>
+          <div class="part"><b>第五部分 · 活出喜悦</b>第 12–13 章：转变，和学会欣赏自己。</div>
+        </div>
+
+        <div class="tools"><button type="button" data-toggle-all="neff-chs">展开 / 收起本节全部章节</button></div>
+        <div id="neff-chs">
+          <details class="ch"><summary><span class="chn">第 1 章</span><span class="cht">发现自我关怀<small>Discovering Self-Compassion</small></span><span class="chev">⌄</span></summary><div class="body">
+            <p>内夫从自己的故事讲起：她的儿子罗恩被确诊自闭症，那几年她被愧疚和无力感压得喘不过气。一次骑马课上，教练的一句话点醒她——你得先稳住自己，马才稳得住。她由此发现：人痛苦的时候，第一反应往往是骂自己「怎么这么没用」，而真正能把人托住的，是像安慰朋友一样安慰自己。她给这件事下了定义，并澄清它不是自怜、不是放纵、不是找借口。</p>
+            <div class="tagline"><span class="k">对你</span><span>你接不住别人的好，有一部分是因为你先接不住自己。这一章是整条线的起点。</span></div>
+          </div></details>
+
+          <details class="ch"><summary><span class="chn">第 2 章</span><span class="cht">终结疯狂<small>Ending the Madness</small></span><span class="chev">⌄</span></summary><div class="body">
+            <p>这一章拆「自我批评」这台机器：大脑把自我批评误当成保护——好像先骂自己一顿，就能防住别人骂、防住犯错。可实际上，骂自己会触发身体的威胁系统，人进入紧张、防御、想逃的状态，越骂越不敢做事。内夫说，这套程序大多是小时候装上的：照顾者怎么对我们，我们长大就怎么对自己。</p>
+            <div class="tagline"><span class="k">对你</span><span>「垃圾的自我是后天拼凑的」——这一章正好给这句话提供了心理学证据：那个骂你的声音，是学来的，不是你本人。</span></div>
+          </div></details>
+
+          <details class="ch"><summary><span class="chn">第 3 章</span><span class="cht">善待自己<small>Being Kind to Ourselves · 零件一</small></span><span class="chev">⌄</span></summary><div class="body">
+            <p>第一个零件。内夫让人做一个对照实验：回想好朋友出丑、失败时你怎么安慰他，再回想你自己出丑时你怎么骂自己——语气完全是两个人。善待自己就是把前一种语气搬回来：温和的语言、安抚性的动作（比如手放在胸口）、允许自己先难受一会儿，不急着评判。</p>
+            <div class="practice"><span class="k">小练习</span><span>下次心里骂声起来，先问一句：如果是我最好的朋友遇到这事，我会怎么跟他说？然后把那句话，原样说给自己听。</span></div>
+          </div></details>
+
+          <details class="ch"><summary><span class="chn">第 4 章</span><span class="cht">我们同在一条船上<small>We're All in This Together · 零件二</small></span><span class="chev">⌄</span></summary><div class="body">
+            <p>第二个零件。痛苦最折磨人的部分，往往不是痛本身，是那句「怎么只有我这么倒霉、这么差」。内夫说，不完美、失败、受挫是所有人共用的人生底色。把「只有我」换成「人都会这样」，孤立感一松，羞耻感就降一大半。</p>
+            <div class="tagline"><span class="k">对你</span><span>「不配得」常常带着一种孤单：好像别人都理所当然地拥有，只有你是个例外。这一章就是拆这个例外的。</span></div>
+          </div></details>
+
+          <details class="ch"><summary><span class="chn">第 5 章</span><span class="cht">正念地看见当下<small>Being Mindful of What Is · 零件三</small></span><span class="chev">⌄</span></summary><div class="body">
+            <p>第三个零件。要安慰自己，先得承认自己正在痛——很多人要么压住不看，要么掉进去无限放大。正念就是中间那条路：清楚地看见「我现在很难受」，但不添油加醋编后续剧情。内夫给了完整的「自我关怀休息法」三句话：承认痛苦、提醒自己人人都会、再对自己说一句温和的话。</p>
+            <div class="practice"><span class="k">小练习</span><span>难受时默念三句：①这是一个难受的时刻。②难受是人生的一部分。③愿我对自己温和一点。就三句，不用多。</span></div>
+          </div></details>
+
+          <details class="ch"><summary><span class="chn">第 6 章</span><span class="cht">情绪韧性<small>Emotional Resilience</small></span><span class="chev">⌄</span></summary><div class="body">
+            <p>进入第三部分，讲好处。研究证据摆出来：自我关怀高的人，焦虑和抑郁更少，遇到打击恢复得更快。原因不复杂——他们难受时不额外给自己补一刀，情绪走完它本来的流程就过去了；而自我批评会把一次难受，加工成对整个人格的判决，痛就被无限延长。</p>
+          </div></details>
+
+          <details class="ch"><summary><span class="chn">第 7 章</span><span class="cht">退出自尊游戏<small>Opting Out of the Self-Esteem Game</small></span><span class="chev">⌄</span></summary><div class="body">
+            <p>这一章对你特别重要。内夫区分了<strong>自尊</strong>和<strong>自我关怀</strong>：自尊要靠表现、靠比别人强、靠被肯定，所以永远在考试，考好了飘、考砸了塌。自我关怀不考试——它不问你够不够好，它只问你现在难不难受。配得感如果建在自尊上，就永远不稳；建在自我关怀上，才不用先证明。</p>
+            <div class="tagline"><span class="k">对你</span><span>这正好接上《不完美的礼物》那句：我不需要先证明，我本来就够了。内夫给的是同一句话的练习版。</span></div>
+          </div></details>
+
+          <details class="ch"><summary><span class="chn">第 8 章</span><span class="cht">动力与个人成长<small>Motivation and Personal Growth</small></span><span class="chev">⌄</span></summary><div class="body">
+            <p>很多人不敢对自己好，怕一松就废了。内夫用研究回击：自我批评式的动力靠恐惧，短期能逼人，长期让人逃避、不敢尝试；自我关怀式动力靠在乎——因为在乎自己，才愿意为自己把事情做好，而且失败了还敢再试。敢再试的人，最后走得更远。</p>
+          </div></details>
+
+          <details class="ch"><summary><span class="chn">第 9 章</span><span class="cht">对他人的同情<small>Compassion for Others</small></span><span class="chev">⌄</span></summary><div class="body">
+            <p>第四部分开始讲关系。一个对自己苛刻的人，对别人也很难真正宽容——要么把标准一样压给别人，要么照顾别人照顾到耗竭。先能安抚自己的人，才有余量稳定地对别人好，也才学得会原谅。</p>
+          </div></details>
+
+          <details class="ch"><summary><span class="chn">第 10 章</span><span class="cht">自我关怀式养育<small>Self-Compassionate Parenting</small></span><span class="chev">⌄</span></summary><div class="body">
+            <p>表面讲养孩子，实际对你有个隐藏用法：<strong>怎么重新养一遍里面的那个小孩</strong>。内夫说，父母先对自己有自我关怀，才不会把焦虑和羞耻传给孩子。你读这一章时，可以把「孩子」换成小时候的自己：那个总在看脸色、怕被抛弃的小孩，需要的不是批评，是被稳稳接住。</p>
+          </div></details>
+
+          <details class="ch"><summary><span class="chn">第 11 章</span><span class="cht">爱与亲密<small>Love and Sex</small></span><span class="chev">⌄</span></summary><div class="body">
+            <p>自我关怀高的人，在亲密关系里更少防御、更少讨好或控制，因为他们的价值感不全押在对方的反应上。对方一句话冷一点，不会立刻塌成「他要抛弃我了」。这一章对「一被深度关心就恐惧」也有用：先能安抚自己，才敢让别人靠近。</p>
+          </div></details>
+
+          <details class="ch"><summary><span class="chn">第 12 章</span><span class="cht">蝴蝶破茧<small>The Butterfly Emerges</small></span><span class="chev">⌄</span></summary><div class="body">
+            <p>第五部分。讲转变怎么发生：不是某天突然想通，而是每一次难受时换一种回应，一点点把旧程序磨掉。内夫也提醒，刚开始对自己温柔，有时会先涌上旧的难过——那是门开了一条缝，旧情绪出来透气，不是你做错了，慢慢来就行。</p>
+          </div></details>
+
+          <details class="ch"><summary><span class="chn">第 13 章</span><span class="cht">欣赏自己<small>Self-Appreciation</small></span><span class="chev">⌄</span></summary><div class="body">
+            <p>全书收尾，也是最难的一步：不光在难受时安慰自己，还要在好的时候<strong>承认自己的好</strong>——认真数一数自己做对的事、拥有的品质，把功劳收下，不打折、不推开。内夫说，这不是自恋，自恋是踩着别人抬自己；欣赏自己，只是如实地看见自己。</p>
+            <div class="practice"><span class="k">小练习</span><span>今晚睡前写一行：今天我做对的一件小事。不用大事，准时吃饭、回了一封邮件都算。写完就停，不许在后面加「但是」。</span></div>
+          </div></details>
+        </div>
+
+        <div class="warn"><span class="wt">读之前先知道：</span>这本书是四本里最不吓人的，但它有个小坎——第一次认真对自己温柔时，有些人会鼻子发酸甚至想哭。那是正常的，说明那句话你等了很多年。酸就酸一会儿，不用躲。</div>
+      </section>
+
+      <!-- ================= BOOK 2 : BIG LEAP ================= -->
+      <section class="book c-gold" id="bigleap">
+        <div class="book-head">
+          <div class="book-no">第 2 本 · 拆总闸</div>
+          <h2>《跨越不可能》</h2>
+          <p class="en">The Big Leap: Conquer Your Hidden Fear and Take Life to the Next Level（2009）</p>
+          <p class="author">盖伊·亨德里克斯（Gay Hendricks）· 心理学家、斯坦福大学博士，做了三十多年高成就者咨询</p>
+          <div class="thesis"><span class="lbl">全书一句话</span>每个人心里都有一个「幸福恒温器」，小时候被设好了上限。好事超过这个刻度，人就会不自觉地搞砸，把温度降回去——这不是命，是设置，可以改。</div>
+          <div class="meta"><span>结构：引言 + 7 章 + 结论</span><span>核心概念：上限问题</span><span>难度：好读，故事多</span></div>
+        </div>
+
+        <h3 class="sec">核心概念先说清：上限问题</h3>
+        <p>亨德里克斯观察了几十年成功人士，发现一个怪现象：<strong>人很少败在低谷，往往败在刚要变好的时候</strong>。升职前生病、谈成大单后跟伴侣大吵、关系刚甜蜜就开始挑刺。他给这套自动降温程序起名叫<strong>上限问题（Upper Limit Problem）</strong>：你内心允许自己拥有的爱、成功和好日子，有一个额度；一超过，警报就响，程序就启动，把你拉回熟悉的刻度——哪怕那个刻度并不舒服，但它熟悉。</p>
+        <div class="you">
+          <div class="yt">对到你身上</div>
+          <p>你自己的原话是「拥有即恐慌，快成功就损坏」「好 = 走的前摇」。这本书等于把你这句话写成了一整本：你不是不相信好事，你是身体里有个恒温器，好事一超标就自动往回拉。先认出警报响的样子，你就已经赢了一半。</p>
+        </div>
+
+        <h3 class="sec">全书结构图</h3>
+        <div class="map">
+          <div class="part"><b>引言 · 拿掉最后一个障碍</b>提出问题：挡住你的不是能力，是上限。</div>
+          <div class="part"><b>第 1–2 章 · 看懂这台机器</b>上限问题是什么、它小时候怎么装上的（四道隐藏障碍）。</div>
+          <div class="part"><b>第 3 章 · 认出它的日常伪装</b>担忧、挑剔、推开夸奖、吵架、生病——警报响的六种样子。</div>
+          <div class="part"><b>第 4–5 章 · 搬进天才区</b>四个区域，找到你真正发光的那件事，并住进去。</div>
+          <div class="part"><b>第 6–7 章 · 用到时间和关系</b>爱因斯坦时间；在亲密关系里怎么不互相拉回上限以下。</div>
+        </div>
+
+        <div class="tools"><button type="button" data-toggle-all="bigleap-chs">展开 / 收起本节全部章节</button></div>
+        <div id="bigleap-chs">
+          <details class="ch"><summary><span class="chn">引言</span><span class="cht">拿掉通往财富、工作与爱的最后一个障碍<small>Remove Your Last Obstacle to Ultimate Success in Wealth, Work, and Love</small></span><span class="chev">⌄</span></summary><div class="body">
+            <p>亨德里克斯开门见山：很多人该学的方法都学了、该吃的苦都吃了，却总在同一个高度上下浮动，像被一根看不见的橡皮筋拴着。他断言，这根橡皮筋就是全书要解决的「唯一问题」。解决了它，钱、事业、爱会一起松动；不解决，换什么赛道都会撞上同一面墙。</p>
+          </div></details>
+
+          <details class="ch"><summary><span class="chn">第 1 章</span><span class="cht">为你的大跨越做准备<small>Preparing for Your Big Leap · 唯一的问题和解法</small></span><span class="chev">⌄</span></summary><div class="body">
+            <p>正式提出上限问题，并讲清恒温器的比喻：小时候，你感受到的爱和肯定是有条件的、有限量的，大脑就把那个量记成了「安全值」。成年后好事超过安全值，大脑不觉得是奖赏，只觉得是<strong>异常</strong>，于是启动降温。这一章还给了一个总解法方向：不是消灭这个程序（消灭不了），而是<strong>一次次把刻度往上调</strong>，让自己慢慢习惯停留在更好的状态里。</p>
+            <div class="tagline"><span class="k">对你</span><span>「签收了但没走」就是调刻度：好事来了，停住，不还、不跑，让身体慢慢相信，留在这个温度也不会出事。</span></div>
+          </div></details>
+
+          <details class="ch"><summary><span class="chn">第 2 章</span><span class="cht">完成跨越：拆掉问题的地基<small>Making the Leap · 四道隐藏障碍</small></span><span class="chev">⌄</span></summary><div class="body">
+            <p>这一章挖地基：恒温器是被四句小时候学来的「错误信念」焊死的——</p>
+            <ul class="tight">
+              <li><strong>我这个人本身有毛病</strong>（Feeling Fundamentally Flawed）：最深的一道。「我不配」的源头就在这里。</li>
+              <li><strong>成功就是背叛和抛弃</strong>（Disloyalty and Abandonment）：我过得比家人、朋友好，就是背叛他们，最后会被孤立。</li>
+              <li><strong>好得越多，负担越重</strong>（More Success Brings a Bigger Burden）：成功等于更累、更危险，不如停在原地。</li>
+              <li><strong>不能盖过别人</strong>（The Crime of Outshining）：小时候太出色会让兄弟姐妹或父母不舒服，于是学会收着、藏着。</li>
+            </ul>
+            <p>亨德里克斯说，这四句都不是事实，是孩子为了换安全感签下的合同。成年后，合同早过期了，人却还在照着执行。</p>
+            <div class="tagline"><span class="k">对你</span><span>你的四道里，第一道最响：「被看到 = 被抛弃」其实是第二道和第四道的合奏——一被看见，就怕被盖过的人怨、怕被抛下。这章建议你慢慢读。</span></div>
+          </div></details>
+
+          <details class="ch"><summary><span class="chn">第 3 章</span><span class="cht">具体化：在日常里认出上限问题<small>Getting Specific · 警报响的六种样子</small></span><span class="chev">⌄</span></summary><div class="body">
+            <p>全书最实用的一章。恒温器启动时，不会敲锣打鼓，它伪装成日常小事：</p>
+            <ul class="tight">
+              <li><strong>担忧</strong>：好事刚来，脑子立刻开始编坏剧情——担忧是最常见的降温手段。</li>
+              <li><strong>批评和指责</strong>：突然看谁都不顺眼，包括看自己。</li>
+              <li><strong>推开夸奖</strong>：别人一夸就赶紧打折、转移话题，把好挡回去。</li>
+              <li><strong>吵架</strong>：在关系最甜的时候挑起争执，把亲密度拉回安全值。</li>
+              <li><strong>生病或受伤</strong>：关键节点前身体出状况。</li>
+              <li><strong>藏起真实感受、不守小约定</strong>：用细小的方式让自己「不完全在场」。</li>
+            </ul>
+            <p>解法就一个动作：<strong>认出来</strong>。在心里说一句「这是上限在响，不是真的出事了」，深呼吸，把注意力放回当下这件好事上。认出一次，刻度就松动一次。</p>
+            <div class="practice"><span class="k">小练习</span><span>这周只抓一种伪装：担忧。好事之后一开始编坏剧情，就在心里贴个标签——「上限」。不用赶它走，贴完标签，回来做手头的事。</span></div>
+          </div></details>
+
+          <details class="ch"><summary><span class="chn">第 4 章</span><span class="cht">在天才区安个新家<small>Building a New Home in Your Zone of Genius · 四个区域</small></span><span class="chev">⌄</span></summary><div class="body">
+            <p>从「拆」转到「建」。人花时间的地方分四层：</p>
+            <ul class="tight">
+              <li><strong>无能区</strong>：你根本不擅长的事——该放手、该请人。</li>
+              <li><strong>胜任区</strong>：你能做、别人也能做的事——占时间，不产生独特价值。</li>
+              <li><strong>卓越区</strong>：你做得很好、靠它吃饭的事——最危险的陷阱：因为它舒服、被认可，人会一辈子赖在这里，不敢再往上走。</li>
+              <li><strong>天才区</strong>：你做起来不觉得累、越做越有能量的那件独一无二的事——全书要你搬进去住的地方。</li>
+            </ul>
+            <p>这一章给了四个问题帮你找天才区：我最爱做的事是什么？什么事做起来不像工作？什么事单位时间带回的满足和回报最高？我独一无二的本事是什么？</p>
+          </div></details>
+
+          <details class="ch"><summary><span class="chn">第 5 章</span><span class="cht">住在天才区：终极成功咒语<small>Living in Your Zone of Genius · The Ultimate Success Mantra</small></span><span class="chev">⌄</span></summary><div class="body">
+            <p>搬进去之后靠什么维持？亨德里克斯给了一句每天默念的话，他叫它「终极成功咒语」。念法不是许愿，是<strong>承诺</strong>：承诺自己每天允许好再多一点点，并真的为此做一件小事。</p>
+            <blockquote class="mantra">我在丰盛、成功与爱中，每一天都在扩展；我也激励我身边的人，和我一样扩展。<small>原文：I expand in abundance, success, and love every day, as I inspire those around me to do the same.</small></blockquote>
+            <div class="tagline"><span class="k">对你</span><span>注意后半句——它专门拆第二道障碍：我的变好不是背叛，我变好的同时，也带着身边人一起好。</span></div>
+          </div></details>
+
+          <details class="ch"><summary><span class="chn">第 6 章</span><span class="cht">活在爱因斯坦时间里<small>Living in Einstein Time</small></span><span class="chev">⌄</span></summary><div class="body">
+            <p>讲时间。牛顿时间是「时间永远不够」的抱怨模式，抱怨本身就是一种上限伪装——用忙和累证明自己没空变好。爱因斯坦时间换一个前提：<strong>你是时间的来源</strong>，你在哪儿全心投入，哪儿的时间就够用。做法很具体：停止抱怨没时间，把腾出来的注意力放回天才区的事上。</p>
+            <div class="tagline"><span class="k">对你</span><span>接《不完美的礼物》指引 7：拿累当身份、拿产出当价值，也是一种把自己拉回上限以下的方法。</span></div>
+          </div></details>
+
+          <details class="ch"><summary><span class="chn">第 7 章</span><span class="cht">解决关系问题：跨过爱与欣赏的上限<small>Solving the Relationship Problem</small></span><span class="chev">⌄</span></summary><div class="body">
+            <p>最后一章讲亲密关系：两个人的恒温器会互相牵制，一个人刚要更亲近，另一个人就降温，于是关系永远停在「还行但不到深处」。解法是各自承担自己那 100% 的责任，不等对方先变；多问「我想创造什么」，少问「他为什么这样」。当两个人允许彼此的好超过旧刻度，关系才第一次有机会往深处走。</p>
+            <div class="tagline"><span class="k">对你</span><span>「一被深度关心就恐惧」就是这一章的现场：不是对方太近，是亲密度超过了你的恒温器刻度。恐惧是刻度在响，不是危险在响。</span></div>
+          </div></details>
+
+          <details class="ch"><summary><span class="chn">结论 + 附录</span><span class="cht">把跨越变成日常<small>Conclusion &amp; Appendix: Baby Steps and Big Leaps</small></span><span class="chev">⌄</span></summary><div class="body">
+            <p>结论把全书收成一个日常动作：每一刻留意自己是不是在降温，认出来，呼吸，重新扩展——就这么简单，重复一辈子。附录是亨德里克斯自己的小故事：五岁时的体验、十岁在路边卖西瓜赚到第一笔钱。他用自己的经历示范：天才区的种子，往往小时候就露过头。</p>
+          </div></details>
+        </div>
+
+        <div class="warn"><span class="wt">读之前先知道：</span>这本书语气偏「成功学」，咒语那部分你不用全盘照单全收。它真正值钱的是第 1–3 章：给「快成功就损坏」起了名字、挖了地基、列了伪装清单。名字有了，毛病就从「我这个人有问题」变成「我的一个程序在响」——这一步，就是解脱的开始。</div>
+      </section>
+
+      <!-- ================= BOOK 3 : MILLER ================= -->
+      <section class="book c-slate" id="miller">
+        <div class="book-head">
+          <div class="book-no">第 3 本 · 挖源头</div>
+          <h2>《天才儿童的悲剧》</h2>
+          <p class="en">The Drama of the Gifted Child: The Search for the True Self（德文原版 1979 年，英文版 1981 年）</p>
+          <p class="author">爱丽丝·米勒（Alice Miller）· 瑞士心理学家、精神分析师</p>
+          <div class="thesis"><span class="lbl">全书一句话</span>有些孩子特别敏感、特别会看脸色——这份「天才」不是天赋，是求生术：为了留住父母的爱，他们藏起真的自己，演了一个乖的、能干的假自己。长大后什么都有了，心里却空，就是因为收爱的人，一直是那个假的。</div>
+          <div class="meta"><span>结构：只有 3 章 · 约 140 页</span><span>难度：最薄，也最扎心</span><span>先说清：「天才」指敏感会察言观色的孩子，不是智商高</span></div>
+        </div>
+
+        <h3 class="sec">先把书名说清，免得误会</h3>
+        <p>米勒说的「天才儿童」，不是神童。是那种<strong>天线特别灵</strong>的孩子：妈妈眉头一皱，他立刻知道要怎么做才安全；家里气氛不对，他马上切换成大人需要的样子。这种孩子长大往往很能干、很体贴、很成功——代价是，他自己的感受、需要、生气、撒娇，从小被锁进了一个他自己都进不去的房间。</p>
+        <div class="you">
+          <div class="yt">对到你身上</div>
+          <p>你说过一句话：「垃圾的自我是后天拼凑的、不是真的」，还坚持「灵魂的我本来就存在」。米勒这本书，几乎就是在为你这两句话写论证：拼凑出来的那个，是<strong>假自我</strong>；被藏起来、一直都在的那个，她叫<strong>真自我</strong>。别人对你好你接不住，按她的说法也不奇怪——好意递给了台前的假自我，躲在后面的真自我，一次都没被喂到过。</p>
+        </div>
+
+        <h3 class="sec">全书结构图</h3>
+        <div class="map">
+          <div class="part"><b>第 1 章 · 天才儿童的悲剧</b>假自我怎么形成，真自我怎么被藏起来。</div>
+          <div class="part"><b>第 2 章 · 抑郁与夸大</b>藏起真自我之后，成年后的两种典型状态：要么拼命发光，要么空掉。</div>
+          <div class="part"><b>第 3 章 · 蔑视的恶性循环</b>小时候被轻视的人，为什么容易再把轻视传下去；以及怎么断掉这个循环。</div>
+        </div>
+
+        <div class="tools"><button type="button" data-toggle-all="miller-chs">展开 / 收起本节全部章节</button></div>
+        <div id="miller-chs">
+          <details class="ch"><summary><span class="chn">第 1 章</span><span class="cht">天才儿童的悲剧，以及我们如何成为治疗师<small>The Drama of the Gifted Child and How We Became Psychotherapists</small></span><span class="chev">⌄</span></summary><div class="body">
+            <p>全书的地基，分五小节层层往下挖：</p>
+            <ul class="tight">
+              <li><strong>贫穷的富孩子</strong>（The Poor Rich Child）：表面什么都有——能干、懂事、被夸奖；内里很穷——自己的感受世界一片荒芜，因为那些感受从没被允许存在。</li>
+              <li><strong>失落的感受世界</strong>（The Lost World of Feelings）：孩子为了适应大人，慢慢对自己真实的情绪失明。不是没有感受了，是不敢有、不会认了。</li>
+              <li><strong>寻找真自我</strong>（In Search of the True Self）：真自我没死，只是被藏起来了。找回它的路，是重新允许自己感受——包括那些「不应该有」的感受，比如对父母的愤怒和悲伤。</li>
+              <li><strong>治疗师的历史</strong>（The Therapist's History）：米勒拿自己的同行开刀——很多治疗师本人就是这种孩子，把「照顾别人的感受」练成了职业，自己却始终没被照顾过。这一节对所有「照顾者型」的人都成立，不限于治疗师。</li>
+              <li><strong>金色的大脑</strong>（The Golden Brain）：用一个意象收尾——只剩聪明的脑子在运转、心却被冻住的人，看起来金光闪闪，里面是冷的。</li>
+            </ul>
+            <div class="practice"><span class="k">小练习</span><span>读这章时只做一件事：哪一句让你心里动了一下，就在旁边画个点。不分析、不总结。画点的地方，就是藏东西的房间门口。</span></div>
+          </div></details>
+
+          <details class="ch"><summary><span class="chn">第 2 章</span><span class="cht">抑郁与夸大：两种相关的否认<small>Depression and Grandiosity: Two Related Forms of Denial</small></span><span class="chev">⌄</span></summary><div class="body">
+            <p>这一章讲藏起真自我之后，人会掉进的两个极端，它们其实是一枚硬币的两面：</p>
+            <ul class="tight">
+              <li><strong>夸大</strong>：拼命证明自己了不起、被仰慕、停不下来。因为一旦停下来，就要面对底下那个「我其实觉得自己什么都不是」。</li>
+              <li><strong>抑郁</strong>：夸大撑不住时的塌陷——空、没意思、觉得自己虚假。它是夸大的背面，是真自我在门后发出的微弱信号：这样的活法，不是我。</li>
+            </ul>
+            <p>米勒还讲了健康成长本来需要的东西：孩子的感受被<strong>回应、被映照、被尊重</strong>——你哭有人懂，你笑有人跟着笑。缺了这个，孩子就只能发展出假自我去交换爱。她用纳西索斯（水仙少年）的传说收尾：他爱的不是自己，是水里那个完美的倒影——真自我，始终没被他认出来。</p>
+            <div class="tagline"><span class="k">对你</span><span>「拥有即恐慌」在这一章有个新解释：到手的好东西是递给假自我的，真自我分不到，所以拥有再多，心里还是空，空了就慌。</span></div>
+          </div></details>
+
+          <details class="ch"><summary><span class="chn">第 3 章</span><span class="cht">蔑视的恶性循环<small>The Vicious Circle of Contempt</small></span><span class="chev">⌄</span></summary><div class="body">
+            <p>最后一章讲传承。小时候被轻视、被羞辱的孩子，心里会装上一条规则：<strong>弱小、需要人、哭闹，都是可耻的</strong>。长大后，他会不自觉地用同样的轻视对待自己的软弱，也对待别人的软弱——循环就这样传下去。米勒用作家赫尔曼·黑塞的童年做例子，讲一个敏感孩子在严苛环境里怎么一点点学会鄙视自己。她也点明：母亲在孩子最初几年里，往往是整个社会规则的执行者——这不是控诉母亲，而是说清这条链子是怎么锻成的。</p>
+            <p>断链的方法，米勒给得很克制：不是去恨父母，而是<strong>允许自己哀悼</strong>——为那个没被好好对待的小孩，认真地难过一次。感受一旦被承认，就不需要再靠轻视别人或轻视自己来压住它了。</p>
+            <div class="tagline"><span class="k">对你</span><span>你心里那个骂自己「垃圾」的声音，按米勒的说法，就是内化了的蔑视。认出它是从外面学来的，它对你说话的分量，就轻一分。</span></div>
+          </div></details>
+        </div>
+
+        <div class="warn"><span class="wt">读之前先知道：</span>这本只有三章，却是四本里情绪最重的一本，读的时候心里翻江倒海是正常的，甚至是它起作用的方式。规矩只有一条：<strong>一次只读一小节，难受就合上</strong>，去喝水、去走路，过两天再回来。它不赶进度，你也不用赶。这本不适合在状态最差的那天打开。</div>
+      </section>
+
+      <!-- ================= BOOK 4 : DARING GREATLY ================= -->
+      <section class="book c-teal" id="daring">
+        <div class="book-head">
+          <div class="book-no">第 4 本 · 卸盔甲</div>
+          <h2>《脆弱的力量》</h2>
+          <p class="en">Daring Greatly: How the Courage to Be Vulnerable Transforms the Way We Live, Love, Parent, and Lead（2012）</p>
+          <p class="author">布琳·布朗（Brené Brown）· 就是《不完美的礼物》的作者，这本是它的续作和放大版</p>
+          <div class="thesis"><span class="lbl">全书一句话</span>脆弱不是弱点，是所有好东西的入口：爱、归属、创造、被看见，全都要先经过它。你为了躲开难受穿上的盔甲，同时也把好东西挡在了外面。</div>
+          <div class="meta"><span>结构：导读 + 引言 + 7 章 + 结语</span><span>核心概念：羞耻与盔甲</span><span>与上一本的关系：《不完美的礼物》讲活法，这本讲怎么卸防</span></div>
+        </div>
+
+        <h3 class="sec">先分清它和《不完美的礼物》</h3>
+        <p>《不完美的礼物》给你十个路标，告诉你全心生活长什么样；这本往回走一步，专门处理<strong>挡路的东西</strong>：羞耻感，和你为了防羞耻穿上的盔甲。两本是一套：上一本是地图，这本是拆路障的工具箱。书名来自罗斯福的演讲《竞技场里的人》——荣耀不属于旁观的批评者，属于那个满脸灰尘、真的下了场的人。</p>
+        <div class="you">
+          <div class="yt">对到你身上</div>
+          <p>你那句「被看到 = 被抛弃」，在这本书里会被翻译成：<strong>被看到 = 要脱下盔甲 = 危险</strong>。布朗会说，盔甲确实保护过你，但它现在收的过路费太贵了——它挡住的不只是伤害，还有别人对你的好。这一本，就是一件一件认出盔甲，再决定哪件先脱。</p>
+        </div>
+
+        <h3 class="sec">全书结构图</h3>
+        <div class="map">
+          <div class="part"><b>导读 + 引言 · 什么叫「勇敢地去做」</b>竞技场比喻：不下场，就没有真生活。</div>
+          <div class="part"><b>第 1 章 · 匮乏文化</b>「永远不够」的空气，怎么养成羞耻。</div>
+          <div class="part"><b>第 2 章 · 破除脆弱的四个迷思</b>先把「脆弱 = 软弱」这类误会清掉。</div>
+          <div class="part"><b>第 3 章 · 理解并对抗羞耻</b>羞耻和内疚的区别；羞耻韧性的四个动作。</div>
+          <div class="part"><b>第 4 章 · 脆弱的盔甲</b>全书对你最重要的一章：三件主要盔甲逐件拆。</div>
+          <div class="part"><b>第 5–7 章 · 用到生活里</b>价值观落差、工作与教育、全心养育。</div>
+        </div>
+
+        <div class="tools"><button type="button" data-toggle-all="daring-chs">展开 / 收起本节全部章节</button></div>
+        <div id="daring-chs">
+          <details class="ch"><summary><span class="chn">引言</span><span class="cht">我在竞技场里的冒险<small>Introduction: My Adventures in the Arena</small></span><span class="chev">⌄</span></summary><div class="body">
+            <p>布朗讲自己怎么做了十几年羞耻研究、又怎么被自己的研究「反杀」：她发现全心生活的人都敢脆弱，而她本人是个控制狂。这一部分定下全书的姿态——不站在岸上教人游泳，而是先下水。核心比喻就一个：人生是竞技场，你可以选择坐在看台上评判，也可以下场，满脸灰尘但活得真实。</p>
+          </div></details>
+
+          <details class="ch"><summary><span class="chn">第 1 章</span><span class="cht">匮乏：走进「永远不够」的文化<small>Scarcity: Looking Inside Our Culture of "Never Enough"</small></span><span class="chev">⌄</span></summary><div class="body">
+            <p>我们呼吸的空气里有一种匮乏感：睡不够、钱不够、时间不够、我这个人不够好。布朗说，匮乏感靠三样东西活着：<strong>羞耻、比较、疏离</strong>。在这种空气里，人一起床就觉得自己落后，于是更不敢示弱、更要武装。这章的作用是让你看清：很多你以为是自己毛病的东西，其实是整个环境的底色。</p>
+            <div class="tagline"><span class="k">对你</span><span>「不配得」有一部分是吸进去的空气，不是你的本质。先分清哪些是空气，哪些是你。</span></div>
+          </div></details>
+
+          <details class="ch"><summary><span class="chn">第 2 章</span><span class="cht">破除脆弱的迷思<small>Debunking the Vulnerability Myths · 四个误会</small></span><span class="chev">⌄</span></summary><div class="body">
+            <p>布朗逐个拆掉四个流传最广的误会：</p>
+            <ul class="tight">
+              <li><strong>「脆弱就是软弱」</strong>——错。脆弱是不确定、有风险、袒露情绪；敢袒露，恰恰是勇气最清楚的证据。</li>
+              <li><strong>「我不玩脆弱这一套」</strong>——错。你不主动脆弱，脆弱也会主动找你：生病、失业、被爱，本来就全在你的控制之外。</li>
+              <li><strong>「脆弱就是什么都往外倒」</strong>——错。脆弱有边界：是对值得信任的人适度袒露，不是逢人就掏心掏肺，更不是拿隐私换关注。</li>
+              <li><strong>「我自己能扛」</strong>——错。人是靠联结活着的生物，需要求助不是缺陷，是出厂设置。</li>
+            </ul>
+          </div></details>
+
+          <details class="ch"><summary><span class="chn">第 3 章</span><span class="cht">理解并对抗羞耻<small>Understanding and Combating Shame · 羞耻韧性</small></span><span class="chev">⌄</span></summary><div class="body">
+            <p>先分清一对最容易混的概念：<strong>内疚</strong>说的是「我做错了一件事」，它能推着人改正；<strong>羞耻</strong>说的是「我这个人就是错的」，它只会让人躲、让人攻击、让人讨好。羞耻靠三样东西生长：保密、沉默、评判。对治它的方法叫<strong>羞耻韧性</strong>，四个动作：认出羞耻正在发作、看清它被什么触发、伸手联结一个可信的人、把羞耻说出口。说出口的羞耻，就活不长。</p>
+            <div class="tagline"><span class="k">对你</span><span>「我是垃圾」就是标准的羞耻句式——骂的是整个人，不是某件事。这一章教你把它改写成内疚句式：这件事我没做好，仅此而已。</span></div>
+          </div></details>
+
+          <details class="ch"><summary><span class="chn">第 4 章</span><span class="cht">脆弱的盔甲<small>The Vulnerability Armory · 全书对你最重要的一章</small></span><span class="chev">⌄</span></summary><div class="body">
+            <p>人为了不感受脆弱，练出了整套盔甲。布朗重点拆了三件最常见的：</p>
+            <ul class="tight">
+              <li><strong>预演灾难式的「喜悦恐惧」</strong>（Foreboding Joy）：好事一来，立刻在脑子里播放它失去的样子，用提前难受给幸福上保险。布朗说，这是最普遍的一件盔甲——因为喜悦是最让人脆弱的情绪，人受不了那种「随时会失去」的悬空感，宁可先把自己放回难受里。</li>
+              <li><strong>完美主义</strong>：以为把一切做到无可挑剔，就能免于被评判。它防的不是失败，是羞耻；代价是永远不敢开始、不敢交卷。</li>
+              <li><strong>麻木</strong>：用忙、吃、刷手机、工作、各种上瘾行为把感受调成静音。问题是感受是一个总开关——你关不掉痛苦而不误伤喜悦，麻木是连好的带坏的一起关。</li>
+            </ul>
+            <p>布朗还列了其他小件盔甲：用冷嘲和愤世嫉俗保持距离、用批评别人来先发制人、永远做照顾者从不当需要帮助的人。卸盔甲的方法不是硬脱，是<strong>认出自己正在穿哪件</strong>，然后换一个小动作：喜悦来时改用感恩接住它，累时承认累，想躲时先伸手联结一个人。</p>
+            <div class="tagline"><span class="k">对你</span><span>第一件就是你的原话：「好 = 走的前摇」。布朗给同一个动作起的名字叫预演灾难。你不是一个人这样——它是她访谈里出现最多的一件盔甲。</span></div>
+            <div class="practice"><span class="k">小练习</span><span>下次好事来了、脑子开始预演失去时，不跟它吵，只补一句：这一刻，它还在。感恩不用隆重，心里点一下头就行。</span></div>
+          </div></details>
+
+          <details class="ch"><summary><span class="chn">第 5 章</span><span class="cht">留意落差<small>Mind the Gap: Cultivating Change and Closing the Disengagement Divide</small></span><span class="chev">⌄</span></summary><div class="body">
+            <p>讲「说的价值观」和「做的价值观」之间的落差：嘴上说重家庭，时间全给了工作；嘴上说要真诚，一遇冲突就沉默。落差越大，人越用疏离感自保——反正我也不在乎。这一章教人把落差一点点合上：先认自己真正在乎什么，再让小行动跟上，而不是靠自责。</p>
+          </div></details>
+
+          <details class="ch"><summary><span class="chn">第 6 章</span><span class="cht">颠覆式投入<small>Disruptive Engagement: Daring to Rehumanize Education and Work</small></span><span class="chev">⌄</span></summary><div class="body">
+            <p>把脆弱用到学校和职场：不敢提问、不敢承认不会、不敢给真实反馈，组织就慢慢没了创造力。领导者带头承认不确定、认真听反馈、把人当人看，团队才敢真的投入。对你做实体店运营、带团队，这章是四本书里最「能直接用在工作上」的一章。</p>
+          </div></details>
+
+          <details class="ch"><summary><span class="chn">第 7 章</span><span class="cht">全心养育<small>Wholehearted Parenting: Daring to Be the Adults We Want Our Children to Be</small></span><span class="chev">⌄</span></summary><div class="body">
+            <p>最后一章讲养育，核心就一句：孩子不会长成你说的样子，只会长成你活的样子。与其研究一百种育儿技巧，不如先处理大人自己的羞耻和配得感。跟内夫第 10 章一样，这一章你也可以对着里面的自己读：你希望小时候的大人怎么对你，你现在就怎么对自己。</p>
+          </div></details>
+
+          <details class="ch"><summary><span class="chn">结语</span><span class="cht">最后的想法<small>Final Thoughts</small></span><span class="chev">⌄</span></summary><div class="body">
+            <p>布朗收尾：全心生活不是一种性格，是一连串小选择——每次站在竞技场边上，你都可以选下场。选错了、摔了，都算下过场。她最后附了一份研究方法的说明，交代这套结论是怎么从上千份访谈里长出来的。</p>
+          </div></details>
+        </div>
+
+        <div class="warn"><span class="wt">买书提醒，别买混：</span>大陆版《脆弱的力量》对应的正是这本 Daring Greatly。但注意，台版也有一本叫《脆弱的力量》的书，对应的却是《不完美的礼物》（The Gifts of Imperfection）。你已经有《不完美的礼物》的解读了，这次要买的是布朗 2012 年这本 Daring Greatly，下单前对一下英文名，就不会重复。</div>
+      </section>
+
+      <!-- ================= COMPARE ================= -->
+      <section class="plain" id="compare">
+        <h2>四本对照：一张表看清谁治什么</h2>
+        <p class="muted">加上你已经解读过的《不完美的礼物》，五本正好是一套完整的顺序：先止骂，再拆闸，再挖根，再卸甲，最后落到日常活法。</p>
+        <div class="cmp">
+          <div class="row"><div class="h">《自我关怀的力量》· 内夫</div><p><b>治什么：</b>一出错就骂自己、把自己当敌人。<br /><b>核心工具：</b>三句话的自我关怀休息法。<br /><b>你的对应句：</b>「我是垃圾」。</p></div>
+          <div class="row"><div class="h">《跨越不可能》· 亨德里克斯</div><p><b>治什么：</b>好事超标就自动搞砸。<br /><b>核心工具：</b>认出上限的六种伪装，把恒温器刻度一点点上调。<br /><b>你的对应句：</b>「拥有即恐慌，快成功就损坏」。</p></div>
+          <div class="row"><div class="h">《天才儿童的悲剧》· 米勒</div><p><b>治什么：</b>不知道自己为什么会这样，源头在哪。<br /><b>核心工具：</b>分清真自我和假自我，允许自己为小时候哀悼。<br /><b>你的对应句：</b>「垃圾的自我是拼凑的，灵魂的我本来就在」。</p></div>
+          <div class="row"><div class="h">《脆弱的力量》· 布朗</div><p><b>治什么：</b>不敢被看见，好意进不来。<br /><b>核心工具：</b>认出三件盔甲，练羞耻韧性的四个动作。<br /><b>你的对应句：</b>「被看到 = 被抛弃」「好 = 走的前摇」。</p></div>
+          <div class="row"><div class="h">《不完美的礼物》· 布朗（已解读）</div><p><b>治什么：</b>日常怎么过，才算从配得感出发。<br /><b>核心工具：</b>十个指引，一次培养一样、放下一样。<br /><b>你的对应句：</b>「我不需要先证明，我本来就够了」。</p></div>
+          <div class="row"><div class="h">五本合起来的一句话</div><p>骂声停下来（内夫）→ 好事留得住（亨德里克斯）→ 知道了自己从哪来（米勒）→ 敢被看见（布朗）→ 日子一天天照着过（十个指引）。<b>不用同时进行，一本走完，再走下一本。</b></p></div>
+        </div>
+      </section>
+
+      <!-- ================= FIRST STEP ================= -->
+      <section class="plain" id="first-step">
+        <h2>最小开始：今天只做一步</h2>
+        <p>四本书都摆在这了，但你今天什么都不用读完。就从下面挑<strong>一件</strong>，做完，今天的功课就结束了，做到了就值得夸：</p>
+        <div class="steps">
+          <div class="s"><span class="n"></span><p><b>最轻的一步（内夫）：</b>下一次心里骂声起来，用对好朋友的语气，把那句话重说一遍。</p></div>
+          <div class="s"><span class="n"></span><p><b>最准的一步（亨德里克斯）：</b>下一次好事之后开始担忧，在心里贴个标签——「这是上限在响」，然后回来做手头的事。</p></div>
+          <div class="s"><span class="n"></span><p><b>最深的一步（米勒）：</b>睡前想一分钟，小时候的你最想听大人说哪一句话。今晚，你自己说给他听。</p></div>
+          <div class="s"><span class="n"></span><p><b>最勇敢的一步（布朗）：</b>下一次有人对你好，先不推、不还、不打折，只说两个字：谢谢。然后停住，收下。</p></div>
+        </div>
+        <p style="margin-top:16px">四步里你先做了哪一步，或者哪本书的哪一章最扎心，回来告诉我，我们就从那一小块开始往下拆。一次一小步，不赶。</p>
+      </section>
+
+      <footer>
+        <p>本页为读书解读，章节结构按各书原版目录核对整理，内容为大白话转述与个人对应，不替代原书，也不是心理治疗。如果你读米勒那本时情绪反应很强、持续很多天，那是值得找一位真人咨询师聊聊的信号，不是你读错了。</p>
+        <p>结构核对来源：<br />
+        内夫《Self-Compassion》五部分十三章目录与概要 — <a href="https://www.supersummary.com/self-kristin-neff/summary/" target="_blank" rel="noopener">supersummary.com</a><br />
+        亨德里克斯《The Big Leap》原书章节目录 — <a href="https://readingraphics.com/book-summary-the-big-leap-gay-hendricks/" target="_blank" rel="noopener">readingraphics.com</a>；四区域与上限问题概要 — <a href="https://www.supersummary.com/the-big-leap/summary/" target="_blank" rel="noopener">supersummary.com</a><br />
+        布朗《Daring Greatly》七章目录 — <a href="https://openlibrary.org/works/OL16664399W/Daring_Greatly" target="_blank" rel="noopener">openlibrary.org</a></p>
+      </footer>
+    </div>
+
+    <button class="totop" id="totop" aria-label="回到顶部">↑</button>
+    <script>
+      (function(){
+        // reading progress
+        var bar=document.getElementById('progress');
+        var totop=document.getElementById('totop');
+        function onScroll(){
+          var h=document.documentElement;
+          var max=h.scrollHeight-h.clientHeight;
+          bar.style.width=(max>0?(h.scrollTop/max*100):0)+'%';
+          if(h.scrollTop>600){totop.classList.add('show')}else{totop.classList.remove('show')}
+          // nav highlight
+          var ids=['neff','bigleap','miller','daring','compare','first-step'];
+          var cur=null;
+          for(var i=0;i<ids.length;i++){var el=document.getElementById(ids[i]);if(el&&el.getBoundingClientRect().top<160){cur=ids[i]}}
+          var links=document.querySelectorAll('.topnav a');
+          for(var j=0;j<links.length;j++){links[j].classList.toggle('on',links[j].getAttribute('href')==='#'+cur)}
+        }
+        document.addEventListener('scroll',onScroll,{passive:true}); onScroll();
+        totop.addEventListener('click',function(){window.scrollTo({top:0,behavior:'smooth'})});
+        // expand / collapse all per book
+        var btns=document.querySelectorAll('[data-toggle-all]');
+        for(var k=0;k<btns.length;k++){
+          btns[k].addEventListener('click',function(){
+            var box=document.getElementById(this.getAttribute('data-toggle-all'));
+            if(!box)return;
+            var ds=box.querySelectorAll('details.ch');
+            var anyClosed=false;
+            for(var m=0;m<ds.length;m++){if(!ds[m].open){anyClosed=true;break}}
+            for(var n=0;n<ds.length;n++){ds[n].open=anyClosed}
+          });
+        }
+      })();
+    </script>
+  </body>
+</html>

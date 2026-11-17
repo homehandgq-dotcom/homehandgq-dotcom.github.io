@@ -1,0 +1,763 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
+<meta name="color-scheme" content="light dark" />
+<link rel="icon" href="data:," />
+<title>不完美的礼物 解读</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Serif+SC:wght@600;700;900&family=Noto+Sans+SC:wght@400;500;700&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --bg:#fbfaf7;
+    --bg-2:#f1ede3;
+    --card:#ffffff;
+    --ink:#1d2a24;
+    --ink-2:#44544c;
+    --ink-3:#6b7a71;
+    --line:#ddd5c3;
+    --rust:#b94e26;
+    --rust-soft:#fbe9df;
+    --pine:#2e5d4b;
+    --pine-soft:#e3efe8;
+    --gold:#a67c1f;
+    --gold-soft:#f7ecd2;
+    --shadow:0 10px 30px rgba(29,42,36,.08);
+    --radius:14px;
+  }
+  @media (prefers-color-scheme: dark){
+    :root{
+      --bg:#131a17;
+      --bg-2:#1a231f;
+      --card:#1e2a25;
+      --ink:#ece7da;
+      --ink-2:#c3cbc2;
+      --ink-3:#97a69c;
+      --line:#35443b;
+      --rust:#e07f52;
+      --rust-soft:#3a2720;
+      --pine:#7fb99d;
+      --pine-soft:#22352c;
+      --gold:#d9b45c;
+      --gold-soft:#332d1c;
+      --shadow:0 10px 30px rgba(0,0,0,.35);
+    }
+  }
+  *{box-sizing:border-box}
+  html{scroll-behavior:smooth}
+  @media (prefers-reduced-motion: reduce){ html{scroll-behavior:auto} }
+  body{
+    margin:0; background:var(--bg); color:var(--ink);
+    font-family:"Noto Sans SC",system-ui,-apple-system,"PingFang SC","Microsoft YaHei",sans-serif;
+    font-size:16px; line-height:1.75;
+  }
+  h1,h2,h3,.serif{font-family:"Noto Serif SC",serif}
+  a{color:var(--pine)}
+  button{min-height:44px}
+  .wrap{max-width:1060px;margin:0 auto;padding:0 20px 72px}
+
+  /* ---------- Hero ---------- */
+  .hero{padding:44px 0 8px}
+  .book-meta{display:flex;flex-wrap:wrap;gap:8px;margin-bottom:20px}
+  .book-meta span{
+    font-size:13px;font-weight:500;color:var(--ink-2);
+    border:1px solid var(--line);border-radius:999px;padding:5px 12px;background:var(--card);
+  }
+  .hero h1{font-size:clamp(38px,7vw,58px);line-height:1.15;margin:0 0 6px;font-weight:900;letter-spacing:.01em}
+  .hero .en-title{font-family:"Noto Serif SC",serif;font-size:clamp(15px,2.6vw,19px);color:var(--ink-3);margin:0 0 22px;line-height:1.5}
+  .hero .lede{font-size:clamp(17px,2.8vw,20px);color:var(--ink-2);max-width:44em;margin:0 0 26px}
+  .hero .lede strong{color:var(--ink)}
+  .mantra{
+    background:var(--pine);color:#f4f1e6;border-radius:var(--radius);
+    padding:26px 28px;margin:0 0 14px;box-shadow:var(--shadow);
+  }
+  @media (prefers-color-scheme: dark){ .mantra{background:#24473a} }
+  .mantra .m-label{font-size:13px;letter-spacing:.14em;opacity:.75;margin:0 0 8px}
+  .mantra .m-text{font-family:"Noto Serif SC",serif;font-size:clamp(24px,4.6vw,34px);font-weight:700;line-height:1.4;margin:0 0 10px}
+  .mantra .m-note{font-size:14.5px;opacity:.88;margin:0;max-width:42em}
+  .mantra-row{display:flex;flex-wrap:wrap;gap:10px;align-items:center;margin-top:16px}
+  .copy-btn{
+    background:#f4f1e6;color:#24473a;border:none;border-radius:999px;
+    font-size:14px;font-weight:700;padding:10px 20px;cursor:pointer;font-family:inherit;
+  }
+  .copy-btn:active{transform:scale(.97)}
+  .copy-tip{font-size:13px;opacity:.8}
+
+  /* ---------- Nav ---------- */
+  .toc{
+    position:sticky;top:0;z-index:20;background:var(--bg);
+    display:flex;gap:6px;overflow-x:auto;padding:12px 0 10px;margin-top:22px;
+    border-bottom:1px solid var(--line);scrollbar-width:none;
+  }
+  .toc::-webkit-scrollbar{display:none}
+  @media(max-width:640px){ .toc{flex-wrap:wrap;overflow-x:visible} }
+  .toc a{
+    flex:0 0 auto;text-decoration:none;color:var(--ink-2);font-size:14px;font-weight:500;
+    padding:9px 14px;border-radius:999px;border:1px solid var(--line);background:var(--card);
+    min-height:38px;display:inline-flex;align-items:center;
+  }
+  .toc a:hover{color:var(--rust);border-color:var(--rust)}
+
+  section{padding-top:44px}
+  .sec-head{margin-bottom:18px}
+  .sec-head h2{font-size:clamp(24px,4.4vw,32px);margin:0 0 6px;font-weight:900}
+  .sec-head p{color:var(--ink-2);margin:0;max-width:46em}
+
+  /* ---------- Structure map ---------- */
+  .map{display:grid;grid-template-columns:1fr;gap:12px}
+  @media(min-width:760px){ .map{grid-template-columns:repeat(3,1fr)} .map .wide{grid-column:span 3} }
+  .map-block{background:var(--card);border:1px solid var(--line);border-radius:var(--radius);padding:20px 22px;box-shadow:var(--shadow)}
+  .map-block .stage{font-size:12.5px;font-weight:700;letter-spacing:.12em;color:var(--rust);margin:0 0 6px}
+  .map-block h3{margin:0 0 8px;font-size:19px}
+  .map-block p{margin:0;color:var(--ink-2);font-size:14.5px}
+  .map-block ul{margin:8px 0 0;padding-left:1.15em;color:var(--ink-2);font-size:14.5px}
+  .map-block li{margin:3px 0}
+  .map-arrow{text-align:center;color:var(--ink-3);font-size:20px;line-height:1;padding:2px 0}
+  @media(min-width:760px){ .map-arrow{display:none} }
+  .logic{
+    margin-top:14px;background:var(--bg-2);border-radius:var(--radius);padding:20px 22px;
+    font-size:15px;color:var(--ink-2);
+  }
+  .logic strong{color:var(--ink)}
+  .logic .chain{display:flex;flex-wrap:wrap;gap:8px;align-items:center;margin-top:12px}
+  .logic .chain b{
+    background:var(--card);border:1px solid var(--line);border-radius:8px;
+    padding:6px 12px;font-size:14px;color:var(--ink);font-weight:700;
+  }
+  .logic .chain i{font-style:normal;color:var(--rust);font-weight:700}
+
+  /* ---------- Foundation chapters ---------- */
+  .found{display:grid;grid-template-columns:1fr;gap:14px}
+  @media(min-width:820px){ .found{grid-template-columns:repeat(3,1fr)} }
+  .f-card{background:var(--card);border:1px solid var(--line);border-top:4px solid var(--pine);border-radius:var(--radius);padding:22px;box-shadow:var(--shadow)}
+  .f-card .no{font-family:"Noto Serif SC",serif;font-size:13px;color:var(--pine);font-weight:700;letter-spacing:.1em}
+  .f-card h3{margin:6px 0 4px;font-size:20px}
+  .f-card .sub{color:var(--ink-3);font-size:13.5px;margin:0 0 12px}
+  .f-card p{font-size:14.5px;color:var(--ink-2);margin:0 0 10px}
+  .f-card p:last-child{margin-bottom:0}
+  .f-card .key{background:var(--pine-soft);border-radius:8px;padding:10px 14px;font-size:14px;color:var(--ink)}
+  .f-card.warn{border-top-color:var(--rust)}
+  .f-card.warn .no{color:var(--rust)}
+  .f-card.warn .key{background:var(--rust-soft)}
+
+  /* ---------- Guideposts ---------- */
+  .filters{display:flex;flex-wrap:wrap;gap:8px;margin-bottom:16px}
+  .filters button{
+    border:1px solid var(--line);background:var(--card);color:var(--ink-2);
+    border-radius:999px;padding:9px 18px;font-size:14px;font-weight:500;cursor:pointer;font-family:inherit;
+  }
+  .filters button[aria-pressed="true"]{background:var(--ink);color:var(--bg);border-color:var(--ink)}
+  .gp-list{display:flex;flex-direction:column;gap:10px}
+  .gp{
+    background:var(--card);border:1px solid var(--line);border-radius:var(--radius);
+    overflow:hidden;box-shadow:var(--shadow);
+  }
+  .gp.hidden{display:none}
+  .gp-head{
+    width:100%;display:flex;align-items:flex-start;gap:14px;text-align:left;
+    background:none;border:none;cursor:pointer;padding:18px 20px;font-family:inherit;color:var(--ink);
+  }
+  .gp-num{
+    flex:0 0 auto;width:42px;height:42px;border-radius:50%;
+    background:var(--bg-2);border:1px solid var(--line);
+    display:flex;align-items:center;justify-content:center;
+    font-family:"Noto Serif SC",serif;font-weight:900;font-size:17px;color:var(--pine);
+  }
+  .gp.priority .gp-num{background:var(--rust);border-color:var(--rust);color:#fff}
+  .gp-titles{flex:1;min-width:0}
+  .gp-titles h3{margin:0;font-size:17.5px;line-height:1.45}
+  .gp-titles .pair{margin:3px 0 0;font-size:13.5px;color:var(--ink-3);line-height:1.55}
+  .gp-titles .pair b{color:var(--rust);font-weight:700}
+  .gp-titles .pair em{font-style:normal;color:var(--pine);font-weight:700}
+  .gp-star{
+    flex:0 0 auto;font-size:12px;font-weight:700;color:var(--gold);
+    background:var(--gold-soft);border-radius:999px;padding:4px 10px;margin-top:2px;white-space:nowrap;
+  }
+  .gp-chev{flex:0 0 auto;color:var(--ink-3);font-size:18px;margin-top:6px;transition:transform .2s}
+  .gp.open .gp-chev{transform:rotate(180deg)}
+  .gp-body{display:none;padding:2px 20px 22px 76px}
+  @media(max-width:560px){ .gp-body{padding-left:20px} }
+  .gp.open .gp-body{display:block}
+  .gp-body p{margin:0 0 10px;font-size:15px;color:var(--ink-2)}
+  .gp-body p strong{color:var(--ink)}
+  .gp-body .lbl{font-size:12.5px;font-weight:700;letter-spacing:.1em;color:var(--pine);margin:16px 0 4px}
+  .gp-body .lbl:first-child{margin-top:0}
+  .practice{
+    background:var(--bg-2);border-radius:10px;padding:12px 16px;font-size:14.5px;color:var(--ink);
+  }
+  .practice b{color:var(--rust)}
+
+  /* ---------- Table ---------- */
+  .pair-table{width:100%;border-collapse:collapse;background:var(--card);border:1px solid var(--line);border-radius:var(--radius);overflow:hidden;box-shadow:var(--shadow)}
+  .pair-table th,.pair-table td{padding:12px 16px;text-align:left;font-size:14.5px;border-bottom:1px solid var(--line);vertical-align:top}
+  .pair-table th{background:var(--bg-2);font-size:13px;letter-spacing:.08em;color:var(--ink-2)}
+  .pair-table tr:last-child td{border-bottom:none}
+  .pair-table td:first-child{font-weight:700;white-space:nowrap}
+  .pair-table .let{color:var(--rust)}
+  @media(max-width:560px){
+    .pair-table thead{display:none}
+    .pair-table,.pair-table tbody,.pair-table tr,.pair-table td{display:block;width:100%}
+    .pair-table tr{padding:10px 0;border-bottom:1px solid var(--line)}
+    .pair-table tr:last-child{border-bottom:none}
+    .pair-table td{border-bottom:none;padding:2px 16px;white-space:normal}
+    .pair-table td:first-child{padding-top:6px}
+    .pair-table td:last-child{padding-bottom:8px}
+  }
+
+  /* ---------- Glossary ---------- */
+  .gloss{display:grid;grid-template-columns:1fr;gap:12px}
+  @media(min-width:760px){ .gloss{grid-template-columns:1fr 1fr} }
+  .g-item{background:var(--card);border:1px solid var(--line);border-radius:var(--radius);padding:18px 20px}
+  .g-item h3{margin:0 0 6px;font-size:17px}
+  .g-item h3 span{color:var(--ink-3);font-size:13px;font-family:"Noto Sans SC",sans-serif;font-weight:400;margin-left:6px}
+  .g-item p{margin:0;font-size:14.5px;color:var(--ink-2)}
+  .g-item p strong{color:var(--ink)}
+
+  /* ---------- For you ---------- */
+  .foryou{background:var(--card);border:1px solid var(--line);border-radius:var(--radius);box-shadow:var(--shadow);overflow:hidden}
+  .fy-row{display:grid;grid-template-columns:1fr;border-bottom:1px solid var(--line)}
+  .fy-row:last-child{border-bottom:none}
+  @media(min-width:820px){ .fy-row{grid-template-columns:1fr 1.4fr 1.4fr} }
+  .fy-row>div{padding:18px 20px}
+  .fy-row .fy-q{font-family:"Noto Serif SC",serif;font-weight:700;font-size:16.5px;background:var(--bg-2)}
+  .fy-row .fy-q small{display:block;font-family:"Noto Sans SC",sans-serif;font-weight:400;font-size:12.5px;color:var(--ink-3);margin-top:4px}
+  .fy-row p{margin:0;font-size:14.5px;color:var(--ink-2)}
+  .fy-row .fy-tag{font-size:12px;font-weight:700;letter-spacing:.1em;color:var(--rust);margin:0 0 5px}
+  .fy-row .fy-tag.book{color:var(--pine)}
+
+  .signoff{
+    margin-top:16px;background:var(--gold-soft);border-radius:var(--radius);padding:22px 24px;
+  }
+  .signoff h3{margin:0 0 10px;font-size:19px}
+  .signoff ol{margin:0;padding-left:1.3em;color:var(--ink-2);font-size:15px}
+  .signoff li{margin:5px 0}
+  .signoff li strong{color:var(--ink)}
+  .signoff p{margin:12px 0 0;font-size:14.5px;color:var(--ink-2)}
+
+  /* ---------- Reading path ---------- */
+  .path{display:grid;grid-template-columns:1fr;gap:12px}
+  @media(min-width:820px){ .path{grid-template-columns:repeat(3,1fr)} }
+  .p-card{background:var(--card);border:1px solid var(--line);border-radius:var(--radius);padding:20px 22px;box-shadow:var(--shadow)}
+  .p-card .step{font-size:12.5px;font-weight:700;letter-spacing:.12em;color:var(--rust);margin:0 0 6px}
+  .p-card h3{margin:0 0 8px;font-size:18px}
+  .p-card p,.p-card li{font-size:14.5px;color:var(--ink-2)}
+  .p-card p{margin:0 0 8px}
+  .p-card ul{margin:0;padding-left:1.15em}
+  .p-card li{margin:3px 0}
+
+  footer{margin-top:52px;border-top:1px solid var(--line);padding-top:20px;font-size:13.5px;color:var(--ink-3)}
+  footer p{margin:0 0 8px}
+  footer a{word-break:break-all}
+
+  /* ---------- Mobile adaptation ---------- */
+  html{-webkit-text-size-adjust:100%;text-size-adjust:100%}
+  body{overflow-x:clip}
+  img,svg{max-width:100%}
+  @media(max-width:640px){
+    .wrap{
+      padding:0 max(16px,env(safe-area-inset-left)) 52px max(16px,env(safe-area-inset-right));
+      padding-left:max(16px,env(safe-area-inset-left));
+      padding-right:max(16px,env(safe-area-inset-right));
+    }
+    /* Hero */
+    .hero{padding:26px 0 4px}
+    .book-meta{gap:6px;margin-bottom:16px}
+    .book-meta span{font-size:12px;padding:4px 10px;line-height:1.5}
+    .hero h1{font-size:36px;line-height:1.2;margin-bottom:4px}
+    .hero .en-title{font-size:13.5px;margin-bottom:16px}
+    .hero .lede{font-size:16.5px;line-height:1.72;margin-bottom:20px}
+    .mantra{padding:20px 18px;border-radius:12px}
+    .mantra .m-text{font-size:24px;line-height:1.45}
+    .mantra .m-note{font-size:14px}
+    .mantra-row{flex-direction:column;align-items:stretch;gap:8px}
+    .copy-btn{width:100%;padding:12px 20px;font-size:15px;min-height:48px}
+    .copy-tip{text-align:center}
+    /* Sticky nav: single-row horizontal scroll, no wrapping mess */
+    .toc{
+      flex-wrap:nowrap;overflow-x:auto;overflow-y:hidden;
+      -webkit-overflow-scrolling:touch;overscroll-behavior-x:contain;
+      margin-top:18px;padding:10px 2px;gap:6px;
+      margin-left:-16px;margin-right:-16px;
+      padding-left:16px;padding-right:16px;
+    }
+    .toc a{white-space:nowrap;font-size:13.5px;padding:8px 13px;min-height:40px}
+    /* Sections */
+    section{padding-top:32px}
+    .sec-head{margin-bottom:14px}
+    .sec-head h2{font-size:23px;line-height:1.35}
+    .sec-head p{font-size:14.5px;line-height:1.7}
+    /* Cards */
+    .map-block,.f-card,.p-card{padding:17px 18px;border-radius:12px}
+    .map-block h3,.f-card h3{font-size:18px}
+    .logic{padding:16px 18px;border-radius:12px;font-size:14.5px}
+    .logic .chain{gap:6px}
+    .logic .chain b{font-size:13px;padding:5px 10px}
+    .g-item{padding:16px 18px;border-radius:12px}
+    /* Guideposts: let the "先读" tag drop to its own line instead of squeezing the title */
+    .filters{gap:6px;margin-bottom:12px}
+    .filters button{flex:1 1 0;padding:10px 6px;font-size:13.5px;min-height:44px;line-height:1.4}
+    .gp{border-radius:12px}
+    .gp-head{padding:14px;gap:10px;flex-wrap:wrap;min-height:56px}
+    .gp-num{width:36px;height:36px;font-size:15px}
+    .gp-titles{flex:1 1 calc(100% - 92px)}
+    .gp-titles h3{font-size:16px;line-height:1.5}
+    .gp-titles .pair{font-size:12.5px}
+    .gp-star{order:3;margin:0 0 0 46px}
+    .gp-chev{margin-top:4px}
+    .gp-body{padding:2px 16px 18px}
+    .gp-body p{font-size:14.5px}
+    .practice{padding:11px 13px;font-size:14px}
+    /* For-you rows + signoff */
+    .fy-row>div{padding:14px 16px}
+    .fy-row .fy-q{font-size:16px}
+    .signoff{padding:18px;border-radius:12px}
+    .signoff ol{font-size:14.5px}
+    footer{margin-top:40px;font-size:12.5px;line-height:1.7}
+  }
+  @media(max-width:380px){
+    .hero h1{font-size:32px}
+    .mantra .m-text{font-size:22px}
+    .filters{flex-direction:column}
+    .filters button{flex:none;width:100%}
+    .gp-titles h3{font-size:15.5px}
+  }
+</style>
+</head>
+<body>
+<div class="wrap">
+
+  <!-- ================= HERO ================= -->
+  <header class="hero">
+    <div class="book-meta">
+      <span>布琳·布朗 Brené Brown 著</span>
+      <span>2010 年出版 · Hazelden</span>
+      <span>大陆简体版曾以《脆弱的力量》为名出版</span>
+      <span>基于多年访谈研究的质性研究</span>
+    </div>
+    <h1>不完美的礼物</h1>
+    <p class="en-title">The Gifts of Imperfection — Let Go of Who You Think You're Supposed to Be and Embrace Who You Are<br>放下「你以为自己应该成为的样子」，拥抱真实的你</p>
+    <p class="lede">这本书只回答一个问题：<strong>为什么有些人打心底觉得「我配得上爱、配得上好的生活」，有些人却一辈子在考试——赚得够多、做得够好、被够多人肯定，才敢收下一点点好？</strong>布朗访谈了大量普通人后发现，差别不在谁的人生更顺，而在心里那条底线画在哪里。这本书就是她画出的路线图：先打三章地基，再走十个「路标」（指引），终点叫<strong>全心投入的生活（Wholehearted Living）</strong>。</p>
+
+    <div class="mantra">
+      <p class="m-label">全书的核心句 · 值得贴在手机锁屏上</p>
+      <p class="m-text">我不需要先证明自己，<br>我本来就够了。</p>
+      <p class="m-note">布朗的原话是：配得感不是「成就」，是「练习」。觉得自己配的人，不是没有羞耻感，而是练出了一套不被羞耻感牵着走的生活方式——这十个路标，就是那套练习的拆解版。</p>
+      <div class="mantra-row">
+        <button class="copy-btn" id="copyMantra" type="button">复制这句话</button>
+        <span class="copy-tip" id="copyTip"></span>
+      </div>
+    </div>
+  </header>
+
+  <nav class="toc" aria-label="本页目录">
+    <a href="#structure">全书结构图</a>
+    <a href="#foundation">地基三章</a>
+    <a href="#guideposts">十个路标详解</a>
+    <a href="#pairs">培养 × 放下对照表</a>
+    <a href="#glossary">核心概念词典</a>
+    <a href="#foryou">对到你身上</a>
+    <a href="#path">推荐读法</a>
+  </nav>
+
+  <!-- ================= STRUCTURE ================= -->
+  <section id="structure">
+    <div class="sec-head">
+      <h2>全书结构图：一趟旅程，两段路</h2>
+      <p>布朗把全书写成一趟旅程：中文版干脆分成「第一部分 · 准备」和「第二部分 · 启程」。准备段解决「去哪、带什么、路上有什么拦路的」，启程段就是十个路标，一站一站走。</p>
+    </div>
+    <div class="map">
+      <div class="map-block">
+        <p class="stage">出发前 · 前言</p>
+        <h3>全心投入的生活</h3>
+        <p>先定义终点：全心投入不是一种性格，而是一种<strong>每天练习的活法</strong>——从「我已经够好了」的位置出发去生活，而不是从「我还不够」的位置出发去拼命证明。</p>
+      </div>
+      <div class="map-arrow">↓</div>
+      <div class="map-block">
+        <p class="stage">第一部分 · 准备（3 章）</p>
+        <h3>行前准备：地基三章</h3>
+        <ul>
+          <li>第 1 章：你带什么上路——勇气、仁慈、联结</li>
+          <li>第 2 章：你要去哪——爱、归属感与「我够了」</li>
+          <li>第 3 章：路上什么拦你——羞耻、恐惧、脆弱</li>
+        </ul>
+      </div>
+      <div class="map-arrow">↓</div>
+      <div class="map-block">
+        <p class="stage">第二部分 · 启程（10 章）</p>
+        <h3>十个路标</h3>
+        <p>每章一个路标，结构完全一样：<strong>培养一样东西，放下一样东西</strong>，章末附一个 DIG Deep 小练习（刻意想一想、找点灵感、马上动手做一件小事）。</p>
+      </div>
+      <div class="map-arrow">↓</div>
+      <div class="map-block wide">
+        <p class="stage">终点 · 结语</p>
+        <h3>最后的礼物</h3>
+        <p>布朗在结尾说：全心投入不是一次性抵达的终点，是一辈子的旅程。革命性的改变往往不在大事里，而在每天那些小小的选择里——选真实，不选讨好；选休息，不选硬撑；选收下，不选推开。</p>
+      </div>
+    </div>
+
+    <div class="logic">
+      <strong>全书的逻辑链，一条线看懂：</strong>
+      <div class="chain">
+        <b>羞耻感：「我这个人不行」</b><i>→</i>
+        <b>觉得自己不配</b><i>→</i>
+        <b>拼命证明 / 完美主义 / 麻木逃避</b><i>→</i>
+        <b>好东西来了也接不住、留不住</b><i>→</i>
+        <b>十个路标逐个拆掉这条链</b><i>→</i>
+        <b>从「我够了」出发去生活</b>
+      </div>
+    </div>
+  </section>
+
+  <!-- ================= FOUNDATION ================= -->
+  <section id="foundation">
+    <div class="sec-head">
+      <h2>地基三章：十个路标之前，先讲清三件事</h2>
+      <p>这三章是全书的「理论部分」，不长，但后面十章全踩在它们上面。跳过这三章直接读路标，会觉得每章都像鸡汤；读完这三章再读，路标就成了有根的练习。</p>
+    </div>
+    <div class="found">
+      <article class="f-card">
+        <p class="no">准备一 · 第 1 章</p>
+        <h3>勇气、仁慈、联结</h3>
+        <p class="sub">英文：Courage, Compassion, and Connection — The Gifts of Imperfection</p>
+        <p><strong>这一章讲什么：</strong>介绍旅程要带的三件「行李」，也就是书名里说的「不完美的礼物」。</p>
+        <p><strong>勇气</strong>被重新定义：不是英雄壮举，而是「把自己的故事、自己的感受如实说出来」的日常勇气——布朗称它「平凡的勇气」。敢示弱、敢说「我需要帮忙」，都是勇气。</p>
+        <p><strong>仁慈（同情）</strong>的关键是边界：对别人仁慈的前提，是先承认自己的感受、守住自己的界限；没有边界的付出最后会变成怨气。</p>
+        <p><strong>联结</strong>是人与人之间能量的流动，前提是双方都「被看见、被听见、被珍惜」，而且不带评判。</p>
+        <p class="key">一句话带走：这三样都不是天赋，是可以在日常小事里练出来的肌肉。</p>
+      </article>
+
+      <article class="f-card">
+        <p class="no">准备二 · 第 2 章</p>
+        <h3>爱、归属感与「我够了」</h3>
+        <p class="sub">英文：Exploring the Power of Love, Belonging, and Being Enough</p>
+        <p><strong>这一章讲什么：</strong>这是全书离「配得感」最近的一章。布朗先拆了一个最常见的误会——</p>
+        <p><strong>归属感 ≠ 融入。</strong>融入（fitting in）是揣摩别人想要什么、然后把自己改成那个样子去换取接纳；归属感（belonging）恰恰相反：<strong>是因为你就是你，才被接纳</strong>。靠改自己换来的「被喜欢」，永远喂不饱，因为你知道被喜欢的不是你。</p>
+        <p>她还给爱下了个很实在的定义：爱不是嘴上说的感觉，是在日常里<strong>培养</strong>出来的——花时间、给注意力、守承诺。爱自己也一样，不是口号，是练习。</p>
+        <p class="key">一句话带走：觉得自己「够了」的人和不够的人，过的日子差不多，区别只在心里那句默认台词。</p>
+      </article>
+
+      <article class="f-card warn">
+        <p class="no">准备三 · 第 3 章</p>
+        <h3>路途中的阻碍</h3>
+        <p class="sub">英文：The Things That Get in the Way</p>
+        <p><strong>这一章讲什么：</strong>点名三个拦路的东西——<strong>羞耻感、恐惧、脆弱</strong>，讲清它们怎么运作。</p>
+        <p><strong>羞耻感和内疚要分开：</strong>内疚说「我做错了一件事」，还能推动人改正；羞耻感说「我这个人就是错的」，只会让人躲起来、讨好或反击。羞耻感最怕被说出来——把它讲给一个能共情的人听，它就失去大半力气，这叫「羞耻韧性」。</p>
+        <p><strong>脆弱</strong>不是软弱：它是所有情感的出生地，不确定、没把握、袒露真心时那种发慌的感觉，恰恰是勇气、爱和创造力出现的地方。躲开脆弱，等于把好的感受也一起关在门外。</p>
+        <p class="key">一句话带走：你不是要消灭羞耻感，而是要练到它一开口，你能认出它、并且不听它的。</p>
+      </article>
+    </div>
+  </section>
+
+  <!-- ================= GUIDEPOSTS ================= -->
+  <section id="guideposts">
+    <div class="sec-head">
+      <h2>十个路标详解：一章一个，逐章讲什么</h2>
+      <p>每一章的骨架都相同：先讲这个品质为什么重要、缺了它生活会变成什么样，再讲怎么练，最后一小节 DIG Deep 给一个当天就能做的小动作。点开任意一章看详解。带「先读」标记的三章，是对「觉得自己不配」最对口的。</p>
+    </div>
+    <div class="filters" role="group" aria-label="筛选路标">
+      <button type="button" data-filter="all" aria-pressed="true">全部 10 个</button>
+      <button type="button" data-filter="priority" aria-pressed="false">先读这 3 个（治配得感）</button>
+    </div>
+    <div class="gp-list" id="gpList"><!-- JS 渲染 --></div>
+  </section>
+
+  <!-- ================= PAIRS TABLE ================= -->
+  <section id="pairs">
+    <div class="sec-head">
+      <h2>对照表：每个路标都是一进一出</h2>
+      <p>布朗的设计很讲究：全心投入不是往生活里「加」十样东西，而是每培养一样，就同时松开一样拖住你的东西。加法让人累，减法才走得动。</p>
+    </div>
+    <table class="pair-table">
+      <thead><tr><th>路标</th><th>培养（往里收）</th><th>放下（往外松）</th></tr></thead>
+      <tbody id="pairBody"><!-- JS 渲染 --></tbody>
+    </table>
+  </section>
+
+  <!-- ================= GLOSSARY ================= -->
+  <section id="glossary">
+    <div class="sec-head">
+      <h2>核心概念词典：读之前先对齐这 6 个词</h2>
+      <p>布朗是做研究的学者，她用的词都有精确定义，和日常口语里的意思不完全一样。对齐这几个词，整本书就通了。</p>
+    </div>
+    <div class="gloss">
+      <div class="g-item">
+        <h3>全心投入 <span>Wholehearted Living</span></h3>
+        <p>从「我有价值」的位置出发去生活：早上醒来想的是「我已经够了」，晚上睡前想的是「我尽力了，这就够了」。<strong>它不是成就，是一种练习的姿势。</strong></p>
+      </div>
+      <div class="g-item">
+        <h3>配得感 <span>Worthiness</span></h3>
+        <p>相信自己<strong>现在、就这样</strong>就配得上爱和归属，不需要附加条件。布朗反复强调：配得感没有先决条件清单——不是瘦下来、升职了、被认可了才配。</p>
+      </div>
+      <div class="g-item">
+        <h3>羞耻感 vs 内疚 <span>Shame vs Guilt</span></h3>
+        <p>内疚＝「我做了一件坏事」，指向行为，能推动改变；羞耻感＝「我是个坏人」，指向自我，只带来躲藏和自我攻击。<strong>全书要拆的主要是后者。</strong></p>
+      </div>
+      <div class="g-item">
+        <h3>脆弱 <span>Vulnerability</span></h3>
+        <p>不确定、有风险、情感上袒露自己的状态。布朗说它是<strong>勇气最准确的计量单位</strong>：没有脆弱，就没有爱、信任、创造和真正的联结。</p>
+      </div>
+      <div class="g-item">
+        <h3>归属 vs 融入 <span>Belonging vs Fitting In</span></h3>
+        <p>融入是改自己去换接纳；归属是做自己而被接纳。<strong>融入恰恰是归属最大的障碍</strong>——你越忙着扮演，就越没机会被人看见真正的你。</p>
+      </div>
+      <div class="g-item">
+        <h3>稀缺感 <span>Scarcity</span></h3>
+        <p>「永远不够」的默认心态：睡不够、钱不够、时间不够、我不够好。它是感恩和喜乐的头号杀手——总觉得不够的人，好东西到手也只会怕失去，尝不到甜。</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- ================= FOR YOU ================= -->
+  <section id="foryou">
+    <div class="sec-head">
+      <h2>对到你身上：你说的那三件事，书里分别在哪一章</h2>
+      <p>你说过：配得感很低、别人对你好你接不住、一拥有就恐慌。这三件在这本书里都有正面的拆解，不是泛泛安慰，是能对上号的。</p>
+    </div>
+    <div class="foryou">
+      <div class="fy-row">
+        <div class="fy-q">「我总觉得自己不配」<small>配得感低</small></div>
+        <div>
+          <p class="fy-tag book">书里怎么说</p>
+          <p>第 2 章说得很直接：配得感<strong>没有先决条件</strong>。觉得自己不配的人，脑子里都有一张清单——等我怎样怎样了，我才配。那张清单是羞耻感写的，不是事实。全书十个路标，本质都是在撕这张清单。</p>
+        </div>
+        <div>
+          <p class="fy-tag">先翻哪章</p>
+          <p><strong>路标 2（自我仁慈）</strong>：先停止用完美主义审判自己；再看<strong>路标 4（感恩与喜乐）</strong>：把「我不够」的默认台词，换成每天具体数一数「我已经有的」。</p>
+        </div>
+      </div>
+      <div class="fy-row">
+        <div class="fy-q">「别人对我好，我接不住」<small>好意一来就想推、想还</small></div>
+        <div>
+          <p class="fy-tag book">书里怎么说</p>
+          <p>第 1 章讲联结时说：联结是<strong>双向</strong>的能量流动，只给不收，联结就断了。接不住好意，表面是客气，底下是那句「我不值得你对我这么好」。而且布朗有个很扎心的发现：<strong>不会收的人，往往给的时候也带着账本。</strong></p>
+        </div>
+        <div>
+          <p class="fy-tag">先翻哪章</p>
+          <p><strong>路标 1（真实）</strong>：练把「不用不用」换成如实说出感受；<strong>路标 4</strong>：喜乐的前提是敢承认「这一刻是好的」，收下好意就是最小号的喜乐练习。</p>
+        </div>
+      </div>
+      <div class="fy-row">
+        <div class="fy-q">「一拥有就恐慌，快成功就想搞砸」<small>拥有即恐慌</small></div>
+        <div>
+          <p class="fy-tag book">书里怎么说</p>
+          <p>路标 4 里有个关键概念叫<strong>「预支灾难」</strong>：好事发生时不敢高兴，先在心里排练失去它的样子，觉得这样真失去时就不会太疼。布朗说这恰恰是最疼的活法——你提前疼了，甜却一点没尝到。路标 3 则讲：难受时用麻木、硬撑、搞砸来逃开感受，只会把无力感越滚越大。</p>
+        </div>
+        <div>
+          <p class="fy-tag">先翻哪章</p>
+          <p><strong>路标 4（感恩与喜乐）</strong>正面对治预支灾难；<strong>路标 3（复原力）</strong>教你难受时不靠麻木、靠希望和行动一点点站回来。</p>
+        </div>
+      </div>
+    </div>
+
+    <div class="signoff">
+      <h3>你已经练过的那一步，正好是这本书的入口</h3>
+      <ol>
+        <li><strong>停</strong>——好意、好事来的时候，先停一下，不急着推开、不急着还人情。</li>
+        <li><strong>收</strong>——心里默念那句核心句：我先收下，不用证明我配。</li>
+        <li><strong>不还</strong>——不马上用「搞砸一点、退回去一点」把账平掉，让好的东西在你手里多停一会儿。</li>
+      </ol>
+      <p>布朗在路标 4 里给的练习几乎一模一样：喜乐来临时，不要排练灾难，只说一句「这一刻，我感恩」。你不是从零开始，你是已经上路了，这本书是给你配了张地图。</p>
+    </div>
+  </section>
+
+  <!-- ================= PATH ================= -->
+  <section id="path">
+    <div class="sec-head">
+      <h2>推荐读法：不用从头硬啃，按这个顺序走</h2>
+      <p>全书不厚（中文版约 200 页），但十个路标平铺着读容易读散。按下面的顺序，先治最痛的那一处，再补全图。</p>
+    </div>
+    <div class="path">
+      <div class="p-card">
+        <p class="step">第一程 · 先止血</p>
+        <h3>配得感主线（4 章）</h3>
+        <p>按这个顺序读，是全书对你最对口的一条线：</p>
+        <ul>
+          <li>准备二（爱、归属与「我够了」）</li>
+          <li>路标 2 · 自我仁慈，放下完美主义</li>
+          <li>路标 4 · 感恩与喜乐，放下稀缺感</li>
+          <li>路标 1 · 真实，放下在意别人眼光</li>
+        </ul>
+      </div>
+      <div class="p-card">
+        <p class="step">第二程 · 补地基</p>
+        <h3>回头读完准备部分</h3>
+        <p>再读准备一（勇气、仁慈、联结）和准备三（羞耻、恐惧、脆弱）。这时候你已经知道路标长什么样，回头看地基，会真正理解每章在拆什么。</p>
+        <p>特别留意准备三里「羞耻韧性」的四步：认出它、知道它从哪来、说出来、练习自我仁慈。</p>
+      </div>
+      <div class="p-card">
+        <p class="step">第三程 · 慢慢走完</p>
+        <h3>其余六个路标，一周一个</h3>
+        <p>路标 3、5、6、7、8、9、10 不用赶。每读完一个，只做章末 DIG Deep 里最小的那个动作就行——布朗自己定的调子：<strong>这本书是练习册，不是考试</strong>，读慢、做小，比读完更重要。</p>
+      </div>
+    </div>
+  </section>
+
+  <footer>
+    <p><strong>版本说明（这里有个著名的同名坑，先说清）：</strong>本书英文原版 <em>The Gifts of Imperfection</em> 于 2010 年由 Hazelden 出版，副标题为「放下你以为自己应该成为的样子，拥抱真实的你」；2020 年出过十周年纪念版。繁体中文版书名即《不完美的礼物》。大陆简体版 2014 年由浙江人民出版社出版（ISBN 9787213060496），内容确为本书，但书名被译作《脆弱的力量》——这个译名一直被读者吐槽名不副实；而在台湾，《脆弱的力量》是布朗<strong>另一本书</strong> <em>Daring Greatly</em> 的译名（马可孛罗文化 2013 年出版）。所以你在大陆书店或二手平台搜《脆弱的力量》（浙江人民版、覃薇薇译），买到的就是这本《不完美的礼物》；搜到台版同名书，则是另一本，别买混。本页章节名以原版目录为准，中文表述参照中文版译法。</p>
+    <p>目录核对来源：<a href="https://www.betterworldbooks.com/product/detail/the-gifts-of-imperfection--let-go-of-who-you-think-youre-supposed-to-be-and-embrace-who-you-are-9781592858491" target="_blank" rel="noopener">Better World Books 原版目录页</a> · <a href="https://www.kingstone.com.tw/basic/2011770930570/?lid=book_normal_ce&actid=book_normal_ce" target="_blank" rel="noopener">金石堂《不完美的禮物》书页</a></p>
+    <p>本页是读书解读，帮助你先看清全书地图；真要练，还是得回到书里一章一章慢慢走。</p>
+  </footer>
+</div>
+
+<script>
+var GUIDEPOSTS = [
+  {
+    n:1, priority:true,
+    title:"拥抱真实：别管别人怎么想",
+    cultivate:"真实（Authenticity）", letgo:"别人怎么想",
+    en:"Cultivating Authenticity: Letting Go of What People Think",
+    what:"真实不是一种天生的性格，是每天的选择：让真实的自己被看见，而不是端着一个「应该的样子」。布朗说，真实的代价是可能被评判、被不喜欢；但不真实的代价更大——你赢得了所有人的好感，却始终觉得没有人真正认识你，归属感永远是空的。",
+    detail:"这一章还拆了「讨好」和「完美表现」的瘾：我们以为管别人怎么想是在维护关系，其实是在用别人的眼光当遥控器过日子。她给的方法很具体：先分清「谁的意见值得听」——只听那些同样敢下场、敢袒露脆弱的人的反馈，路人的评判不接。",
+    practice:"列一张「值得听的人」小名单（两三个人就够），名单之外的人怎么看你，练习不往心里去。"
+  },
+  {
+    n:2, priority:true,
+    title:"对自己仁慈：放下完美主义",
+    cultivate:"自我仁慈（Self-Compassion）", letgo:"完美主义",
+    en:"Cultivating Self-Compassion: Letting Go of Perfectionism",
+    what:"全书最重要的一章之一。布朗先把完美主义的真面目揭开：它不是上进心，而是一块二十吨重的盾牌——我们以为做到完美就不会被羞耻、被指责、被看不起，于是扛着盾牌过日子，结果盾牌本身就把人压垮了。完美主义问的是「别人会怎么看」，健康的上进问的是「我怎样能更好」。",
+    detail:"解药是自我仁慈，借用 Kristin Neff 的三件套：像对好朋友那样跟自己说话（自我友善）、记住「犯错是人类的共同经验，不是我一个人烂」（共同人性）、不夸大不压抑地看清当下的感受（正念）。布朗说得很白：你怎么对自己，决定了你有没有力气对别人好——爱自己，才能爱别人。",
+    practice:"下次搞砸一件事时，把你想骂自己的话，换成你会对好朋友说的话，原样说给自己听。"
+  },
+  {
+    n:3, priority:false,
+    title:"呼唤复原力：停止麻木，放下无力感",
+    cultivate:"复原力（A Resilient Spirit）", letgo:"麻木与无力感",
+    en:"Cultivating a Resilient Spirit: Letting Go of Numbing and Powerlessness",
+    what:"这一章讲人怎么从打击里站回来。布朗发现，有复原力的人有三个共同点：他们相信自己能影响结果（不躺平认命）、他们对生活有一份超越吃喝的意义感（她称之为灵性，不是宗教，是「我们彼此相连、被一种更大的力量托着」的感觉）、他们难受时不靠麻木自己来逃。",
+    detail:"「麻木」是这一章的关键词：刷手机、暴食、工作狂、喝酒、购物，都是同一件事的不同马甲——把感受调小声。问题是麻木没法只选一种感受关掉：你把痛苦调小，喜乐也一起被调小了。真正的复原，是允许感受在场，同时动手做一点能改变处境的小事。",
+    practice:"难受时先别掏手机，给那个感受起个名字（「这是羞耻」「这是害怕」），光是命名，强度就会降一截。"
+  },
+  {
+    n:4, priority:true,
+    title:"培养感恩和喜乐：放下匮乏，不怕黑暗",
+    cultivate:"感恩与喜乐（Gratitude and Joy）", letgo:"稀缺感与对黑暗的恐惧",
+    en:"Cultivating Gratitude and Joy: Letting Go of Scarcity and Fear of the Dark",
+    what:"对「接不住好、拥有即恐慌」最对口的一章。布朗发现一个反直觉的规律：她访谈过的每一个经历过巨大喜乐的人，都练过感恩——不是「有感恩的态度」，而是有具体的感恩动作（写下来、说出来、留个仪式）。感恩不是等生活好了才做的事，是让喜乐敢留下来的前提。",
+    detail:"这一章还点破了喜乐为什么那么吓人：喜乐是最脆弱的情感，好事临头时，人会立刻开始「预支灾难」——排练失去、排练出事，以为这样真出事时就不那么疼。布朗说，预支灾难不会保护你，它只会偷走你当下唯一真实拥有的那份好。对治方法不是强迫自己乐观，而是练感恩：把注意力一次次拉回「此刻，我已经有的」。",
+    practice:"每天睡前具体说出一件今天的好事，小到一杯好喝的咖啡也行——要点是具体，不是宏大。"
+  },
+  {
+    n:5, priority:false,
+    title:"相信直觉和信心：不确定也没关系",
+    cultivate:"直觉与信心（Intuition and Trusting Faith）", letgo:"对确定性的执着",
+    en:"Cultivating Intuition and Trusting Faith: Letting Go of the Need for Certainty",
+    what:"直觉不是玄学，布朗给它下了个很实在的定义：直觉是我们的大脑把经验、知识和感受快速拼图的能力，它说话的方式往往是「心里有个声音觉得不对劲」。问题是，我们常常因为怕不确定，把直觉的声音压下去，非要等到百分百有把握才敢动——而人生大事从来没有百分百。",
+    detail:"「信心」在这里也不是宗教词，指的是在看不见全貌时，依然相信「事情会有出路、我能应付」的内在安定。这一章教人区分两种声音：直觉的提醒是安静而具体的，焦虑的催促是吵闹而灾难化的。学会听前者、安抚后者，决策就不再被「必须确定」卡死。",
+    practice:"遇到纠结的事，先写下你的第一直觉是什么，再写下你的恐惧在说什么——把两个声音分开看。"
+  },
+  {
+    n:6, priority:false,
+    title:"开启创造力：放下比较",
+    cultivate:"创造力（Creativity）", letgo:"比较",
+    en:"Cultivating Creativity: Letting Go of Comparison",
+    what:"布朗有句被引用很多次的话：「没有用过的创造力不会消失，它会变成痛苦。」她访谈中发现，大量觉得生活没意思的人，都曾经爱画画、爱写字、爱做手工，后来因为「比不过别人」「这又不能当饭吃」把创造力封存了。这一章说，创造不是艺术家的专利，是人表达自己的基本需要。",
+    detail:"比较是创造力的头号杀手：它把「我想做这个」瞬间变成「我做得不如他」。布朗的解法不是「不要看别人」，而是把注意力收回到自己的跑道上——比较偷走的是快乐和时间，而这两样恰恰是创造的原料。她还提醒：你做的东西不需要被评价为「好」，才值得做。",
+    practice:"找一件你小时候喜欢、后来因为「做得不好」放弃的小事，这周做一次，不给任何人看。"
+  },
+  {
+    n:7, priority:false,
+    title:"回到玩乐与休息：摘掉疲惫的面具",
+    cultivate:"玩乐与休息（Play and Rest）", letgo:"把疲惫当身份象征、把产出当自我价值",
+    en:"Cultivating Play and Rest: Letting Go of Exhaustion as a Status Symbol and Productivity as Self-Worth",
+    what:"这一章挑战一个深入骨髓的信念：忙＝重要，累＝有价值。布朗引用玩乐研究者 Stuart Brown 的发现：玩乐（没有目的、不计产出、做的时候忘记时间）是人的生理需要，长期不玩的人，情绪和创造力都会出问题。而休息不是奖励，不是「干完活才能歇」，是活着的必需品。",
+    detail:"最扎心的一句是：如果你的自我价值建立在产出上，那么休息在你眼里就等于「我没用」，你会一边累垮一边停不下来。布朗给的练习是列一张「够了清单」：什么状态下，你就允许自己今天到此为止——把「够」的标准提前写明，而不是等身体垮掉来替你喊停。",
+    practice:"写下你的「今天够了」标准（比如：忙完这三件事就收工），贴在看得见的地方，到点就停。"
+  },
+  {
+    n:8, priority:false,
+    title:"冷静与平静：让焦虑远离生活",
+    cultivate:"冷静与平静（Calm and Stillness）", letgo:"把焦虑当成一种生活方式",
+    en:"Cultivating Calm and Stillness: Letting Go of Anxiety as a Lifestyle",
+    what:"焦虑会传染，也会被当成身份：很多人把「我就是容易紧张、事情就是这么多」当成生活的默认背景音。布朗区分了两个词：冷静（calm）是在情绪风暴里保持清醒、不急着反应的能力；平静（stillness）是主动留出什么都不做的空白，让内心有地方沉淀。",
+    detail:"练冷静的具体方法很朴素：先呼吸，再行动——情绪上头时，先做几个深呼吸，给大脑留出几秒钟，反应就会从「应激」变回「选择」。她也提醒，冷静不是压抑情绪，而是先让身体降温，再处理问题。平静则需要刻意安排：散步、发呆、独处，都是在给内心清缓存。",
+    practice:"下次被一句话点着时，先慢慢呼吸四次再开口——只改这一个动作，坚持一周看看。"
+  },
+  {
+    n:9, priority:false,
+    title:"做有意义的事：抛掉自我怀疑和「应该」",
+    cultivate:"有意义的工作（Meaningful Work）", letgo:"自我怀疑和「应该」",
+    en:"Cultivating Meaningful Work: Letting Go of Self-Doubt and \u201CSupposed To\u201D",
+    what:"这一章讲工作和天赋。每个人都有自己的天赋和擅长的事，问题是两个：一是自我怀疑，总觉得「我这点本事算什么」；二是满脑子「应该」——应该做体面的、应该做赚钱的、应该做别人看得起的。布朗说，「应该」是最耗能的词，它让你一边做着手里的事，一边觉得自己在错的位置上。",
+    detail:"她给有意义的工作下了一个很宽的定义：不一定是职业，照顾家人、做志愿者、把一件小事做到极致，都算。关键标准是：这件事让你用上自己的天赋，并且做的时候你觉得「这就是我该做的」。她还建议列一张「灵感清单」和一张「耗能清单」，慢慢往前者倾斜生活的配比。",
+    practice:"列两列：做什么事时你最有劲、做什么事时你最耗电——先把有劲的那件，每周多留半小时。"
+  },
+  {
+    n:10, priority:false,
+    title:"欢笑、歌唱、舞蹈：形象放一边，偶尔失控一下",
+    cultivate:"欢笑、歌唱与舞蹈（Laughter, Song, and Dance）", letgo:"端着、耍酷、永远要掌控",
+    en:"Cultivating Laughter, Song, and Dance: Letting Go of Being Cool and \u201CAlways in Control\u201D",
+    what:"最后一个路标最轻、也最难：放下形象。大笑、唱歌、跳舞有个共同点——它们都要求你暂时失控，而怕被看笑话的人，最怕的就是失控。布朗说，这些事是人在表达喜悦和联结时最古老的方式，一个不许自己出糗的人，也很难真正放松地快乐。",
+    detail:"这一章其实是全书的收尾检验：前面九个路标练的东西——真实、不完美、不端着——最后都要落到「你敢不敢在别人面前傻乐一次」上。她讲了自己从「永远保持得体」到敢在家人面前跳舞的转变，结论很温暖：真正酷的人不是永远掌控的人，是敢于真情实感的人。",
+    practice:"这周找一个绝对安全的场合（比如独自在家、或最亲的人面前），放首歌，跟着动一动，不评判自己。"
+  }
+];
+
+var list = document.getElementById('gpList');
+var pairBody = document.getElementById('pairBody');
+
+GUIDEPOSTS.forEach(function(g, i){
+  var art = document.createElement('article');
+  art.className = 'gp' + (g.priority ? ' priority' : '');
+  art.setAttribute('data-priority', g.priority ? '1' : '0');
+  var star = g.priority ? '<span class="gp-star">先读</span>' : '';
+  art.innerHTML =
+    '<button type="button" class="gp-head" aria-expanded="' + (i===1 ? 'true' : 'false') + '">' +
+      '<span class="gp-num">' + g.n + '</span>' +
+      '<span class="gp-titles"><h3>路标 ' + g.n + ' · ' + g.title + '</h3>' +
+      '<p class="pair">培养 <em>' + g.cultivate + '</em>　·　放下 <b>' + g.letgo + '</b></p></span>' +
+      star + '<span class="gp-chev" aria-hidden="true">▾</span>' +
+    '</button>' +
+    '<div class="gp-body">' +
+      '<p class="lbl">英文原题</p><p>' + g.en + '</p>' +
+      '<p class="lbl">这一章讲什么</p><p>' + g.what + '</p>' +
+      '<p class="lbl">再往深一层</p><p>' + g.detail + '</p>' +
+      '<p class="lbl">一个小练习（DIG Deep 的简化版）</p><p class="practice"><b>今天就能做：</b>' + g.practice + '</p>' +
+    '</div>';
+  if(i===1){ art.classList.add('open'); }
+  list.appendChild(art);
+
+  var tr = document.createElement('tr');
+  tr.innerHTML = '<td>路标 ' + g.n + '</td><td>' + g.cultivate + '</td><td class="let">' + g.letgo + '</td>';
+  pairBody.appendChild(tr);
+});
+
+list.addEventListener('click', function(e){
+  var head = e.target.closest('.gp-head');
+  if(!head) return;
+  var art = head.closest('.gp');
+  var open = art.classList.toggle('open');
+  head.setAttribute('aria-expanded', open ? 'true' : 'false');
+});
+
+document.querySelectorAll('.filters button').forEach(function(btn){
+  btn.addEventListener('click', function(){
+    document.querySelectorAll('.filters button').forEach(function(b){ b.setAttribute('aria-pressed','false'); });
+    btn.setAttribute('aria-pressed','true');
+    var f = btn.getAttribute('data-filter');
+    document.querySelectorAll('.gp').forEach(function(art){
+      var show = (f === 'all') || (art.getAttribute('data-priority') === '1');
+      art.classList.toggle('hidden', !show);
+      if(show && f === 'priority'){ art.classList.add('open'); art.querySelector('.gp-head').setAttribute('aria-expanded','true'); }
+    });
+  });
+});
+
+document.getElementById('copyMantra').addEventListener('click', function(){
+  var text = '我不需要先证明自己，我本来就够了。';
+  var tip = document.getElementById('copyTip');
+  function done(){ tip.textContent = '已复制，去贴到锁屏或备忘录吧。'; }
+  if(navigator.clipboard && navigator.clipboard.writeText){
+    navigator.clipboard.writeText(text).then(done, function(){ tip.textContent = text; });
+  } else {
+    var ta = document.createElement('textarea');
+    ta.value = text; document.body.appendChild(ta); ta.select();
+    try { document.execCommand('copy'); done(); } catch(e){ tip.textContent = text; }
+    document.body.removeChild(ta);
+  }
+});
+</script>
+</body>
+</html>

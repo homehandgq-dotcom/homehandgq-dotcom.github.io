@@ -1,0 +1,496 @@
+<!doctype html>
+<html lang="zh-CN">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
+    <meta name="color-scheme" content="light dark" />
+    <link rel="icon" href="data:," />
+    <title>天才儿童的悲剧 解读</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+SC:wght@400;500;700&family=Noto+Serif+SC:wght@600;900&display=swap" rel="stylesheet" />
+    <style>
+      :root {
+        color-scheme: light dark;
+        --bg: #f6f3ec;
+        --surface: #fffdf8;
+        --surface-2: #efe9dc;
+        --ink: #262019;
+        --ink-soft: #5d5344;
+        --line: #ddd3bf;
+        --accent: #a44a24;
+        --accent-ink: #8f3d1c;
+        --accent-soft: #f3e2d3;
+        --teal: #2e5e4e;
+        --teal-soft: #dde8e0;
+        --gold: #8a6d1f;
+        --gold-soft: #f0e7c8;
+        --shadow: 0 1px 3px rgba(60, 45, 20, .10);
+      }
+      @media (prefers-color-scheme: dark) {
+        :root {
+          --bg: #17140f;
+          --surface: #211d16;
+          --surface-2: #2a251c;
+          --ink: #ede6d8;
+          --ink-soft: #b3a892;
+          --line: #403829;
+          --accent: #e08a54;
+          --accent-ink: #eda26e;
+          --accent-soft: #3d2a1c;
+          --teal: #7fbfa4;
+          --teal-soft: #22362c;
+          --gold: #d3b558;
+          --gold-soft: #38301a;
+          --shadow: 0 1px 3px rgba(0, 0, 0, .45);
+        }
+      }
+      * { box-sizing: border-box; }
+      html { scroll-behavior: smooth; }
+      @media (prefers-reduced-motion: reduce) {
+        html { scroll-behavior: auto; }
+        * { transition: none !important; }
+      }
+      body {
+        margin: 0;
+        background: var(--bg);
+        color: var(--ink);
+        font-family: "Noto Sans SC", "PingFang SC", "Microsoft YaHei", sans-serif;
+        font-size: 17px;
+        line-height: 1.75;
+        -webkit-text-size-adjust: 100%;
+      }
+      .wrap { max-width: 720px; margin: 0 auto; padding: 0 18px 64px; }
+      h1, h2, h3 { font-family: "Noto Serif SC", "Songti SC", serif; line-height: 1.35; }
+      p { margin: 0 0 14px; }
+      strong { font-weight: 700; }
+
+      /* ---------- hero ---------- */
+      .hero { padding: 34px 0 8px; }
+      .hero .book-meta { color: var(--ink-soft); font-size: 15px; margin-bottom: 10px; }
+      .hero h1 { font-size: 34px; font-weight: 900; margin: 0 0 6px; letter-spacing: .01em; }
+      .hero .orig { color: var(--ink-soft); font-size: 15px; font-style: italic; margin-bottom: 18px; }
+      .hero .one-line {
+        font-family: "Noto Serif SC", serif;
+        font-size: 21px; font-weight: 600; line-height: 1.6;
+        border-left: 4px solid var(--accent);
+        padding: 4px 0 4px 16px; margin: 0 0 18px;
+      }
+      .hero .lead { color: var(--ink-soft); font-size: 16.5px; }
+
+      /* ---------- nav ---------- */
+      nav.toc {
+        position: sticky; top: 0; z-index: 20;
+        background: var(--bg);
+        padding: 10px 0 8px;
+        border-bottom: 1px solid var(--line);
+        margin-bottom: 8px;
+      }
+      nav.toc .chips { display: flex; gap: 8px; overflow-x: auto; padding-bottom: 4px; scrollbar-width: none; }
+      nav.toc .chips::-webkit-scrollbar { display: none; }
+      nav.toc a {
+        flex: 0 0 auto;
+        display: inline-flex; align-items: center;
+        min-height: 40px; padding: 6px 14px;
+        border: 1px solid var(--line); border-radius: 999px;
+        background: var(--surface); color: var(--ink);
+        font-size: 15px; text-decoration: none;
+      }
+      nav.toc a:active { background: var(--surface-2); }
+
+      /* ---------- sections ---------- */
+      section { padding-top: 30px; scroll-margin-top: 76px; }
+      section > h2 { font-size: 24px; font-weight: 900; margin: 0 0 6px; }
+      section > .sub { color: var(--ink-soft); font-size: 15.5px; margin-bottom: 16px; }
+      .card {
+        background: var(--surface); border: 1px solid var(--line);
+        border-radius: 14px; padding: 18px; margin-bottom: 14px;
+        box-shadow: var(--shadow);
+      }
+      .card h3 { font-size: 19px; margin: 0 0 8px; }
+      .card p:last-child { margin-bottom: 0; }
+
+      /* ---------- structure map ---------- */
+      .map-part {
+        border: 1px solid var(--line); border-radius: 14px;
+        background: var(--surface); padding: 16px 18px; margin-bottom: 12px;
+        box-shadow: var(--shadow);
+      }
+      .map-part .no {
+        display: inline-block; font-size: 13px; font-weight: 700;
+        color: var(--accent-ink); background: var(--accent-soft);
+        border-radius: 6px; padding: 2px 9px; margin-bottom: 6px;
+      }
+      .map-part h3 { font-size: 20px; margin: 0 0 4px; }
+      .map-part .does { color: var(--ink-soft); font-size: 15.5px; margin: 0 0 10px; }
+      .map-part ul { margin: 0; padding-left: 20px; color: var(--ink); font-size: 15.5px; }
+      .map-part li { margin-bottom: 3px; }
+      .map-arrow { text-align: center; color: var(--accent); font-size: 20px; line-height: 1; margin: 2px 0 10px; }
+
+      /* ---------- accordion ---------- */
+      .acc { border: 1px solid var(--line); border-radius: 14px; background: var(--surface); margin-bottom: 12px; overflow: hidden; box-shadow: var(--shadow); }
+      .acc > button {
+        width: 100%; min-height: 52px;
+        display: flex; align-items: center; gap: 10px;
+        padding: 14px 18px; background: none; border: 0; cursor: pointer;
+        font: inherit; text-align: left; color: var(--ink);
+      }
+      .acc > button .t { flex: 1; font-family: "Noto Serif SC", serif; font-weight: 600; font-size: 18px; }
+      .acc > button .chev { color: var(--accent); font-size: 15px; transition: transform .2s ease; }
+      .acc.open > button .chev { transform: rotate(180deg); }
+      .acc .body { display: none; padding: 2px 18px 18px; border-top: 1px dashed var(--line); }
+      .acc.open .body { display: block; }
+      .acc .body h4 { font-size: 16.5px; margin: 16px 0 4px; font-family: "Noto Serif SC", serif; }
+      .acc .body h4:first-child { margin-top: 12px; }
+      .acc .body p { font-size: 16px; color: var(--ink); }
+      .acc .body .key {
+        background: var(--surface-2); border-radius: 10px;
+        padding: 10px 14px; font-size: 15.5px; margin-top: 12px;
+      }
+      .acc .body .key b { color: var(--accent-ink); }
+
+      /* ---------- concepts ---------- */
+      .concept { border-radius: 14px; padding: 18px; margin-bottom: 14px; border: 1px solid var(--line); }
+      .concept.rust { background: var(--accent-soft); }
+      .concept.sage { background: var(--teal-soft); }
+      .concept.gold { background: var(--gold-soft); }
+      .concept h3 { font-size: 20px; margin: 0 0 8px; }
+      .concept p:last-child { margin-bottom: 0; }
+      .vs { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; margin: 12px 0; }
+      .vs div { background: var(--surface); border: 1px solid var(--line); border-radius: 10px; padding: 12px 14px; }
+      .vs h4 { margin: 0 0 6px; font-size: 16px; font-family: "Noto Serif SC", serif; }
+      .vs p { font-size: 15px; margin: 0; color: var(--ink-soft); }
+      @media (max-width: 520px) { .vs { grid-template-columns: 1fr; } }
+
+      /* cycle diagram */
+      .cycle { margin: 14px 0 4px; }
+      .cycle .step {
+        background: var(--surface); border: 1px solid var(--line);
+        border-radius: 10px; padding: 12px 16px; font-size: 16px;
+      }
+      .cycle .step b { color: var(--accent-ink); }
+      .cycle .down { text-align: center; color: var(--accent); font-size: 18px; line-height: 1.5; }
+      .cycle .exit {
+        background: var(--teal-soft); border: 1px solid var(--line);
+        border-radius: 10px; padding: 12px 16px; font-size: 16px; margin-top: 10px;
+      }
+      .cycle .exit b { color: var(--teal); }
+
+      blockquote {
+        margin: 14px 0; padding: 12px 16px;
+        border-left: 4px solid var(--gold);
+        background: var(--surface); border-radius: 0 10px 10px 0;
+        font-family: "Noto Serif SC", serif; font-size: 16.5px;
+      }
+      blockquote .who { display: block; margin-top: 6px; font-family: "Noto Sans SC", sans-serif; font-size: 14px; color: var(--ink-soft); }
+
+      /* ---------- mirror table (对到你身上) ---------- */
+      .mirror-item { border: 1px solid var(--line); border-radius: 14px; background: var(--surface); padding: 18px; margin-bottom: 12px; box-shadow: var(--shadow); }
+      .mirror-item .you { font-family: "Noto Serif SC", serif; font-weight: 600; font-size: 18.5px; margin-bottom: 6px; }
+      .mirror-item .you::before { content: "你说过的："; font-family: "Noto Sans SC", sans-serif; font-size: 14px; color: var(--accent-ink); font-weight: 700; display: block; margin-bottom: 2px; }
+      .mirror-item .book b { color: var(--teal); }
+      .mirror-item p { font-size: 16px; }
+      .mirror-item p:last-child { margin-bottom: 0; }
+
+      /* ---------- steps / order ---------- */
+      ol.steps { list-style: none; margin: 0; padding: 0; counter-reset: st; }
+      ol.steps li {
+        counter-increment: st; position: relative;
+        background: var(--surface); border: 1px solid var(--line); border-radius: 14px;
+        padding: 16px 18px 16px 58px; margin-bottom: 12px; box-shadow: var(--shadow);
+      }
+      ol.steps li::before {
+        content: counter(st);
+        position: absolute; left: 16px; top: 16px;
+        width: 30px; height: 30px; border-radius: 50%;
+        background: var(--accent); color: #fff;
+        display: flex; align-items: center; justify-content: center;
+        font-weight: 700; font-size: 16px;
+      }
+      @media (prefers-color-scheme: dark) { ol.steps li::before { color: #1c150e; } }
+      ol.steps h3 { font-size: 18px; margin: 0 0 4px; }
+      ol.steps p { font-size: 15.5px; color: var(--ink-soft); margin: 0; }
+
+      .practice {
+        background: var(--teal-soft); border: 1px solid var(--line);
+        border-radius: 14px; padding: 18px; margin-top: 6px;
+      }
+      .practice h3 { font-size: 19px; margin: 0 0 8px; }
+      .practice p:last-child { margin-bottom: 0; }
+
+      .warn {
+        background: var(--gold-soft); border: 1px solid var(--line);
+        border-radius: 14px; padding: 18px;
+      }
+      .warn h3 { font-size: 19px; margin: 0 0 8px; }
+      .warn p:last-child { margin-bottom: 0; }
+
+      footer { margin-top: 40px; padding-top: 18px; border-top: 1px solid var(--line); color: var(--ink-soft); font-size: 14px; }
+      footer p { margin-bottom: 8px; }
+    </style>
+  </head>
+  <body>
+    <div class="wrap">
+
+      <header class="hero">
+        <p class="book-meta">爱丽丝·米勒（Alice Miller）· 1979 年 · 心理分析经典</p>
+        <h1>天才儿童的悲剧</h1>
+        <p class="orig">Das Drama des begabten Kindes（英译 The Drama of the Gifted Child）</p>
+        <p class="one-line">有些孩子什么都好——聪明、懂事、能干——只是从来没有被真正看见过。</p>
+        <p class="lead">这本书很薄，英文版正文只有一百多页，却写透了一件事：一个孩子为了留住父母的爱，可以把真实的自己藏一辈子。米勒写的不是育儿手册，是写给已经长大的那个孩子的。</p>
+      </header>
+
+      <nav class="toc" aria-label="本页目录">
+        <div class="chips">
+          <a href="#title-first">先说清「天才」</a>
+          <a href="#map">全书结构图</a>
+          <a href="#parts">三大部分逐讲</a>
+          <a href="#concepts">三个核心概念</a>
+          <a href="#mirror">对到你身上</a>
+          <a href="#order">最小阅读顺序</a>
+          <a href="#practice">一个小练习</a>
+          <a href="#buy">买书别买错</a>
+        </div>
+      </nav>
+
+      <section id="title-first">
+        <h2>先说清：书名里的「天才」不是夸你聪明</h2>
+        <p class="sub">这是全书最容易误会的地方，先拆掉，后面才读得对。</p>
+        <div class="card">
+          <p>米勒说的「天才儿童」，指的是<strong>天生敏感、特别会察觉大人需要的孩子</strong>。这种孩子的天赋不是智商，是一套雷达：妈妈今天心情不好，他立刻知道；爸爸想要什么，他不用人说就能递上去。</p>
+          <p>这套雷达是保命用的。小孩子没有爱就活不下去，所以他很早就学会一件事：<strong>把父母需要的那个样子演好，把自己真正的感受和需要藏起来。</strong>藏起来的部分不会消失，只是被关了起来——米勒的原话是，真实的自我被「单独监禁在虚假自我的牢房里」。</p>
+          <p>所以这本书的「悲剧」是：<strong>他得到了很多夸奖，却很少被真正看见。</strong>被夸的是表现，被藏起来的那个他，一次也没有被爱过——因为没人见过他。</p>
+        </div>
+      </section>
+
+      <section id="map">
+        <h2>全书结构图</h2>
+        <p class="sub">全书只有三大部分，一条线走到底：先讲悲剧怎么发生，再讲它在成人身上变成什么样，最后讲它怎么一代代传下去。</p>
+
+        <div class="map-part">
+          <span class="no">第一部分</span>
+          <h3>超敏感儿童的悲哀</h3>
+          <p class="does">讲源头：孩子怎样弄丢自己的感受世界，真我怎样被关起来。</p>
+          <ul>
+            <li>贫穷的富有孩子</li>
+            <li>丢失的感情世界</li>
+            <li>寻找真实的自我</li>
+            <li>治疗师的故事</li>
+            <li>金脑子的故事</li>
+          </ul>
+        </div>
+        <div class="map-arrow">↓</div>
+        <div class="map-part">
+          <span class="no">第二部分</span>
+          <h3>抑郁和妄自尊大：否认的两种形式</h3>
+          <p class="does">讲后果：丢了真我的大人，在「我必须一直优秀」和「我什么都不是」之间来回翻面。</p>
+          <ul>
+            <li>孩子需求的变迁（健康的镜子 / 被投射的镜子）</li>
+            <li>爱的幻觉（自大、抑郁作为自大的反面）</li>
+            <li>治疗中的抑郁阶段</li>
+            <li>内心的牢狱</li>
+            <li>抑郁的社会意义</li>
+            <li>那喀索斯传说</li>
+          </ul>
+        </div>
+        <div class="map-arrow">↓</div>
+        <div class="map-part">
+          <span class="no">第三部分</span>
+          <h3>轻蔑的恶性循环</h3>
+          <p class="does">讲传递：小时候被轻蔑的人，长大后怎样轻蔑弱者和下一代，又怎样从这个圈里走出来。</p>
+          <ul>
+            <li>对孩子的羞辱和对弱者的轻蔑会导致什么</li>
+            <li>治疗中出现的轻蔑</li>
+            <li>黑塞童年时被视为「邪恶」的「不良行为」</li>
+            <li>母亲在生命最初几年中扮演的社会代理人角色</li>
+            <li>轻蔑者本人的孤独</li>
+            <li>摆脱轻蔑，尊重生命</li>
+          </ul>
+        </div>
+      </section>
+
+      <section id="parts">
+        <h2>三大部分，逐讲</h2>
+        <p class="sub">点开每一部分，看里面每一节在讲什么。不用一次看完，看完一部分就可以停。</p>
+
+        <div class="acc">
+          <button type="button" aria-expanded="false">
+            <span class="t">第一部分 · 超敏感儿童的悲哀</span><span class="chev">▾</span>
+          </button>
+          <div class="body">
+            <h4>1. 贫穷的富有孩子</h4>
+            <p>米勒的来访者里有很多人世俗意义上很成功：有地位、被人羡慕、从小是「别人家的孩子」。可他们坐下来，说的都是同一句话——心里空，觉得自己活得不真实，好像一直在演。这些孩子「富有」的是表现和夸奖，「贫穷」的是：从来没有一个人，因为他就是他而爱他。</p>
+            <h4>2. 丢失的感情世界</h4>
+            <p>孩子慢慢发现，有些感受是「不许有」的：生气会让妈妈难过，嫉妒会被说小气，需要太多会被嫌烦。为了保住爱，他把这些感受一个个关掉。代价是，开关是总闸——坏感受关掉的同时，开心、兴奋、活生生的劲儿也一起变淡了。长大后那种「什么都有，就是没感觉」，就是从这儿来的。</p>
+            <h4>3. 寻找真实的自我</h4>
+            <p>好消息是真我没死，只是被关着。出路不是再学会一套新的本事，而是反过来：重新允许自己感受，尤其是允许自己<strong>难过</strong>——为小时候那个没被看见、没被无条件爱过的自己难过。米勒管这个叫哀悼。哀悼过的地方，感觉才会慢慢回来。</p>
+            <h4>4. 治疗师的故事</h4>
+            <p>为什么很多「天才儿童」长大后成了治疗师、老师、助人工作者？因为他们从小练出的察言观色，是一台精密的他人情绪雷达。这台雷达当年是保命工具，长大后变成了职业天赋。米勒写这一节也是在写她自己：助人者如果没处理过自己的童年，会不自觉地在来访者身上找当年那个没被满足的自己。</p>
+            <h4>5. 金脑子的故事</h4>
+            <p>一个来访者梦见自己的脑子变成了金子。米勒的解读是：这个孩子从小就把自己的头脑、聪明、能力，当成献给父母的礼物——「我有用，所以我值得被爱」。金子很贵重，但金子没有感觉。这一节是第一部分的收尾：当一个人只剩下「有用」可以拿出来换爱，他本人就一直在饿着。</p>
+            <div class="key"><b>这一部分的一句话：</b>悲剧不是没人爱你，是被爱的那个你，不是真的你。</div>
+          </div>
+        </div>
+
+        <div class="acc">
+          <button type="button" aria-expanded="false">
+            <span class="t">第二部分 · 抑郁和妄自尊大</span><span class="chev">▾</span>
+          </button>
+          <div class="body">
+            <h4>1. 孩子需求的变迁：镜子</h4>
+            <p>这一章开头引了温尼科特的画面：婴儿看着母亲的脸，在她的脸上找到自己。健康的情形是，母亲真的在看这个孩子，孩子在镜子里看到的是自己。如果母亲把自己的期待、恐惧和未完成的心愿投射上去，孩子在镜子里看到的就是母亲的困境——他会用一生的时间，去别的地方徒劳地找这面镜子。</p>
+            <h4>2. 爱的幻觉：被夸奖不等于被爱</h4>
+            <p>孩子真正需要的是「因为你就是你，所以我爱你」。但很多孩子收到的是另一套：表现好才有笑脸，能干才被需要。夸奖、赞美、被需要，会制造一种爱的幻觉——看着很满，其实喂的都是假我。真我在旁边，一口也没吃上。</p>
+            <h4>3. 自大和抑郁：一枚硬币的两面</h4>
+            <p>这是全书最有名的一个论断：<strong>自大是对抑郁的防御，抑郁是对自我丧失之痛的防御。</strong>自大的人必须一直优秀、一直被夸，因为只要停下来，底下那个「我小时候没有被无条件爱过」的痛就会浮上来。一旦夸奖断了、生病了、做不到了，硬币就翻面，变成抑郁：空、无意义、觉得自己什么都不是。两种状态看着相反，其实守的是同一个伤口。</p>
+            <h4>4. 治疗中的抑郁阶段</h4>
+            <p>在治疗里出现抑郁，不全是坏事。它可能是一个信号：旧的防御开始松动，被压住的真实感受要出来了。那些从小不许有的愤怒、悲伤、需要，会先以抑郁的样子敲门。这一章还讲了「直面父母」——不是去吵架算账，而是先在自己心里承认：当年确实缺了，缺了就是缺了。</p>
+            <h4>5. 内心的牢狱</h4>
+            <p>真我被关在牢里的人，生活像在执行任务：每一步都对，就是没有活气。这一节写那种被关住的状态本身——不是懒，不是矫情，是一个人在很小的时候亲手把自己锁上，还把钥匙交给了「表现」。</p>
+            <h4>6. 那喀索斯传说</h4>
+            <p>米勒重读了纳西索斯（水仙少年）的神话：他不是爱自己爱得要死，他是至死都在水面上找一面能真正映出他的镜子，却从来没有被真正映出过。所谓自恋，在她看来常常是反过来的——不是爱自己太多，是从没有被好好爱过，只能一遍遍去找那面镜子。</p>
+            <div class="key"><b>这一部分的一句话：</b>「我必须一直优秀」和「我什么都不是」，是同一个人说的两句话。</div>
+          </div>
+        </div>
+
+        <div class="acc">
+          <button type="button" aria-expanded="false">
+            <span class="t">第三部分 · 轻蔑的恶性循环</span><span class="chev">▾</span>
+          </button>
+          <div class="body">
+            <h4>1. 冰棍的故事：轻蔑的日常样子</h4>
+            <p>这一章从米勒散步时亲眼看到的一幕写起：一对年轻夫妻带着两岁左右的孩子，两个大人各吃一支冰棍。孩子也想要，妈妈温柔地说可以咬一口她的；孩子伸手去拿，冰棍被抽走，爸爸也一样逗他。孩子越哭，父母笑得越大声。最后爸爸把吃完的木棒递给孩子，孩子舔了舔，扔掉，哭得全身发抖，然后乖乖跟着走了。米勒说，轻蔑不一定是打骂——<strong>大人手里有权力，就可以把孩子的痛苦当娱乐，而孩子无处可逃，还得继续爱他们。</strong></p>
+            <h4>2. 轻蔑怎样往下传</h4>
+            <p>小时候被轻蔑的人，心里存着一大笔没法表达的愤怒和无助。长大后最省力的出口，是去轻蔑比自己更弱的人：自己的孩子、下属，或者自己心里那个「没用、丢人」的部分。轻蔑别人的一瞬间，当年那个无助的感觉就暂时躲开了——所以这个圈会自己转下去，还会传给下一代。她甚至说，成年人对孩子施加的权力，是许多歧视与轻蔑的根源。</p>
+            <h4>3. 黑塞的童年</h4>
+            <p>作家赫尔曼·黑塞小时候被大人当成「邪恶、不听话」的孩子。米勒拿他做例子：大人给孩子的感受贴上「坏」的标签，孩子没法反驳，只能连标签一起吞下去，从此学会轻蔑自己。很多成年人骂自己时用的词，其实不是自己发明的，是当年大人用过的词。</p>
+            <h4>4. 轻蔑者本人的孤独</h4>
+            <p>靠轻蔑站着的人，其实谁也靠近不了。他必须一直站在高处，一旦软下来，当年那个被逗弄、被嘲笑的孩子的感觉就会回来。所以轻蔑者是最孤独的：他离别人远，也离自己远。</p>
+            <h4>5. 摆脱轻蔑，尊重生命</h4>
+            <p>出口在最后一节：不是学会更宽容，而是先承认——自己当年也是那个无处可逃的孩子，并且为他难过。为自己哀悼过的人，不需要再踩着谁站稳。这个圈，是从「承认自己也疼过」这里断开的，不是从「原谅」那里。</p>
+            <div class="key"><b>这一部分的一句话：</b>你骂自己时用的那些词，可能不是你发明的。</div>
+          </div>
+        </div>
+      </section>
+
+      <section id="concepts">
+        <h2>三个核心概念，掰开讲</h2>
+        <p class="sub">整本书其实就这三个概念，剩下的都是它们的展开。</p>
+
+        <div class="concept rust">
+          <h3>概念一：真我和假我</h3>
+          <div class="vs">
+            <div>
+              <h4>假我</h4>
+              <p>为了换爱拼出来的版本：懂事、能干、会看脸色、不添麻烦。它负责上台表演，也负责收下所有的夸奖。</p>
+            </div>
+            <div>
+              <h4>真我</h4>
+              <p>有自己感受和需要的那个：会生气、会嫉妒、会撒娇、会说「我想要」。它很早就被关进了牢房，只能偶尔敲敲墙——敲墙声就是空虚感和抑郁。</p>
+            </div>
+          </div>
+          <p>关键在分工：<strong>夸奖和好意，都是假我签收的；真我没被喂过，所以再多的好也填不满。</strong>这不是贪心，是投递地址错了。</p>
+        </div>
+
+        <div class="concept gold">
+          <h3>概念二：自大和抑郁是一枚硬币</h3>
+          <blockquote>自大是对抑郁的防卫，而抑郁是为了防御自我丧失带来的深深的痛苦。<span class="who">——米勒，第二部分</span></blockquote>
+          <p>硬币的一面写着「我无所不能，必须一直赢」，另一面写着「我一无是处」。翻面往往只差一件事：夸奖断供、身体出问题、一次失败。看懂这枚硬币，就不会再把抑郁时的自己当成「真相」——那只是硬币的另一面，不是你的底。</p>
+        </div>
+
+        <div class="concept sage">
+          <h3>概念三：轻蔑的恶性循环</h3>
+          <div class="cycle">
+            <div class="step"><b>小时候</b>：被逗弄、被嘲笑、感受被否定，还无处可逃</div>
+            <div class="down">↓</div>
+            <div class="step"><b>长大后</b>：把愤怒和无助压下去，用轻蔑更弱的人（或轻蔑自己）躲开当年的感觉</div>
+            <div class="down">↓</div>
+            <div class="step"><b>下一代</b>：孩子接住这份轻蔑，再学会轻蔑自己和更弱的人</div>
+            <div class="exit"><b>断圈处</b>：承认自己当年也疼过，为那个孩子哀悼——哀悼过的人，不用再踩着谁站稳。</div>
+          </div>
+        </div>
+      </section>
+
+      <section id="mirror">
+        <h2>对到你身上</h2>
+        <p class="sub">你以前说过的几句话，米勒这本书里几乎都有对应的章节。</p>
+
+        <div class="mirror-item">
+          <p class="you">「被看到＝被抛弃」</p>
+          <p class="book">对应<b>第二部分 · 镜子</b>。如果小时候「被看见」的经验，大多是被看表现、被挑毛病、被拿去和期待比，大脑就会把「被看见」和「要交作业、会被失望」焊在一起。于是长大后一被注视，第一反应不是高兴，是想躲。不是你怕被爱，是你当年在镜子里很少见到过自己。</p>
+        </div>
+
+        <div class="mirror-item">
+          <p class="you">「别人对我好，我接不住」</p>
+          <p class="book">对应<b>第一部分 · 金脑子的故事</b>和<b>第二部分 · 爱的幻觉</b>。从小收惯了「因为你有用、你表现好」才有的好，纯粹的好意反而没有接收口：签收的是假我，真我不认这笔账。所以不是你不懂感恩，是好意投递的地址，和饿着的那个你，不是一个地址。</p>
+        </div>
+
+        <div class="mirror-item">
+          <p class="you">「拥有即恐慌，快成功就损坏」</p>
+          <p class="book">对应<b>第二部分 · 自大和抑郁这枚硬币</b>。成功会把人推到硬币的自大那一面：被夸、被看见、站到高处。可高处正是当年最熟悉的危险位置——站得越高，底下压着的「我其实没被无条件爱过」的痛顶得越厉害。搞砸一下，回到熟悉的低处，反而安稳了。损坏不是自毁，是在往回躲。</p>
+        </div>
+
+        <div class="mirror-item">
+          <p class="you">「垃圾的自我是后天拼凑的，不是真的」</p>
+          <p class="book">对应<b>第一部分 · 寻找真实的自我</b>。这句话你其实已经自己说出了米勒的核心：那个拼凑出来的，正是她说的假我——为了换爱临时搭的版本。它表现不好，不证明你不好，只证明这个版本本来就是赶工赶出来的。真我一直都在，只是被关着，还没轮到它上场。</p>
+        </div>
+      </section>
+
+      <section id="order">
+        <h2>最小阅读顺序</h2>
+        <p class="sub">书不厚，但读起来会有点扎心，因为它写的就是源头。按这个顺序，一次一小块，难受就停，停不丢人。</p>
+        <ol class="steps">
+          <li>
+            <h3>先读第一部分的前两节</h3>
+            <p>《贫穷的富有孩子》＋《丢失的感情世界》。先认出「哦，原来当年是这么关掉的」，认出机制就行，不用有任何感想。</p>
+          </li>
+          <li>
+            <h3>再读第二部分的硬币</h3>
+            <p>《爱的幻觉》里讲自大和抑郁的那几节。读完你会多一个视角：下次状态翻面时，先想「这是硬币翻面」，不急着给自己定罪。</p>
+          </li>
+          <li>
+            <h3>最后读第三部分的冰棍故事</h3>
+            <p>这一章最扎心，放在最后。读的时候如果想起自己小时候的类似场面，那不是你矫情——米勒说，那份难过正是真我在敲墙。敲到了，就说明它还在。</p>
+          </li>
+        </ol>
+      </section>
+
+      <section id="practice">
+        <h2>一个小练习：分一分夸奖</h2>
+        <div class="practice">
+          <h3>下次被夸的时候，只做一件事</h3>
+          <p>在心里分一下：这句夸，夸的是<strong>我做的事</strong>，还是<strong>我这个人</strong>？</p>
+          <p>不用回应什么高情商的话，也不用当场有什么感悟，能分清，就已经做到了。这一步是在给真我装一个接收口——先认出哪些好是冲着表现来的，慢慢才认得出哪些好是冲着你本人来的。分错了也没关系，下次再分，一次只分一句。</p>
+        </div>
+      </section>
+
+      <section id="buy">
+        <h2>买书别买错</h2>
+        <div class="warn">
+          <h3>这本书有两个中文名字</h3>
+          <p>市面上的中译本有两个版本：较早的版本直译，就叫<strong>《天才儿童的悲剧》</strong>；2018 年中国友谊出版公司的版本（束阳、殷世钞译）改名叫<strong>《与原生家庭和解》</strong>。认准作者<strong>爱丽丝·米勒（Alice Miller）</strong>和德文原名 <em>Das Drama des begabten Kindes</em>，就不会买错。</p>
+          <p>特别提醒一句：<strong>别被《与原生家庭和解》这个书名误导。</strong>米勒这本书恰恰反对「为了和解，强迫自己原谅」——她给的出路是哀悼：先承认自己当年缺了爱、疼过，为此难过。原谅如果有，是哀悼之后自然的事，不能排在前面逼自己。</p>
+        </div>
+      </section>
+
+      <footer>
+        <p>内容依据：爱丽丝·米勒《天才儿童的悲剧》（德文原著 1979 年出版）三大部分的原书目录与核心论述整理；英译本副标题为「寻找真我」（The Search for the True Self）。</p>
+        <p>这是读书解读，帮助你理解这本书在讲什么，不替代心理咨询或治疗。读的过程中如果情绪反应很强，先停下来，找信任的人聊聊，或者找专业咨询师。</p>
+      </footer>
+
+    </div>
+
+    <script>
+      (function () {
+        var btns = document.querySelectorAll('.acc > button');
+        for (var i = 0; i < btns.length; i++) {
+          btns[i].addEventListener('click', function () {
+            var acc = this.parentElement;
+            var open = acc.classList.toggle('open');
+            this.setAttribute('aria-expanded', open ? 'true' : 'false');
+          });
+        }
+      })();
+    </script>
+  </body>
+</html>
