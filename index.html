@@ -200,6 +200,9 @@ nav.main a.active{color:var(--gold-bright);box-shadow:inset 0 -2px 0 var(--gold)
 .buy-card h4{font-size:18px;color:var(--gold-bright)}
 .buy-card p{margin:6px 0 0;color:var(--ink-soft);font-size:14.5px;line-height:1.8}
 .library .buy-bar{margin:0 0 40px}
+.buy-tail{margin-top:8px;border-top:1px solid var(--line-soft);padding-top:52px}
+.buy-tail p{color:var(--ink-soft);font-size:16px;line-height:2;margin:0 0 30px;max-width:760px}
+.buy-tail .buy-bar{margin-bottom:0}
 .lib-name{flex:1;min-width:0}
 @media(max-width:480px){.svc-thumb{width:48px;height:48px;flex-basis:48px}.lib-thumb{width:48px;height:48px;flex-basis:48px}}
 
@@ -526,15 +529,7 @@ p{letter-spacing:.02em}
 <section class="stages" id="stages">
   <div class="wrap">
     <div class="sec-head"><hr class="gold-rule"><span class="no">Three Stages</span>
-      <p data-i18n="svcP">店在哪个阶段，就从哪个阶段开始。买法有四种：阶段套餐、单品任意组合、月度服务计划、年度服务计划，按自己的节奏挑。</p>
     </div>
-    <div class="buy-bar" aria-label="买法与服务计划">
-      <div class="buy-card"><span class="mini-thumb th-plan" aria-hidden="true"></span><div><h4>阶段套餐</h4><p>整阶段打包、一次到位。店在哪个阶段，就把那个阶段的事一次做齐。</p></div></div>
-      <div class="buy-card"><span class="mini-thumb th-design" aria-hidden="true"></span><div><h4>单品任意组合</h4><p>所有单品随便挑，可以跨阶段自由搭配，缺什么补什么。</p></div></div>
-      <div class="buy-card"><span class="mini-thumb th-socialm" aria-hidden="true"></span><div><h4>月度服务计划</h4><p>按月推进、每月复盘调整，主打持续增长。</p></div></div>
-      <div class="buy-card"><span class="mini-thumb th-brand" aria-hidden="true"></span><div><h4>年度服务计划</h4><p>按年陪跑、长期持续增长，一年里持续往上走。</p></div></div>
-    </div>
-
     <!-- STAGE 1 开业 -->
     <article class="stage-block" id="stage-open">
       <div class="stage-top">
@@ -653,6 +648,17 @@ p{letter-spacing:.02em}
         </div>
       </div>
     </article>
+
+    <!-- 买法：放在三阶段之后 -->
+    <div class="buy-tail">
+      <p data-i18n="svcP">店在哪个阶段，就从哪个阶段开始。买法有四种：阶段套餐、单品任意组合、月度服务计划、年度服务计划，按自己的节奏挑。</p>
+      <div class="buy-bar" aria-label="买法与服务计划">
+        <div class="buy-card"><span class="mini-thumb th-plan" aria-hidden="true"></span><div><h4>阶段套餐</h4><p>整阶段打包、一次到位。店在哪个阶段，就把那个阶段的事一次做齐。</p></div></div>
+        <div class="buy-card"><span class="mini-thumb th-design" aria-hidden="true"></span><div><h4>单品任意组合</h4><p>所有单品随便挑，可以跨阶段自由搭配，缺什么补什么。</p></div></div>
+        <div class="buy-card"><span class="mini-thumb th-socialm" aria-hidden="true"></span><div><h4>月度服务计划</h4><p>按月推进、每月复盘调整，主打持续增长。</p></div></div>
+        <div class="buy-card"><span class="mini-thumb th-brand" aria-hidden="true"></span><div><h4>年度服务计划</h4><p>按年陪跑、长期持续增长，一年里持续往上走。</p></div></div>
+      </div>
+    </div>
   </div>
 </section>
 
