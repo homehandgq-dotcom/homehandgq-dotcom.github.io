@@ -116,6 +116,9 @@ nav.main a.active{color:var(--gold-bright);box-shadow:inset 0 -2px 0 var(--gold)
 .stage-who{color:var(--ink-soft);margin:12px 0 0;font-size:15.5px}
 .stage-goal{display:inline-flex;align-items:center;gap:10px;margin:20px 0 0;padding:9px 18px;border:1px solid rgba(205,178,126,.65);color:var(--gold-bright);font-family:var(--serif);font-weight:600;font-size:16.5px;letter-spacing:.08em;line-height:1.6}
 .stage-goal::before{content:"";width:7px;height:7px;background:var(--gold);transform:rotate(45deg);flex:0 0 auto}
+.stage-buy{display:flex;align-items:center;gap:12px;flex-wrap:wrap;margin:18px 0 0}
+.stage-buy-tag{background:var(--gold);color:#fff;font-family:var(--serif);font-weight:700;font-size:15px;letter-spacing:.14em;padding:6px 14px;line-height:1.6;white-space:nowrap}
+.stage-buy-note{color:var(--ink-soft);font-size:14px;line-height:1.7}
 .stage-photo img{width:100%;height:250px;object-fit:cover;border:1px solid rgba(205,178,126,.5);border-radius:8px;background:var(--paper-2)}
 .stage-photo figcaption{color:var(--ink-faint);font-size:13px;margin-top:10px}
 .lib-cat .cat-photo{width:100%;height:120px;border:1px solid rgba(205,178,126,.45);border-radius:6px;background-color:rgba(255,255,255,.05);margin-bottom:18px}
@@ -537,6 +540,7 @@ p{letter-spacing:.02em}
           <span class="stage-num">Stage 01</span>
           <h3><span data-i18n="s1t">开业</span><span class="en">Launch</span></h3>
           <p class="stage-who" data-i18n="s1who">适合准备开业、翻新重开的老板。开业期是新店声量最大的窗口，我们帮你把势能一次拉起来，把开业红利赚满。</p>
+          <p class="stage-buy"><span class="stage-buy-tag" data-i18n="buyTag">可单品可套餐</span><span class="stage-buy-note" data-i18n="buyNote">单品单点也行、整阶段打包也行</span></p>
           <p class="stage-goal">开业起势能，赚满开业红利</p>
         </div>
         <figure class="stage-photo" style="margin:0">
@@ -574,6 +578,7 @@ p{letter-spacing:.02em}
           <span class="stage-num">Stage 02</span>
           <h3><span data-i18n="s2t">增长</span><span class="en">Grow</span></h3>
           <p class="stage-who" data-i18n="s2who">适合店已开起来，想让客流和营收往上走的老板。可远程交付。</p>
+          <p class="stage-buy"><span class="stage-buy-tag" data-i18n="buyTag">可单品可套餐</span><span class="stage-buy-note" data-i18n="buyNote">单品单点也行、整阶段打包也行</span></p>
           <p class="stage-goal">助力成为区域 Top 3、全市 Top 3</p>
         </div>
         <figure class="stage-photo" style="margin:0">
@@ -592,13 +597,13 @@ p{letter-spacing:.02em}
       <div class="pkg">
         <div>
           <span class="pk-tag" data-i18n="pkgTag">本阶段套餐</span>
-          <h4 data-i18n="s2pkg1">菜品拍摄套餐</h4>
-          <p data-i18n="s2pkg1d">招牌菜与全菜单拍摄、精修，可用于菜单、外卖与社交平台。</p>
-          <ul><li><span class="mini-thumb th-food" aria-hidden="true"></span>菜品拍摄</li><li><span class="mini-thumb th-film" aria-hidden="true"></span>产品拍摄</li><li><span class="mini-thumb th-commercial" aria-hidden="true"></span>门店环境</li><li><span class="mini-thumb th-design" aria-hidden="true"></span>图片精修</li></ul>
+          <h4 data-i18n="s2pkg1">增长套餐</h4>
+          <p data-i18n="s2pkg1d">增长阶段整套打包，网站、Google、老外平台和内容一起推，持续往上走。</p>
+          <ul><li><span class="mini-thumb th-web" aria-hidden="true"></span>网站重构</li><li><span class="mini-thumb th-google" aria-hidden="true"></span>Google商户页</li><li><span class="mini-thumb th-social" aria-hidden="true"></span>老外社交平台推广</li><li><span class="mini-thumb th-plan" aria-hidden="true"></span>策略升级</li><li><span class="mini-thumb th-film" aria-hidden="true"></span>拍摄</li><li><span class="mini-thumb th-food" aria-hidden="true"></span>菜品宣传</li></ul>
         </div>
         <div class="side">
           <span class="price" data-i18n="priceQ">价格：咨询获取报价</span>
-          <button class="btn btn-gold btn-sm" type="button" data-pick="菜品拍摄套餐">获取报价</button>
+          <button class="btn btn-gold btn-sm" type="button" data-pick="增长套餐">获取报价</button>
         </div>
       </div>
       <div class="pkg">
@@ -622,6 +627,7 @@ p{letter-spacing:.02em}
           <span class="stage-num">Stage 03</span>
           <h3><span data-i18n="s3t">破圈</span><span class="en">Break Through</span></h3>
           <p class="stage-who" data-i18n="s3who">适合生意已稳，想成为区域头部的老板。可远程交付。</p>
+          <p class="stage-buy"><span class="stage-buy-tag" data-i18n="buyTag">可单品可套餐</span><span class="stage-buy-note" data-i18n="buyNote">单品单点也行、整阶段打包也行</span></p>
         </div>
         <figure class="stage-photo" style="margin:0">
           <div class="bgimg th-interview" role="img" aria-label="破圈阶段：人物访谈拍摄"></div>
@@ -638,13 +644,13 @@ p{letter-spacing:.02em}
       <div class="pkg">
         <div>
           <span class="pk-tag" data-i18n="pkgTag">本阶段套餐</span>
-          <h4 data-i18n="s3pkg">按项目定制</h4>
-          <p data-i18n="s3pkgd">五项按项目组合，访谈、公关、加盟、协会与报刊网站合作一并承接。</p>
+          <h4 data-i18n="s3pkg">破圈套餐</h4>
+          <p data-i18n="s3pkgd">破圈阶段整套打包，访谈、公关、加盟、协会与报刊网站合作一起上，把声量推出圈。</p>
           <ul><li><span class="mini-thumb th-mic" aria-hidden="true"></span>新闻媒体访谈</li><li><span class="mini-thumb th-interview" aria-hidden="true"></span>新闻公关</li><li><span class="mini-thumb th-plan" aria-hidden="true"></span>品牌加盟策略</li><li><span class="mini-thumb th-plan" aria-hidden="true"></span>协会知名度</li><li><span class="mini-thumb th-magazine" aria-hidden="true"></span>餐饮报刊网站合作</li></ul>
         </div>
         <div class="side">
           <span class="price" data-i18n="priceQ">价格：咨询获取报价</span>
-          <button class="btn btn-gold btn-sm" type="button" data-pick="破圈 · 按项目定制">获取报价</button>
+          <button class="btn btn-gold btn-sm" type="button" data-pick="破圈套餐">获取报价</button>
         </div>
       </div>
     </article>
@@ -1008,9 +1014,9 @@ p{letter-spacing:.02em}
             </optgroup>
             <optgroup label="阶段套餐">
               <option>开业一站式套餐</option>
-              <option>菜品拍摄套餐</option>
+              <option>增长套餐</option>
               <option>新媒体月运营套餐</option>
-              <option>破圈 · 按项目定制</option>
+              <option>破圈套餐</option>
             </optgroup>
             <optgroup label="开业单品">
               <option>菜单设计</option>
@@ -1131,11 +1137,12 @@ svcH:"By stage, not by process", svcP:"Start from the stage your store is in. Fo
 s1t:"Launch", s1who:"For owners about to open, or reopening after a renovation. The opening window is when a new store gets the most attention — we help you build that momentum in one push and make the most of the opening dividend.", s1cap:"Brand identity and opening materials, done in one pass.",
 s1pkg:"Launch All-in-One Bundle", s1pkgd:"All seven items, ready on opening day.",
 s2t:"Grow", s2who:"For owners whose store is open and want traffic and revenue to climb. Remote delivery available.", s2cap:"Shot to make people hungry — and ready to buy.",
-s2pkg1:"Food Photography Bundle", s2pkg1d:"Signature dishes and full-menu shoots, retouched for menus, delivery apps and social.",
+s2pkg1:"Growth Bundle", s2pkg1d:"The full Grow stage in one bundle — website, Google, mainstream social platforms and content pushed together, climbing month after month.",
 s2pkg2:"Monthly Social Media Bundle", s2pkg2d:"Mainstream social platform promotion, account operations and publishing, delivered monthly.",
 s3t:"Break Through", s3who:"For owners with a stable business who want to lead their area. Remote delivery available.", s3cap:"One proper interview, as lasting endorsement.",
-s3pkg:"Custom by Project", s3pkgd:"The five items combined per project — interviews, PR, franchising strategy, association visibility and dining media partnerships included.",
+s3pkg:"Break Through Bundle", s3pkgd:"The full Break Through stage in one bundle — interviews, PR, franchising strategy, association visibility and dining media partnerships together, pushing your reach beyond the circle.",
 pkgTag:"Stage bundle", pkgTagM:"Stage bundle · Monthly",
+buyTag:"Singles or full-stage package", buyNote:"Single items on their own, or the whole stage bundled.",
 priceQ:"Price: contact us for a quote", priceQM:"Price: contact us for a quote (monthly)",
 libH:"Service Library", libP:"See the full list first, then choose how to buy: a stage bundle, any mix of single items across stages, or a monthly / annual service plan for continuous growth.",
 libA:"Core Services", libAn:"Six categories, thirty-two items. The small tag on each item marks its stage.",
@@ -1281,7 +1288,7 @@ function addMsg(text, me){
 function answer(q){
   var s = q.toLowerCase();
   if (/(区域|范围|布鲁克林|唐人街|曼哈顿|远程|全美|brooklyn|chinatown|remote|area)/.test(s)) return "服务范围以纽约为中心，覆盖全美。纽约本地以法拉盛为中心，可到店交付；不在纽约也没关系，增长、破圈可远程交付，开业可按项目安排。服务对象不止餐饮，还包括美容、美发、美甲、零售及其他实体店、公司与协会。门店地址：36-26 Main St, Ste 2x, Flushing, NY 11354。";
-  if (/(阶段|开业|增长|破圈|stage|launch|grow)/.test(s)) return "服务按三个阶段推进：\n开业：菜单设计、物料印刷、开业拍摄、开业宣传片、开业前新媒体预热、活动策划、网站制作，套餐是开业一站式套餐。\n增长：网站重构、Google商户页、老外社交平台推广、策略升级、拍摄、菜品宣传，目标是助力成为区域 Top 3、全市 Top 3，套餐有菜品拍摄套餐和新媒体月运营套餐。\n破圈：新闻媒体访谈、新闻公关、品牌加盟策略、协会知名度、餐饮报刊网站合作，套餐按项目定制。\n您现在处在哪个阶段？";
+  if (/(阶段|开业|增长|破圈|stage|launch|grow)/.test(s)) return "服务按三个阶段推进：\n开业：菜单设计、物料印刷、开业拍摄、开业宣传片、开业前新媒体预热、活动策划、网站制作，套餐是开业一站式套餐。\n增长：网站重构、Google商户页、老外社交平台推广、策略升级、拍摄、菜品宣传，目标是助力成为区域 Top 3、全市 Top 3，套餐有增长套餐和新媒体月运营套餐。\n破圈：新闻媒体访谈、新闻公关、品牌加盟策略、协会知名度、餐饮报刊网站合作，套餐是破圈套餐。\n您现在处在哪个阶段？";
   if (/(套餐|单品|单点|怎么选|怎么买|买法|任意组合|自由搭配|bundle|single)/.test(s)) return "四种买法：\n1）阶段套餐——整阶段打包、一次到位；\n2）单品任意组合——所有单品随便挑，可以跨阶段自由搭配，缺什么补什么；\n3）月度服务计划——按月推进、每月复盘调整，主打持续增长；\n4）年度服务计划——按年陪跑、长期持续增长。\n价格均为咨询获取报价。";
   if (/(单品库|清单|有哪些服务|服务有|library|services)/.test(s)) return "单品库分两组。官网服务六大类共 32 项：设计印刷、影像制作、广告投放、策划执行、新媒体运营、新闻访谈；另有「活动与执行」一组六类 25 项（品牌策划、设计印刷、影像制作、展会策划、舞台设计搭建、落地执行），全属破圈阶段、按项目组合。页面「单品库」一节有全量清单，每项都标了所属阶段。";
   if (/(包月|月运营|月度|年度|服务计划|持续增长|monthly|annual)/.test(s)) return "长期合作有三种：\n月度服务计划——通用服务计划，按月推进、每月复盘调整，主打持续增长；\n年度服务计划——通用服务计划，按年陪跑、长期持续增长；\n新媒体包月——社媒专项包月（账号运营＋内容策划与发布＋数据分析与优化，在 Instagram、Facebook、TikTok 等主流平台持续推广，按月交付），和通用服务计划并行，是两回事。\n价格均为咨询获取报价。";
@@ -1289,7 +1296,7 @@ function answer(q){
   if (/(谷歌|google|地图|评分|口碑)/.test(s)) return "Google商户页在增长阶段：商户页开通、修复、评分口碑一起管，含谷歌地图优化，让客人先搜到您、再选您。可单点，也可先单品试再升套餐。";
   if (/(地址|在哪|电话|联系|address|phone)/.test(s)) return "电话：(646) 809-6388，可直接拨打。地址：36-26 Main St, Ste 2x, Flushing, NY 11354。官网：www.newstarlightmedia.com。";
   if (/(做什么|定位|介绍|是谁|公司|about)/.test(s)) return "星辉，为每一家小店而汇聚。星辉传媒是实体店与公司的品牌增长伙伴（The brand and growth agency for restaurants, beauty businesses and local companies — New York & nationwide），服务对象不限族裔，服务餐饮、美容、美发、美甲及其他实体店、公司与协会，全案服务按开业、增长、破圈三个阶段推进。";
-  if (/(访谈|采访|公关|加盟|协会|报刊|interview)/.test(s)) return "新闻媒体访谈、新闻公关、品牌加盟策略、协会知名度和餐饮报刊网站合作都在破圈阶段，套餐按项目定制；单品库「新闻访谈」类含新闻稿，「活动与执行」整组也可按项目组合。";
+  if (/(访谈|采访|公关|加盟|协会|报刊|interview)/.test(s)) return "新闻媒体访谈、新闻公关、品牌加盟策略、协会知名度和餐饮报刊网站合作都在破圈阶段，套餐是破圈套餐；单品库「新闻访谈」类含新闻稿，「活动与执行」整组也可按项目组合。";
   return "收到。可以问我「三个阶段分别做什么」「套餐和单品怎么选」「单品库有哪些」「包月是什么」「价格」「服务范围」「电话地址」，或直接拨打 (646) 809-6388 人工咨询。";
 }
 function send(){
