@@ -1,0 +1,363 @@
+@import "tailwindcss";
+
+@theme {
+  --font-sans: var(--font-body);
+  --font-heading: var(--font-heading);
+
+  --color-navy-50: #f4f6fa;
+  --color-navy-100: #e6ebf3;
+  --color-navy-200: #c3d0e3;
+  --color-navy-300: #93a8c8;
+  --color-navy-400: #5d7aa4;
+  --color-navy-500: #395680;
+  --color-navy-600: #23406a;
+  --color-navy-700: #16305a;
+  --color-navy-800: #0f2347;
+  --color-navy-900: #071B3A;
+
+  --color-gold-50: #faf7f0;
+  --color-gold-100: #f1e8d4;
+  --color-gold-200: #e2d0a8;
+  --color-gold-300: #d3b97e;
+  --color-gold-400: #C7A574;
+  --color-gold-500: #b8925a;
+  --color-gold-600: #9c7847;
+  --color-gold-700: #7d5f39;
+
+  /* 亮蓝：仅用于动效点缀（光晕、连线、聚焦态），不作为大面积主色，避免冲淡海军蓝+香槟金的主调 */
+  --color-azure-300: #7fb8f5;
+  --color-azure-400: #4a95e8;
+  --color-azure-500: #2f7ad9;
+  --color-azure-600: #1f5fb3;
+
+  --color-ink-900: #1a1d23;
+  --color-ink-600: #4b5261;
+  --color-ink-400: #7d8494;
+
+  --color-mist: #f5f7fa;
+}
+
+:root {
+  color-scheme: light;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  background: #ffffff;
+  color: var(--color-ink-900);
+  font-family: var(--font-body), "Noto Sans SC", "PingFang SC", "Microsoft YaHei", sans-serif;
+}
+
+h1, h2, h3, h4, h5, h6 {
+  font-family: var(--font-heading), var(--font-body), "Noto Sans SC", sans-serif;
+  letter-spacing: -0.01em;
+}
+
+.container-arda {
+  max-width: 1280px;
+  margin-left: auto;
+  margin-right: auto;
+  padding-left: 1.5rem;
+  padding-right: 1.5rem;
+}
+
+@media (min-width: 1024px) {
+  .container-arda {
+    padding-left: 4rem;
+    padding-right: 4rem;
+  }
+}
+
+.skip-link {
+  position: absolute;
+  left: -9999px;
+  top: 0;
+  z-index: 100;
+  background: var(--color-navy-900);
+  color: white;
+  padding: 0.75rem 1.25rem;
+  border-radius: 0 0 6px 0;
+}
+
+.skip-link:focus {
+  left: 0;
+}
+
+*:focus-visible {
+  outline: 2px solid var(--color-gold-400);
+  outline-offset: 2px;
+}
+
+.prose-arda {
+  color: var(--color-ink-900);
+  line-height: 1.85;
+}
+
+.prose-arda h2 {
+  font-size: 1.5rem;
+  font-weight: 700;
+  color: var(--color-navy-900);
+  margin-top: 2.5rem;
+  margin-bottom: 1rem;
+}
+
+.prose-arda h3 {
+  font-size: 1.2rem;
+  font-weight: 700;
+  color: var(--color-navy-800);
+  margin-top: 2rem;
+  margin-bottom: 0.75rem;
+}
+
+.prose-arda p {
+  margin-bottom: 1.1rem;
+}
+
+.prose-arda ul, .prose-arda ol {
+  margin: 1rem 0 1.1rem 1.5rem;
+}
+
+.prose-arda ul {
+  list-style: disc;
+}
+
+.prose-arda ol {
+  list-style: decimal;
+}
+
+.prose-arda a {
+  color: var(--color-navy-700);
+  text-decoration: underline;
+  text-underline-offset: 2px;
+}
+
+.prose-arda img {
+  display: block;
+  max-width: 100%;
+  height: auto;
+  border-radius: 8px;
+  margin: 1.5rem auto;
+}
+
+.input {
+  width: 100%;
+  min-height: 44px;
+  border: 1px solid var(--color-navy-200);
+  border-radius: 6px;
+  padding: 0.5rem 0.75rem;
+  font-size: 0.875rem;
+  color: var(--color-ink-900);
+  background: #fff;
+}
+
+.input:focus-visible {
+  outline: 2px solid var(--color-gold-400);
+  outline-offset: 1px;
+  border-color: var(--color-gold-400);
+}
+
+.input[aria-invalid="true"] {
+  border-color: #dc2626;
+}
+
+textarea.input {
+  min-height: 96px;
+  resize: vertical;
+}
+
+.checkbox-row {
+  display: flex;
+  align-items: flex-start;
+  gap: 0.6rem;
+  font-size: 0.875rem;
+  color: var(--color-ink-900);
+}
+
+.checkbox-row input[type="checkbox"] {
+  margin-top: 0.2rem;
+  height: 1rem;
+  width: 1rem;
+  accent-color: var(--color-navy-900);
+}
+
+/* ============================================================
+   动效系统：网格漂移 / 光晕呼吸 / 节点闪烁 / 连线绘制 / 按钮光泽扫过
+   全部使用 CSS 关键帧驱动，避免额外的 JS 动画开销；
+   whileInView 型的滚动进场动效由 components/motion/* 中的 Framer Motion
+   组件负责，二者配合使用。
+   ============================================================ */
+
+@keyframes arda-grid-drift {
+  0% { background-position: 0 0, 0 0; }
+  100% { background-position: 56px 56px, 56px 56px; }
+}
+
+@keyframes arda-glow-breathe {
+  0%, 100% { opacity: 0.35; transform: scale(1); }
+  50% { opacity: 0.55; transform: scale(1.06); }
+}
+
+@keyframes arda-node-blink {
+  0%, 100% { opacity: 0.35; transform: scale(0.85); }
+  50% { opacity: 1; transform: scale(1.15); }
+}
+
+@keyframes arda-dash-flow {
+  to { stroke-dashoffset: -240; }
+}
+
+@keyframes arda-sheen-sweep {
+  0% { transform: translateX(-120%) skewX(-15deg); }
+  100% { transform: translateX(220%) skewX(-15deg); }
+}
+
+.arda-hero-grid {
+  background-image:
+    linear-gradient(rgba(255, 255, 255, 0.6) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(255, 255, 255, 0.6) 1px, transparent 1px);
+  background-size: 56px 56px;
+  animation: arda-grid-drift 40s linear infinite;
+}
+
+.arda-hero-glow {
+  animation: arda-glow-breathe 10s ease-in-out infinite;
+}
+
+.arda-network-node {
+  animation: arda-node-blink 3.2s ease-in-out infinite;
+}
+
+.arda-network-line {
+  stroke-dasharray: 6 10;
+  animation: arda-dash-flow 14s linear infinite;
+}
+
+/* 卡片交互：轻微上浮 + 阴影增强 + 细微边框光效（金色描边渐显） */
+.card-interactive {
+  position: relative;
+  transition:
+    transform 0.35s cubic-bezier(0.16, 1, 0.3, 1),
+    box-shadow 0.35s cubic-bezier(0.16, 1, 0.3, 1),
+    border-color 0.35s ease;
+}
+
+.card-interactive:hover,
+.card-interactive:focus-within {
+  transform: translateY(-4px);
+  box-shadow:
+    0 16px 32px -12px rgba(7, 27, 58, 0.22),
+    0 0 0 1px rgba(199, 165, 116, 0.35);
+  border-color: rgba(199, 165, 116, 0.45);
+}
+
+/* 图片轻微放大容器：配合 CoverImage 内的 <img>/<Image> 使用 group-hover:scale-110 */
+.img-zoom-mask {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(to top, rgba(7, 27, 58, 0.55) 0%, rgba(7, 27, 58, 0) 55%);
+  opacity: 0;
+  transition: opacity 0.35s ease;
+}
+
+.group:hover .img-zoom-mask {
+  opacity: 1;
+}
+
+/* 按钮悬停光泽扫过：需要 overflow-hidden 的父元素 + 一个 ::after 光带 */
+.btn-sheen {
+  position: relative;
+  overflow: hidden;
+}
+
+.btn-sheen::after {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  height: 100%;
+  width: 40%;
+  background: linear-gradient(
+    115deg,
+    transparent 0%,
+    rgba(255, 255, 255, 0.35) 50%,
+    transparent 100%
+  );
+  transform: translateX(-120%) skewX(-15deg);
+  pointer-events: none;
+}
+
+.btn-sheen:hover::after {
+  animation: arda-sheen-sweep 0.85s ease forwards;
+}
+
+.btn-arrow {
+  display: inline-block;
+  transition: transform 0.25s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.btn-sheen:hover .btn-arrow {
+  transform: translateX(4px);
+}
+
+/* 顶部导航：滚动后毛玻璃固定条 */
+.header-glass {
+  background-color: rgba(255, 255, 255, 0.78);
+  backdrop-filter: blur(14px) saturate(160%);
+  -webkit-backdrop-filter: blur(14px) saturate(160%);
+}
+
+/* 菜单下划线过渡 */
+.nav-underline {
+  position: relative;
+}
+
+.nav-underline::after {
+  content: "";
+  position: absolute;
+  left: 0.75rem;
+  right: 0.75rem;
+  bottom: 0.2rem;
+  height: 2px;
+  background: var(--color-gold-400);
+  transform: scaleX(0);
+  transform-origin: left;
+  transition: transform 0.25s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.nav-underline:hover::after,
+.nav-underline[data-active="true"]::after {
+  transform: scaleX(1);
+}
+
+/* 尊重「减少动态效果」系统设置：关闭所有装饰性关键帧动画与位移过渡，
+   仅保留必要的透明度变化，Framer Motion 侧由 useReducedMotion() 另行处理 */
+@media (prefers-reduced-motion: reduce) {
+  .arda-hero-grid,
+  .arda-hero-glow,
+  .arda-network-node,
+  .arda-network-line {
+    animation: none !important;
+  }
+
+  .card-interactive,
+  .card-interactive:hover,
+  .card-interactive:focus-within {
+    transform: none !important;
+    transition: box-shadow 0.2s ease !important;
+  }
+
+  .btn-sheen::after {
+    display: none !important;
+  }
+
+  .btn-sheen:hover .btn-arrow {
+    transform: none !important;
+  }
+
+  * {
+    scroll-behavior: auto !important;
+  }
+}
