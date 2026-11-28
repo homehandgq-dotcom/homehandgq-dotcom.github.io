@@ -3,7 +3,7 @@
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
-    <meta name="color-scheme" content="light dark" />
+    <meta name="color-scheme" content="light" />
     <link rel="icon" href="data:," />
     <title>跨越不可能等四本书 · 解读</title>
     <link rel="preconnect" href="https://fonts.googleapis.com" />
@@ -11,7 +11,7 @@
     <link href="https://fonts.googleapis.com/css2?family=Noto+Serif+SC:wght@600;700;900&family=Noto+Sans+SC:wght@400;500;700&display=swap" rel="stylesheet" />
     <style>
       :root{
-        --bg:#fcfbF8; --bg2:#f3efe8; --card:#ffffff; --ink:#1e2420; --ink2:#4c554f; --ink3:#6d7771;
+        --bg:#ffffff; --bg2:#f3efe8; --card:#ffffff; --ink:#1e2420; --ink2:#4c554f; --ink3:#6d7771;
         --line:#e2ddd2; --accent:#2a6b4f; --accent-ink:#ffffff; --accent-soft:#e6f0ea;
         --rose:#a44a3f; --rose-soft:#f8ecea; --gold:#8a6414; --gold-soft:#f7f0dc;
         --slate:#455a6b; --slate-soft:#eaf0f4; --teal:#1f6f6b; --teal-soft:#e6f2f1;
@@ -19,20 +19,10 @@
         --shadow:0 1px 3px rgba(30,36,32,.07),0 8px 24px rgba(30,36,32,.05);
         --radius:14px;
       }
-      @media (prefers-color-scheme: dark){
-        :root{
-          --bg:#141716; --bg2:#1b1f1d; --card:#1f2422; --ink:#edf0ec; --ink2:#c3cbc4; --ink3:#9aa69d;
-          --line:#333b36; --accent:#5cb58c; --accent-ink:#0e1a13; --accent-soft:#22352c;
-          --rose:#e08a7d; --rose-soft:#3a2724; --gold:#dfb95e; --gold-soft:#38301c;
-          --slate:#9db8cc; --slate-soft:#26323c; --teal:#6fc4bf; --teal-soft:#213837;
-          --warn-bg:#332b18; --warn-line:#6b5a2e; --warn-ink:#ecd9a0;
-          --shadow:0 1px 3px rgba(0,0,0,.4),0 8px 24px rgba(0,0,0,.25);
-        }
-      }
       *{box-sizing:border-box}
       html{scroll-behavior:smooth}
       @media (prefers-reduced-motion: reduce){ html{scroll-behavior:auto} *{transition:none!important} }
-      body{margin:0;background:var(--bg);color:var(--ink);font-family:"Noto Sans SC",system-ui,-apple-system,"PingFang SC","Microsoft YaHei",sans-serif;font-size:17px;line-height:1.75;-webkit-text-size-adjust:100%}
+      body{margin:0;background:var(--bg);color:var(--ink);font-family:"Noto Sans SC",system-ui,-apple-system,"PingFang SC","Microsoft YaHei",sans-serif;font-size:17px;line-height:1.75;-webkit-text-size-adjust:100%;overflow-x:clip}
       h1,h2,h3,.serif{font-family:"Noto Serif SC",serif}
       a{color:var(--accent)}
       button,[role="button"],summary,select,input:not([type="checkbox"],[type="radio"]){min-height:2.75rem}
@@ -40,8 +30,9 @@
       .wrap{max-width:880px;margin:0 auto;padding:0 18px 64px}
       /* ---------- nav ---------- */
       .topnav{position:sticky;top:0;z-index:50;background:var(--bg);border-bottom:1px solid var(--line);padding:10px 0 8px;margin:0 -18px;padding-left:18px;padding-right:18px}
-      .topnav .row{display:flex;flex-wrap:wrap;gap:8px}
-      .topnav a{display:inline-flex;align-items:center;min-height:44px;padding:8px 14px;border:1px solid var(--line);border-radius:999px;background:var(--card);color:var(--ink);text-decoration:none;font-size:15px;font-weight:500;line-height:1.3}
+      .topnav .row{display:flex;flex-wrap:nowrap;gap:8px;overflow-x:auto;-webkit-overflow-scrolling:touch;scrollbar-width:none;padding-bottom:2px}
+      .topnav .row::-webkit-scrollbar{display:none}
+      .topnav a{display:inline-flex;align-items:center;flex:0 0 auto;white-space:nowrap;min-height:44px;padding:8px 14px;border:1px solid var(--line);border-radius:999px;background:var(--card);color:var(--ink);text-decoration:none;font-size:15px;font-weight:500;line-height:1.3}
       .topnav a:active,.topnav a.on{background:var(--accent);border-color:var(--accent);color:var(--accent-ink)}
       .topnav a .n{font-weight:700;margin-right:5px;opacity:.75}
       /* ---------- hero ---------- */
@@ -52,12 +43,21 @@
       .howto{background:var(--accent-soft);border-radius:var(--radius);padding:16px 18px;margin:18px 0 6px}
       .howto p{margin:0 0 8px}.howto p:last-child{margin:0}
       .howto .t{font-weight:700}
+      /* ---------- for-you (targeted) ---------- */
+      .foryou{margin-top:26px;scroll-margin-top:118px}
+      .foryou>h3{font-size:21px;margin:0 0 6px;font-weight:900;line-height:1.5}
+      .fy{display:grid;gap:12px;margin-top:12px}
+      .fy .item{background:var(--card);border:1px solid var(--line);border-radius:var(--radius);padding:16px 18px;box-shadow:var(--shadow)}
+      .fy .q{font-family:"Noto Serif SC",serif;font-size:19px;font-weight:700;line-height:1.6;margin:0 0 8px}
+      .fy .q .who{font-family:"Noto Sans SC",sans-serif;font-size:13px;font-weight:700;color:var(--ink3);letter-spacing:.05em;display:block;margin-bottom:2px}
+      .fy p{font-size:16px}
+      .fy p:last-child{margin-bottom:0}
+      .fy .mech b{color:var(--accent)}
       /* ---------- route ---------- */
       .route{display:grid;gap:10px;margin:14px 0 4px}
       .route a{display:flex;gap:12px;align-items:flex-start;background:var(--card);border:1px solid var(--line);border-radius:var(--radius);padding:14px 16px;text-decoration:none;color:var(--ink);box-shadow:var(--shadow)}
       .route .step{flex:0 0 auto;width:34px;height:34px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-weight:700;font-size:16px;color:#fff;margin-top:3px}
       .route .b1{background:var(--rose)} .route .b2{background:var(--gold)} .route .b3{background:var(--slate)} .route .b4{background:var(--teal)}
-      @media (prefers-color-scheme: dark){ .route .step{color:#101312} .route .b1{background:var(--rose)} }
       .route .rt{font-weight:700;font-size:17px;line-height:1.5}
       .route .rd{color:var(--ink2);font-size:15.5px;line-height:1.65}
       /* ---------- book sections ---------- */
@@ -148,6 +148,7 @@
 
       <nav class="topnav" aria-label="本书目录">
         <div class="row">
+          <a href="#foryou">针对你的问题</a>
           <a href="#neff"><span class="n">1</span>自我关怀</a>
           <a href="#bigleap"><span class="n">2</span>跨越不可能</a>
           <a href="#miller"><span class="n">3</span>天才儿童的悲剧</a>
@@ -163,6 +164,44 @@
         <div class="howto">
           <p><span class="t">这一页怎么用：</span>每本书都有完整的结构大纲，点开任意一章，就能看到这一章讲什么、跟你哪句话对得上、还有一个当天就能做的小练习。</p>
           <p>看不完没关系。看到哪一章扎心，就停在哪一章，那一章就是你的。做到了任何一小步，都算数。</p>
+        </div>
+
+        <div class="foryou" id="foryou">
+          <h3>先说你的问题：你说过的五句话，四本书怎么解释</h3>
+          <p class="muted" style="margin:0">下面的解读不走通用书摘。每一条都用你自己的原话开头，说清它背后的机制是哪本书里的哪个概念，最后只给一个今天就能做的最小小步。看不完后面的大纲没关系，先把这五条看完。</p>
+          <div class="fy">
+
+            <div class="item">
+              <p class="q"><span class="who">你的原话 · 一</span>「我配得感很低，总觉得自己不配得世界上好的。」</p>
+              <p class="mech"><b>机制：</b>内夫在《自我关怀的力量》第 7 章说清了——如果「我值不值」建在<b>自尊</b>上，就得靠成绩和别人的肯定不停续命，续不上就塌，所以永远觉得不配。亨德里克斯在《跨越不可能》第 2 章挖得更深：这是四道隐藏障碍里的第一道，「我这个人本身有毛病」，是小时候签下、成年后还在执行的合同。米勒补上源头：小时候的爱是有条件的——乖、能干才有——于是「配」在你心里从来不是默认的，是要挣的。</p>
+              <div class="practice"><span class="k">最小一步</span><span>今天遇到一件小的好事，哪怕只是一杯好喝的咖啡，不推开、不打折，在心里说一句「这个，我收下了」，停十秒，什么都不用做。</span></div>
+            </div>
+
+            <div class="item">
+              <p class="q"><span class="who">你的原话 · 二</span>「别人对我好，我接不住；别人夸我，我一回应就觉得肉麻，承接不了。」</p>
+              <p class="mech"><b>机制：</b>米勒在《天才儿童的悲剧》里给了最准的解释：好意是递给台前那个能干、懂事的<b>假自我</b>的，躲在后面的真自我一次都没被喂到，所以收下来也是空的，还别扭。布朗会说，「肉麻」是盔甲合上的声音——被夸的那一刻等于被看见，人一悬空，就本能地用打折、转移话题、反夸回去把盔甲穿回来。亨德里克斯把同一个动作列进了上限发作的清单：<b>推开夸奖</b>，就是恒温器在降温。</p>
+              <div class="practice"><span class="k">最小一步</span><span>下次被夸，不解释、不打折、不反夸，只说两个字「谢谢」，然后停住三秒，不补任何话。练的就是你那句：签收了，但没走。</span></div>
+            </div>
+
+            <div class="item">
+              <p class="q"><span class="who">你的原话 · 三</span>「拥有即恐慌，一拥有就不敢往前，快成功就损坏；好，就是走的前摇。」</p>
+              <p class="mech"><b>机制：</b>这正是亨德里克斯的<b>上限问题</b>：心里有个幸福恒温器，刻度是小时候设的。好事一超标，身体不觉得是奖赏，只判定为「异常」，于是自动降温——担忧、挑刺、争吵、生病、把事搞砸，六种伪装，第 3 章列得明明白白。布朗在《脆弱的力量》第 4 章给同一个动作起了另一个名字：<b>预演灾难</b>——好事刚来，先在脑子里把它失去一遍，用提前难受给幸福上保险。两本书说的是同一台机器。</p>
+              <div class="practice"><span class="k">最小一步</span><span>下次好事之后坏念头冒头，先在心里贴个标签——「上限在响，不是真出事了」；当天不做任何降温动作：不主动推掉、不故意拖延、不先泼自己冷水。</span></div>
+            </div>
+
+            <div class="item">
+              <p class="q"><span class="who">你的原话 · 四</span>「被看到，就等于被抛弃。」</p>
+              <p class="mech"><b>机制：</b>亨德里克斯第 2 章的第二道和第四道障碍在这里合奏：一道说「我过得好就是背叛，会被孤立」，一道说「不能比别人亮，太亮会招怨」——小时候「被看见」后面跟着的常常是压力、比较或者嫉妒，大脑就把「被看见」和「危险」焊在了一起。布朗的版本更简单：被看到等于脱下盔甲，所以身体先报警。米勒的版本最疼：那个孩子学会的是，只有当「大人需要的我」时才安全，真的我一露头，爱就可能收走。</p>
+              <div class="practice"><span class="k">最小一步</span><span>选一个你最放心的人、最小的场合，主动让他看见你一件真实的小事——一个真实感受，或者一件你做成的事。看见之后什么都不用做，只观察一件事：抛弃，并没有发生。</span></div>
+            </div>
+
+            <div class="item">
+              <p class="q"><span class="who">你的原话 · 五</span>「一被深度关心，我就恐惧。」</p>
+              <p class="mech"><b>机制：</b>亨德里克斯第 7 章说，亲密度也有恒温器：关心超过刻度，人就降温——<b>恐惧是刻度在响，不是对方有问题</b>。内夫第 11 章补了一层：当一个人的价值感全押在对方的反应上，让人靠近就等于把命门交出去，当然怕；先能安抚自己的人，才敢让人靠近。米勒再补源头：小时候的关心常常和条件、控制绑在一起，身体记着那笔账，所以现在的关心一深，旧账就被翻出来。</p>
+              <div class="practice"><span class="k">最小一步</span><span>下次被关心时，先不躲、不岔开话题，在心里默念一句「这是一个难受的时刻」，让这份关心停留一分钟，再决定说什么。先练停留，不练回应。</span></div>
+            </div>
+
+          </div>
         </div>
 
         <h3 class="sec">建议的读法顺序（从最温和到最深）</h3>
@@ -563,7 +602,7 @@
           bar.style.width=(max>0?(h.scrollTop/max*100):0)+'%';
           if(h.scrollTop>600){totop.classList.add('show')}else{totop.classList.remove('show')}
           // nav highlight
-          var ids=['neff','bigleap','miller','daring','compare','first-step'];
+          var ids=['foryou','neff','bigleap','miller','daring','compare','first-step'];
           var cur=null;
           for(var i=0;i<ids.length;i++){var el=document.getElementById(ids[i]);if(el&&el.getBoundingClientRect().top<160){cur=ids[i]}}
           var links=document.querySelectorAll('.topnav a');
