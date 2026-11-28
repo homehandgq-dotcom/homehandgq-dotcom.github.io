@@ -1,0 +1,795 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
+<meta name="color-scheme" content="light" />
+<link rel="icon" href="data:," />
+<title>陈教练百日筑基 · 第11天拆解与模拟战</title>
+<style>
+  :root{
+    --ink:#1c1e1a;
+    --ink-2:#45483f;
+    --ink-3:#6d7064;
+    --paper:#ffffff;
+    --paper-2:#f6f5f0;
+    --paper-3:#efeee7;
+    --line:#e2e0d6;
+    --pine:#1e5a43;
+    --pine-dark:#14402f;
+    --pine-soft:#e8f1ec;
+    --amber:#a86a12;
+    --amber-soft:#faf1dd;
+    --red:#9c3324;
+    --red-soft:#faece8;
+    --radius:10px;
+  }
+  *{box-sizing:border-box;}
+  html{scroll-behavior:smooth;}
+  body{
+    margin:0;background:var(--paper);color:var(--ink);
+    font-family:"PingFang SC","Hiragino Sans GB","Microsoft YaHei","Noto Sans SC",system-ui,sans-serif;
+    font-size:16px;line-height:1.75;-webkit-text-size-adjust:100%;
+  }
+  .wrap{max-width:680px;margin:0 auto;padding:0 18px 64px;}
+  h1,h2,h3{font-family:"Songti SC","STSong","Noto Serif SC",serif;line-height:1.35;margin:0;}
+  p{margin:0 0 12px;}
+  a{color:var(--pine);text-decoration:underline;text-underline-offset:3px;}
+  button{font-family:inherit;cursor:pointer;}
+
+  /* ---------- 顶部 ---------- */
+  .top{padding:28px 0 6px;}
+  .top .day-line{font-size:13px;letter-spacing:.14em;color:var(--ink-3);margin-bottom:10px;}
+  .top h1{font-size:30px;font-weight:700;letter-spacing:.01em;}
+  .top .sub{margin-top:10px;color:var(--ink-2);font-size:15px;}
+  .top .quote{
+    margin-top:16px;padding:12px 14px;background:var(--paper-2);border:1px solid var(--line);
+    border-radius:var(--radius);font-family:"Songti SC","STSong",serif;font-size:16px;
+  }
+  .top .quote small{display:block;font-family:inherit;font-size:12.5px;color:var(--ink-3);margin-top:4px;letter-spacing:.04em;}
+
+  /* ---------- 横滑目录 ---------- */
+  nav.toc{
+    position:sticky;top:0;z-index:30;background:var(--paper);
+    border-bottom:1px solid var(--line);margin:18px -18px 0;padding:8px 18px;
+  }
+  nav.toc .row{display:flex;gap:8px;overflow-x:auto;-webkit-overflow-scrolling:touch;scrollbar-width:none;padding-bottom:2px;}
+  nav.toc .row::-webkit-scrollbar{display:none;}
+  nav.toc a{
+    flex:0 0 auto;min-height:38px;display:inline-flex;align-items:center;
+    padding:6px 14px;border:1px solid var(--line);border-radius:999px;
+    color:var(--ink);text-decoration:none;font-size:14px;background:var(--paper);
+  }
+  nav.toc a.hot{background:var(--pine);border-color:var(--pine);color:#fff;font-weight:600;}
+
+  section{padding-top:34px;scroll-margin-top:64px;}
+  .sec-head{margin-bottom:14px;}
+  .sec-head h2{font-size:22px;font-weight:700;}
+  .sec-head .note{font-size:13.5px;color:var(--ink-3);margin-top:4px;}
+
+  /* ---------- 来源链接（放章节上方） ---------- */
+  .src{
+    display:block;border:1px solid var(--line);border-left:4px solid var(--pine);
+    border-radius:8px;padding:12px 14px;margin-bottom:10px;text-decoration:none;color:var(--ink);
+    background:var(--paper);min-height:48px;
+  }
+  .src:active{background:var(--pine-soft);}
+  .src .src-t{font-weight:600;font-size:15.5px;color:var(--pine-dark);}
+  .src .src-u{display:block;font-size:12.5px;color:var(--ink-3);word-break:break-all;margin-top:2px;}
+  .src .src-d{display:block;font-size:13.5px;color:var(--ink-2);margin-top:4px;line-height:1.6;}
+  .src-label{font-size:12.5px;letter-spacing:.1em;color:var(--ink-3);margin:2px 0 8px;}
+
+  /* ---------- 通用块 ---------- */
+  .card{border:1px solid var(--line);border-radius:var(--radius);padding:16px;margin-bottom:12px;background:var(--paper);}
+  .card h3{font-size:17px;margin-bottom:8px;}
+  ul.tight{margin:0;padding-left:20px;}
+  ul.tight li{margin-bottom:6px;}
+  ul.tight li:last-child{margin-bottom:0;}
+  .warn{background:var(--red-soft);border:1px solid #e8c9c2;border-radius:var(--radius);padding:14px 16px;margin-bottom:12px;}
+  .warn strong{color:var(--red);}
+  .tip{background:var(--amber-soft);border:1px solid #eadfc2;border-radius:var(--radius);padding:14px 16px;margin-bottom:12px;}
+  .ok{background:var(--pine-soft);border:1px solid #cfdfd4;border-radius:var(--radius);padding:14px 16px;margin-bottom:12px;}
+  .small{font-size:13.5px;color:var(--ink-2);}
+  .tiny{font-size:12.5px;color:var(--ink-3);}
+
+  /* ---------- 档案 ---------- */
+  .kv{display:grid;grid-template-columns:86px 1fr;gap:6px 12px;font-size:15px;}
+  .kv dt{color:var(--ink-3);}
+  .kv dd{margin:0;}
+  .cert{border-top:1px solid var(--line);padding:10px 0;}
+  .cert:first-of-type{border-top:none;padding-top:2px;}
+  .cert b{font-weight:600;}
+  .cert span{display:block;font-size:13.5px;color:var(--ink-2);}
+
+  /* ---------- 第11天清单 ---------- */
+  .day11{display:grid;gap:10px;}
+  .day11 .item{display:flex;gap:14px;align-items:flex-start;border:1px solid var(--line);border-radius:var(--radius);padding:14px 16px;}
+  .day11 .num{
+    flex:0 0 auto;width:34px;height:34px;border-radius:50%;background:var(--ink);color:#fff;
+    display:flex;align-items:center;justify-content:center;font-family:Georgia,serif;font-size:16px;margin-top:2px;
+  }
+  .day11 .item b{font-size:17px;}
+  .day11 .item p{margin:2px 0 0;font-size:14px;color:var(--ink-2);}
+
+  /* ---------- 模拟战 ---------- */
+  #sim{background:var(--paper-2);border-top:1px solid var(--line);border-bottom:1px solid var(--line);
+    margin:34px -18px 0;padding:30px 18px 36px;}
+  #sim .inner{max-width:644px;margin:0 auto;}
+  .sim-progress{display:flex;gap:6px;margin:14px 0 18px;}
+  .sim-progress .seg{flex:1;height:8px;border-radius:99px;background:var(--paper-3);overflow:hidden;}
+  .sim-progress .seg i{display:block;height:100%;width:0%;background:var(--pine);transition:width .4s;}
+  .sim-progress-labels{display:flex;justify-content:space-between;font-size:12.5px;color:var(--ink-3);margin-top:-12px;margin-bottom:16px;}
+  .step{
+    background:var(--paper);border:1px solid var(--line);border-radius:12px;padding:18px 16px;margin-bottom:14px;
+  }
+  .step.done{border-color:var(--pine);box-shadow:0 0 0 1px var(--pine) inset;}
+  .step-head{display:flex;align-items:baseline;justify-content:space-between;gap:10px;margin-bottom:6px;}
+  .step-head h3{font-size:18px;}
+  .step-head .badge{font-size:12.5px;color:var(--ink-3);white-space:nowrap;}
+  .step.done .badge{color:var(--pine);font-weight:700;}
+  .chips{display:flex;flex-wrap:wrap;gap:8px;margin:10px 0;}
+  .chip{
+    min-height:40px;padding:6px 16px;border-radius:999px;border:1px solid var(--line);
+    background:var(--paper);font-size:14.5px;color:var(--ink);
+  }
+  .chip.on{background:var(--ink);color:#fff;border-color:var(--ink);}
+  .btn{
+    min-height:48px;padding:10px 22px;border-radius:10px;border:1px solid var(--pine);
+    background:var(--pine);color:#fff;font-size:16px;font-weight:600;
+  }
+  .btn.ghost{background:var(--paper);color:var(--pine-dark);}
+  .btn.plain{background:var(--paper);color:var(--ink);border-color:var(--line);}
+  .btn:disabled{opacity:.45;cursor:default;}
+  .btn-row{display:flex;flex-wrap:wrap;gap:10px;margin-top:12px;}
+  .big-time{
+    font-family:Georgia,"Times New Roman",serif;font-size:44px;line-height:1.1;text-align:center;
+    font-variant-numeric:tabular-nums;margin:8px 0 2px;
+  }
+  .big-count{font-family:Georgia,serif;font-size:52px;line-height:1;text-align:center;font-variant-numeric:tabular-nums;}
+  .center{text-align:center;}
+  /* 呼吸圆 */
+  .breath-zone{display:flex;flex-direction:column;align-items:center;padding:10px 0 4px;}
+  .breath-circle{
+    width:150px;height:150px;border-radius:50%;
+    background:radial-gradient(circle at 50% 42%, #2e7a5c, var(--pine-dark));
+    display:flex;align-items:center;justify-content:center;color:#fff;
+    transform:scale(.62);transition:transform 1s linear;
+  }
+  .breath-circle span{font-size:19px;font-weight:600;letter-spacing:.2em;text-indent:.2em;}
+  .breath-meta{font-size:13.5px;color:var(--ink-3);margin-top:10px;font-variant-numeric:tabular-nums;}
+  .tap-btn{
+    width:100%;min-height:64px;border-radius:12px;border:1px solid var(--ink);
+    background:var(--ink);color:#fff;font-size:18px;font-weight:700;letter-spacing:.06em;
+  }
+  .tap-btn:active{transform:scale(.99);}
+  .rest-box{display:none;background:var(--amber-soft);border:1px solid #eadfc2;border-radius:10px;padding:14px;text-align:center;margin-top:12px;}
+  .rest-box.show{display:block;}
+  .rest-box .big-time{font-size:36px;}
+  .sim-done-banner{display:none;background:var(--pine);color:#fff;border-radius:12px;padding:18px;text-align:center;}
+  .sim-done-banner.show{display:block;}
+  .sim-done-banner h3{color:#fff;font-size:20px;margin-bottom:6px;}
+  .sim-done-banner p{margin:0;font-size:14.5px;opacity:.92;}
+
+  /* ---------- 对照表 ---------- */
+  .vs{display:grid;gap:10px;}
+  .vs .col{border:1px solid var(--line);border-radius:var(--radius);padding:14px 16px;}
+  .vs .col.good{border-color:#bcd2c4;background:#fbfdfb;}
+  .vs .col.bad{background:#fdfaf7;}
+  .vs h3{font-size:16px;margin-bottom:8px;}
+  @media(min-width:560px){.vs{grid-template-columns:1fr 1fr;}}
+
+  table.plan{width:100%;border-collapse:collapse;font-size:14.5px;}
+  table.plan th,table.plan td{border-bottom:1px solid var(--line);padding:9px 6px;text-align:left;vertical-align:top;}
+  table.plan th{font-size:13px;color:var(--ink-3);font-weight:600;}
+  table.plan tr:last-child td{border-bottom:none;}
+
+  footer{margin-top:44px;border-top:1px solid var(--line);padding-top:16px;}
+  .src-list{font-size:13.5px;word-break:break-all;}
+  .src-list li{margin-bottom:8px;}
+</style>
+</head>
+<body>
+<div class="wrap">
+
+  <header class="top">
+    <div class="day-line">百日筑基 · 第 11 天拆解 + 同类资料 + 跟练模拟战</div>
+    <h1>陈教练百日筑基类似资料学习</h1>
+    <p class="sub">把陈教练第 11 天的四项功课（练气、臀桥、吐纳、混元卧）逐项对上公开能查到的正经资料，再按缩小版剂量做成一个可以真的跟着练完的模拟战。不照抄他的 50 分钟 + 100 次。</p>
+    <div class="quote">君子寡欲，则不役于物
+      <small>第 11 天视频文案 · #居家锻炼 #健身 · 发布后 9 小时数据：点赞 13 · 转发 16 · 收藏 8</small>
+    </div>
+  </header>
+
+  <nav class="toc" aria-label="目录">
+    <div class="row">
+      <a href="#sim" class="hot">模拟战 · 跟练</a>
+      <a href="#profile">人物档案</a>
+      <a href="#day11">第11天原版</a>
+      <a href="#tuna">吐纳 / 练气</a>
+      <a href="#frame">筑基框架</a>
+      <a href="#bridge">臀桥 / 盆底</a>
+      <a href="#hunyuan">混元卧</a>
+      <a href="#judge">哪些站得住</a>
+      <a href="#plan">起步计划</a>
+      <a href="#sources">全部来源</a>
+    </div>
+  </nav>
+
+  <!-- ================= 人物档案 ================= -->
+  <section id="profile">
+    <div class="sec-head">
+      <h2>人物档案</h2>
+      <p class="note">以下内容只来自你发的截图。公开网络搜不到与这个视频号对得上的公开档案，他的收费、联系方式、学员反馈真源目前都无法核实，页面里不写。</p>
+    </div>
+    <div class="card">
+      <dl class="kv">
+        <dt>视频号名</dt><dd>陈教练自律版</dd>
+        <dt>另一号标题</dt><dd>陈教练（性命双修）</dd>
+        <dt>品牌</dt><dd>铁男健身 — 男性专属训练课程（非诚勿扰）</dd>
+        <dt>定位</dt><dd>男性专属训练，主打性命双修、性功能与气血体能方向</dd>
+        <dt>证书持有人</dt><dd>陈雷（Chen Lei），与账号为同一人</dd>
+      </dl>
+    </div>
+    <div class="card">
+      <h3>他晒出的 5 张证书</h3>
+      <p class="small">全部是培训结业证 / 参加证明，不是医师执照，也不是国家职业资格证。看证书时按这个性质理解。</p>
+      <div class="cert"><b>性康复指导师结业证</b><span>2018 年 9 月，第五期性康复培训，成绩优秀</span></div>
+      <div class="cert"><b>肌筋膜链康复训练课程结业证</b><span>博莱运动学院 / 华博士，英文为 Certification of Attendance，即参加证明</span></div>
+      <div class="cert"><b>四维运动功能解剖学结业证书</b><span>2017 年发证</span></div>
+      <div class="cert"><b>人体使用学体系《人体使用专题课程》结业证</b><span>证书上写明成功完成该专题课程</span></div>
+      <div class="cert"><b>运动康复训练结业证</b><span>2017 年，证书编号 004654</span></div>
+    </div>
+    <div class="tip"><strong>他的打法，一句话：</strong>运动康复背景包装 + 性康复与中医气血话术，卖男性专属私教课。置顶和近期帖子以学员聊天记录截图为主（11 月 14 日「温度决生死，气血定终身」、11 月 06 日「不管你有什么卡点都可以来」），都是他自己截的图，没有第三方来源。</div>
+  </section>
+
+  <!-- ================= 第11天 ================= -->
+  <section id="day11">
+    <div class="sec-head">
+      <h2>百日筑基第 11 天 · 原版清单</h2>
+      <p class="note">这是他视频里给出的原始剂量，是给已经跟练的人看的。初学不要直接照抄，缩小版在下面的模拟战里。</p>
+    </div>
+    <div class="day11">
+      <div class="item"><div class="num">1</div><div><b>练气 50 分钟</b><p>坐姿静练，呼吸与意守为主体，吐纳是其中的呼吸法。</p></div></div>
+      <div class="item"><div class="num">2</div><div><b>臀桥 100 次</b><p>仰卧屈膝顶髋。100 次这个量的问题，下面臀桥一节讲清。</p></div></div>
+      <div class="item"><div class="num">3</div><div><b>吐纳</b><p>视频里没给时长。排在臀桥之后、混元卧之前，作用是收功沉气。</p></div></div>
+      <div class="item"><div class="num">4</div><div><b>混元卧 15 分钟</b><p>仰卧、脚心相对、膝盖外开、双手交叉覆于头顶，睡前收尾。</p></div></div>
+    </div>
+  </section>
+
+  <!-- ================= 模拟战 ================= -->
+  <div id="sim">
+    <div class="inner">
+      <div class="sec-head">
+        <h2>模拟战 · 跟着练一遍（缩小版）</h2>
+        <p class="note">全程不到半小时：吐纳 10 分钟 → 臀桥 15 次 × 3 组 → 混元卧 10 分钟。三步都练完才算今日完成。练一周身体没不舒服，再往上加量。任何一步出现头晕、胸闷、心慌，立刻停下改自然呼吸。</p>
+      </div>
+
+      <div class="sim-progress" aria-hidden="true">
+        <div class="seg"><i id="prog1"></i></div>
+        <div class="seg"><i id="prog2"></i></div>
+        <div class="seg"><i id="prog3"></i></div>
+      </div>
+      <div class="sim-progress-labels"><span>① 吐纳</span><span>② 臀桥</span><span>③ 混元卧</span></div>
+
+      <!-- 步骤1 吐纳 -->
+      <div class="step" id="step1">
+        <div class="step-head"><h3>第一步 · 吐纳呼吸</h3><span class="badge" id="badge1">未开始</span></div>
+        <p class="small">鼻吸口吐，吸气时小腹微微鼓起，呼气拉长。圆变大是吸气，变小是呼气，跟着圆走，不要憋气、不要使劲。默认吸 4 秒、呼 8 秒（呼是吸的两倍）；台大讲义里呼与吸可到约 3∶1，那是练熟以后的进阶，先用 1∶2。</p>
+        <div class="chips" role="group" aria-label="吐纳时长">
+          <button class="chip" data-breath-min="5" aria-label="吐纳 5 分钟">5 分钟</button>
+          <button class="chip on" data-breath-min="10" aria-label="吐纳 10 分钟">10 分钟</button>
+          <button class="chip" data-breath-min="15" aria-label="吐纳 15 分钟">15 分钟</button>
+        </div>
+        <div class="breath-zone">
+          <div class="breath-circle" id="breathCircle"><span id="breathPhase">准备</span></div>
+          <div class="breath-meta" id="breathMeta">选好时长，点开始</div>
+        </div>
+        <div class="btn-row">
+          <button class="btn" id="breathStart">开始吐纳</button>
+          <button class="btn ghost" id="breathPause" disabled>暂停吐纳</button>
+          <button class="btn plain" id="breathReset">吐纳重来</button>
+        </div>
+        <div class="ok" style="margin-top:14px;margin-bottom:0;">
+          <strong>加练（可选）：提肛 36 下。</strong>台大讲义的提肾功就是这一项：吸气时收提会阴，呼气时放松，36 下一个循环。古法叫提肛，现代叫盆底肌收缩，是同一块肌肉。
+          <div class="center" style="margin-top:10px;">
+            <div class="big-count" id="tiganCount">0 <span style="font-size:20px;color:var(--ink-3);">/ 36</span></div>
+            <div class="btn-row" style="justify-content:center;">
+              <button class="btn ghost" id="tiganTap">收提一次</button>
+              <button class="btn plain" id="tiganReset">清零</button>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- 步骤2 臀桥 -->
+      <div class="step" id="step2">
+        <div class="step-head"><h3>第二步 · 臀桥 15 次 × 3 组</h3><span class="badge" id="badge2">未开始</span></div>
+        <p class="small">仰卧屈膝，脚踩实。顶到肩、髋、膝成一条直线就停，顶端夹臀停 1–2 秒，再慢慢放下。<strong>屁股酸、腰不酸才算对；腰先酸，就是顶过头了。</strong>每做完一次点一下大按钮，满 15 次自动进入 60 秒组间休息。</p>
+        <div class="center" style="margin:12px 0 4px;">
+          <div class="big-count"><span id="bridgeSet">第 1 组</span></div>
+          <div class="big-count" id="bridgeCount">0 <span style="font-size:20px;color:var(--ink-3);">/ 15 次</span></div>
+          <p class="tiny" id="bridgeTotal">总进度 0 / 45 次</p>
+        </div>
+        <button class="tap-btn" id="bridgeTap">完成一次 · 点我计数</button>
+        <div class="rest-box" id="restBox">
+          <p style="margin:0;font-weight:600;">这一组完成，休息一下</p>
+          <div class="big-time" id="restTime">60</div>
+          <button class="btn ghost" id="restSkip">跳过休息，直接下一组</button>
+        </div>
+        <div class="btn-row">
+          <button class="btn plain" id="bridgeReset">臀桥重来</button>
+        </div>
+      </div>
+
+      <!-- 步骤3 混元卧 -->
+      <div class="step" id="step3">
+        <div class="step-head"><h3>第三步 · 混元卧</h3><span class="badge" id="badge3">未开始</span></div>
+        <p class="small">仰卧，脚心相对，膝盖自然外开，双手交叉覆于头顶，呼吸放慢，什么都不用想。记住：这是睡前练的姿势，不是整晚的睡姿，计时结束把手脚散开再正常睡。</p>
+        <div class="chips" role="group" aria-label="混元卧时长">
+          <button class="chip" data-hy-min="5" aria-label="混元卧 5 分钟">5 分钟</button>
+          <button class="chip on" data-hy-min="10" aria-label="混元卧 10 分钟">10 分钟</button>
+          <button class="chip" data-hy-min="15" aria-label="混元卧 15 分钟（原版）">15 分钟（原版）</button>
+        </div>
+        <div class="big-time" id="hyTime">10:00</div>
+        <p class="center tiny" id="hyHint">摆好姿势，点开始</p>
+        <div class="btn-row" style="justify-content:center;">
+          <button class="btn" id="hyStart">开始混元卧</button>
+          <button class="btn ghost" id="hyPause" disabled>暂停计时</button>
+          <button class="btn plain" id="hyReset">混元卧重来</button>
+        </div>
+      </div>
+
+      <div class="sim-done-banner" id="doneBanner">
+        <h3>今日模拟战完成</h3>
+        <p id="doneText">吐纳、臀桥、混元卧三步都练完了。手脚散开，放松躺一会儿再睡。</p>
+      </div>
+      <div class="btn-row" style="justify-content:center;margin-top:14px;">
+        <button class="btn plain" id="simResetAll">全部重置，明天再战</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- ================= 吐纳/练气 ================= -->
+  <section id="tuna">
+    <div class="sec-head">
+      <h2>吐纳 / 练气 · 学什么</h2>
+      <p class="note">吐纳不是单独的动作，它就是练气里面的呼吸法：吐是呼气时把浊气慢慢吐净，纳是吸气时把清气吸满到小腹。在第 11 天的顺序里，它排在臀桥后、混元卧前，作用是收功，把练完浮起来的气血和心率沉下来。</p>
+    </div>
+    <p class="src-label">先看这三份（链接在上，点开就能看）</p>
+    <a class="src" href="http://homepage.ntu.edu.tw/~hwangcy/course/qi/qi201.txt" target="_blank" rel="noopener">
+      <span class="src-t">台大体育气功课讲义 — 里面最正经的一份</span>
+      <span class="src-u">homepage.ntu.edu.tw/~hwangcy/course/qi/qi201.txt</span>
+      <span class="src-d">大学体育课教材。吐纳、提肛、揉丹、收功一整套都在里面。</span>
+    </a>
+    <a class="src" href="https://zhongyibaodian.net/a/34900.html" target="_blank" rel="noopener">
+      <span class="src-t">中医宝典 — 吐纳功</span>
+      <span class="src-u">zhongyibaodian.net/a/34900.html</span>
+      <span class="src-d">中医口径的吐纳功条目，对照着看古法怎么讲吐故纳新。</span>
+    </a>
+    <a class="src" href="https://www.bilibili.com/video/BV14H4y137Ap" target="_blank" rel="noopener">
+      <span class="src-t">洗髓功吐纳 — B 站视频</span>
+      <span class="src-u">bilibili.com/video/BV14H4y137Ap</span>
+      <span class="src-d">想看真人动作节奏的看这个，文字讲义看不懂时用它对姿势。</span>
+    </a>
+    <div class="card">
+      <h3>台大讲义的核心要点</h3>
+      <ul class="tight">
+        <li>吐纳是练气的基础：呼吸要<strong>深、长、细、匀</strong>，呼气比吸气长，比例约 3∶1（这是进阶目标，起步用呼气为吸气两倍即可）。</li>
+        <li>吸气时小腹鼓起（腹式呼吸），气沉到小腹，不耸肩、不挺胸硬吸。</li>
+        <li>讲义紧接着就是<strong>提肾功</strong>：提肛收会阴 36 下一个循环——正对陈教练这套的男性核心。</li>
+        <li>后面还有揉丹（绕脐揉腹）和收功，练完不能直接停，要收尾。</li>
+      </ul>
+    </div>
+    <div class="warn"><strong>练吐纳的红线：</strong>全程不憋气、不使劲。头晕、胸闷就是用力过头或呼气太猛，立刻停下，改自然呼吸，缓过来再说，不要硬撑时长。</div>
+  </section>
+
+  <!-- ================= 筑基框架 ================= -->
+  <section id="frame">
+    <div class="sec-head">
+      <h2>百日筑基 · 100 天整体框架</h2>
+      <p class="note">陈教练只发到第 11 天。这一节是同类功法公开的完整框架，用来判断他每天的量处在哪个阶段。</p>
+    </div>
+    <p class="src-label">先看这份（链接在上）</p>
+    <a class="src" href="https://www.hywushu.cn/post/50.html" target="_blank" rel="noopener">
+      <span class="src-t">百日筑基完整框架 — 1 到 100 天分三阶段</span>
+      <span class="src-u">hywushu.cn/post/50.html</span>
+      <span class="src-d">把 100 天拆成调身、炼精化气、巩固三段，每段练什么、练多久都写了。</span>
+    </a>
+    <div class="card">
+      <table class="plan">
+        <tr><th style="width:32%;">阶段</th><th>练什么</th></tr>
+        <tr><td><strong>第 1–15 天 · 调身</strong></td><td>站桩 + 腹式呼吸 + 揉腹，先把姿势和呼吸顺过来，量不大。</td></tr>
+        <tr><td><strong>第 16–70 天 · 炼精化气</strong></td><td>意守下丹田，呼吸讲究吸提呼降，静练时长逐步加上去。</td></tr>
+        <tr><td><strong>第 71–100 天 · 巩固</strong></td><td>静坐拉到 40–60 分钟，动作退居其次，以稳住为主。</td></tr>
+      </table>
+    </div>
+    <div class="tip"><strong>对回陈教练：</strong>他的练气 50 分钟 + 混元卧 15 分钟，落在第二、三阶段的量。第 11 天按框架还在第一阶段调身期，这个剂量对初学者是超前的——这也是模拟战把剂量缩小的原因。</div>
+  </section>
+
+  <!-- ================= 臀桥/盆底 ================= -->
+  <section id="bridge">
+    <div class="sec-head">
+      <h2>臀桥 / 盆底 · 剂量与科学证据</h2>
+      <p class="note">这一项是全套里最能落地的：臀桥练臀，提肛练盆底。但「100 次」这个剂量，正经教程的共识并不支持。</p>
+    </div>
+    <p class="src-label">先看这三份（链接在上）</p>
+    <a class="src" href="https://post.smzdm.com/p/a6z53qk0/" target="_blank" rel="noopener">
+      <span class="src-t">臀桥男生版纠错 — 每天 100 个为什么是错的</span>
+      <span class="src-u">post.smzdm.com/p/a6z53qk0</span>
+      <span class="src-d">专讲剂量和动作变形，练之前先看这篇。</span>
+    </a>
+    <a class="src" href="https://pubmed.ncbi.nlm.nih.gov/30979506/" target="_blank" rel="noopener">
+      <span class="src-t">男性盆底肌训练系统综述 — PubMed（英文）</span>
+      <span class="src-u">pubmed.ncbi.nlm.nih.gov/30979506</span>
+      <span class="src-d">汇总 10 个试验的学术综述，结论和证据等级都写明了。</span>
+    </a>
+    <a class="src" href="https://PELVIS.NYC/the-lowdown-on-kegel-exercises-for-dudes/" target="_blank" rel="noopener">
+      <span class="src-t">纽约盆底物理治疗师 — 男性凯格尔指南（英文）</span>
+      <span class="src-u">PELVIS.NYC/the-lowdown-on-kegel-exercises-for-dudes</span>
+      <span class="src-d">临床物理治疗口径的练法：怎么找对肌肉、怎么排剂量、常见错误。</span>
+    </a>
+    <div class="card">
+      <h3>臀桥的正确剂量</h3>
+      <ul class="tight">
+        <li><strong>10–15 次一组，做 3–4 组就够了</strong>，不是一口气 100 次。</li>
+        <li>顶到肩、髋、膝一条直线就停，顶端夹臀停 1–2 秒，再慢慢放下。</li>
+        <li>做太多，动作必然变形：顶太高练的是腰，最后腰酸、屁股没感觉。</li>
+        <li>自查标准：<strong>屁股酸、腰不酸 = 对；腰先酸 = 顶过头了</strong>，降量、降幅度。</li>
+      </ul>
+    </div>
+    <div class="card">
+      <h3>盆底训练，科学那头怎么说</h3>
+      <ul class="tight">
+        <li>PubMed 系统综述共纳入 <strong>10 个试验</strong>：盆底肌训练对勃起功能障碍和早泄<strong>看起来有效</strong>，35%–47% 的人症状完全消退。</li>
+        <li>但要把后半句听全：研究质量只有<strong>低到中等</strong>，目前<strong>没有公认的最佳练法</strong>。</li>
+        <li>有氧运动的证据反而更硬。真想改善状态，快走、跑步、游泳这类有氧的基本盘不能缺。</li>
+      </ul>
+    </div>
+  </section>
+
+  <!-- ================= 混元卧 ================= -->
+  <section id="hunyuan">
+    <div class="sec-head">
+      <h2>混元卧 · 姿势与禁忌</h2>
+      <p class="note">就是第 11 天截图里那个姿势：仰卧、脚心相对、膝盖外开、双手交叉覆于头顶。它是整套功课的收尾，练的是放松和沉气。</p>
+    </div>
+    <p class="src-label">先看这份（链接在上）</p>
+    <a class="src" href="https://post.smzdm.com/p/az8xm6dn/" target="_blank" rel="noopener">
+      <span class="src-t">混元卧 — 道家四种睡功对照</span>
+      <span class="src-u">post.smzdm.com/p/az8xm6dn</span>
+      <span class="src-d">混元卧、还阳卧等四种睡功的姿势区别和适用人群，一篇对照清。</span>
+    </a>
+    <div class="card">
+      <h3>要点</h3>
+      <ul class="tight">
+        <li>它是<strong>睡前练 15 分钟的姿势，不是整晚睡觉的姿势</strong>，练完要把手脚散开，正常睡。</li>
+        <li>和还阳卧的区别只在手位：混元卧双手交叉覆头顶，还阳卧双手放在小腹 / 肾区。</li>
+        <li><strong>阴虚火旺</strong>（手脚心热、口干）的人要缩短时间，越躺越烦躁就停。</li>
+        <li>髋、膝有关节伤的量力：膝盖外开不到位不要硬压，垫个枕头在膝下也行。</li>
+      </ul>
+    </div>
+  </section>
+
+  <!-- ================= 判断 ================= -->
+  <section id="judge">
+    <div class="sec-head">
+      <h2>哪些站得住，哪些是话术</h2>
+      <p class="note">学这套东西，先把这两栏分清，再决定跟不跟。</p>
+    </div>
+    <div class="vs">
+      <div class="col good">
+        <h3>站得住的部分</h3>
+        <ul class="tight">
+          <li><strong>盆底肌训练</strong>：有系统综述支持，对勃起和早泄看起来有效（证据等级低到中等）。</li>
+          <li><strong>臀桥练臀</strong>：标准康复 / 力量动作，剂量对了就是好动作。</li>
+          <li><strong>慢呼吸（吐纳）</strong>：腹式慢呼吸能把心率和紧张沉下来，机制清楚。</li>
+          <li><strong>作息与放松收尾</strong>：睡前固定放松流程，对睡眠和状态有实打实的好处。</li>
+          <li><strong>有氧运动</strong>：这一栏里证据最硬的其实是它，别只练静功不运动。</li>
+        </ul>
+      </div>
+      <div class="col bad">
+        <h3>话术，听个方向就行</h3>
+        <ul class="tight">
+          <li>「温度决生死，气血定终身」——是他的学员反馈帖标题，<strong>不是医学结论</strong>，无法验证。</li>
+          <li>学员反馈全是他自己截的聊天记录，没有第三方来源，效果说法要打折看。</li>
+          <li>证书是培训结业 / 参加证明，不等于行医或执业资格。</li>
+          <li>「不管你有什么卡点都可以来」——包治式口径，任何具体症状都应先看医生。</li>
+        </ul>
+      </div>
+    </div>
+    <div class="warn"><strong>边界说清：</strong>这一页是跟练与学习资料整理，不替代医疗。有明确的勃起、射精、前列腺或睡眠问题，先去正规医院男科 / 泌尿外科查清楚，再谈练功。</div>
+  </section>
+
+  <!-- ================= 起步计划 ================= -->
+  <section id="plan">
+    <div class="sec-head">
+      <h2>缩小版起步计划</h2>
+      <p class="note">上面的模拟战就是按这个计划做的。先跑通一周，再谈加量。</p>
+    </div>
+    <div class="card">
+      <table class="plan">
+        <tr><th style="width:34%;">项目</th><th>起步剂量</th></tr>
+        <tr><td>吐纳</td><td><strong>10 分钟</strong>，吸 4 秒、呼 8 秒，不憋气</td></tr>
+        <tr><td>提肛（可选）</td><td>36 下一个循环，跟呼吸走</td></tr>
+        <tr><td>臀桥</td><td><strong>15 次 × 3 组</strong>，组间休息 60 秒，顶端停 1–2 秒</td></tr>
+        <tr><td>混元卧</td><td><strong>10 分钟</strong>，练完手脚散开正常睡</td></tr>
+        <tr><td>总时长</td><td>不到半小时</td></tr>
+      </table>
+    </div>
+    <ul class="tight">
+      <li>练满一周，身体没有任何不舒服（不腰酸、不头晕、睡眠没变差），再逐项往上加：吐纳先加到 15 分钟，臀桥先加组数不加单组次数，混元卧加到 15 分钟。</li>
+      <li>不要直接照抄原版的练气 50 分钟 + 臀桥 100 次——那是第二、三阶段的量。</li>
+      <li>哪天状态差，就只做吐纳 + 混元卧两步，跳过臀桥，不算断练。</li>
+    </ul>
+  </section>
+
+  <!-- ================= 来源 ================= -->
+  <footer id="sources">
+    <h2 style="font-size:18px;margin-bottom:10px;">全部来源</h2>
+    <p class="small">人物档案与第 11 天清单来自你 2026 年 11 月 28 日发的视频号截图（账号：陈教练自律版）。以下为同类学习资料，均为公开页面：</p>
+    <ol class="src-list">
+      <li>台大体育气功课讲义 — <a href="http://homepage.ntu.edu.tw/~hwangcy/course/qi/qi201.txt" target="_blank" rel="noopener">homepage.ntu.edu.tw/~hwangcy/course/qi/qi201.txt</a></li>
+      <li>中医宝典 · 吐纳功 — <a href="https://zhongyibaodian.net/a/34900.html" target="_blank" rel="noopener">zhongyibaodian.net/a/34900.html</a></li>
+      <li>洗髓功吐纳（B 站视频） — <a href="https://www.bilibili.com/video/BV14H4y137Ap" target="_blank" rel="noopener">bilibili.com/video/BV14H4y137Ap</a></li>
+      <li>百日筑基完整框架 — <a href="https://www.hywushu.cn/post/50.html" target="_blank" rel="noopener">hywushu.cn/post/50.html</a></li>
+      <li>混元卧 · 道家四种睡功对照 — <a href="https://post.smzdm.com/p/az8xm6dn/" target="_blank" rel="noopener">post.smzdm.com/p/az8xm6dn</a></li>
+      <li>臀桥男生版纠错 — <a href="https://post.smzdm.com/p/a6z53qk0/" target="_blank" rel="noopener">post.smzdm.com/p/a6z53qk0</a></li>
+      <li>男性盆底肌训练系统综述（PubMed） — <a href="https://pubmed.ncbi.nlm.nih.gov/30979506/" target="_blank" rel="noopener">pubmed.ncbi.nlm.nih.gov/30979506</a></li>
+      <li>纽约盆底物理治疗 · 男性凯格尔指南 — <a href="https://PELVIS.NYC/the-lowdown-on-kegel-exercises-for-dudes/" target="_blank" rel="noopener">PELVIS.NYC/the-lowdown-on-kegel-exercises-for-dudes</a></li>
+    </ol>
+    <p class="tiny">本页为学习整理，不构成医疗建议。陈教练的收费、联系方式与学员反馈真源未经核实，未收录。</p>
+  </footer>
+
+</div>
+
+<script>
+(function(){
+  "use strict";
+  var done = { s1:false, s2:false, s3:false };
+  function markDone(key, badgeId, stepId){
+    done[key] = true;
+    var b = document.getElementById(badgeId);
+    if(b) b.textContent = "已完成 ✓";
+    var s = document.getElementById(stepId);
+    if(s) s.classList.add("done");
+    checkAll();
+  }
+  function checkAll(){
+    if(done.s1 && done.s2 && done.s3){
+      document.getElementById("doneBanner").classList.add("show");
+    }
+  }
+  function setProg(id, pct){
+    var el = document.getElementById(id);
+    if(el) el.style.width = Math.max(0, Math.min(100, pct)) + "%";
+  }
+  function fmt(sec){
+    sec = Math.max(0, Math.ceil(sec));
+    var m = Math.floor(sec/60), s = sec%60;
+    return (m<10?"0":"")+m+":"+(s<10?"0":"")+s;
+  }
+
+  /* ---------- 吐纳 ---------- */
+  var breathMin = 10, breathTimer = null, breathLeft = 0, breathTotal = 0;
+  var phaseTimer = null, phase = "idle"; // in / out
+  var IN_SEC = 4, OUT_SEC = 8, cycles = 0;
+  var circle = document.getElementById("breathCircle");
+  var phaseEl = document.getElementById("breathPhase");
+  var metaEl = document.getElementById("breathMeta");
+  var bStart = document.getElementById("breathStart");
+  var bPause = document.getElementById("breathPause");
+
+  document.querySelectorAll("[data-breath-min]").forEach(function(btn){
+    btn.addEventListener("click", function(){
+      document.querySelectorAll("[data-breath-min]").forEach(function(x){ x.classList.remove("on"); });
+      btn.classList.add("on");
+      breathMin = parseInt(btn.getAttribute("data-breath-min"), 10);
+      if(phase === "idle") metaEl.textContent = "已选 " + breathMin + " 分钟，点开始";
+    });
+  });
+
+  function setPhase(next){
+    phase = next;
+    if(next === "in"){
+      phaseEl.textContent = "吸气";
+      circle.style.transitionDuration = IN_SEC + "s";
+      circle.style.transform = "scale(1)";
+      phaseTimer = setTimeout(function(){ setPhase("out"); }, IN_SEC*1000);
+    } else if(next === "out"){
+      phaseEl.textContent = "呼气";
+      circle.style.transitionDuration = OUT_SEC + "s";
+      circle.style.transform = "scale(.62)";
+      phaseTimer = setTimeout(function(){ cycles++; setPhase("in"); }, OUT_SEC*1000);
+    }
+  }
+  function breathTick(){
+    breathLeft -= 0.25;
+    var elapsed = breathTotal - breathLeft;
+    setProg("prog1", elapsed / breathTotal * 100);
+    metaEl.textContent = "剩余 " + fmt(breathLeft) + " · 已完成 " + cycles + " 个呼吸循环";
+    if(breathLeft <= 0){ stopBreath(true); }
+  }
+  function startBreath(){
+    if(breathTimer) return;
+    if(breathLeft <= 0){ breathTotal = breathMin*60; breathLeft = breathTotal; cycles = 0; }
+    bStart.disabled = true; bPause.disabled = false;
+    bStart.textContent = "进行中…";
+    setPhase("in");
+    breathTimer = setInterval(breathTick, 250);
+  }
+  function pauseBreath(){
+    clearInterval(breathTimer); breathTimer = null;
+    clearTimeout(phaseTimer);
+    var cs = window.getComputedStyle(circle);
+    circle.style.transform = cs.transform;
+    bStart.disabled = false; bPause.disabled = true;
+    bStart.textContent = "继续";
+    phaseEl.textContent = "暂停";
+    phase = "paused";
+  }
+  function stopBreath(finished){
+    clearInterval(breathTimer); breathTimer = null;
+    clearTimeout(phaseTimer);
+    circle.style.transform = "scale(.62)";
+    bStart.disabled = false; bPause.disabled = true;
+    if(finished){
+      phaseEl.textContent = "完成";
+      metaEl.textContent = "吐纳完成，共 " + cycles + " 个呼吸循环";
+      setProg("prog1", 100);
+      breathLeft = 0; phase = "idle";
+      bStart.textContent = "再来一轮";
+      markDone("s1", "badge1", "step1");
+    }
+  }
+  bStart.addEventListener("click", function(){
+    if(phase === "paused"){
+      // 从暂停恢复：重新进入吸气相
+      bStart.disabled = true; bPause.disabled = false; bStart.textContent = "进行中…";
+      setPhase("in");
+      breathTimer = setInterval(breathTick, 250);
+    } else { startBreath(); }
+  });
+  bPause.addEventListener("click", pauseBreath);
+  document.getElementById("breathReset").addEventListener("click", function(){
+    stopBreath(false);
+    breathLeft = 0; cycles = 0; phase = "idle";
+    phaseEl.textContent = "准备";
+    metaEl.textContent = "选好时长，点开始";
+    bStart.textContent = "开始吐纳";
+    setProg("prog1", done.s1 ? 100 : 0);
+  });
+
+  /* ---------- 提肛计数 ---------- */
+  var tigan = 0;
+  document.getElementById("tiganTap").addEventListener("click", function(){
+    tigan = Math.min(36, tigan + 1);
+    document.getElementById("tiganCount").innerHTML = tigan + ' <span style="font-size:20px;color:var(--ink-3);">/ 36</span>' + (tigan>=36 ? ' <span style="font-size:15px;color:var(--pine);">一循环完成</span>' : '');
+  });
+  document.getElementById("tiganReset").addEventListener("click", function(){
+    tigan = 0;
+    document.getElementById("tiganCount").innerHTML = '0 <span style="font-size:20px;color:var(--ink-3);">/ 36</span>';
+  });
+
+  /* ---------- 臀桥 ---------- */
+  var SETS = 3, PER = 15;
+  var cur = 0, setIdx = 1, resting = false, restTimer = null, restLeft = 60;
+  var bridgeTap = document.getElementById("bridgeTap");
+  var restBox = document.getElementById("restBox");
+  function bridgeUI(){
+    document.getElementById("bridgeSet").textContent = "第 " + Math.min(setIdx, SETS) + " 组";
+    document.getElementById("bridgeCount").innerHTML = cur + ' <span style="font-size:20px;color:var(--ink-3);">/ ' + PER + ' 次</span>';
+    var totalDone = (setIdx-1)*PER + cur;
+    document.getElementById("bridgeTotal").textContent = "总进度 " + totalDone + " / " + (SETS*PER) + " 次";
+    setProg("prog2", totalDone / (SETS*PER) * 100);
+  }
+  function endRest(){
+    clearInterval(restTimer); restTimer = null; resting = false;
+    restBox.classList.remove("show");
+    bridgeTap.disabled = false;
+    bridgeUI();
+  }
+  function startRest(){
+    resting = true; restLeft = 60;
+    restBox.classList.add("show");
+    document.getElementById("restTime").textContent = restLeft;
+    bridgeTap.disabled = true;
+    restTimer = setInterval(function(){
+      restLeft--;
+      document.getElementById("restTime").textContent = Math.max(0, restLeft);
+      if(restLeft <= 0) endRest();
+    }, 1000);
+  }
+  bridgeTap.addEventListener("click", function(){
+    if(resting || done.s2) return;
+    cur++;
+    if(cur >= PER){
+      if(setIdx >= SETS){
+        cur = PER; bridgeUI();
+        bridgeTap.disabled = true;
+        bridgeTap.textContent = "臀桥完成 ✓";
+        markDone("s2", "badge2", "step2");
+        return;
+      }
+      setIdx++; cur = 0;
+      bridgeUI();
+      startRest();
+    } else { bridgeUI(); }
+  });
+  document.getElementById("restSkip").addEventListener("click", endRest);
+  document.getElementById("bridgeReset").addEventListener("click", function(){
+    clearInterval(restTimer); resting = false;
+    restBox.classList.remove("show");
+    cur = 0; setIdx = 1;
+    bridgeTap.disabled = false;
+    bridgeTap.textContent = "完成一次 · 点我计数";
+    if(done.s2){ done.s2 = false; document.getElementById("badge2").textContent = "未开始"; document.getElementById("step2").classList.remove("done"); document.getElementById("doneBanner").classList.remove("show"); }
+    bridgeUI();
+  });
+  bridgeUI();
+
+  /* ---------- 混元卧 ---------- */
+  var hyMin = 10, hyTimer = null, hyLeft = 10*60, hyTotal = 10*60;
+  var hyTimeEl = document.getElementById("hyTime");
+  var hyStart = document.getElementById("hyStart"), hyPause = document.getElementById("hyPause");
+  document.querySelectorAll("[data-hy-min]").forEach(function(btn){
+    btn.addEventListener("click", function(){
+      document.querySelectorAll("[data-hy-min]").forEach(function(x){ x.classList.remove("on"); });
+      btn.classList.add("on");
+      hyMin = parseInt(btn.getAttribute("data-hy-min"), 10);
+      if(!hyTimer){ hyTotal = hyMin*60; hyLeft = hyTotal; hyTimeEl.textContent = fmt(hyLeft); }
+    });
+  });
+  hyStart.addEventListener("click", function(){
+    if(hyTimer) return;
+    if(hyLeft <= 0){ hyTotal = hyMin*60; hyLeft = hyTotal; }
+    hyStart.disabled = true; hyPause.disabled = false;
+    hyStart.textContent = "进行中…";
+    document.getElementById("hyHint").textContent = "保持姿势，呼吸放慢，计时结束会有提示";
+    hyTimer = setInterval(function(){
+      hyLeft--;
+      hyTimeEl.textContent = fmt(hyLeft);
+      setProg("prog3", (hyTotal - hyLeft) / hyTotal * 100);
+      if(hyLeft <= 0){
+        clearInterval(hyTimer); hyTimer = null;
+        hyTimeEl.textContent = "00:00";
+        document.getElementById("hyHint").textContent = "时间到。把手脚散开，放松躺一会儿再正常睡。";
+        hyStart.disabled = false; hyPause.disabled = true;
+        hyStart.textContent = "再来一轮";
+        setProg("prog3", 100);
+        markDone("s3", "badge3", "step3");
+      }
+    }, 1000);
+  });
+  hyPause.addEventListener("click", function(){
+    clearInterval(hyTimer); hyTimer = null;
+    hyStart.disabled = false; hyPause.disabled = true;
+    hyStart.textContent = "继续";
+  });
+  document.getElementById("hyReset").addEventListener("click", function(){
+    clearInterval(hyTimer); hyTimer = null;
+    hyTotal = hyMin*60; hyLeft = hyTotal;
+    hyTimeEl.textContent = fmt(hyLeft);
+    document.getElementById("hyHint").textContent = "摆好姿势，点开始";
+    hyStart.disabled = false; hyPause.disabled = true;
+    hyStart.textContent = "开始混元卧";
+    setProg("prog3", done.s3 ? 100 : 0);
+  });
+
+  /* ---------- 全部重置 ---------- */
+  document.getElementById("simResetAll").addEventListener("click", function(){
+    document.getElementById("breathReset").click();
+    document.getElementById("bridgeReset").click();
+    document.getElementById("hyReset").click();
+    ["s1","s2","s3"].forEach(function(k){ done[k] = false; });
+    [["badge1","step1"],["badge2","step2"],["badge3","step3"]].forEach(function(pair){
+      document.getElementById(pair[0]).textContent = "未开始";
+      document.getElementById(pair[1]).classList.remove("done");
+    });
+    setProg("prog1",0); setProg("prog2",0); setProg("prog3",0);
+    document.getElementById("doneBanner").classList.remove("show");
+    window.scrollTo({ top: document.getElementById("sim").offsetTop - 10, behavior:"smooth" });
+  });
+})();
+</script>
+</body>
+</html>
